@@ -1,0 +1,16 @@
+title: 'NetNote'
+description: '只要学不死，就往死里学！'
+local:
+  lang: zh-CN
+base: /
+themeConfig:
+  nav:
+    -
+      text: 网络搭建
+      link: /net/
+    -
+      text: 系统服务
+      link: /serve/
+    -
+      text: GitHub
+      link: https://github.com/Yue-plus/NetNote
