@@ -6,6 +6,9 @@ base: /
 themeConfig:
   nav:
     -
+      text: 开始项目
+      link: /start/
+    -
       text: 网络搭建
       link: /net/
     -
@@ -14,3 +17,7 @@ themeConfig:
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
+  sidebar: 'auto'
+repo: Yue-plus/NetNote
+repoLabel: GitHub
+editLinkText: GitHub
