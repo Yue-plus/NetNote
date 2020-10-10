@@ -31,3 +31,5 @@ jobs:
     - run: bash deploy.sh
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
