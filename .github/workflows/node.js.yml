@@ -26,7 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKENS }}
         BRANCH: gh-pages
     - run: yarn
-    - run: bash deploy.sh
+    - run: bash NodeJSCI.sh
