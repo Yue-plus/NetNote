@@ -27,17 +27,6 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKENS }}
-        GITHUBURL: https://yue-plus:${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git
         BRANCH: gh-pages
-    - run:
-      yarn
-      git config --global user.name "yue-plus"
-      git config --global user.email Yue_plus@foxmail.com
-      yarn docs:build
-      cd docs/.vuepress/dist
-      echo 'note.yueplus.ink' > CNAME
-      git init
-      git add -A
-      git commit -m 'deploy'
-      echo ${ACCESS_TOKEN}
-      git push -f https://yue-plus:${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git master:gh-pages
+    - run: yarn
+    - run: bash NodeJSCI.sh
