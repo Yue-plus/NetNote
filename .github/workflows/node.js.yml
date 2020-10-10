@@ -37,4 +37,4 @@ jobs:
     - run: git init
     - run: git add -A
     - run: git commit -m 'deploy'
-    - run: git push -f https://yue-plus:${ACCESS_TOKENS}@github.com/Yue-plus/NetNote.git master:gh-pages
+    - run: git push -f https://yue-plus:${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git master:gh-pages
