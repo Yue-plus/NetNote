@@ -25,6 +25,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
-    - run: yarn docs:build
+    - run: bash deploy.sh
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
