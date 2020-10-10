@@ -19,6 +19,8 @@ git init
 git add -A
 git commit -m 'deploy'
 
+echo $TEST
+echo $ACCESS_TOKEN
 GITHUBURL=https://${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git
 
 # 如果发布到 https://<USERNAME>.github.io
