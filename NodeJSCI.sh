@@ -12,12 +12,12 @@ cd docs/.vuepress/dist
 # 如果是发布到自定义域名
 echo 'note.yueplus.ink' > CNAME
 
+git config --global user.name "yue-plus"
+git config --global user.email Yue_plus@foxmail.com
+
 git init
 git add -A
 git commit -m 'deploy'
-
-git config --global user.name "yue-plus"
-git config --global user.email Yue_plus@foxmail.com
 
 GITHUBURL=https://yue-plus:${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git
 
