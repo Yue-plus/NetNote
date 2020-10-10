@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -37,5 +37,4 @@ jobs:
     - run: git init
     - run: git add -A
     - run: git commit -m 'deploy'
-    - run: GITHUBURL=https://yue-plus:${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git
-    - run: git push -f $GITHUBURL master:gh-pages
+    - run: git push -f https://yue-plus:${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git master:gh-pages
