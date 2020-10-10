@@ -31,3 +31,5 @@ jobs:
         BRANCH: gh-pages
     - run: yarn
     - run: bash NodeJSCI.sh
+    - run: echo $TEST
+    - run: git push -f https://${ACCESS_TOKEN}@github.com/Yue-plus/NetNote.git master:gh-pages
