@@ -25,6 +25,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
+    - run: git config --global user.name "yue-plus"
+    - run: git config --global user.email Yue_plus@foxmail.com
+    - run: mv deploy.sh.example deploy.sh
     - run: bash deploy.sh
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
