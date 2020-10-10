@@ -29,5 +29,6 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
-      run: yarn
-      run: bash NodeJSCI.sh
+      run: |
+        yarn
+        bash NodeJSCI.sh
