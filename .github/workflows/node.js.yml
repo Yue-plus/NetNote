@@ -24,6 +24,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKENS }}
+        BRANCH: gh-pages
     - run: yarn
     - run: git config --global user.name "yue-plus"
     - run: git config --global user.email Yue_plus@foxmail.com
@@ -33,8 +37,4 @@ jobs:
     - run: git init
     - run: git add -A
     - run: git commit -m 'deploy'
-    - run: git push -f https://yue-plus:${{ secrets.PERSONAL_ACCESS_TOKENS }}@github.com/Yue-plus/NetNote.git master:gh-pages
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKENS }}
-        BRANCH: gh-pages
+    - run: git push -f https://yue-plus:${ACCESS_TOKENS}@github.com/Yue-plus/NetNote.git master:gh-pages
