@@ -24,8 +24,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Deploy to gh-page
       env:
-        TEST: HELLOWORLD
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
