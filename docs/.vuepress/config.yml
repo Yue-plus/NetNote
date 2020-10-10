@@ -13,7 +13,16 @@ themeConfig:
       link: /net/
     -
       text: 系统服务
-      link: /serve/
+      items:
+        - 
+          text: 云平台与虚拟机
+          link: /serve/VM/
+        -
+          text: Windows Server
+          link: /serve/WS/
+        -
+          text: Linux
+          link: /serve/Linux/
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
