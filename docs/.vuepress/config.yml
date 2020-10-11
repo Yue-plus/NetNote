@@ -6,8 +6,14 @@ base: /
 themeConfig:
   nav:
     -
-      text: 开始项目
-      link: /start/
+      text: 起步
+      items: 
+        -
+          text: 开始项目
+          link: /start/start.html
+        -
+          text: Markdown 语法
+          link: /start/markdown.html
     -
       text: 网络搭建
       items:

@@ -102,6 +102,8 @@ yarn docs:dev
 
 通过浏览器访问：<http://127.0.0.1:8080/>
 
+> 更多配置可参考 **[VuePress 介绍](https://vuepress.vuejs.org/zh/guide/)**
+
 ## 部署
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。
