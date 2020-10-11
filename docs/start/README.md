@@ -1,5 +1,9 @@
 # 开始项目
 
+## 下载沙拉查词
+
+前往[沙拉查词官网](https://saladict.crimx.com/)下载插件。
+
 ## 注册 GitHub 账号
 
 前往~~全球最大的同性交友网站~~ [GitHub](https://github.com/) 注册并登入账号。
