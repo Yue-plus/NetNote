@@ -7,6 +7,8 @@ Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多�
 Markdown 编写的文档后缀为 `.md`, `.markdown`。
 :::
 
+> 转载自 [Markdown 教程 - 菜鸟教程](https://www.runoob.com/markdown/md-tutorial.html)
+
 # 标题
 👆 看起来就像上面这个。Markdown 标题有两种格式。
 
@@ -322,32 +324,6 @@ _   下划线
 !   感叹号
 ```
 
-## 公式
-当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：
-
-> 参考 [使用 `hexo-filter-mathjax` 过滤器来显示数学公式](https://github.com/Yue-plus/hexo-theme-arknights#数学公式)
-
-> 可以在行内包含数学公式： $i\hbar\frac{\partial}{\partial t}\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi$ 注意单 `$` 内部不能有空格！
-> $$
-> \begin{eqnarray\*}
-> \nabla\cdot\vec{E}&=&\frac{\rho}{\epsilon_0}\\\\
-> \nabla\cdot\vec{B}&=&0\\\\
-> \nabla\times\vec{E}&=&-\frac{\partial B}{\partial t}\\\\
-> \nabla\times\vec{B}&=&\mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t}\right)\\\\
-> \end{eqnarray\*}
-> $$
-
-```markdown
-可以在行内包含数学公式： $i\hbar\frac{\partial}{\partial t}\psi=-\frac{\hbar^2}{2m}\nabla^2\psi+V\psi$ 注意单 `$` 内部不能有空格！
-$$
-\begin{eqnarray\*}
-\nabla\cdot\vec{E}&=&\frac{\rho}{\epsilon_0}\\\\
-\nabla\cdot\vec{B}&=&0\\\\
-\nabla\times\vec{E}&=&-\frac{\partial B}{\partial t}\\\\
-\nabla\times\vec{B}&=&\mu_0\left(\vec{J}+\epsilon_0\frac{\partial E}{\partial t}\right)\\\\
-\end{eqnarray\*}
-$$
-```
 
 
 [^Baidu]: www.baidu.com
