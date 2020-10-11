@@ -6,11 +6,27 @@ base: /
 themeConfig:
   nav:
     -
+      text: 开始项目
+      link: /start/
+    -
       text: 网络搭建
       link: /net/
     -
       text: 系统服务
-      link: /serve/
+      items:
+        - 
+          text: 云平台与虚拟机
+          link: /serve/VM/
+        -
+          text: Windows Server
+          link: /serve/WS/
+        -
+          text: Linux
+          link: /serve/Linux/
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
+  sidebar: 'auto'
+repo: Yue-plus/NetNote
+repoLabel: GitHub
+editLinkText: GitHub
