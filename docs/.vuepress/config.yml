@@ -10,7 +10,25 @@ themeConfig:
       link: /start/
     -
       text: 网络搭建
-      link: /net/
+      items:
+        -
+          text: 网络基础
+          link: /net/base/
+        -
+          text: 交换机配置
+          link: /net/switch/
+        -
+          text: 路由器配置
+          link: /net/router/
+        -
+          text: 无线配置
+          link: /net/acap/
+        -
+          text: 安全配置
+          link: /net/security/
+        -
+          text: 广域网配置
+          link: /net/wan/
     -
       text: 系统服务
       items:
