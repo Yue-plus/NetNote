@@ -1,0 +1,1 @@
+# Failover Cluster（故障转移群集）配置
