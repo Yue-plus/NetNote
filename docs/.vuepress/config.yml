@@ -70,6 +70,7 @@ themeConfig:
       - 'NLB'
       - 'FailoverCluster'
     '/serve/Linux/':
+      - 'Base/'
       - 'Chrony/'
       - 'NFS/'
       - 'MariaDB/'
