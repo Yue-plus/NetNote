@@ -81,5 +81,6 @@ themeConfig:
       - 'Postfix/'
       - 'Pacemaker/'
   smoothScroll: true
+  sidebarDepth: 2
 repo: 'https://github.com/Yue-plus/NetNote'
 repoLabel: '查看源码'
