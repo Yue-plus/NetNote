@@ -62,6 +62,8 @@ themeConfig:
       - 'security/'
       - 'wan/'
     '/serve/VM/':
+      - 'Cloud'
+      - 'VMware'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DFS'
