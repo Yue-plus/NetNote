@@ -50,7 +50,24 @@ themeConfig:
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
-  sidebar: 'auto'
-repo: Yue-plus/NetNote
-repoLabel: GitHub
-editLinkText: GitHub
+  sidebar:
+    '/start/':
+      - 'start'
+      - 'markdown'
+    '/net/':
+      - 'base/'
+      - 'switch/'
+      - 'router/'
+      - 'acap/'
+      - 'security/'
+      - 'wan/'
+    '/serve/VM/':
+    '/serve/WS/':
+      - 'ActiveDirectoryDomain'
+      - 'DFS'
+      - 'NLB'
+      - 'FailoverCluster'
+    '/serve/Linux/':
+  smoothScroll: true
+repo: 'Yue-plus/NetNote'
+repoLabel: '查看源码'
