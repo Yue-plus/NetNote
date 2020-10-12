@@ -24,6 +24,55 @@ xxx(config)#exi
 xxx#
 名字在xxx里改
 ```
+## telnet管理:
+```sh
+>ena     特权
+#conf    全局
+(config)#username li pass admin  用户名为li 密码为admin
+(config)#ena pass admin  设置特权密码admin 
+(config)#int vlan 1   网络 vlan1
+(config-if-vlan1)#ip add 192.168.10.200 255.255.255.0   设置VLAN1的IP以及子网掩码
+(config-if-vlan1)#no shutdown   打开vlan1
+#exit
+(config)#telnet-server enable (启用telnet服务）
+(config)#exit 退出
+#write  保存
+#set default 恢复出厂设置
+#wri         保存
+#reload      重启交换机
+```
+##  创建vlan，分配端口:
+```text
+方法一：
+(config)#vlan 10          创建vlan10
+(config-vlan10)#exit      退出
+(config)#int e1/0/1-2     进入1-2端口
+(config-if-port-range)#swi acc vlan 10  分配1-2端口到vlan10
+(config-if-port-range)#exit 退出
+(config）#int vlan 10     进入vlan10
+(config-if-vlan10）ip add 192.168.10.1 255.255.255.0     设置vlan10的网关为192.168.10.1
+
+方法二：
+(config）#vlan 10          创建vlan10
+(config-if-vlan10)swi int e1/0/1-2   分配1-2端口到vlan10
+(config）#int vlan 10     进入vlan10
+(config-if-vlan10)ip add 192.168.10.1 255.255.255.0   设置vlan10的网关为192.168.10.1
+```
+## 三层交换机与路由互通:
+```text
+三层交换机fa0/1接口连接路由fa0/0接口
+三层交换机
+(config)#ip routing
+(config)#int fa0/1
+(config)#no switchport
+(config)#ip add 192.168.1.253 255.255.255.0
+路由
+(config)#int fa0/0
+(config)#ip add 192.168.1.254 255.255.255.0
+(config)#ip route 0.0.0.0 0.0.0.0 192.168.1.253
+```
+
+
 
 
 
