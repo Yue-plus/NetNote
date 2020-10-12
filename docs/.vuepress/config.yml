@@ -70,6 +70,15 @@ themeConfig:
       - 'NLB'
       - 'FailoverCluster'
     '/serve/Linux/':
+      - 'Chrony/'
+      - 'NFS/'
+      - 'MariaDB/'
+      - 'Apache/'
+      - 'Tomcat/'
+      - 'Samba/'
+      - 'NIS/'
+      - 'Postfix/'
+      - 'Pacemaker/'
   smoothScroll: true
-repo: 'Yue-plus/NetNote'
+repo: 'https://github.com/Yue-plus/NetNote'
 repoLabel: '查看源码'
