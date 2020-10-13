@@ -1,6 +1,3 @@
----
-sidebarDepth: 2
----
 # Markdown 语法
 
 ::: tip
@@ -8,6 +5,10 @@ Markdown 是一种轻量级标记语言，它允许人们使用易读易写的�
 Markdown 语言在 2004 由约翰·格鲁伯（英语：John Gruber）创建。
 Markdown 编写的文档可以导出 HTML 、Word、图像、PDF、Epub 等多种格式的文档。
 Markdown 编写的文档后缀为 `.md`, `.markdown`。
+:::
+
+::: tip
+查看更多 [VuePress 支持的 Markdown 拓展语法](https://vuepress.vuejs.org/zh/guide/markdown.html)
 :::
 
 > 转载自 [Markdown 教程 - 菜鸟教程](https://www.runoob.com/markdown/md-tutorial.html)
