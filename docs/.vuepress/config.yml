@@ -6,8 +6,14 @@ base: /
 themeConfig:
   nav:
     -
-      text: 开始项目
-      link: /start/
+      text: 起步
+      items: 
+        -
+          text: 开始项目
+          link: /start/start.html
+        -
+          text: Markdown 语法
+          link: /start/markdown.html
     -
       text: 网络搭建
       items:
@@ -44,7 +50,37 @@ themeConfig:
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
-  sidebar: 'auto'
-repo: Yue-plus/NetNote
-repoLabel: GitHub
-editLinkText: GitHub
+  sidebar:
+    '/start/':
+      - 'start'
+      - 'markdown'
+    '/net/':
+      - 'base/'
+      - 'switch/'
+      - 'router/'
+      - 'acap/'
+      - 'security/'
+      - 'wan/'
+    '/serve/VM/':
+      - 'Cloud'
+      - 'VMware'
+    '/serve/WS/':
+      - 'ActiveDirectoryDomain'
+      - 'DFS'
+      - 'NLB'
+      - 'FailoverCluster'
+    '/serve/Linux/':
+      - 'Base/'
+      - 'Chrony/'
+      - 'NFS/'
+      - 'MariaDB/'
+      - 'Apache/'
+      - 'Tomcat/'
+      - 'Samba/'
+      - 'NIS/'
+      - 'Postfix/'
+      - 'Pacemaker/'
+  smoothScroll: true
+  sidebarDepth: 2
+repo: 'https://github.com/Yue-plus/NetNote'
+repoLabel: '查看源码'
