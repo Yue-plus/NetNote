@@ -12,6 +12,9 @@ themeConfig:
           text: 开始项目
           link: /start/start.html
         -
+          text: GitHub 使用方法
+          link: /start/github.html
+        -
           text: Markdown 语法
           link: /start/markdown.html
     -
@@ -53,6 +56,7 @@ themeConfig:
   sidebar:
     '/start/':
       - 'start'
+      - 'github'
       - 'markdown'
     '/net/':
       - 'base/'

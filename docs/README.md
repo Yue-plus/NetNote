@@ -42,3 +42,8 @@ actionLink: /start/start.html
     <br />
     520-miku
 </a>
+<a class="head-link" target="_blank" href="https://github.com/shu-shang-123">
+    <img class="head-img" src="/img/shu-shang-123.jpg" />
+    <br />
+    shu-shang-123
+</a>
