@@ -62,12 +62,25 @@ themeConfig:
       - 'security/'
       - 'wan/'
     '/serve/VM/':
+      - 'Cloud'
+      - 'VMware'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DFS'
       - 'NLB'
       - 'FailoverCluster'
     '/serve/Linux/':
+      - 'Base/'
+      - 'Chrony/'
+      - 'NFS/'
+      - 'MariaDB/'
+      - 'Apache/'
+      - 'Tomcat/'
+      - 'Samba/'
+      - 'NIS/'
+      - 'Postfix/'
+      - 'Pacemaker/'
   smoothScroll: true
-repo: 'Yue-plus/NetNote'
+  sidebarDepth: 2
+repo: 'https://github.com/Yue-plus/NetNote'
 repoLabel: '查看源码'
