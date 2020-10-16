@@ -35,7 +35,7 @@ Git Bash 终端中，输入 `ssh-keygen`
 ```bash {1,3-5}
 $ ssh-keygen
 Generating public/private rsa key pair.
-Enter file in which to save the key (/c/Users/Yue_p/.ssh/id_rsa): yes
+Enter file in which to save the key (/c/Users/Yue_p/.ssh/id_rsa): # 直接回车
 Enter passphrase (empty for no passphrase):    # 直接回车
 Enter same passphrase again:                   # 直接回车
 Your identification has been saved in yes
@@ -83,7 +83,7 @@ The key's randomart image is:
 找一个合适的路径，执行以下指令：
 
 ```sh
-# 克隆仓库（注意替换 <username>）
+# 克隆仓库（注意替换为 GitHub 用户名：<username>）
 git clone git@github.com:<username>/NetNote.git
 
 cd NetNote

@@ -12,6 +12,9 @@ themeConfig:
           text: 开始项目
           link: /start/start.html
         -
+          text: GitHub 使用方法
+          link: /start/github.html
+        -
           text: Markdown 语法
           link: /start/markdown.html
     -
@@ -50,7 +53,38 @@ themeConfig:
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
-  sidebar: 'auto'
-repo: Yue-plus/NetNote
-repoLabel: GitHub
-editLinkText: GitHub
+  sidebar:
+    '/start/':
+      - 'start'
+      - 'github'
+      - 'markdown'
+    '/net/':
+      - 'base/'
+      - 'switch/'
+      - 'router/'
+      - 'acap/'
+      - 'security/'
+      - 'wan/'
+    '/serve/VM/':
+      - 'Cloud'
+      - 'VMware'
+    '/serve/WS/':
+      - 'ActiveDirectoryDomain'
+      - 'DFS'
+      - 'NLB'
+      - 'FailoverCluster'
+    '/serve/Linux/':
+      - 'Base/'
+      - 'Chrony/'
+      - 'NFS/'
+      - 'MariaDB/'
+      - 'Apache/'
+      - 'Tomcat/'
+      - 'Samba/'
+      - 'NIS/'
+      - 'Postfix/'
+      - 'Pacemaker/'
+  smoothScroll: true
+  sidebarDepth: 2
+repo: 'https://github.com/Yue-plus/NetNote'
+repoLabel: '查看源码'
