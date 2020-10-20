@@ -2,6 +2,8 @@
 
 ## [Linux（CentOS）基础](./01-Base/)
 
+本章教程使用 CentOS 6.5/7 系统。
+
 ## [Chrony（时间同步）](./02-Chrony/)
 
 ## [NFS（网络文件系统）](./03-NFS/)
