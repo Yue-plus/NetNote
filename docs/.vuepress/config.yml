@@ -66,7 +66,7 @@ themeConfig:
       - 'security/'
       - 'wan/'
     '/serve/VM/':
-      - 'Cloud'
+      - 'Cloud/'
       - 'VMware'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
@@ -74,16 +74,16 @@ themeConfig:
       - 'NLB'
       - 'FailoverCluster'
     '/serve/Linux/':
-      - 'Base/'
-      - 'Chrony/'
-      - 'NFS/'
-      - 'MariaDB/'
-      - 'Apache/'
-      - 'Tomcat/'
-      - 'Samba/'
-      - 'NIS/'
-      - 'Postfix/'
-      - 'Pacemaker/'
+      - '01-Base/'
+      - '02-Chrony/'
+      - '03-NFS/'
+      - '04-MariaDB/'
+      - '05-Apache/'
+      - '06-Tomcat/'
+      - '07-Samba/'
+      - '08-NIS/'
+      - '09-Postfix/'
+      - '10-Pacemaker/'
   smoothScroll: true
   sidebarDepth: 2
 repo: 'https://github.com/Yue-plus/NetNote'

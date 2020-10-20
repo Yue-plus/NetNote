@@ -47,3 +47,8 @@ actionLink: /start/start.html
     <br />
     shu-shang-123
 </a>
+<a class="head-link" target="_blank" href="https://github.com/Ahuipro">
+    <img class="head-img" src="/img/Ahuipro.jpg" />
+    <br />
+    Ahuipro
+</a>
