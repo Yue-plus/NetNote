@@ -1,7 +1,8 @@
 title: 'NetNote'
 description: '只要学不死，就往死里学！'
-local:
-  lang: zh-CN
+locales:
+  '/':
+    lang: 'zh-CN'
 base: /
 themeConfig:
   nav:
