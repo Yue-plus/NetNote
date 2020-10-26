@@ -19,6 +19,15 @@ themeConfig:
           text: Markdown 语法
           link: /start/markdown.html
     -
+      text: 编程
+      items:
+        -
+          text: Web 前端
+          link: /coding/Web/
+        -
+          text: Java
+          link: /coding/Java/
+    -
       text: 网络搭建
       items:
         -
@@ -59,6 +68,9 @@ themeConfig:
       - 'start'
       - 'github'
       - 'markdown'
+    '/coding/':
+      - 'Web/'
+      - 'Java/'
     '/net/':
       - 'base/'
       - 'switch/'

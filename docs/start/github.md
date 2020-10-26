@@ -1,5 +1,7 @@
 # GitHub 使用方法
 
+> [Git教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/896043488029600)
+
 ## 从主库创建拉取请求
 
 ![GitHub01](./img/github-01.jpg)
