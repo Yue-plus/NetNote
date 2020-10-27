@@ -107,3 +107,24 @@ yarn docs:dev
 ## 部署
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。
+
+## 附：Git Bash 设置代理
+
+### 设置代理
+
+```sh
+# http
+git config --global http.proxy http://127.0.0.1:1080
+git config --global https.proxy https://127.0.0.1:1080
+
+# socks5
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+```
+
+### 取消代理
+
+```sh
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
