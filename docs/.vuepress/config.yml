@@ -1,13 +1,32 @@
 title: 'NetNote'
 description: '只要学不死，就往死里学！'
-local:
-  lang: zh-CN
+locales:
+  '/':
+    lang: 'zh-CN'
 base: /
 themeConfig:
   nav:
     -
-      text: 开始项目
-      link: /start/
+      text: 起步
+      items: 
+        -
+          text: 开始项目
+          link: /start/start.html
+        -
+          text: GitHub 使用方法
+          link: /start/github.html
+        -
+          text: Markdown 语法
+          link: /start/markdown.html
+    -
+      text: 编程
+      items:
+        -
+          text: Web 前端
+          link: /coding/Web/
+        -
+          text: Java
+          link: /coding/Java/
     -
       text: 网络搭建
       items:
@@ -44,7 +63,41 @@ themeConfig:
     -
       text: GitHub
       link: https://github.com/Yue-plus/NetNote
-  sidebar: 'auto'
-repo: Yue-plus/NetNote
-repoLabel: GitHub
-editLinkText: GitHub
+  sidebar:
+    '/start/':
+      - 'start'
+      - 'github'
+      - 'markdown'
+    '/coding/':
+      - 'Web/'
+      - 'Java/'
+    '/net/':
+      - 'base/'
+      - 'switch/'
+      - 'router/'
+      - 'acap/'
+      - 'security/'
+      - 'wan/'
+    '/serve/VM/':
+      - 'Cloud/'
+      - 'VMware'
+    '/serve/WS/':
+      - 'ActiveDirectoryDomain'
+      - 'DFS'
+      - 'NLB'
+      - 'FailoverCluster'
+    '/serve/Linux/':
+      - '01-Base/'
+      - '02-Chrony/'
+      - '03-NFS/'
+      - '04-MariaDB/'
+      - '05-Apache/'
+      - '06-Tomcat/'
+      - '07-Samba/'
+      - '08-NIS/'
+      - '09-Postfix/'
+      - '10-Pacemaker/'
+  smoothScroll: true
+  sidebarDepth: 2
+repo: 'https://github.com/Yue-plus/NetNote'
+repoLabel: '查看源码'
