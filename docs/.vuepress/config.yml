@@ -1,7 +1,8 @@
 title: 'NetNote'
 description: '只要学不死，就往死里学！'
-local:
-  lang: zh-CN
+locales:
+  '/':
+    lang: 'zh-CN'
 base: /
 themeConfig:
   nav:
@@ -17,6 +18,15 @@ themeConfig:
         -
           text: Markdown 语法
           link: /start/markdown.html
+    -
+      text: 编程
+      items:
+        -
+          text: Web 前端
+          link: /coding/Web/
+        -
+          text: Java
+          link: /coding/Java/
     -
       text: 网络搭建
       items:
@@ -58,6 +68,9 @@ themeConfig:
       - 'start'
       - 'github'
       - 'markdown'
+    '/coding/':
+      - 'Web/'
+      - 'Java/'
     '/net/':
       - 'base/'
       - 'switch/'
@@ -66,7 +79,7 @@ themeConfig:
       - 'security/'
       - 'wan/'
     '/serve/VM/':
-      - 'Cloud'
+      - 'Cloud/'
       - 'VMware'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
@@ -74,16 +87,16 @@ themeConfig:
       - 'NLB'
       - 'FailoverCluster'
     '/serve/Linux/':
-      - 'Base/'
-      - 'Chrony/'
-      - 'NFS/'
-      - 'MariaDB/'
-      - 'Apache/'
-      - 'Tomcat/'
-      - 'Samba/'
-      - 'NIS/'
-      - 'Postfix/'
-      - 'Pacemaker/'
+      - '01-Base/'
+      - '02-Chrony/'
+      - '03-NFS/'
+      - '04-MariaDB/'
+      - '05-Apache/'
+      - '06-Tomcat/'
+      - '07-Samba/'
+      - '08-NIS/'
+      - '09-Postfix/'
+      - '10-Pacemaker/'
   smoothScroll: true
   sidebarDepth: 2
 repo: 'https://github.com/Yue-plus/NetNote'
