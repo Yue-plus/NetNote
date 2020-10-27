@@ -1,4 +1,31 @@
-# Linux（CentOS）基础
+# Linux 基础
+
+本章教程使用 CentOS 6.5/7 系统。
+
+相关链接：
+
+- [CentOS 官网](https://www.centos.org/download/)
+- [Linux 教程 | 菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html)
+- [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
+  + 至少看看到 [第十章、認識與學習BASH](http://linux.vbird.org/linux_basic/0320bash.php)
+
+<!--
+## 常用指令
+
+### cd
+
+```bash
+cd <目标目录>
+```
+
+目标目录可以是 绝对路径 或 相对路径 
+
+### mv
+
+```bash
+mv <原始目录> <目标目录>
+```
+-->
 
 ## 联网
 
