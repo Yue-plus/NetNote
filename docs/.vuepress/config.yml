@@ -16,6 +16,9 @@ themeConfig:
           text: GitHub 使用方法
           link: /start/github.html
         -
+          text: IDEA 使用方法
+          link: /start/use_IDEA/
+        -
           text: Markdown 语法
           link: /start/markdown.html
     -
@@ -67,6 +70,7 @@ themeConfig:
     '/start/':
       - 'start'
       - 'github'
+      - 'use_IDEA/'
       - 'markdown'
     '/coding/':
       - 'Web/'
