@@ -8,54 +8,35 @@
 
 ## 基础操作
 
-将 Console 配置线连接到防火墙 CON 口，波特率（Baud rate）为 **9600**。然后配置防火墙，配置代码如下：
+### 网线直连防火墙
+
+将 RJ45 网线一头链接到电脑，另一头链接到防火墙的 `e0/0` 口。
+
+将 Console 配置线连接到防火墙 CON 口，波特率（Baud rate）为 **9600**。
+
+为防火墙 e0/0 口配置一个静态ip，配置代码如下
 
 ```sh
 login: admin
-password: 
-DCFW-1800# conf
-DCFW-1800(config)# int
-DCFW-1800(config)# interface e
-DCFW-1800(config)# interface ethernet1/0/0
-                             ^-----unrecognized keyword ethernet1/0/0
-DCFW-1800(config)# int                    
-DCFW-1800(config)# interface e
-DCFW-1800(config)# interface ethernet0/0  
-DCFW-1800(config-if-eth0/0)# ip add
+password: admin # 输入密码不显示占位符
+DCFW-1800# config
+DCFW-1800(config)# interface ethernet0/0
 DCFW-1800(config-if-eth0/0)# ip address 192.168.1.1 255.255.255.0
 ```
 
-1. 右击左下角的“网络和 Internet” 配置：
+打开 `控制面板\网络和 Internet\网络连接`，点击已连接到防火墙的网线链接。
 
-   ![04](.\img\04.jpg)
+右键属性，设置使用以下 IP 地址：
 
-2. 点击更改适配器选项：
+- IP 地址：`192.168.1.2`
+- 子网掩码：`255.255.255.0`
+- 默认网关：`192.168.1.1`
 
-   ![05](.\img\05.jpg)
+![01](./img/01.jpg)
 
-3. 双击以太网：
+打开浏览器 <http://192.168.1.1> 即可进入防火墙 Web 配置页面。
 
-   ![06](.\img\06.jpg)
-
-4. 点击属性：
-
-   ![07](.\img\07.jpg)
-
-5. 点击IPv4：
-
-   ![08](.\img\08.jpg)
-
-   将自动获得IP地址更改成使用下面的IP地址
-
-   ![09](.\img\09.jpg)
-
-   输入IP地址，子网掩码和默认网关即可
-
-   打开浏览器
-
-   输入防护墙默认IP地址：<http://192.168.1.1> 即可进入防火墙终端
-
-### 连接防火墙
+![02](./img/02.jpg)
 
 ## 应用识别
 
