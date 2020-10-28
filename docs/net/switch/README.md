@@ -38,7 +38,6 @@ xxx#
 (config)#exit 退出
 #write  保存
 #set default 恢复出厂设置
-#wri         保存
 #reload      重启交换机
 ```
 ##  创建vlan，分配端口:

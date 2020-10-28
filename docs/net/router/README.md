@@ -1,11 +1,37 @@
 # 路由器配置
 
+##路由器基本配置：
+```shell script
+Router> enable
+Router# config
+Router_config# int f 0/0
+Router_config_f0/0# ip address 10.1.1.1 255.255.255.0  /*配置路由器端口地址*/
+```
+
+## 路由器Telnet登录：
+```shell script
+Router_config# ip telnet access-class [策略名] /*设定telnet使用ACL过滤*/
+Router_config# username admin password 0 admin /*创建用户名与密码*/
+Router_config# enable password 0 enable /*设定enable密码*/
+Router_config# aaa authen enable def enable /*设定enable密码验证方式*/
+Router_config# aaa authen login def local /*设定用户名本地认证*/
+```
+
+## 路由器SSH登录:
+```shell script
+Router_config# ip sshd enable  /*开启SSH登录*/
+Router_config# ip sshd access-class [策略名]  /*设定SSH使用ACL过滤*/
+Router_config# username admin password 0 admin  /*创建用户名与密码*/
+Router_config# enable password 0 enable  /*设定enable密码*/
+Router_config# aaa authen enable def enable  /*设定enable密码验证方式*/
+Router_config# aaa authen login def local  /*设定用户名本地认证*/
+```
+
 ## 路由器背靠背线缆:
 ```shell script
-RT1
 RT1_config#int multilink 1  /*进入Multilink 1*/
 RT1_config_m1#ip add 10.10.255.21 255.255.255.252   /*配置Multilink1的ip为10.10.255.21/30*/
-RT1_config_m1#ppp multilink   /*启用多链路ppp
+RT1_config_m1#ppp multilink   /*启用多链路ppp*/
 RT1_config_m1#multilink-group 1  /*将Multilink 1加入到Multilink聚合组1 */
 RT1_config_s0/1#exi       
 RT1_config#int se0/1             /*进入串口0/1*/
