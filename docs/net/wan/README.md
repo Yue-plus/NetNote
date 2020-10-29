@@ -2,21 +2,23 @@
 
 ## 交换机配置
 
-- 1 //进入特权模式
+### 进入特权模式
+```sh
+eanble
+```
 
-2 eanble
+### Telnet方式管理交换机.
 
-- 2.Telnet方式管理交换机.
+#### 进入全局配置模式
 
-1  //进入全局配置模式
+```sh
+enable password 0 [密码]
 
-2  enable password 0 [密码]
+Line 0 4
 
-3  Line 0 4 
+Password 0 [密码]
 
-4  Password 0 [密码]
-
-- 3 交换机文件备份、升级、还原
+#### 交换机文件备份、升级、还原
 
 1) rgnos.bin系统文件
 
