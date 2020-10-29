@@ -14,6 +14,7 @@
 
 - [Node.js](#本地安装-nodejs)
 - [yarn](#本地安装-yarn)
+- [GitHub CLI](https://cli.github.com/)
 
 ## 注册 GitHub 账号
 
