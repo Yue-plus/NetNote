@@ -14,6 +14,7 @@
 
 - [Node.js](#本地安装-nodejs)
 - [yarn](#本地安装-yarn)
+- [GitHub CLI](https://cli.github.com/)
 
 ## 注册 GitHub 账号
 
@@ -169,9 +170,11 @@ doc
         └─img
 ```
 
-## 附：Git Bash 设置代理
+## 附：终端设置代理
 
-### 设置代理
+### Git Bash
+
+#### 设置代理
 
 ```sh
 # http
@@ -183,9 +186,29 @@ git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 ```
 
-### 取消代理
+#### 取消代理
 
 ```sh
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+```
+
+### PowerShell
+
+#### 设置代理
+
+```sh
+netsh winhttp set proxy 127.0.0.1:1080
+```
+
+#### 取消代理
+
+```sh
+netsh winhttp reset proxy
+```
+
+#### 查看代理
+
+```sh
+netsh winhttp show proxy
 ```

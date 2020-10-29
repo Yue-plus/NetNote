@@ -1,4 +1,11 @@
-# 神州数码交换机配置
+# 交换机配置
+
+## 使用设备
+
+- [DCN S4600 系列全千兆绿色智能安全接入交换机](http://www.dcnetworks.com.cn/goods/43.html)
+- [DCN S5750E 系列绿色智能万兆安全汇聚接入交换机](http://www.dcnetworks.com.cn/goods/24.html)
+
+
 
 ## 神州数码二层交换机划分vlan如下所示:
 
