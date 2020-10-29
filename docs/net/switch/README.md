@@ -63,12 +63,8 @@ xxx#
 
 方法二：
 (config）#vlan 10          创建vlan10
-(config-if-vlan10)switch interface
-
- e1/0/1-2   分配1-2端口到vlan10
-(config）#interface
-
- vlan 10     进入vlan10
+(config-if-vlan10)switchport e1/0/1-2   分配1-2端口到vlan10
+(config）#interface vlan 10     进入vlan10
 (config-if-vlan10)ip address 192.168.10.1 255.255.255.0   设置vlan10的网关为192.168.10.1
 ```
 ## 三层交换机与路由互通:
@@ -92,7 +88,7 @@ xxx#
 ```text
 (config)#isolate-port group 1          /*创建隔离组1*/
 (config#)vlan 10
-(config-vlan30)#isolate-port group 1 switchport interface e1/0/1-2       /* 将1-2端口加入隔离组*/
+(config-vlan30)#isolate-port group 1 switchport access e1/0/1-2       /* 将1-2端口加入隔离组*/
 ```
 ## 环路检测:
 ```text
@@ -127,7 +123,7 @@ vsf LACP MAD分裂检测(vsf成员都需配置)
 
 vsf BFD MAD分裂检测(vsf成员都需配置)
 (config）#vlan 111        /* 创建用于bfd mad检测的vlan */
-(config-vlan111)#switch interfacee1/0/24      /* 将两台三层之间用于检测的端口加入检测vlan（需物理连线） */
+(config-vlan111)#switch interface1/0/24      /* 将两台三层之间用于检测的端口加入检测vlan（需物理连线） */
 (config-vlan111)#exit
 (config）#int vlan 111     /* 进入vlan111*/
 (config-if-vlan111)#vsf mad ip address 192.168.1.1 255.255.255.0 member 1   /* 配置bfd的检测vlan ip（另一台需同一网段） */
