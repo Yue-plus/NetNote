@@ -16,6 +16,17 @@
   + 开机时间：约 4m35s  
 - [DCN DCFW-1800E-N3002-Pro下一代防火墙](http://www.dcnetworks.com.cn/goods/148.html)
 - [DCN DCR-2655 模块化路由器](http://www.dcnetworks.com.cn/goods/131.html)
+- [DCN DCWS-6028 无线控制器](http://www.dcnetworks.com.cn/goods/120.html)
+- [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html)
+
+## 路由器基础配置
+
+## 交换机基础配置
+
+## AC/AP
+
+## 防火墙基础配置
+
 - [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html)
 
 > [DCC-CRL 1000 云服务实训平台](/serve/VM/Cloud/)
