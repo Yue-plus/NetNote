@@ -1,8 +1,20 @@
 # 开始项目
 
-## 下载沙拉查词
+## 推荐安装以下软件
 
-前往[沙拉查词官网](https://saladict.crimx.com/)下载插件。
+编辑器：
+- [IntelliJ IDEA ——集成开发环境](/start/use_IDEA/)
+- [VScode ——开源代码编辑器](https://code.visualstudio.com/)
+- [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows)
+
+浏览器插件：
+- [沙拉查词](https://saladict.crimx.com/)。
+
+系统环境：
+
+- [Node.js](#本地安装-nodejs)
+- [yarn](#本地安装-yarn)
+- [GitHub CLI](https://cli.github.com/)
 
 ## 注册 GitHub 账号
 
@@ -108,9 +120,61 @@ yarn docs:dev
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。
 
-## 附：Git Bash 设置代理
+## 附：项目目录结构
 
-### 设置代理
+当前所有文档都保存在 `NetNote\docs\` 文件夹内。
+
+新建目录需修改 `NetNote\docs\.vuepress\config.yml` 文件。
+
+公共图片统一放在 `NetNote\docs\.vuepress\public\img` 文件夹内。
+
+每个文档都可以放在独立的文件夹下，维护自己的 `img` 文件夹。
+
+```text
+doc
+├─.vuepress
+│  └─public
+│      └─img
+├─coding
+│  ├─Java
+│  │  └─img
+│  │      └─01-Path
+│  └─Web
+├─net
+│  ├─acap
+│  ├─base
+│  ├─router
+│  ├─security
+│  ├─switch
+│  └─wan
+├─serve
+│  ├─Linux
+│  │  ├─01-Base
+│  │  ├─02-Chrony
+│  │  ├─03-NFS
+│  │  ├─04-MariaDB
+│  │  ├─05-Apache
+│  │  ├─06-Tomcat
+│  │  ├─07-Samba
+│  │  ├─08-NIS
+│  │  ├─09-Postfix
+│  │  └─10-Pacemaker
+│  ├─VM
+│  │  ├─Cloud
+│  │  └─img
+│  │      └─setup
+│  └─WS
+└─start
+    ├─img
+    └─use_IDEA
+        └─img
+```
+
+## 附：终端设置代理
+
+### Git Bash
+
+#### 设置代理
 
 ```sh
 # http
@@ -122,9 +186,29 @@ git config --global http.proxy 'socks5://127.0.0.1:1080'
 git config --global https.proxy 'socks5://127.0.0.1:1080'
 ```
 
-### 取消代理
+#### 取消代理
 
 ```sh
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+```
+
+### PowerShell
+
+#### 设置代理
+
+```sh
+netsh winhttp set proxy 127.0.0.1:1080
+```
+
+#### 取消代理
+
+```sh
+netsh winhttp reset proxy
+```
+
+#### 查看代理
+
+```sh
+netsh winhttp show proxy
 ```
