@@ -36,15 +36,17 @@
  ![GitHub13](./img/github-13.jpg)
  ![GitHub14](./img/github-14.jpg)
 
-## 使用 GitHub CLI
+## 附：使用 GitHub CLI
 
-:::tip
+::: tip
+前往[下载 GitHub CLI](https://cli.github.com/) 并安装。
+:::
+
+::: tip
 **命令行界面**（英语：**command-line interface**，缩写：CLI）是在图形用户界面得到普及之前使用最为广泛的用户界面，它通常不支持鼠标，用户通过键盘输入指令，计算机接收到指令后，予以执行。
 也有人称之为 **字符用户界面**（CUI）。
 
-前往[下载 GitHub CLI](https://cli.github.com/) 并安装。
-
-推荐在 PowerShell 中使用 GitHub CLI。
+**推荐在 PowerShell 中使用 GitHub CLI。**
 :::
 
 ### 登入
@@ -85,10 +87,4 @@ gh auth login
 
 ### 常用指令
 
-
-
-### 常规操作
-
-#### 从主库拉取
-
-#### 推送到主库
+查看 [GitHub CLI 使用手册（英文）](https://cli.github.com/manual/)
