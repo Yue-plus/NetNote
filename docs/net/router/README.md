@@ -45,28 +45,28 @@ Routter_config_rip# default-information originate  /*下发默认路由*/
 
 ## 路由器OSPF动态路由：
 ```shell script
-Router_config# router ospf 1/*启动 ospf进程 进程号为 1*/
-Router_config_ospf_1# router-id 1.1.1.1 /*设置路由router-id*/
-Router_config_ospf_1# netword 10.1.1.0 255.255.255.0 ar 0/*宣告网段*/
-Router_config_ospf_1# network 10.1.2.0 255.255.255.0 ar 0/*区域号为 0 */
-Router_config_ospf# redistribute connect /*引入直连路由*/
-Router_config_ospf# default-information originate /*下发默认路由*/
-Router_config# int g 0/3  /*进入G0/3端口*/
-Router_config_ospf# area X[区域号] virtual-link X.X.X.X[对端路由ID] /*设定虚链路*/
-Router_config_g0/3# ip ospf priority 0 /*设置不参与OSPF选举*/
-Router_config_g0/3# ip ospf passive /*设置为被动接口,不发送更新报文*/
+Router_config# router ospf 1  /*启动 ospf进程 进程号为 1*/
+Router_config_ospf_1# router-id 1.1.1.1   /*设置路由router-id*/
+Router_config_ospf_1# netword 10.1.1.0 255.255.255.0 ar 0  /*宣告网段*/
+Router_config_ospf_1# network 10.1.2.0 255.255.255.0 ar 0  /*区域号为 0 */
+Router_config_ospf# redistribute connect  /*引入直连路由*/
+Router_config_ospf# default-information originate  /*下发默认路由*/
+Router_config# int g 0/3   /*进入G0/3端口*/
+Router_config_ospf# area X[区域号] virtual-link X.X.X.X[对端路由ID]  /*设定虚链路*/
+Router_config_g0/3# ip ospf priority 0  /*设置不参与OSPF选举*/
+Router_config_g0/3# ip ospf passive  /*设置为被动接口,不发送更新报文*/
 ```
 
 ## 路由器单臂路由:
 ```shell script
-Router_config# int g 0/3.1 /*进入G0/3的子端口1*/
-Router_config_g0/3.1# encapsulation dot1q 10 /*配置为802.1Q局域网*/
-Router_config_g0/3.1# ip address 192.168.10.1 255.255.255.0 /*绑定IP地址*/
-Router_config_g0/3.1# no shut  /*非关闭*/
-Router_config# int g 0/3.2 /*进入G0/3的子端口2*/
-Router_config_g0/3.2# encapsulation dot1q 20 /*配置为802.1Q局域网*/
-Router_config_g0/3.2# ip address 192.168.20.1 255.255.255.0 /*绑定IP地址*/
-Router_config_g0/3.2# no shut  /*非关闭*/
+Router_config# int g 0/3.1  /*进入G0/3的子端口1*/
+Router_config_g0/3.1# encapsulation dot1q 10  /*配置为802.1Q局域网*/
+Router_config_g0/3.1# ip address 192.168.10.1 255.255.255.0  /*绑定IP地址*/
+Router_config_g0/3.1# no shut   /*非关闭*/
+Router_config# int g 0/3.2   /*进入G0/3的子端口2*/
+Router_config_g0/3.2# encapsulation dot1q 20   /*配置为802.1Q局域网*/
+Router_config_g0/3.2# ip address 192.168.20.1 255.255.255.0   /*绑定IP地址*/
+Router_config_g0/3.2# no shut   /*非关闭*/
 ```
 
 ## 路由器背靠背线缆:
