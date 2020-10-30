@@ -161,3 +161,37 @@ cmdtxt <variable> {enum1 | … | enumN} [option1 | … | optionN]
 - `snmp-server community {ro | rw} <string>`，出现以下几种输入情况：
   + `snmp-server community ro <string>`
   + `snmp-server community rw <string>`
+
+### 键盘快捷键
+
+交换机为方便用户的配置，特别提供了多个快捷键，如上、下、左、右键（方向键）及删除键 <kbd>BackSpace</kbd> 等。
+如果超级终端不支持上下光标键的识别，可以使用 <kbd>Ctrl</kbd> + <kbd>P</kbd> 与 <kbd>Ctrl</kbd> + <kbd>N</kbd> 来替代。
+
+- <kbd>BackSpace</kbd>（删除键）
+  + 删除光标所在位置的前一个字符，光标前移
+
+- <kbd>↑</kbd> | <kbd>↓</kbd>（上下方向键）或 <kbd>Ctrl</kbd> + <kbd>P</kbd> | <kbd>N</kbd>
+  + 翻找曾经使用过的命令（最多记录 20 条）
+
+- <kbd>←</kbd> | <kbd>→</kbd>（左右方向键）或 <kbd>Ctrl</kbd> + <kbd>B</kbd> | <kbd>F</kbd>
+  + 左右移动光标，可用于修改当前输入的命令
+
+- <kbd>Ctrl</kbd> + <kbd>Z</kbd>
+  + 从其他配置模式（一般用户配置模式除外）直接退回到特权用户模式
+
+- <kbd>Ctrl</kbd> + <kbd>C</kbd>
+  + 打断交换机 ping 或其它正在执行的命令进程
+
+- <kbd>Tab</kbd>
+  + 自动补全命令
+
+### 查看帮助
+
+- `help`
+  + 在任一命令模式下，输入 `help` 命令均可获取有关帮助系统的简单描述。
+- `?`
+  + 在任一命令模式下，输入 `?` 获取该命令模式下的所有命令及其简单描述
+  + 在命令的关键字后，输入以空格分隔的 `?`，若该位置是参数，会输出该参数类型、范围等描述；
+    若该位置是关键字，则列出关键字的集合及其简单描述；
+    若输出 `<cr>` ，则此命令已输入完整，在该处键入回车即可执行命令；
+  + 在字符串后紧接着输入 `?`，会列出以该字符串开头的所有命令
