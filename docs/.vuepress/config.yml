@@ -63,9 +63,6 @@ themeConfig:
         -
           text: Linux
           link: /serve/Linux/
-    -
-      text: GitHub
-      link: https://github.com/Yue-plus/NetNote
   sidebar:
     '/start/':
       - 'start'
@@ -103,9 +100,9 @@ themeConfig:
       - '10-Pacemaker/'
   smoothScroll: true
   sidebarDepth: 2
-  lastUpdated: '上次更新：'
+  lastUpdated: '上次更新'
   repo: 'https://github.com/Yue-plus/NetNote'
-  repoLabel: '查看源码'
+  repoLabel: 'GitHub'
   docsBranch: 'main/docs'
   editLinks: true
   editLinkText: '在 GitHub 上编辑此页'

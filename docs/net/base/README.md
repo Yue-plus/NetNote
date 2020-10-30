@@ -19,16 +19,6 @@
 - [DCN DCWS-6028 无线控制器](http://www.dcnetworks.com.cn/goods/120.html)
 - [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html)
 
-## 路由器基础配置
-
-## 交换机基础配置
-
-## AC/AP
-
-## 防火墙基础配置
-
-- [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html)
-
 > [DCC-CRL 1000 云服务实训平台](/serve/VM/Cloud/)
 
 ## 使用 SecureCRT
@@ -36,8 +26,6 @@
 从[常用软件下载](#常用软件下载)，前往官网下载并安装 SecureCRT 软件（可免费试用 30 天）与串口转 USB 口线驱动。
 
 ### 连接网络设备
-
-
 
 协议（Protocol）一般为 `Serial`。
 波特率（Baud rate）一般为 `9600` 或 `115200`
@@ -55,3 +43,5 @@ language chinese
 设置 SecureCRT 软件的文本编码为 `简体中文 GB2312`，**防止乱码**：
 
 ![crt-02](./img/crt-02.jpg)
+
+## 使用 CLI 进行配置管理
