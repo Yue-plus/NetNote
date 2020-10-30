@@ -328,62 +328,6 @@ _   下划线
 !   感叹号
 ```
 
-## 附：流程图
-
-:::tip
-本项目使用了 [vuepress-plugin-flowchart](https://flowchart.vuepress.ulivz.com/)（[GitHub 地址](https://github.com/ulivz/vuepress-plugin-flowchart)）插件。
-
-> <http://flowchart.js.org/>
-:::
-
-### 语法：
-
-开头以 `@flowstart` **独占一行**，结尾以 `@flowend` **独占一行**。
-
-```markdown
-@flowstart [preset]
-<!-- flowchart 代码 -->
-@flowend
-```
-
-### 示例：
-
-@flowstart ant
-st=>start: Start:>http://www.google.com[blank]
-e=>end:>http://www.google.com
-op1=>operation: My Operation
-sub1=>subroutine: My Subroutine
-cond=>condition: Yes
-or No?:>http://www.google.com
-io=>inputoutput: catch something...
-para=>parallel: parallel tasks
-
-st->op1->cond
-cond(yes)->io->e
-cond(no)->para
-para(path1, bottom)->sub1(right)->op1
-para(path2, top)->op1
-@flowend
-
-```markdown {1,16}
-@flowstart ant
-st=>start: Start:>http://www.google.com[blank]
-e=>end:>http://www.google.com
-op1=>operation: My Operation
-sub1=>subroutine: My Subroutine
-cond=>condition: Yes
-or No?:>http://www.google.com
-io=>inputoutput: catch something...
-para=>parallel: parallel tasks
-
-st->op1->cond
-cond(yes)->io->e
-cond(no)->para
-para(path1, bottom)->sub1(right)->op1
-para(path2, top)->op1
-@flowend
-```
-
 
 
 [^Baidu]: www.baidu.com

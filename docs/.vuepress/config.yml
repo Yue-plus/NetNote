@@ -21,6 +21,9 @@ themeConfig:
         -
           text: Markdown 语法
           link: /start/markdown.html
+        -
+          text: mermaid 语法
+          link: /start/mermaid.html
     -
       text: 编程
       items:
@@ -69,6 +72,7 @@ themeConfig:
       - 'use_GitHub/'
       - 'use_IDEA/'
       - 'markdown'
+      - 'mermaid'
     '/coding/':
       - 'Web/'
       - 'Java/'
@@ -111,4 +115,4 @@ plugins:
   - '@vuepress/back-to-top'
   - '@vuepress/medium-zoom'
   - '@vuepress/last-updated'
-  - 'flowchart'
+  - 'vuepress-plugin-mermaidjs'
