@@ -111,3 +111,4 @@ plugins:
   - '@vuepress/back-to-top'
   - '@vuepress/medium-zoom'
   - '@vuepress/last-updated'
+  - 'flowchart'
