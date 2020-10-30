@@ -1,7 +1,8 @@
 title: 'NetNote'
 description: '只要学不死，就往死里学！'
-local:
-  lang: zh-CN
+locales:
+  '/':
+    lang: 'zh-CN'
 base: /
 themeConfig:
   nav:
@@ -13,10 +14,22 @@ themeConfig:
           link: /start/start.html
         -
           text: GitHub 使用方法
-          link: /start/github.html
+          link: /start/use_GitHub/
+        -
+          text: IDEA 使用方法
+          link: /start/use_IDEA/
         -
           text: Markdown 语法
           link: /start/markdown.html
+    -
+      text: 编程
+      items:
+        -
+          text: Web 前端
+          link: /coding/Web/
+        -
+          text: Java
+          link: /coding/Java/
     -
       text: 网络搭建
       items:
@@ -50,14 +63,15 @@ themeConfig:
         -
           text: Linux
           link: /serve/Linux/
-    -
-      text: GitHub
-      link: https://github.com/Yue-plus/NetNote
   sidebar:
     '/start/':
       - 'start'
-      - 'github'
+      - 'use_GitHub/'
+      - 'use_IDEA/'
       - 'markdown'
+    '/coding/':
+      - 'Web/'
+      - 'Java/'
     '/net/':
       - 'base/'
       - 'switch/'
@@ -86,5 +100,15 @@ themeConfig:
       - '10-Pacemaker/'
   smoothScroll: true
   sidebarDepth: 2
-repo: 'https://github.com/Yue-plus/NetNote'
-repoLabel: '查看源码'
+  lastUpdated: '上次更新'
+  repo: 'https://github.com/Yue-plus/NetNote'
+  repoLabel: 'GitHub'
+  docsBranch: 'main/docs'
+  editLinks: true
+  editLinkText: '在 GitHub 上编辑此页'
+plugins:
+  - '@vuepress/active-header-links'
+  - '@vuepress/back-to-top'
+  - '@vuepress/medium-zoom'
+  - '@vuepress/last-updated'
+  - 'flowchart'
