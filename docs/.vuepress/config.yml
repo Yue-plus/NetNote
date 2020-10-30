@@ -103,5 +103,14 @@ themeConfig:
       - '10-Pacemaker/'
   smoothScroll: true
   sidebarDepth: 2
-repo: 'https://github.com/Yue-plus/NetNote'
-repoLabel: '查看源码'
+  lastUpdated: '上次更新：'
+  repo: 'https://github.com/Yue-plus/NetNote'
+  repoLabel: '查看源码'
+  docsBranch: 'main/docs'
+  editLinks: true
+  editLinkText: '在 GitHub 上编辑此页'
+plugins:
+  - '@vuepress/active-header-links'
+  - '@vuepress/back-to-top'
+  - '@vuepress/medium-zoom'
+  - '@vuepress/last-updated'
