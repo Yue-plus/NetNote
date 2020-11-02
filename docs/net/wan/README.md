@@ -372,3 +372,293 @@ SW2 (Config-if-Tunnel1)#tunnel mode ipv6ip
 SW2 (config)#ipv6 route 2001:1::/64 tunnel1
 ```
 ****
+## 基础操作
+```sh
+woSpanning Tree Protocol（生成树协议）                                                                               1.在交换机sw1中创建vlan，将接口分配到vlan中
+                                                                                                                                              2.跨交换机之间的通信vlan，交换机之间的相连的两个端口开启trunk
+switch(config)#spanning-tree                                                                                                 3.单臂路由：在路由上创建子接口【在路由器中一定不要配置fa0/0接口，路由上的
+（通过此命令开启STP协议）                                                                                                     所以ip地址出个自vlan的网关】
+                                                                                                                                              4. SVL【SVL————三加二】三层交换机配置vlan和IP          
+switch#show spanning-tree(通过此命令看生成树）                                                                    5.                          【SPA】 
+                                                                                                                                               
+switch(config)# spanning-tree mst configuration
+（进入MSTP配置模式）
+
+switch(config-Mstp-Region)#name mst-pname
+（为MST域配置名字，所有开启多实例MST的交换机的域名必须相同）
+
+switch(config-Mstp-Region)#instance 1 vlan 10
+switch(config-Mstp-Region)#instance 2 vlan 20
+（将vlan加入实例）
+
+switch(config)#spanning-tree mst 1 priority 28672 
+（通过该命令修改实例的BID）
+
+switch(config-Ethernet0/0/2 )#spanning-tree mst 1 cost 300000
+（通过该命令修改端口的路径成本）
+
+switch(config-Ethernet0/0/2)#spanning-tree mst 1 port-priority 144
+（通过该命令修改实例的端口ID）
+```
+
+## 交换机的链路聚合与端口镜像
+```sh
+                  链路聚合
+
+switch(config)#interface ethernet 0/0/1-2
+switch(config-Port-Range)#port-group 1 mode on
+switch(config-Port-Range)#exit
+（通过此命令将选定接口进行静态链路聚合）
+switch(config)#interface ethernet 0/0/1-2
+switch(config-Port-Range)#port-group 1 mode active
+（通过此命令将选定接口配置为动态主动协商模式）
+switch(config)#interface ethernet 0/0/1-2
+switch(config-Port-Range)#port-group 1 mode passive
+（通过此命令将选定接口配置为动态被动协商模式）
+ ```
+```sh
+                   端口镜像
+switch(config)# monitor session 1 source  int  e0/0/2-10  both
+switch(config)# monitor session 1 destination  int  e0/0/1
+（rx为接收） （tx为发出） （both为强制入和出）
+switch#show monitor 
+(通过show monitor查看端口镜像配置)
+```
+```sh
+             设置交换机trunk端口
+
+switchA(Config)#interface ethernet 0/0/24
+switchA(Config-Ethernet0/0/24)#switchport mode trunk
+Set the port Ethernet0/0/24 mode TRUNK successfully
+switchA(Config-Ethernet0/0/24)#switchport trunk allowed vlan all
+set the port Ethernet0/0/24 allowed vlan successfully
+switchA(Config-Ethernet0/0/24)#exit
+```
+## 静态路由
+```sh
+先配置vlan 
+配置交换机各个接口的vlan和ip地址
+配置各PC的IP位址，注意配置网关
+验证PC之间是否连通
+DCRS-5650-A#show ip route(查看路由表）
+                 配置静态路由
+DCRS-5650-A(Config)#ip route 192.168.30.0 255.255.255.0 192.168.100.2
+DCRS-5650-A(Config)#ip route 192.168.40.0 255.255.255.0 192.168.100.2
+（跳过你前面的交换机）
+验证配置：
+DCRS-5650-A#show ip route
+C       127.0.0.0/8 is directly connected, Loopback
+C       192.168.10.0/24 is directly connected, Vlan10
+C       192.168.20.0/24 is directly connected, Vlan20
+S       192.168.30.0/24 [1/0] via 192.168.100.2, Vlan100
+S       192.168.40.0/24 [1/0] via 192.168.100.2, Vlan100
+C       192.168.100.0/24 is directly connected, Vlan100
+（S代表静态配置的网段）
+```
+##  思科单臂路由
+```sh
+      1.  2成交换机单臂路由
+在2成交换机里创建vlan，有几个网段就创建几个
+将vlan划分进端口
+0/0.10   0/0.20
+如端口没亮要进入端口用no shut打开
+      1.0 路由配置
+在config里
+int fa 0/0
+no shut
+int 0/0.10
+int 1/0.10
+........
+id=int 0/0.10
+int 1/0.10
+
+encapsolution dot1p id
+ip add  IP 地址
+        
+        交换机的路由route RIP
+启动RIP协议
+DCRS-5650-A(config)#router rip
+DCRS-5650-A(config-router)#network vlan 10
+DCRS-5650-A(config-router)#network vlan 20
+DCRS-5650-A(config-router)#network vlan 100
+DCRS-5650-A(config-router)#
+DCRS-5650-A#show ip rip
+Codes: R - RIP, K - Kernel, C - Connected, S - Static, O - OSPF, I - IS-IS,
+       B - BGP
+
+   Network            Next Hop         Metric From            If     Time
+R  192.168.10.0/24                          1                 Vlan10
+R  192.168.20.0/24                          1                 Vlan20 
+R  192.168.30.0/24    192.168.100.2         2 192.168.100.2   Vlan100 02:36
+R  192.168.40.0/24    192.168.100.2         2 192.168.100.2   Vlan100 02:36
+R  192.168.100.0/24                         1                 Vlan100
+
+DCRS-5650-A#show ip route
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+
+C       127.0.0.0/8 is directly connected, Loopback
+C       192.168.10.0/24 is directly connected, Vlan10
+C       192.168.20.0/24 is directly connected, Vlan20
+R       192.168.30.0/24 [120/2] via 192.168.100.2, Vlan100, 00:03:00
+R       192.168.40.0/24 [120/2] via 192.168.100.2, Vlan100, 00:03:00
+C       192.168.100.0/24 is directly connected, Vlan100
+（R表示rip协议学习到的网段）
+
+DCRS-5650-B#show ip rip
+Codes: R - RIP, K - Kernel, C - Connected, S - Static, O - OSPF, I - IS-IS,
+       B - BGP
+
+   Network            Next Hop         Metric From            If     Time
+R  192.168.10.0/24    192.168.100.1         2 192.168.100.1   Vlan101 02:42
+R  192.168.20.0/24    192.168.100.1         2 192.168.100.1   Vlan101 02:42
+R  192.168.30.0/24                          1                 Vlan30
+R  192.168.40.0/24                          1                 Vlan40
+R  192.168.100.0/24                         1                 Vlan101
+```
+                            
+##  多层交换机OSPF动态路由
+```sh 
+      DCRS-5656-A(config)#router ospf
+DCRS-5656-A(config-router)#network 192.168.10.0/24 area 0
+DCRS-5656-A(config-router)#network 192.168.20.0/24 area 0
+DCRS-5656-A(config-router)#network 192.168.100.0/24 area 0
+DCRS-5656-A(config-router)#exit
+DCRS-5656-A#show ip route
+Codes: K - kernel, C - connected, S - static, R - RIP, B - BGP
+       O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default
+
+C       127.0.0.0/8 is directly connected, Loopback
+C       192.168.10.0/24 is directly connected, Vlan10
+C       192.168.20.0/24 is directly connected, Vlan20
+O       192.168.30.0/24 [110/20] via 192.168.100.2, Vlan100, 00:00:23
+O       192.168.40.0/24 [110/20] via 192.168.100.2, Vlan100, 00:00:23
+C       192.168.100.0/24 is directly connected, Vlan100
+（O代表ospf学习到的路由网段）
+
+                             ospf区域认证
+
+router ospf 1                                 //创建一个ospf进程
+area 0 authentication message-digest          //开启区域0的认证
+int vlan 100                                  //进入路由之间连接的vlan或接口
+ip ospf authentication message-digest         //开启该接口的ospf认证
+ip ospf message-digest-key 1 md5 123456789    //配置md5认证，密钥为123456789
+
+                          生成交换机数据参数
+                    Switch#show running-config
+
+                 how version    显示交换机版本信息
+show flash    显示保存在 flash 中的文件及大小
+show arp    显示 ARP 映射表
+show history   显示用户最近输入的历史
+show rom    显示启动文件及大小
+show running-config    显示当前运行状态下生效的交换机参数配置
+show startup-config    显示当前运行状态下写在 Flash Memory 中的交换机参数配置，
+show version 命令：show version
+功能：显示交换机版本信息。
+命令模式：特权用户配置模式
+```
+
+
+##  一次连接多个接口
+```sh
+(conf)int range fa 0/0/1-8
+(range)no shi acc vlan 
+使用range参数
+```
+
+## 设置所有vlan进入trunk(交换机可用）
+```sh 
+          swi	trunk all vlan all
+```       
+## DHCP排除地址(分段，单一效果一样）
+```sh
+         ip dhcp excluded-address 
+```
+## 开启加密服务  
+```sh      
+#services password-encryption
+```
+## 光口改电口
+``` sh
+命令：media-type {copper | copper-preferred-auto | fiber | sfp-preferred-auto } 
+功能：设置光电组合端口的组合模式（只对组合端口有效）。
+ 参数：copper 为强制电口； copper-preferred-auto 为电口优先；
+fiber 为强制光口； sfp-preferred-auto 为光口优先
+```
+
+## 本地 OAM 实体发出远端环回请求
+```sh
+：ethernet-oam remote-loopback   
+    no ethernet-oam remote-loopback 
+Loopback Supported 是否支持环回：YES表示支持；NO表示不支持
+```
+## md5认证
+```sh
+   R1(config-router)#interface s0/0/0
+R1(config-if)#ip ospf message-digest-key 1 md5 123
+```
+
+## 静态路由
+```sh 
+R1
+enable　　进入特权模式　　
+config　　进入全局模式
+hostname R1　　修改名称
+interface s0/1　　进入端口
+physical-layer speed 64000　　设置同步时钟
+ip address 192.168.1.1 255.255.255.0　　设置IP 地址
+encapsulation ppp　　设置封装协议
+no shutdown　　开启端口
+exit　　返回上一级
+ip route 192.168.2.0 255.255.255.0 192.168.1.2　　添加静态路由
+```
+
+## 路由重分布配置
+```sh
+ 
+R1
+enable　　进入特权模式
+config　　进入全局模式
+hostname R1　　修改名称
+interface l0　　进入端口
+ip address 192.168.3.254 255.255.255.0　　设置IP地址
+interface s0/1　　进入端口
+ip address 192.168.1.1 255.255.255.0　　设置IP地址
+physical-layer speed 64000　　设置同步时钟
+exit　　返回上一级
+router rip　　启动RIP协议
+version 2　　选择版本
+network 192.168.1.0　　添加直连网段到RIP
+network 192.168.3.0　　添加直连网段到RIP
+相关命令
+redistribute connect 　　　　将直连网段重分布到协议中
+redistribute rip 　　　　　　 将RIP重分布到协议中
+redistribute ospf [进程号] 　   将OSPF重分布到协议
+ ```
+ 
+## ru邻居
+```sh 
+参数 参数说明 ip ospf authentication  配置 OSPF 接口收发包的认证方
+式。 ip ospf cost cost 值 配置 OSPF 接口发送包的权值。 ip ospf retransmit-interval seconds 属于同一个 OSPF 接口的邻居之间重传 LSA 的秒数。 ip ospf transmit-delay seconds 配置在一个 OSPF 接口传输 LSA 的估计时间（秒为单位）。 ip ospf priority number 配置路由器成为 OSPF DR 路由器的优先值。 ip ospf hello-interval seconds 配置在 OSPF 接口发送 hello 包的时间间隔。 ip ospf dead-interval seconds 在这个规定的时间间隔内，未收到邻居的 hello 包，则认为 邻居路由器已关机。 ip ospf password key 为一个网段内的邻接路由的认证口令。它使用 OSPF 的简单的口令认证。 ip ospf message-digest-key keyid md5 key 要求 OSPF 使用 MD5 认证。 ip ospf passive 在端口上不发送 HELLO 报文。
+dir
+del
+reboot
+
+rou dhcp
+```
+ ## 防火墙热备份	
+防火墙A/B
+teack judy:建立一个监控组
+interface Ethernet 0/0/1 weight 255:监控接口，监控权255
+interface Ethernet 0/0/2 weight 255:监控接口，监控权255
+ 
+
