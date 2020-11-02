@@ -34,6 +34,10 @@
 
 ## 连接到云实训平台
 
+::: tip
+当前 IP：<http://192.168.90.220/dashboard>
+:::
+
 ### 网线直连
 
 将网线一头接电脑，另一头接云平台 **中间** 的网线口。
@@ -47,6 +51,14 @@
 浏览器访问 **<http://192.168.100.100/dashboard>** 进入控制台。
 
 ### 使用交换机
+
+```text {5}
+S5750E-28C-SI>enable 
+S5750E-28C-SI#config          
+S5750E-28C-SI(config)#interface ethernet 1/0/13
+S5750E-28C-SI(config-if-ethernet1/0/13)#switchport mode trunk 
+Set the port Ethernet1/0/13 mode Trunk successfully
+```
 
 ![云平台典型用例](./img/02.jpg)
 
