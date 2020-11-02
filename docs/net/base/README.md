@@ -195,3 +195,11 @@ cmdtxt <variable> {enum1 | … | enumN} [option1 | … | optionN]
     若该位置是关键字，则列出关键字的集合及其简单描述；
     若输出 `<cr>` ，则此命令已输入完整，在该处键入回车即可执行命令；
   + 在字符串后紧接着输入 `?`，会列出以该字符串开头的所有命令
+
+### 不完全匹配指令（缺省指令）
+
+交换机的 Shell 支持不完全匹配的搜索命令与关键字，当输入无冲突的命令或关键字时，Shell 就会正确解析。
+
+例如：
+- 对特权用户配置命令 `show interface ethernet 1/0/1`，只要输入 `sh in e 1/0/1` 即可。
+- 对特权用户配置命令 `show running-config`，如果仅输入 `sh r`，系统会报 `>Ambiguous command!`，因为 Shell 无法区分 `show r` 是 `show radius` 命令还是 `show running-config` 命令，因此必须输入 `sh ru`，Shell 才能正确的解析。
