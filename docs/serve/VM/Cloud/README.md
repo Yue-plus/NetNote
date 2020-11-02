@@ -1,5 +1,11 @@
 # DCC-CRL 1000 云服务实训平台
 
+::: tip
+神州数码云科信息的DCC-CRL1000是新一代的云服务实训平台。
+它提供软硬件一体的系统，将一台服务器虚拟化为多台服务器使用，提供统一的WEB管理界面，以及底层的命令行管理功能，可以提供稳定、高速的实训环境。
+云服务实训平台不但可以实现服务器的虚拟化，还可以实现块存储以及对象存储功能，为实训数据提供保存和传递服务。
+:::
+
 ::: danger
 **请妥善保管配套U盘！**
 :::
@@ -28,6 +34,10 @@
 
 ## 连接到云实训平台
 
+::: tip
+当前 IP：<http://192.168.90.220/dashboard>
+:::
+
 ### 网线直连
 
 将网线一头接电脑，另一头接云平台 **中间** 的网线口。
@@ -41,6 +51,14 @@
 浏览器访问 **<http://192.168.100.100/dashboard>** 进入控制台。
 
 ### 使用交换机
+
+```text {5}
+S5750E-28C-SI>enable 
+S5750E-28C-SI#config          
+S5750E-28C-SI(config)#interface ethernet 1/0/13
+S5750E-28C-SI(config-if-ethernet1/0/13)#switchport mode trunk 
+Set the port Ethernet1/0/13 mode Trunk successfully
+```
 
 ![云平台典型用例](./img/02.jpg)
 
