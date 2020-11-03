@@ -38,7 +38,7 @@ themeConfig:
       items:
         -
           text: 网络基础
-          link: /net/base/
+          link: /net/01-base/
         -
           text: 交换机配置
           link: /net/switch/
@@ -77,7 +77,7 @@ themeConfig:
       - 'Web/'
       - 'Java/'
     '/net/':
-      - 'base/'
+      - '01-base/'
       - 'switch/'
       - 'router/'
       - 'acap/'
