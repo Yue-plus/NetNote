@@ -204,6 +204,59 @@ cmdtxt <variable> {enum1 | … | enumN} [option1 | … | optionN]
 - 对特权用户配置命令 `show interface ethernet 1/0/1`，只要输入 `sh in e 1/0/1` 即可。
 - 对特权用户配置命令 `show running-config`，如果仅输入 `sh r`，系统会报 `>Ambiguous command!`，因为 Shell 无法区分 `show r` 是 `show radius` 命令还是 `show running-config` 命令，因此必须输入 `sh ru`，Shell 才能正确的解析。
 
+## 使用网页管理
+
+通过网页管理交换机的 **必要条件**：
+
+1. 交换机配置IPv4/IPv6 地址；
+2. 作为客户端的主机 IPv4/IPv6 地址与其所属交换机的 VLAN 接口的 IPv4/IPv6 地址在相同网段；
+3. 若不满足第 2 条，那么客户端可以通过路由器等设备到达交换机某个IPv4/IPv6 地址。
+   与 Telnet 用户登录交换机类似，只要主机能够 ping/ping6 通交换机的 IPv4/IPv6 地址，并且输入正确的登录口令，该主机就可通过 HTTP 访问交换机。
+
+### 启动交换机的 HTTP Server 功能
+
+参考 [使用 CLI 进行配置管理](#使用-cli-进行配置管理)，使用 `ip http server` 指令开启 Web Server 功能。
+
+```text {4}
+S5750E-28C-SI>enable 
+S5750E-28C-SI#config terminal 
+S5750E-28C-SI(config)#ip http server 
+web server has worked
+```
+
+### 设置管理员用户
+
+登录到 Web 的配置界面，需要输入正确的用户名和口令，否则交换机将拒绝该 HTTP 访问。
+该项措施是为了保护交换机免受非授权用户的非法操作。
+若交换机没有设置授权 Web 用户，则任何用户都无法进入交换机的 Web 配置界面。
+
+因此在允许 Web 方式管理交换机时，必须在 Console 方式下的全局配置模式下使用命令
+`username <username> privilege <privilege> [password (0 | 7)<password>]`
+为交换机设置 Web 授权用户和口令并使用命令
+`authentication line web login local`
+打开本地验证方式，其中 `privilege` 选项必须存在且为15。
+
+如交换机的授权用户名为 admin，口令为明文的 admin，设置方式如下：
+
+```text
+Switch>enable
+Switch#config
+Switch(config)#username admin privilege 15 password 0 admin
+Switch(config)#authentication line web login local
+```
+
+### 浏览器访问配置页面
+
+::: tip
+当前配置页面 <http://192.168.90.250/>
+:::
+
+在使用 IPv6 地址访问交换机时，推荐使用 Firefox 浏览器，版本在 1.5 以上，比如交换机的 IPv6 地址为 `3ffe:506:1:2::3`，在地址处输入交换机的 IPv6 地址 `http://[3ffe:506:1:2::3]`，地址需要用方括号括起来。
+
+![web01](./img/web-01.jpg)
+
+![web02](./img/web-02.jpg)
+
 ## 推荐阅读
 
 - [《计算机网络 - 自顶向下方法》](https://book.douban.com/subject/30280001/)
