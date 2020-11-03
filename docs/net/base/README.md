@@ -203,3 +203,8 @@ cmdtxt <variable> {enum1 | … | enumN} [option1 | … | optionN]
 例如：
 - 对特权用户配置命令 `show interface ethernet 1/0/1`，只要输入 `sh in e 1/0/1` 即可。
 - 对特权用户配置命令 `show running-config`，如果仅输入 `sh r`，系统会报 `>Ambiguous command!`，因为 Shell 无法区分 `show r` 是 `show radius` 命令还是 `show running-config` 命令，因此必须输入 `sh ru`，Shell 才能正确的解析。
+
+## 推荐阅读
+
+- [《计算机网络 - 自顶向下方法》](https://book.douban.com/subject/30280001/)
+  + ![《计算机网络 - 自顶向下方法》](https://img1.doubanio.com/view/subject/s/public/s29825217.jpg)
