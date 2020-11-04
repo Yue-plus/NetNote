@@ -21,6 +21,9 @@ themeConfig:
         -
           text: Markdown 语法
           link: /start/markdown.html
+        -
+          text: mermaid 语法
+          link: /start/mermaid.html
     -
       text: 编程
       items:
@@ -35,7 +38,7 @@ themeConfig:
       items:
         -
           text: 网络基础
-          link: /net/base/
+          link: /net/01-base/
         -
           text: 交换机配置
           link: /net/switch/
@@ -69,11 +72,12 @@ themeConfig:
       - 'use_GitHub/'
       - 'use_IDEA/'
       - 'markdown'
+      - 'mermaid'
     '/coding/':
       - 'Web/'
       - 'Java/'
     '/net/':
-      - 'base/'
+      - '01-base/'
       - 'switch/'
       - 'router/'
       - 'acap/'
@@ -111,4 +115,4 @@ plugins:
   - '@vuepress/back-to-top'
   - '@vuepress/medium-zoom'
   - '@vuepress/last-updated'
-  - 'flowchart'
+  - 'vuepress-plugin-mermaidjs'

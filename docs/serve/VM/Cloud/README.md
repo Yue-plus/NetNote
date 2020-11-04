@@ -34,6 +34,10 @@
 
 ## 连接到云实训平台
 
+::: tip
+当前 IP：<http://192.168.90.220/dashboard>
+:::
+
 ### 网线直连
 
 将网线一头接电脑，另一头接云平台 **中间** 的网线口。
@@ -47,6 +51,34 @@
 浏览器访问 **<http://192.168.100.100/dashboard>** 进入控制台。
 
 ### 使用交换机
+
+将网线一头接交换机，另一头接云平台 **中间** 的网线口。
+
+![云平台前面板](./img/00.jpg)
+
+将显示器与键盘插上云平台，使用 `root` 账户（默认密码：`dcncloud`）登入云平台系统。
+
+使用以下命令更新云平台的静态 IP：
+
+```sh
+resetip
+```
+
+- 设置静态 IP：（<kbd>Enter</kbd> 确认）
+- 设置子网掩码：（<kbd>Enter</kbd> 确认）
+- 设置默认网关：（<kbd>Enter</kbd> 确认）
+
+![7-3](./img/setup7-3.jpg)
+
+设置交换机端口使用 `Trunk` 模式：
+
+```text {5}
+S5750E-28C-SI>enable 
+S5750E-28C-SI#config          
+S5750E-28C-SI(config)#interface ethernet 1/0/13
+S5750E-28C-SI(config-if-ethernet1/0/13)#switchport mode trunk 
+Set the port Ethernet1/0/13 mode Trunk successfully
+```
 
 ![云平台典型用例](./img/02.jpg)
 
@@ -120,3 +152,9 @@ vlan10
 
 ## 创建实例
 
+## 云平台关机与重启
+
+点击 [管理员] → [系统] → [电源管理]，在电源管理页面中选择关机或重启，点击“确认”即可完成关机及重启操作。
+如下图：
+
+![9-1](./img/use9-1.jpg)
