@@ -39,6 +39,9 @@ themeConfig:
         -
           text: 网络基础
           link: /net/01-base/
+      #  -
+        #  text: DHCP（动态主机配置协议）
+        #  link: /net/02-DHCP/
         -
           text: 交换机配置
           link: /net/switch/
@@ -78,6 +81,7 @@ themeConfig:
       - 'Java/'
     '/net/':
       - '01-base/'
+      - '02-DHCP/'
       - 'switch/'
       - 'router/'
       - 'acap/'
