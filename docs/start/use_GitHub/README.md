@@ -92,11 +92,11 @@ gh auth login
 
 ## GitHub Page（静态网页托管）
 
-####打开GitHub，点击左上角的新建文件
+#### 打开GitHub，点击左上角的新建文件
 ![01](./img/gh-01.jpg)
-####添加项目名
+#### 添加项目名
 ![02](./img/gh-02.jpg)
-####点击右上角的settings选项
+#### 点击右上角的settings选项
 ![03](./img/gh-03.jpg)
-####点击seve选项即可
+#### 点击seve选项即可
 ![04](./img/gh-04.jpg)
