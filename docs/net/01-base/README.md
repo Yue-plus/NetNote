@@ -290,4 +290,4 @@ Process with reboot? [Y/N] y
 ## 推荐阅读
 
 - [《计算机网络 - 自顶向下方法》](https://book.douban.com/subject/30280001/)
-  + ![《计算机网络 - 自顶向下方法》](https://img1.doubanio.com/view/subject/s/public/s29825217.jpg)
+  + ![《计算机网络 - 自顶向下方法》](/img/book/《计算机网络-自顶向下方法》.jpg)

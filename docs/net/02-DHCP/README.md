@@ -78,10 +78,15 @@ sequenceDiagram
 
 **DHCP 地址池配置模式** 下：
 
+```text
+
+```
+
 ## 相关命令
 
-### [DHCP 配置命令](./DHCP.md)
+### [DHCP 配置命令](./command/DHCP.md)
 
+<!--
 #### DHCP服务器配置命令
 
 - [bootfile](./command/DHCP.html#bootfile)
@@ -97,6 +102,7 @@ sequenceDiagram
 - [domain-name](./command/DHCP.html#)
 - [hardware-address](./command/DHCP.html#)
 - [host]()
+-->
 
 ## 相关链接
 

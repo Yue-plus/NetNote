@@ -70,6 +70,11 @@
 
 #### [Deno](https://deno.land/)
 
+### 推荐阅读
+
+- [《JavaScript 高级程序设计》（第四版）](https://book.douban.com/subject/35175321/)
+  + ![《JavaScript 高级程序设计》](/img/book/《JavaScript高级程序设计》.jpg)
+
 ## 库 & 框架
 
 ### JavaScript 框架
