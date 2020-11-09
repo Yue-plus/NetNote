@@ -19,6 +19,13 @@
 - [OpenJDK](http://openjdk.java.net/)
 - [OpenJFX (JavaFX) 中文网](https://openjfx.cn/)
 
+## 推荐阅读
+
+- [《Java核心技术·卷 I 》（原书第11版）](https://book.douban.com/subject/34898994/)
+  + ![《Java核心技术-卷1》](/img/book/《Java核心技术-卷1》.jpg)
+- [《Java核心技术·卷 II》（原书第11版）](https://book.douban.com/subject/34935138/)
+  + ![《Java核心技术-卷2》](/img/book/《Java核心技术-卷2》.jpg)
+
 ## 环境配置
 
 ### Windows 10
