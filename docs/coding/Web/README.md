@@ -12,8 +12,11 @@
 
 ### 链接
 
+- [HTML（超文本标记语言）- MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 - [HTML 教程 - 菜鸟教程](https://www.runoob.com/html/html-tutorial.html)
+- [HTML 教程 - w3cschool](https://www.w3cschool.cn/html/)
 - [HTML5 教程 - 菜鸟教程](https://www.runoob.com/html/html5-intro.html)
+- [HTML5 教程 - w3cschool](https://www.w3cschool.cn/html5/)
 
 ## CSS
 
@@ -29,8 +32,11 @@
 
 ### 链接
 
+- [CSS（层叠样式表）- MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 - [CSS 教程 - 菜鸟教程](https://www.runoob.com/css/css-tutorial.html)
+- [CSS 教程 - w3cschool](https://www.w3cschool.cn/css/)
 - [CSS3 教程 - 菜鸟教程](https://www.runoob.com/css3/css3-tutorial.html)
+- [CSS3 教程 - w3cschool](https://www.w3cschool.cn/css3/)
 
 ## JavaScript
 
@@ -42,8 +48,11 @@
 
 ### 链接
 
+- [JavaScript - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 - [JavaScript 教程 - 菜鸟教程](https://www.runoob.com/js/js-tutorial.html)
+- [JavaScript 教程 - w3cschool](https://www.w3cschool.cn/javascript/)
 - [HTML DOM 教程 - 菜鸟教程](https://www.runoob.com/htmldom/htmldom-tutorial.html)
+- [JavaScript 和 HTML DOM 参考手册 - w3cschool](https://www.w3cschool.cn/jsref/)
 - [JSON 教程 - 菜鸟教程](https://www.runoob.com/json/json-tutorial.html)
 
 ### 扩展链接
@@ -56,10 +65,15 @@
 
 #### TypeScript——JavaScript 的超集
 
-- [TypeScript 教程 - 菜鸟教程](https://www.runoob.com/typescript/ts-tutorial.html)
 - [TypeScript 中文网](https://www.tslang.cn/)
+- [TypeScript 教程 - 菜鸟教程](https://www.runoob.com/typescript/ts-tutorial.html)
 
 #### [Deno](https://deno.land/)
+
+### 推荐阅读
+
+- [《JavaScript 高级程序设计》（第四版）](https://book.douban.com/subject/35175321/)
+  + ![《JavaScript 高级程序设计》](/img/book/《JavaScript高级程序设计》.jpg)
 
 ## 库 & 框架
 
