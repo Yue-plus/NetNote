@@ -74,6 +74,7 @@ sequenceDiagram
   S5750E-28C-SI(config)#no ip dhcp pool <name>
   ```
 
+<!--
 ### 配置动态 DHCP 地址池的参数
 
 **DHCP 地址池配置模式** 下：
@@ -86,7 +87,6 @@ sequenceDiagram
 
 ### [DHCP 配置命令](./command/DHCP.md)
 
-<!--
 #### DHCP服务器配置命令
 
 - [bootfile](./command/DHCP.html#bootfile)
@@ -103,6 +103,58 @@ sequenceDiagram
 - [hardware-address](./command/DHCP.html#)
 - [host]()
 -->
+
+## 配置实例
+
+- 连接路由器，进入配置模式：
+
+  ```text
+  S5750E-28C-SI>enable 
+  S5750E-28C-SI#config terminal
+  ```
+
+- 配置 Vlan IP:
+
+  ```text {1,5,6}
+  S5750E-28C-SI(config)#interface vlan 1
+  Nov 12 16:53:26:000 2020 S5750E-28C-SI DEFAULT/5/:%LINK-5-CHANGED: Interface Vlan1, changed state to UP
+  Nov 12 16:53:26:000 2020 S5750E-28C-SI DEFAULT/5/:%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1,changed state to UP
+  S5750E-28C-SI(config)#interface vlan 1 
+  S5750E-28C-SI(config-if-vlan1)#ip address 192.168.100.1 255.255.255.0
+  ```
+
+- 开启 DHCP 服务，创建 DHCP 地址池：
+
+  ```text
+  S5750E-28C-SI(config)#service dhcp
+  S5750E-28C-SI(config)#ip dhcp pool yueplus
+  ```
+
+- 设置路由器地址？
+
+  ```text
+  S5750E-28C-SI(dhcp-yueplus-config)#network-address 192.168.100.1
+  ```
+
+- 设置路由器默认网关
+
+  ```text
+  S5750E-28C-SI(dhcp-yueplus-config)#default-router 192.168.100.254
+  ```
+
+- 设置默认 DNS 服务器
+
+  ```text
+  S5750E-28C-SI(dhcp-yueplus-config)#dns-server 8.8.8.8 8.8.4.4
+  ```
+
+- 将 DHCP 服务器设为“先点对点后广播的混合型”？
+
+  ```text
+  S5750E-28C-SI(dhcp-yueplus-config)#netbios-node-type h-node
+  ```
+
+- 保存配置
 
 ## 相关链接
 
