@@ -1,6 +1,6 @@
 # 云平台与虚拟机
 
-## [DCC-CRL 1000 云服务实训平台](/serve/VM/Cloud/)
+## [DCC-CRL 1000 云服务实训平台](/serve/VM/DCC-CRL1000/)
 
 ::: tip
 神州数码云科信息的DCC-CRL1000是新一代的云服务实训平台。
@@ -8,7 +8,7 @@
 云服务实训平台不但可以实现服务器的虚拟化，还可以实现块存储以及对象存储功能，为实训数据提供保存和传递服务。
 :::
 
-## [VMware Workstation 虚拟机平台](./VMware.md)
+## [VMware Workstation 虚拟机平台](/serve/VM/VMware/)
 
 ::: tip
 VMware Workstation 是 VMware 公司推出的一款功能强大的桌面虚拟机软件。

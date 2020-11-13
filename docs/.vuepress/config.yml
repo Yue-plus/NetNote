@@ -88,8 +88,8 @@ themeConfig:
       - 'security/'
       - 'wan/'
     '/serve/VM/':
-      - 'Cloud/'
-      - 'VMware'
+      - 'DCC-CRL1000/'
+      - 'VMware/'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DFS'
