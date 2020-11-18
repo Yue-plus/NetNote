@@ -12,13 +12,14 @@
 
 系统环境：
 
+- [Git](https://git-scm.com/)
 - [Node.js](#本地安装-nodejs)
 - [yarn](#本地安装-yarn)
 - [GitHub CLI](https://cli.github.com/)
 
 ## 注册 GitHub 账号
 
-前往~~全球最大的同性交友网站~~ [GitHub](https://github.com/) 注册并登入账号。
+前往<span style="color: black; background-color: black;">全球最大的同性交友网站</span>面向开源及私有软件项目的托管平台 [GitHub](https://github.com/) 注册并登入账号。
 
 前往本项目地址 <https://github.com/Yue-plus/NetNote>，点击 Watch、Star、Fork。
 
