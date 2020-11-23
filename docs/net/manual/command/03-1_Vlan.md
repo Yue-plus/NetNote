@@ -41,11 +41,11 @@
   
   length 90, protocol ID:1, attribute type:0x01,
   Attribute Index Length Event Value
-  -------------------- --------- ------- -------
-  1 10 joinIn 100
-  2 10 joinEmpty 140
-  3 10 leaveIn 150
-  4 10 leaveEmpty 180
+  ----  -----   -------     -------
+  1     10      joinIn      100
+  2     10      joinEmpty   140
+  3     10      leaveIn     150
+  4     10      leaveEmpty  180
   ```
  
 ### 1.1.3 dot1q-tunnel enable
@@ -205,16 +205,17 @@
 ### 1.1.15 private-vlan
 
 - 命令：`private-vlan {primary | isolated | community} no private-vlan`
-- 功能： 将当前VLAN设置为Private VLAN，该命令的no操作为取消Private VLAN设置
+- 功能： 将当前 VLAN 设置为 Private VLAN，该命令的 no 操作为取消 Private VLAN 设置
 - 参数： 
-  +   primary 将当前VLAN设置为Primary VLAN，
-  +   isolated将当前VLAN设置为Isolated VLAN，
-  +   community将当前VLAN设置 为Community VLAN
+  + primary 将当前VLAN设置为Primary VLAN
+  + isolated将当前VLAN设置为Isolated VLAN
+  + community将当前VLAN设置 为Community VLAN
 - 命令模式： VLAN配置模式
 - 缺省情况： 缺省没有Private VLAN配置。
 - 使用指南： Private VLAN分为三种：Primary VLAN，Isolated VLAN和Community VLAN。Primary VLAN内的端口可以和关联到该Primary VLAN的Isolated VLAN和Community VLAN中的端口进行通信；Isolated VLAN内的端口之间是隔绝的，它们只可以和其相关联的Primary VLAN内的端口通信；Community VLAN内的端口相互之间可以通信，也可以和其相关联的Primary VLAN内的端口通信；在Isolated VLAN内的端口和在Community VLAN内的端口之间不能通信。
  只有不包含任何以太网端口的VLAN才能被设置为Private VLAN；只有设置了关联关系的Private VLAN才能将Access类型的以太网端口设置为成员端口，Isolate VLAN的成员端口应该关闭ingress功能，否则无法通讯；普通VLAN若被设置成Private VLAN后，会自动将所属以太网端口清空。另外注意GVRP不传播Private VLAN的信息。
 - 举例： 将VLAN100、200、300设置为private vlan，类型分别为primary、Isolated、Community
+
   ```text
   Switch(config)#vlan 100
   Switch(Config-Vlan100)#private-vlan primary
