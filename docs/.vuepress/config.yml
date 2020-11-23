@@ -61,11 +61,11 @@ themeConfig:
           text: 参考手册
           items:
             -
-              text: 操作
-              link: /net/manual/command/
-            -
-              text: 指令
+              text: 操作手册
               link: /net/manual/operate/
+            -
+              text: 命令手册
+              link: /net/manual/command/
     -
       text: 系统服务
       items:
@@ -89,6 +89,15 @@ themeConfig:
     '/coding/':
       - 'Web/'
       - 'Java/'
+    '/net/manual/command/':
+      - '01-1_base'
+      - '01-2_FS'
+      - '02_interface'
+      - '03_Vlan&MAC'
+      - '04_MSTP'
+      - '07_DHCP'
+    '/net/manual/operate/':
+      - '07_DHCP'
     '/net/':
       - '01-base/'
       - 'switch/'
@@ -96,9 +105,6 @@ themeConfig:
       - 'acap/'
       - 'security/'
       - 'wan/'
-    '/net/manual/':
-      - 'command/'
-      - 'operate/'
     '/serve/VM/':
       - 'DCC-CRL1000/'
       - 'VMware/'
