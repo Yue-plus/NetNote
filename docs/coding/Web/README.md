@@ -51,6 +51,7 @@
 - [JavaScript - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 - [JavaScript 教程 - 菜鸟教程](https://www.runoob.com/js/js-tutorial.html)
 - [JavaScript 教程 - w3cschool](https://www.w3cschool.cn/javascript/)
+- [JavaScript教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1022910821149312)
 - [HTML DOM 教程 - 菜鸟教程](https://www.runoob.com/htmldom/htmldom-tutorial.html)
 - [JavaScript 和 HTML DOM 参考手册 - w3cschool](https://www.w3cschool.cn/jsref/)
 - [JSON 教程 - 菜鸟教程](https://www.runoob.com/json/json-tutorial.html)
