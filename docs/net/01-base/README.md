@@ -248,7 +248,7 @@ Switch(config)#authentication line web login local
 ### 浏览器访问配置页面
 
 ::: tip
-当前配置页面 <http://192.168.90.250/>
+当前配置页面 <http://192.168.100.1/>
 :::
 
 在使用 IPv6 地址访问交换机时，推荐使用 Firefox 浏览器，版本在 1.5 以上，比如交换机的 IPv6 地址为 `3ffe:506:1:2::3`，在地址处输入交换机的 IPv6 地址 `http://[3ffe:506:1:2::3]`，地址需要用方括号括起来。
@@ -257,7 +257,37 @@ Switch(config)#authentication line web login local
 
 ![web02](./img/web-02.jpg)
 
+## 设备恢复出厂设置
+
+<!--
+### [DCN S4600 系列全千兆绿色智能安全接入交换机](http://www.dcnetworks.com.cn/goods/43.html)
+-->
+
+### [DCN S5750E 系列绿色智能万兆安全汇聚接入交换机](http://www.dcnetworks.com.cn/goods/24.html)
+
+```text
+S5750E-28C-SI>enable
+S5750E-28C-SI#set default 
+Are you sure? [Y/N] = y
+S5750E-28C-SI#write
+Nov 03 14:56:20:000 2020 S5750E-28C-SI MODULE_CONFIG_SHELL/3/:Switch configuration has been set default!
+NULL(factory config) will be used as the startup-config file on member 1, slot 1 at the next time!
+S5750E-28C-SI#reload
+Process with reboot? [Y/N] y
+```
+
+<!--
+### [DCN DCFW-1800E-N3002-Pro下一代防火墙](http://www.dcnetworks.com.cn/goods/148.html)
+
+### [DCN DCR-2655 模块化路由器](http://www.dcnetworks.com.cn/goods/131.html)
+
+### [DCN DCWS-6028 无线控制器](http://www.dcnetworks.com.cn/goods/120.html)
+
+### [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html)
+-->
+
+
 ## 推荐阅读
 
 - [《计算机网络 - 自顶向下方法》](https://book.douban.com/subject/30280001/)
-  + ![《计算机网络 - 自顶向下方法》](https://img1.doubanio.com/view/subject/s/public/s29825217.jpg)
+  + ![《计算机网络 - 自顶向下方法》](/img/book/《计算机网络-自顶向下方法》.jpg)
