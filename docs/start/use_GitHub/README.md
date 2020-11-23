@@ -1,6 +1,15 @@
 # GitHub 使用方法
 
-> [Git教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/896043488029600)
+::: tip
+GitHub 是一个<span style="color: black; background-color: black;">全球最大的同性交友网站</span>面向开源及私有软件项目的托管平台。
+:::
+
+**先参考阅读 [本地安装 Git](/start/start.html#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85-git)！**
+
+> - [Git 教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/896043488029600)
+> - [Git 教程 - 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
+> - [如何使用 GitHub？- 知乎](https://www.zhihu.com/question/20070065)
+
 
 ## 从主库创建拉取请求
 
@@ -35,6 +44,26 @@
  ![GitHub12](./img/github-12.jpg)
  ![GitHub13](./img/github-13.jpg)
  ![GitHub14](./img/github-14.jpg)
+
+## GitHub Page（静态网页托管）
+
+1. 打开 [GitHub](https://github.com/)，点击左上角的新建仓库。
+
+   ![01](./img/gh-01.jpg)
+
+2. 设置项目名。
+
+   ![02](./img/gh-02.jpg)
+
+3. 参考 [此教程](https://www.liaoxuefeng.com/wiki/896043488029600/898732864121440) 推送项目代码到远程仓库。
+
+3. 点击右上角的 `settings` 选项。
+
+   ![03](./img/gh-03.jpg)
+
+4. 点击 `seve` 选项即可
+
+   ![04](./img/gh-04.jpg)
 
 ## 附：使用 GitHub CLI
 

@@ -24,6 +24,9 @@ themeConfig:
         -
           text: mermaid 语法
           link: /start/mermaid.html
+        -
+          text: YAML 语法
+          link: /start/yaml.html
     -
       text: 编程
       items:
@@ -38,7 +41,7 @@ themeConfig:
       items:
         -
           text: 网络基础
-          link: /net/base/
+          link: /net/01-base/
         -
           text: 交换机配置
           link: /net/switch/
@@ -54,6 +57,15 @@ themeConfig:
         -
           text: 广域网配置
           link: /net/wan/
+        -
+          text: 参考手册
+          items:
+            -
+              text: 操作手册
+              link: /net/manual/operate/
+            -
+              text: 命令手册
+              link: /net/manual/command/
     -
       text: 系统服务
       items:
@@ -73,19 +85,30 @@ themeConfig:
       - 'use_IDEA/'
       - 'markdown'
       - 'mermaid'
+      - 'yaml'
     '/coding/':
       - 'Web/'
       - 'Java/'
+    '/net/manual/command/':
+      - '01-1_base'
+      - '01-2_FS'
+      - '02_interface'
+      - '03-1_Vlan'
+      - '03-2_MAC'
+      - '04_MSTP'
+      - '07_DHCP'
+    '/net/manual/operate/':
+      - '07_DHCP'
     '/net/':
-      - 'base/'
+      - '01-base/'
       - 'switch/'
       - 'router/'
       - 'acap/'
       - 'security/'
       - 'wan/'
     '/serve/VM/':
-      - 'Cloud/'
-      - 'VMware'
+      - 'DCC-CRL1000/'
+      - 'VMware/'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DFS'

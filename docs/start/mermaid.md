@@ -15,7 +15,7 @@
 
 > [关于写作那些事之快速上手Mermaid流程图](https://baijiahao.baidu.com/s?id=1666117882411053133)
 
-## 流程图
+## [流程图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/flowchart.html)
 
 > ```mermaid
 > graph LR
@@ -33,7 +33,7 @@ graph LR
     C -->|Two| E[Result two]
 ```
 
-## 序列图
+## [序列图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/sequenceDiagram.html)
 
 > ```mermaid
 > sequenceDiagram
@@ -61,7 +61,7 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 ```
 
-## 类图
+## [类图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/classDiagram.html)
 
 > ```mermaid
 > classDiagram
@@ -87,7 +87,7 @@ classM ..|> classN : Realization
 classO .. classP : Link(Dashed)
 ```
 
-## 状态图
+## [状态图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/stateDiagram.html)
 
 > ```mermaid
 >     stateDiagram-v2
@@ -111,7 +111,7 @@ classO .. classP : Link(Dashed)
         note left of State2 : This is the note to the left.
 ```
 
-## 实体关系图
+## [实体关系图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/entityRelationshipDiagram.html)
 
 > ```mermaid
 > erDiagram
@@ -127,7 +127,7 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-## 用户旅程图
+## [用户旅程图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/user-journey.html)
 
 > ```mermaid
 > journey
@@ -153,7 +153,7 @@ journey
       Sit down: 5: Me
 ```
 
-## 甘特图
+## [甘特图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/gantt.html)
 
 > ```mermaid
 > gantt
@@ -179,9 +179,7 @@ gantt
     another task      : 24d
 ```
 
-```
-
-## 指令图
+## [指令图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/directives.html)
 
 > ```mermaid
 > %%{init: { 'logLevel': 'debug', 'theme': 'dark' } }%%
@@ -199,7 +197,7 @@ Alice->>Bob: Hi Bob
 Bob->>Alice: Hi Alice
 ```
 
-## 饼图
+## [饼图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/pie.html)
 
 > ```mermaid
 > pie
