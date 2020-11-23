@@ -39,9 +39,6 @@ themeConfig:
         -
           text: 网络基础
           link: /net/01-base/
-      #  -
-        #  text: DHCP（动态主机配置协议）
-        #  link: /net/02-DHCP/
         -
           text: 交换机配置
           link: /net/switch/
@@ -57,6 +54,15 @@ themeConfig:
         -
           text: 广域网配置
           link: /net/wan/
+        -
+          text: 参考手册
+          items:
+            -
+              text: 操作
+              link: /net/manual/command/
+            -
+              text: 指令
+              link: /net/manual/operate/
     -
       text: 系统服务
       items:
@@ -81,12 +87,14 @@ themeConfig:
       - 'Java/'
     '/net/':
       - '01-base/'
-      - '02-DHCP/'
       - 'switch/'
       - 'router/'
       - 'acap/'
       - 'security/'
       - 'wan/'
+    '/net/manual/':
+      - 'command/'
+      - 'operate/'
     '/serve/VM/':
       - 'DCC-CRL1000/'
       - 'VMware/'
