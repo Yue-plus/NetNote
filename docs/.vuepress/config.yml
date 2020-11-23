@@ -93,7 +93,8 @@ themeConfig:
       - '01-1_base'
       - '01-2_FS'
       - '02_interface'
-      - '03_Vlan&MAC'
+      - '03-1_Vlan'
+      - '03-2_MAC'
       - '04_MSTP'
       - '07_DHCP'
     '/net/manual/operate/':
