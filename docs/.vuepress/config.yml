@@ -97,6 +97,7 @@ themeConfig:
       - '03-2_MAC'
       - '04_MSTP'
       - '07_DHCP'
+      - '16-1_VSF-base'
     '/net/manual/operate/':
       - '07_DHCP'
     '/net/':
