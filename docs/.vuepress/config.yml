@@ -1,7 +1,8 @@
 title: 'NetNote'
 description: '只要学不死，就往死里学！'
-local:
-  lang: zh-CN
+locales:
+  '/':
+    lang: 'zh-CN'
 base: /
 themeConfig:
   nav:
@@ -13,16 +14,34 @@ themeConfig:
           link: /start/start.html
         -
           text: GitHub 使用方法
-          link: /start/github.html
+          link: /start/use_GitHub/
+        -
+          text: IDEA 使用方法
+          link: /start/use_IDEA/
         -
           text: Markdown 语法
           link: /start/markdown.html
+        -
+          text: mermaid 语法
+          link: /start/mermaid.html
+        -
+          text: YAML 语法
+          link: /start/yaml.html
+    -
+      text: 编程
+      items:
+        -
+          text: Web 前端
+          link: /coding/Web/
+        -
+          text: Java
+          link: /coding/Java/
     -
       text: 网络搭建
       items:
         -
           text: 网络基础
-          link: /net/base/
+          link: /net/01-base/
         -
           text: 交换机配置
           link: /net/switch/
@@ -38,6 +57,15 @@ themeConfig:
         -
           text: 广域网配置
           link: /net/wan/
+        -
+          text: 参考手册
+          items:
+            -
+              text: 操作手册
+              link: /net/manual/operate/
+            -
+              text: 命令手册
+              link: /net/manual/command/
     -
       text: 系统服务
       items:
@@ -50,41 +78,64 @@ themeConfig:
         -
           text: Linux
           link: /serve/Linux/
-    -
-      text: GitHub
-      link: https://github.com/Yue-plus/NetNote
   sidebar:
     '/start/':
       - 'start'
-      - 'github'
+      - 'use_GitHub/'
+      - 'use_IDEA/'
       - 'markdown'
+      - 'mermaid'
+      - 'yaml'
+    '/coding/':
+      - 'Web/'
+      - 'Java/'
+    '/net/manual/command/':
+      - '01-1_base'
+      - '01-2_FS'
+      - '02_interface'
+      - '03-1_Vlan'
+      - '03-2_MAC'
+      - '04_MSTP'
+      - '07_DHCP'
+    '/net/manual/operate/':
+      - '07_DHCP'
     '/net/':
-      - 'base/'
+      - '01-base/'
       - 'switch/'
       - 'router/'
       - 'acap/'
       - 'security/'
       - 'wan/'
     '/serve/VM/':
-      - 'Cloud/'
-      - 'VMware'
+      - 'DCC-CRL1000/'
+      - 'VMware/'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DFS'
       - 'NLB'
       - 'FailoverCluster'
     '/serve/Linux/':
-      - 'Base/'
-      - 'Chrony/'
-      - 'NFS/'
-      - 'MariaDB/'
-      - 'Apache/'
-      - 'Tomcat/'
-      - 'Samba/'
-      - 'NIS/'
-      - 'Postfix/'
-      - 'Pacemaker/'
+      - '01-Base/'
+      - '02-Chrony/'
+      - '03-NFS/'
+      - '04-MariaDB/'
+      - '05-Apache/'
+      - '06-Tomcat/'
+      - '07-Samba/'
+      - '08-NIS/'
+      - '09-Postfix/'
+      - '10-Pacemaker/'
   smoothScroll: true
   sidebarDepth: 2
-repo: 'https://github.com/Yue-plus/NetNote'
-repoLabel: '查看源码'
+  lastUpdated: '上次更新'
+  repo: 'https://github.com/Yue-plus/NetNote'
+  repoLabel: 'GitHub'
+  docsBranch: 'main/docs'
+  editLinks: true
+  editLinkText: '在 GitHub 上编辑此页'
+plugins:
+  - '@vuepress/active-header-links'
+  - '@vuepress/back-to-top'
+  - '@vuepress/medium-zoom'
+  - '@vuepress/last-updated'
+  - 'vuepress-plugin-mermaidjs'
