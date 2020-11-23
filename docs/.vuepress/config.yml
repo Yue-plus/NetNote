@@ -24,6 +24,9 @@ themeConfig:
         -
           text: mermaid 语法
           link: /start/mermaid.html
+        -
+          text: YAML 语法
+          link: /start/yaml.html
     -
       text: 编程
       items:
@@ -82,6 +85,7 @@ themeConfig:
       - 'use_IDEA/'
       - 'markdown'
       - 'mermaid'
+      - 'yaml'
     '/coding/':
       - 'Web/'
       - 'Java/'
