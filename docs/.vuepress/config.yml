@@ -98,6 +98,7 @@ themeConfig:
       - '04_MSTP'
       - '07_DHCP'
       - '08-1_routing-strategy'
+      - '08-2_static-routing'
       - '17_info-center'
       - '16-1_VSF-base'
       - '16-2_VSF-MAD'
