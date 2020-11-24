@@ -1,6 +1,6 @@
 # VLAN 配置
 
-## Vlan 配置命令
+## 1.1 Vlan 配置命令
 
 ### 1.1.1 `debug gvrp event`
 
@@ -804,7 +804,113 @@ no switchport hybrid allowed vlan`
 ## 1.2 动态vlan配置命令
 
 ### 1.2.1 dynamic-vlan mac-vlan prefer
-    
+
+- 命令：`dynamic-vlan mac-vlan prefer`
+- 功能：设置 MAC-based VLAN 优先
+- 参数：无。
+- 命令模式：全局配置模式
+- 缺省情况：MAC-based VLAN 优先
+- 使用指南：设置交换机动态 VLAN 的优先顺序。缺省优先顺序为 MAC-based VLAN、
+          IP-subnet-based VLAN、Protocol-based VLAN，即多种动态 VLAN 在同时使
+          用时优先匹配的顺序。在设置 IP-subnet-based VLAN 优先后，若恢复 MAC-based 
+          VLAN 优先时使用本命令。
+- 举例：设置 MAC-based VLAN 优先。
+
+  ```text
+  Switch#config 
+  Switch(config)#dynamic-vlan mac-vlan prefer
+  ```
+  
+### 1.2.2 dynamic-vlan subnet-vlan prefer
+
+- 命令：`dynamic-vlan subnet-vlan prefer`
+- 功能：设置 IP-subnet-based VLAN 优先。
+- 参数：无。
+- 命令模式：全局配置模式。
+- 缺省情况：MAC-based VLAN 优先。
+- 使用指南：设置交换机动态 VLAN 的优先顺序。缺省优先顺序为 MAC-based VLAN、IP-subnet-based VLAN、
+        Protocol-based VLAN，即多种动态 VLAN 在同时使用时优先匹配的顺序。本命令为设置IP-subnet-based 
+        VLAN 优先。
+- 举例： 设置 IP-subnet-based VLAN 优先。
+
+  ```text
+  Switch#config 
+  Switch(config)#dynamic-vlan subnet-vlan prefer
+  ```
+  
+### 1.2.3 mac-vlan
+- 命令：`mac-vlan mac <mac-addrss> <mac-mask> vlan <vlan-id> priority <priority-id> no mac-vlan {mac <mac-addrss> <mac-mask>|all}`
+- 功能：添加 MAC 地址与 VLAN 的对应关系，即指定 MAC 地址加入指定 VLAN ；本命令的 no 命令为删除 MAC 地址与 VLAN 的对应关系。
+- 参数：mac-address 为 MAC 地址，格式为XX-XX-XX-XX-XX-XX，mac-mask 为 mac 地址掩码，
+       格式为 XX-XX-XX-XX-XX-XX，vlan-id 为 VLAN 号，取值范围为1~4094；priority-id 为优
+       先级，用于 VLAN tag 中，取值范围0~7；all 为所有 MAC 地址。命令模式：全局配置模式。
+- 缺省情况：没有MAC地址加入 VLAN。
+- 使用指南：该命令将指定的MAC地址加入到指定 VLAN 中。若有指定的MAC地址的无 VLAN 标签
+          数据包从交换机端口进入，它将匹配到指定的 VLAN 号，从而进入指定的 VLAN，不管该数据包
+          从哪个端口进入，其所属 VLAN 是一致的。该命令设置后不对有 VLAN 标签的数据包进行干涉。
+- 举例：将 MAC 地址为00-03-0f-11-22-33的网络设备划入 VLAN 100.
+
+  ```text
+  Switch#config 
+  Switch(config)#mac-vlan mac 00-03-0f-11-22-33 ff-ff-ff-ff-ff-ff vlan 100 priority 0
+  ``` 
+  
+### 1.2.4 mac-vlan vlan
+
+- 命令：`mac-vlan vlan <vlan-id> no mac-vlan vlan <vlan-id>`
+- 功能：设置指定 VLAN 为 MAC VLAN；本命令的 no 命令为取消该 VLAN 为 MAC VLAN。
+- 参数：`<vlan-id>` 为指定的 VLAN 号。
+- 命令模式：全局配置模式。
+- 缺省情况：没有 MAC VLAN。
+- 使用指南：设置指定 VLAN 为 MAC VLAN。
+- 举例：将 docsVLAN100 设置为 MAC VLAN。
+
+  ```text
+  switch#config 
+  switch(config)#mac-vlan vlan 100
+  ```
+  
+### 1.2.5 protocol-vlan
+
+- 命令：`protocol-vlan mode {ethernetii etype <etype-id>|llc {dsap <dsap-id> ssap 
+     <ssap-id>}|snap etype <etype-id>} vlan <vlan-id> priority <priority-id> no protocol-vlan {mode {ethernetii etype <etype-id>|llc {dsap <dsap-id> ssap <ssap-id>}|snap etype <etype-id>}|all}`
+- 功能：添加协议与 VLAN 的对应关系，即指定协议加入指定 VLAN；本命令的 no 命令为删除协议与 VLAN 的对应关系。
+- 参数：mode为配置封装类型，为 ethernetii、llc、snap；ethernetii 为EthernetII封装格式；etype-id 为报文协议类型，
+     取值范围为 1536~65535；llc 为 LLC 封装格式；dsap-id 为目的服务接入点，取值范围为0~255；ssap-id 为源服务接入点，取值
+     范围为0~255；snap 为 SNAP 封装格式；etype-id 为报文协议类型，取值范围为1536~65535；vlan-id 为 VLAN 号，取值范围为1~4094；
+     priority 为优先级，取值范围为0~7；all 为所有封装类型下的协议。
+- 命令模式：全局配置模式。
+- 缺省情况：没有协议加入 VLAN 。
+- 使用指南：该命令将指定的协议加入到指定 VLAN 中。若有指定的协议的无 VLAN 标签数据包从交换机端口进入，它将匹配到指定的 VLAN 号，
+        从而进入指定的 VLAN，不管该数据包从哪个端口进入，其所属 VLAN 是一致的。该命令设置后不对有 VLAN 标签的数据包进行干涉。在配置 IP 协议时建议将ARP协议一并配置，否则某些应用会受到影响。
+- 举例：将以太网II封装的IP协议数据包划入 VLAN 200。
+
+  ```text
+  Switch#config 
+  Switch(config)#protocol-vlan mode ethernetii etype 2048 vlan 200
+   ```  
+
+###  1.2.6 show dynamic-vlan prefer
+
+- 命令`show dynamic-vlan prefer` 
+- 功能：显示动态 VLAN 的优先顺序。
+- 参数：无。 
+- 命令模式：特权和配置模式。
+- 使用指南：显示动态 VLAN 的优先顺序。
+- 举例：显示当前动态 VLAN 的优先顺序。
+
+  ```text
+  Switch#show dynamic-vlan prefer 
+  Mac Vlan/Voice Vlan 
+  IP Subnet Vlan 
+  Protocol Vlan
+  ```
+  
+### 1.2.7 show mac-vlan
+  
+
+
+
  
 
 
