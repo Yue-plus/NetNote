@@ -541,6 +541,7 @@ Switch(config-route-map)# match ipv6 next-hop 2000::1
 ## `show ip prefix-list <list-name>` 
 
 - 命令：
+  
   + `show ip prefix-list [<list-name> [<ip_addr/len> [first-match | longer] | seq <sequence-number>]] `
 - 功能：按前缀列表名称进行显示
 - 参数：`<list-name>`为前缀列表名称，`<ip_addr/len>`为前缀 ip 地址和掩码长度， first-match 表示显示对特定 ip 地址而言匹配的第一个路由表， longer 表示要查找更长的前缀， seq 表示按序列号进行显示，`<sequence-number>`为序列号，范围为 0～4294967295 
@@ -567,6 +568,7 @@ Switch(config-route-map)# match ipv6 next-hop 2000::1
 ## `show ip prefix-list <detail | summary>`
 
 - 命令：
+  
   + `show ip prefix-list [<detail | summary> [<list-name>] ] `
 - 功能：显示前缀列表内容
 - 参数：detail 表示显示详细信息， summary 表示显示摘要信息，`<list-name>`为前缀列表名称
@@ -593,9 +595,10 @@ Switch(config-route-map)# match ipv6 next-hop 2000::1
   + `deny 1.1.1.1/8 (hit count: 0, refcount: 0)`
     * `deny 1.1.1.1/8` 为前缀列表实体具体内容，`hit count: 0` 表示被命中 0 次，`refcount: 0` 表示引用 0 次
 
-## `show route-map` 
+## `show route-map`  33333333333333333333333
 
 - 命令：
+  
   + `show route-map `
 - 功能：显示 route-map 内容
 - 参数：无
@@ -633,13 +636,13 @@ Switch(config-route-map)# match ipv6 next-hop 2000::1
 - 命令模式：特权和配置模式
 - 举例： 
 
-```
+```text
 例1：
 Switch#show router-id 
 Router ID: 20.1.1.1 (automatic) 
 ```
 
-```
+```text
 例2： 
 Switch#show router-id 
 Router ID: 20.1.1.2 (config)
