@@ -553,4 +553,262 @@
   Switch (config-if-ethernet1/0/1)# switchport forbidden vlan all
   ```
   
+###  1.1.31 switchport hybrid allowed vlan
+
+- 命令：`switchport hybrid allowed vlan {WORD | all | add WORD | except WORD | remove WORD} {tag | untag}
+no switchport hybrid allowed vlan`
+- 功能：设置 Hybrid 端口允许以 tag 或 untag 方式通过的 VLAN；本命令的 no 操作为恢复缺省情况
+- 参数：
+  + WORD：将 vlan List 加为 allowed vlan ,同时覆盖之前的配置。 
+  + all：将所有VLAN都设置为 allowed vlan。
+  + add WORD：在现有的 allowed vlanList 中增加 vlanList 。
+  + except WORD：将除了 vlan List 外所有的VLAN都设置为 allowed vlan 。
+  + remove WORD：从现有的 allow vlanList 中删除 vlanList 指定的 VLAN 。
+  + tag：以 tag 方式加入指定的 VLAN 。
+  + untag：以 untag 方式加入指定的 VLAN 。
+- 命令模式：端口配置模式。
+- 缺省情况：不允许任何 VLAN 的流量通过。
+- 使用指南：用户可以通过本命令设置哪些 VLAN 的流量通过 Hybrid 端口，没有包含的 VLAN 流量则被禁止。
+          设置 allowed vlan 为 tag 和 untag 方式的区别为：设置VLAN为 untag 方式时，通过 Hybrid 口
+          去往该VLAN的流量不带tag；设置 VLAN 为 tag 方式时，通过 Hybrid 口去往该 VLAN 的流量带着相应的 tag 。
+          Hybrid 不可以同时以 tag 和 untag 方式 allowed 同一个 VLAN ，如果先后配置了 allowed 某个 VLAN 为 tag 和 untag 方式，
+          则后配置的会覆盖前面的配置。
+- 举例：设置 Hybrid 端口以 untag 方式 allowed vlan 1;3;5-20，以 tag 方式 allowed vlan 100;300;500-2000。 
+
+  ```text
+  Switch(config)#interface ethernet 1/0/5 
+  Switch(Config-If-Ethernet1/0/5)#switchport mode hybrid 
+  Switch(Config-If-Ethernet1/0/5)#switchport hybrid allowed vlan 1;3;5-20 untag
+  Switch(Config-If-Ethernet1/0/5)#switchport hybrid allowed vlan 100;300;500-2000 tag
+  Switch(Config-If-Ethernet1/0/5)#exit
+  ```
+  
+### 1.1.32 switchport hybrid native vlan
+
+- 命令：`switchport hybrid native vlan <vlan-id> no switchport hybrid native vlan`
+- 功能：设置 Hybrid 端口的 PVID ；本命令的 no 操作为恢复缺省值
+- 参数：`<vlan-id>`为 Hybrid 端口的 PVID 。
+- 命令模式：端口配置模式。
+- 缺省情况：Hybrid 端口默认的 PVID 为1。
+- 使用指南：Hybrid 端口的PVID的作用是当一个 untagged 的帧进入 Hybrid 端口，端口会对这个 untagged 帧打上带有本命令设置的 native PVID 的 tag 标记，用于 VLAN 的转发
+- 举例：设置某 Hybrid 端口的 native vlan 为100。
+
+  ```text
+  Switch(config)#interface ethernet1/0/5 
+  Switch(Config-If-Ethernet1/0/5)#switchport mode hybrid 
+  Switch(Config-If-Ethernet1/0/5)#switchport hybrid native vlan 100 
+  Switch(Config-If-Ethernet1/0/5)#exit
+  ```
+  
+### 1.1.33 switchport interface
+
+- 命令：`switchport interface [ethernet | portchannel] [<interface-name | interface-list>] no switchport interface [ethernet | portchannel] [<interface-name | interface-list>]` 
+- 功能：给 VLAN 分配以太网端口的命令；本命令的 no 操作为删除指定 VLAN 内的一个或一组端口。
+- 参数：ethernet 要添加的为以太网端口；portchannel 要添加的为一个链路聚合端口；
+       `<interface-name>` 端口名称，如e1/0/1，若选择端口名称则不用选 etherneth 或 
+       portchannel；`<interface-list>` 要添加或者删除的以太网端口的列表，支持”;” ”-” ，
+       如：ethernet 1/0/1;3;4-7;8，或者是`<interface-list>`要添加或删除的端口链路聚合，
+       如 port-channel 1 。
+- 命令模式：VLAN 配置模式。
+- 缺省情况：新建立的 VLAN 缺省不包含任何端口。
+- 使用指南：Access 端口为普通端口，可以加入 VLAN ，但同时只允许加入一个 VLAN 。
+- 举例：为 VLAN 100分配百兆以太网端口1，3，4-7，8。
+
+  ```text
+  Switch(Config-Vlan100)#switchport interface ethernet 1/0/1;3;4-7;8
+  ```
+  
+### 1.1.34 switchport mode
+
+- 命令：`switchport mode {trunk | access | hybrid} `
+- 功能：设置交换机的端口为 access 模式，trunk 模式或 hybrid 模式。
+- 参数：trunk 表示端口允许通过多个VLAN的流量；access 为端口只能属于一个 VLAN；
+       hybrid 表示端口可以以 tag 或 untag 方式允许通过多个 VLAN 的流量。
+- 命令模式：端口配置模式。
+- 缺省情况：端口缺省为 Access 模式。
+- 使用指南：工作在 trunk mode 下的端口称为 Trunk 端口，Trunk 端口可以通过多个 VLAN
+          的流量，通过 Trunk 端口之间的互联，可以实现不同交换机上的相同 VLAN 的互通；工作在 access mode 下
+          的端口称为 Access 端口，Access 端口可以分配给一个 VLAN ，并且同时只能分配给一个 VLAN 。Hybrid 端口
+          同样可以通过多个 VLAN 的流量，可以接收和发送多个 VLAN 的报文，可以用于交换机之间连接，也可以用于连
+          接用户的计算机。Hybrid 端口和 Trunk 端口在接收数据时，处理方法是一样的，唯一不同之处在于发送数据
+          时：Hybrid 端口可以允许多个 VLAN 的报文发送时不打标签，而 Trunk 端口只允许缺省 VLAN 的报文发送时不
+          打标签。端口的属性不允许在 Hybrid 和 Trunk 之间直接转换，必须先配置为 Access ，再配置为 Hybrid 或
+          Trunk。取消端口的Trunk或Hybrid属性时，端口属性恢复到默认的Access属性，属于vlan 1。
+举例：将端口5设置为 trunk 模式，端口8设置为 access 模式，端口10为 Hybrid 模式
+
+  ```text
+  Switch(config)#interface ethernet 1/0/5 
+  Switch(Config-If-Ethernet1/0/5)#switchport mode trunk 
+  Switch(Config-If-Ethernet1/0/5)#exit 
+  Switch(config)#interface ethernet 1/0/8 
+  Switch(Config-If-Ethernet1/0/8)#switchport mode access 
+  Switch(Config-If-Ethernet1/0/8)#exit 
+  Switch(config)#interface ethernet 1/0/10 
+  Switch(Config-If-Ethernet1/0/10)#switchport mode hybrid 
+  Switch(Config-If-Ethernet1/0/10)#exit        
+  ```
+  
+### 1.1.35 switchport mode trunk allow-null
+
+- 命令：`switchport mode trunk allow-null`
+- 功能：新增加一个配置端口为 trunk 端口的方式，由于原来把端口配置成 trunk 端口默认加
+       入所有 VLAN ，对于这种方式无论如何处理在开启 GVRP 功能时都不合适。所以这里增加了一个配
+       置端口为 trunk 端口的方式，它默认不会加入任何 VLAN ，所以在这样的 trunk 端口上开启 
+       GVRP 功能比较合适。因此，推荐用户在开启端口 GVRP 功能时，先用此命令把端口配置成 trunk 端口。
+       该命令在端口已经是 trunk 端口时也可以使用，相当于把 allow-list 置空，离开所有 VLAN
+- 参数：无
+- 命令模式：端口配置模式
+- 缺省情况：默认端口为 access 模式。
+- 使用指南：把端口模式变为 trunk 模式，并使其离开所有 vlan ，allow-list 置空
+- 举例： 
+
+  ```text
+  Switch(config-if-ethernet1/0/1)#switchport mode trunk allow-null
+  ```
+
+### 1.1.36 switchport trunk allowed vlan
+
+- 命令：`switchport trunk allowed vlan {WORD | all | add WORD | except WORD | remove WORD} 
+        no switchport trunk allowed vlan`
+- 功能：设置 Trunk 端口允许通过 VLAN ；本命令的 no 操作为恢复缺省情况
+- 参数：
+  + WORD： 指定的 VIDs ；
+  + all： 所有的 VIDs ，即1－4094；
+  + add： 在现有的 allow vlan 后面加入指定的 VIDs ；
+  + except： 除了指定的 VIDs 外所有的VID都加为 allow vlan ；
+  + remove： 从现有的 allow vlan 列表中删除指定的 allow vlan
+- 命令模式：端口配置模式。
+- 缺省情况：Trunk 端口缺省允许通过所有 VLAN。
+- 使用指南：用户可以通过本命令设置哪些 VLAN 的流量通过 Trunk 端口，没有包含的 VLAN 流量则被禁止
+- 举例：设置 Trunk 端口允许通过VLAN1，3，5-20的流量。
+
+  ```text
+  Switch(config)#interface ethernet 1/0/5 
+  Switch(Config-If-Ethernet1/0/5)#switchport mode trunk 
+  Switch(Config-If-Ethernet1/0/5)#switchport trunk allowed vlan 1;3;5-20 
+  Switch(Config-If-Ethernet1/0/5)#exit
+  ```
+  
+### 1.1.37 switchport trunk native vlan
+
+- 命令：`switchport trunk native vlan <vlan-id> no switchport trunk native vlan` 
+- 功能：设置 Trunk 端口的 PVID ；本命令的 no 操作为恢复缺省值。
+- 参数：`<vlan-id>` 为 Trunk 端口的 PVID 。 
+- 命令模式：端口配置模式。 
+- 缺省情况：Trunk 端口默认的 PVID 为1。
+- 使用指南：在802.1Q中定义了 PVID 这个概念。Trunk 端口的 PVID 的作用是当一个 untagged 的帧进入 Trunk 端口，端口会对这个 untagged 帧打上带有本命令设置的 native PVID 的 tag 标记，用于 VLAN 的转发。
+- 举例：设置某 Trunk 端口的 native vlan 为100。
+ 
+  ```text
+  Switch(config)#interface ethernet1/0/5 
+  Switch(Config-If-Ethernet1/0/5)#switchport mode trunk 
+  Switch(Config-If-Ethernet1/0/5)#switchport trunk native vlan 100 
+  Switch(Config-If-Ethernet1/0/5)#exit
+   ```
+  
+### 1.1.38 vlan
+
+- 命令：`vlan WORD 
+       no vlan WORD`
+- 功能： 创建 VLAN 或者创建并进入 VLAN 配置模式。如果参数表示的为用‘;’和‘-’连接的多
+      个 vlan ，则只是创建这些vlan 。如果参数只是一个 vlan ，若这个 vlan 存在，则进
+      入 vlan 配置模式；若此 vlan 不存在，则创建此 vlan 并进入 vlan 配置模式。在 VLAN
+      模式中，用户可以配置 VLAN 名称和为该 VLAN 分配交换机端口。本命令的 no 操作为删除
+      指定的 VLAN ，如果参数指定了多个 vlan ，则同时删除这些 vlan 。
+- 参数： WORD 为要创建/删除的 VLAN 的VID，取值范围为1~4094，用‘;’和‘-’连接。
+- 命令模式：全局配置模式。
+- 缺省情况：交换机缺省只有 VLAN1 。
+- 使用指南：VLAN1 为交换机的缺省 VLAN ，用户不能配置和删除 VLAN1 。允许配置 VLAN 的总共数量为4094个。另需要提醒的是不能使用本命令删除通过 GVRP 学习到的动态 VLAN 。
+- 举例：创建 VLAN 100，并且进入 VLAN 100的配置模式。
+
+  ```text
+  Switch(config)#vlan 100 
+  Switch(Config-Vlan100)#
+  ```
+  
+### 1.1.39 vlan internal
+
+- 命令：`vlan <2-4094> internal `
+- 功能：指定内部 VLAN 的 ID 号。当某个 ID 号被指定为内部 VLAN 的ID后，就被保留不允许其它 VLAN 使用，即不能再用来创建VLAN。内部VLAN仅用于LOOPBACK接口，不能添加物理端口。新设置的内部VLAN ID必须保存配置并重启交换机后才能生效。
+- 参数：`<2-4094>`:指定为内部 VLAN 的ID号，取值范围为2~4094。
+- 命令模式：全局配置模式。
+- 缺省情况：缺省的内部 VLAN 的 ID 为1006。
+- 使用指南：交换机缺省采用1006为内部 VLAN 的 ID ，
+一般不需要修改；只有在组网需要1006作为 VLAN 的 ID 时，才有必要把内部 VLAN ID 设置为其它值。内部 VLAN ID 一定要选择一个不使用的ID号，否则会影响其它 VLAN 的使用。该命令设置后，必须保存配置并重启交换机后才能生效。
+- 举例：设置100为内部 VLAN 的 ID 。
+
+  ```text
+  Switch(config)#vlan 100 internal
+  ```
+
+### 1.1.40 vlan ingress enable
+
+- 命令：`vlan ingress enable no vlan ingress enable`
+- 功能：打开端口的 VLAN 入口过滤功能；本命令的 no 操作为关闭入口过滤功能
+- 命令模式：端口配置模式缺省情况：系统缺省打开端口的 VLAN 入口过滤功能
+- 使用指南：当打开端口的 VLAN 入口过滤功能，系统在接收数据时会检查源端口是否是该 VLAN 的成员端口，如果是则接受数据并转发到目的端口，否则丢弃该数据
+- 举例：关闭端口的 VLAN 入口规则
+
+  ```text
+  Switch(Config-If-Ethernet1/0/1)# no vlan ingress enable
+  ```
+  
+### 1.1.41 vlan-translation
+
+- 命令：`vlan-translation <old-vlan-id> to <new-vlan-id> {in | out} no vlan-translation <old-vlan-id> {in | out}`
+- 功能： 添加 VLAN translation 转换规则，使原 VLAN ID 与现 VLAN ID 产生一条映射；本命令的 no 命令为删除对应映射
+- 参数： old-vlan-id 为原 VLAN ID；new-vlan-id 为翻译后的 VLAN ID ；in 为入口翻译, out 为出口翻译
+- 命令模式： 端口配置模式。缺省情况： 缺省没有 VLAN translation 翻译关系
+- 使用指南： 本命令为设置 VLAN translation 的翻译关系。数据包将根据设置的翻译关系进行匹配，如果匹配成功，则将 VLAN ID 改变为设置条目中的 VLAN ID ，如果匹配不成功，则由 vlan-translation miss drop 命令决定下一步的转发。交换机的 access 口不支持此功能
+- 举例： 在端口1将进入的 VLAN 100的数据经入口翻译后划入 VLAN2
+
+  ```text
+  Switch#config Switch(config)#interface ethernet 1/0/1
+  Switch(Config-If-Ethernet1/0/1)#vlan-translation enable
+  Switch(Config-If-Ethernet1/0/1)#vlan-translation 100 to 2 in
+  Switch(Config-If-Ethernet1/0/1)#exit Switch(config)#
+  ```
+  
+### 1.1.42 vlan-translation enable
+
+- 命令：`vlan-translation enable no vlan-translation enable`
+- 功能：开启端口的 vlan-translation 功能；本命令的 no 命令为恢复缺省值
+- 参数：无。
+- 命令模式：端口配置模式
+- 缺省情况：端口缺省为没有使能 VLAN translation 功能
+- 使用指南：此命令与 dot1q-tunnel enable 互斥。 交换机的 access 口不支持此功能
+- 举例：端口1上开启 VLAN translation 功能
+ 
+  ```text
+  Switch#config Switch(config)#interface ethernet 1/0/1
+  Switch(Config-If-Ethernet1/0/1)#vlan-translation enable 
+  ```
+  
+### 1.1.43 vlan-translation miss drop
+
+- 命令：`vlan-translation miss drop in
+        no vlan-translation miss drop in`
+- 功能：定义翻译失败时丢包；本命令的 no 命令为恢复缺省值
+- 参数：in 为入口
+- 命令模式：端口配置模式
+- 缺省情况：翻译失败不丢包
+- 使用指南：在进行原 VID 与现 VID 的映射关系翻译时，如时没有配置相应翻译关系，缺省
+          为不丢包。当使用本命令后，翻译失败会丢掉 tag 报文，此命令对 untag 报文无效。 交换机的
+          access 口不支持此功能
+- 举例： 设置端口1入口翻译失败丢包
+
+  ```text
+  Switch(Config-If-Ethernet1/0/1)#vlan-translation miss drop in 
+  ```
+  
+## 1.2 动态vlan配置命令
+
+### 1.2.1 dynamic-vlan mac-vlan prefer
+    
+ 
+
+
+
+     
+
   
