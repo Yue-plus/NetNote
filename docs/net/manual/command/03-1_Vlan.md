@@ -47,7 +47,7 @@
   3     10      leaveIn     150
   4     10      leaveEmpty  180
   ```
- 
+
 ### 1.1.3 `dot1q-tunnel enable`
 
 - 命令：`dot1q-tunnel enable no dot1q-tunnel enable `
@@ -392,6 +392,7 @@
 - 缺省情况：默认情况下端口动态或者静态注册的 VLAN 个数为零。
 - 使用指南：遍历端口的注册状态机，把包含动态或者静态注册的注册状态机对应的 VLAN 显示出来。
 - 举例：显示当前端口所有的动态注册或者静态注册的 VLAN。
+
   ```text
   Switch#show gvrp port registerd vlan interface ethernet 1/0/1 
   Current port dynamic registerd vlan included： 
@@ -401,3 +402,155 @@
   Vlan10 vlan30 
   Vlan40 vlan200
   ```
+  
+### 1.1.24 show gvrp timer running information
+
+- 命令：`show gvrp timer (join| leaveall) running information interface (ethernet | port-channel |) IFNAME`
+- 功能：显示当前端口所有 join|leaveAll 定时器运行信息。
+- 参数：
+    + join: join 定时器
+    + leaveAll: leaveAll 定时器
+    + ethernet:物理端口
+    + port-channel:汇聚端口
+    + IFNAME:端口名
+- 命令模式：特权配置模式
+- 缺省情况：默认状态下 join 定时器是关闭的，leaveAll 定时器是开启的。
+- 使用指南：查看端口当前的 join|leaveAll 定时器运行状态。
+- 举例：显示各个定时器的运行状态及到期时间。
+
+  ```text
+  Switch(config)#show gvrp timer join running information interface ethernet 1/0/1 
+  Current port’s jointimer running state is: UP 
+  Current port’s jointimer expired time is: 0.2 s
+  ```
+  
+###   1.1.25 show gvrp vlan registerd port
+
+- 命令：`show gvrp vlan <1-4094> registerd port `
+- 功能：显示出注册了指定 VLAN 的端口集合。
+- 参数：<1-4094>：VLAN 标识
+- 命令模式：特权配置模式
+- 缺省情况：默认情况下注册了指定 VLAN 的端口集合为空。
+- 使用指南：无。
+- 举例：显示注册了当前 VLAN 的所有端口。
+
+  ```text
+  Switch#show gvrp vlan 100 registerd port 
+  Ethernet1/0/3（T） Ethernet1/0/4（T） 
+  Ethernet1/0/5（T） Ethernet1/0/6（T） 
+  Ethernet1/0/7（T） Ethernet1/0/8（T） 
+  Ethernet1/0/9（T） Ethernet1/0/10（T）
+  ```
+  
+### 1.1.26 show vlan
+
+- 命令：`show vlan [brief| summary] [id <vlan-id>] [name <vlan-name>] [internal usage [id <vlan-id>| name <vlan-name>]] [private-vlan [id <vlan-id> | name <vlan-name> ]]`
+
+- 功能：显示所有 VLAN 或者指定 VLAN 的详细状态信息。
+
+- 参数：
+  + brief 简要信息；
+  + `<summary>` 显示 VLAN 统计信息；`<vlan-id>` 为指定要显示状态信息的 VLAN 的 VLAN ID，取值范围 1~4094；
+  + `<vlan-name>` 为指定要显示状态
+  + 信息的 VLAN 的 VLAN 名，长度为1~11。
+  + private-vlan 显示 private-vlan 的 id、name、关联 vlan 和端口等相关信息。
+  
+- 命令模式：特权和配置模式。
+
+- 使用指南：如果不指定 `<vlan-id>` 或 `<vlan-name>` ，则显示交换机所有 VLAN 的状态信息。
+
+- 举例：显示当前 VLAN 状态信息；显示当前 VLAN 统计信息。
+  
+  ```text
+  Switch#show vlan 
+  VLAN  Name         Type       Media          Ports
+  ----  --------     -------    ---------      ---------------------------------------
+  1     default      Static     ENET           Ethernet1/0/1 Ethernet1/0/2 Ethernet1/0/3
+                                               Ethernet1/0/4 Ethernet1/0/9 Ethernet1/0/10
+                                               Ethernet1/0/11 Ethernet1/0/12
+  2     VLAN0002     Static     ENET           Ethernet1/0/5 Ethernet1/0/6 Ethernet1/0/7
+                                               Ethernet1/0/8
+  Switch#sh vlan summary
+  The max. vlan entrys: 4094
+  Existing Vlans:
+  Universal Vlan:
+  1    12    13    15    16    22
+  Total Existing Vlans is:6
+  ```
+  
+  | 显示内容 | 解释                                       |
+  | -------- | ------------------------------------------ |
+  | VLAN     | VLAN号。                                   |
+  | Name     | VLAN名。                                   |
+  | Type     | VLAN的属性，是静态配置的还是动态学习到的。 |
+  | Media    | VLAN的二层属性。                           |
+  | Ports    | VLAN内Access端口。                         |
+  
+  ```text
+  Switch(config)#show vlan private-vlan
+  VLAN    Name         Type         Asso      VLAN         Ports
+  ----    --------     --------     -----     -----        ------------------------------------------
+  100     VLAN0100     Primary      101       102          Ethernet1/0/9 Ethernet1/0/10 Ethernet1/0/11
+                                                           Ethernet1/0/12 Ethernet1/0/13 
+  101     VLAN0101     Community    100                    Ethernet1/0/9 Ethernet1/0/10 Ethernet1/0/11
+                                                           Ethernet1/0/12 Ethernet1/0/13
+  102     VLAN0102     Isolate      100                    Ethernet1/0/9
+  ```
+  
+### 1.1.27 show vlan-translation
+
+- 命令：`show vlan-translation`
+- 功能：显示 vlan-translation 相关配置。
+- 参数：无。 
+- 命令模式：特权用户配置模式。
+- 使用指南：显示交换机 vlan-translation 的相关配置。 交换机的 access 口不支持此功能。
+- 举例：显示 vlan-translation 相关配置。
+
+  ```text
+  Switch# show vlan-translation 
+  Interface Ethernet1/0/1: 
+  vlan-translation is enable, miss drop is not set 
+  vlan-translation 5 to 10 in
+  ```
+  
+### 1.1.28 switchport access vlan
+
+- 命令：`switchport access vlan <vlan-id> no switchport access vlan`
+- 功能：将当前 Access 端口加入到指定 VLAN；本命令 no 操作为将当前端口从 VLAN 里删除。
+- 参数：`<vlan-id>` 为当前端口要加入的 vlan VID，取值范围为1~4094。
+- 命令模式：端口配置模式。
+- 缺省情况：所有端口默认属于 VLAN1。
+- 使用指南：只有属于 Access mode 的端口才能加入到指定的 VLAN 中，并且 Access 端口同时只能加入到一个 VLAN 里去。
+- 举例：设置某 Access 端口加入 VLAN 100。
+
+  ```text
+  Switch(config)#interface ethernet 1/0/8 
+  Switch(Config-If-Ethernet1/0/8)#switchport mode access 
+  Switch(Config-If-Ethernet1/0/8)#switchport access vlan 100 
+  Switch(Config-If-Ethernet1/0/8)#exit
+  ```
+  
+### 1.1.29 switchport dot1q-tunnel
+
+- S5750E交换机不支持此命令。
+
+### 1.1.30 switchport forbidden vlan
+
+- 命令：`switchport forbidden vlan {WORD | all | add WORD | except WORD | remove WORD} no switchport forbidden vlan`
+- 功能：设置端口的 forbidden vlan，注意此命令只能在 trunk 端口或者 hybrid 端口上配置，但是可以在没有开启 GVRP 功能的端口上配置。no 命令为取消端口的 forbidden vlanlist。
+- 参数：
+   + WORD: 将 vlanList 加为 forbidden vlan，同时覆盖之前的配置 
+   + all: 将所有 vlan 都设置为 forbidden 
+   + vlan add WORD: 在现有的 forbidden vlanList 中增加 vlanList 
+   + except WORD: 将除了 vlanList 外所有的 vlan 都设置为 forbidden vlan 
+   + remove WORD: 从现有的 forbidden vlanList 中删除 vlanList 指定的 vlan
+- 命令模式：端口配置模式
+- 缺省情况：默认端口的 forbidden vlanList 为空。
+- 使用指南：把端口的 forbidden vlanList 相应标识位置位，并清除端口的 allow vlanList 标志位。如果端口静态加入了这些 VLAN，则静态离开这些 VLAN，并且向 GVRP 模块发出消息，使该端口相应 VLAN 的注册状态机进入 forbidden 工作模式。
+- 举例：端口离开相应 VLAN，GVRP 相应注册状态机进入 forbidden 模式。
+
+  ```text
+  Switch (config-if-ethernet1/0/1)# switchport forbidden vlan all
+  ```
+  
+  
