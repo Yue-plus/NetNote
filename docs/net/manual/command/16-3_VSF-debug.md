@@ -320,7 +320,7 @@ Uptime : 0 weeks, 0 days, 1 hours, 37 minutes
 - 命令：
   + `debug vsf error`
   + `no debug vsf error`
-- 功能：开启 VSF 错误调试信息开关。该命令的no 命令为关闭此 debug 功能。
+- 功能：开启 VSF 错误调试信息开关。该命令的 no 命令为关闭此 debug 功能。
 - 参数：无。
 - 缺省情况：无。
 - 缺省情况：默认情况下未开启。
