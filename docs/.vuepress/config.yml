@@ -98,9 +98,13 @@ themeConfig:
       - '04_MSTP'
       - '07_DHCP'
       - '08-1_routing-strategy'
+      - '08-2_static-routing'
+      - '08-3_RIP'
+      - '08-4_RIPng'
       - '17_info-center'
       - '16-1_VSF-base'
       - '16-2_VSF-MAD'
+      - '16-3_VSF-debug'
     '/net/manual/operate/':
       - '07_DHCP'
     '/net/':

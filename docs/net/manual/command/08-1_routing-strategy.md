@@ -341,10 +341,18 @@ Switch(config-route-map)# match ipv6 next-hop 2000::1
   + `set community [AA:NN] [internet] [local-AS] [no-advertise] [no-export] [none][additive]`
   + `no set community [AA:NN] [internet] [local-AS] [no-advertise] [no-export] [none][additive]`
 - 功能：配置 BGP 路由信息的团体属性，本命令的 no 操作为删除配置
-- 参数：`[AA:NN]`为团体属性值，`[internet]`表示因特网范围，`[local-AS]`表示本路由不发送到 local AS 外（可以在联盟的子 AS 之间发布），`[no-advertise]`表示本路由不发送给任何邻居，`[no-export]`表示本路由不发送给EBGP 邻居，`[none]`表示从本路由前缀中删除团体属性，`[additive]`表示添加在已有团体属性后。
+- 参数：
+  + `[AA:NN]`为团体属性值，
+  + `[internet]`表示因特网范围，
+  + `[local-AS]`表示本路由不发送到 local AS 外（可以在联盟的子 AS 之间发布），
+  + `[no-advertise]`表示本路由不发送给任何邻居，
+  + `[no-export]`表示本路由不发送给EBGP 邻居，
+  + `[none]`表示从本路由前缀中删除团体属性，
+  + `[additive]`表示添加在已有团体属性后。
 命令模式：route-map 配置模式
 - 使用指南：要使用本命令，需首先定义一条 match 语句
 - 举例：
+
   ```text
   Switch#config terminal
   Switch(config)#route-map r1 permit 5
@@ -376,16 +384,266 @@ Switch(config-route-map)# match ipv6 next-hop 2000::1
   Switch(config-route-map)#set extcommunity soo 200.200:10
   ```
 
-## set ip next-hop 
-## set local-preference 
-## set metric 
-## set metric-type 
-## set origin 
-## set originator-id 
-## set tag
-## set vpnv4 next-hop 
-## set weight
-## show ip prefix-list <list-name> 
-## show ip prefix-list <detail | summary> 
-## show route-map 
-## show router-id
+## `set ip next-hop` 
+
+- 命令：
+  + `set ip next-hop <ip_addr> no` 
+  + `set ip next-hop [<ip_addr>] `
+- 功能：配置路由的下一跳，本命令的 no 操作为删除配置。
+- 参数：`< ip_addr >`为下一跳的 ip 地址，点分十进制形式。
+- 命令模式： route-map 配置模式。
+- 举例： 
+  
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set ip next-hop 10.2.2.2
+  ```
+
+## `set local-preference`
+
+- 命令：
+  + `set local-preference <pre_val> no` 
+  + `set local-preference [<pre_val>] `
+- 功能：配置 BGP 路由的本地优先级，本命令的 no 操作为删除配置
+- 参数：`< pre_val >`为本地优先级值，范围为 0～4294967295 。命令模式： route-map 配置模式
+- 使用指南：
+  本地优先级属性是给予一个路由的优先程度，并使其与同一目的地的其它路由比较，较高的本地优先级表示该路由更为优选。
+  本地优先级只在本 AS 内有效，不会传送给 EBGP 邻居。
+  要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set local-preference 60
+  ```
+
+## `set metric`
+
+- 命令：
+  + `set metric < metric_val> no `
+  + `set metric [<metric_val>] `
+- 功能：配置路由的度量值，本命令的 no 操作为删除配置
+- 参数：`< metric_val >`为度量值，范围为 1～4294967295 
+- 命令模式： route-map 配置模式
+- 使用指南：度量值可以影响外部邻居到本 AS 的路径选择。度量值越小，优先程度越高。一般情况下，只比较同一 AS 内的邻居的路径的度量值。要扩展比较不同 AS 邻居路径的度量值，需配置命令 bgp always-compare-med 。要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set metric 60
+  ```
+
+## `set metric-type` 
+
+- 命令：
+  + `set metric-type <type-1 | type-2> no` 
+  + `set metric-type [<type-1 | type-2>]`
+- 功能：配置 OSPF 路由信息的度量类型，本命令的 no 操作为删除配置
+- 参数： type-1 表示匹配 OSPF 类型 1 外部路由， type-2 表示匹配 OSPF 类型 2 外部路由
+- 命令模式： route-map 配置模式
+- 使用指南：要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set metric-type type-1
+  ```
+
+## `set origin`
+
+- 命令：
+  + `set origin <egp | igp | incomplete > no` 
+  + `set origin [<egp | igp | incomplete >]`
+- 功能：配置 BGP 路由信息的源码，本命令的 no 操作为删除配置
+- 参数： egp 表示路由学习自外部网关协议， igp 表示路由学习自内部网关协议， incomplete 表示路由源不能确定
+- 命令模式： route-map 配置模式
+- 使用指南：要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set origin egp
+  ```
+
+## `set originator-id`
+
+- 命令：
+  + `set originator-id <ip_addr> no` 
+  + `set originator-id [<ip_addr>]` 
+- 功能：配置 BGP 路由信息的源 ip 地址，本命令的 no 操作为删除配置
+- 参数：`<ip_addr>`为路由的源 ip 地址，点分十进制形式
+- 命令模式： route-map 配置模式
+- 使用指南：要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set originator-id 10.1.1.1
+  ```
+
+## `set tag`
+
+- 命令：
+  + `set tag <tag_val> no` 
+  + `set tag [<tag_val>]`
+- 功能：配置 OSPF 路由信息的 tag 域，本命令的 no 操作为删除配置
+- 参数：`< tag-val >`为 tag 值，范围为 0～4294967295 
+- 命令模式： route-map 配置模式
+- 使用指南： AS-external-LSA 类型的 LSA 有一个 route-tag 域，该域一般是由其它路由协议标记的。要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set tag 60
+  ```
+
+## `set vpnv4 next-hop` 
+
+- 命令：
+  + `set vpnv4 next-hop <ip_addr> no` 
+  + `set vpnv4 next-hop [<ip_addr>]` 
+- 功能：配置 BGP VPNv4 路由信息的下一跳，本命令的 no 操作为删除配置
+- 参数：`<ip_addr>`为 VPNv4 路由的下一跳 ip 地址，点分十进制形式
+- 命令模式： route-map 配置模式
+- 使用指南：要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set vpnv4 next-hop 10.1.1.1
+  ```
+
+## `set weight`
+
+- 命令：
+  + `set weight <weight_val> no` 
+  + `set weight [<weight_val>]` 
+- 功能：配置 BGP 路由信息的权重值，本命令的 no 操作为删除配置
+- 参数：`<weight_val>`为权重值，范围为 0～4294967295 
+- 命令模式： route-map 配置模式
+- 使用指南：权重值用于帮助最佳路径的选择，只在本交换机有效。在到同一目的地有多条路由的情况下，权重值越高越优先。要使用本命令，需首先定义一条 match 语句
+- 举例：
+
+  ```text
+  Switch#config terminal 
+  Switch(config)#route-map r1 permit 5 
+  Switch(config-route-map)#set weight 60
+  ```
+
+## `show ip prefix-list <list-name>` 
+
+- 命令：
+  
+  + `show ip prefix-list [<list-name> [<ip_addr/len> [first-match | longer] | seq <sequence-number>]] `
+- 功能：按前缀列表名称进行显示
+- 参数：`<list-name>`为前缀列表名称，`<ip_addr/len>`为前缀 ip 地址和掩码长度， first-match 表示显示对特定 ip 地址而言匹配的第一个路由表， longer 表示要查找更长的前缀， seq 表示按序列号进行显示，`<sequence-number>`为序列号，范围为 0～4294967295 
+- 缺省情况：无
+- 命令模式：特权和配置模式
+- 使用指南：不指定前缀列表的名字时，会显示所有的前缀列表
+- 举例： 
+
+  ```text
+  Switch#show 
+  ip prefix-list ip prefix-list 1: 1 entries 
+      deny any
+  ip prefix-list mylist: 1 entries
+      deny 1.1.1.1/8 
+  Switch#show ip prefix-list mylist 1.1.1.1/8 
+      seq 5 deny 1.1.1.1/8 (hit count: 0, refcount: 0)
+  ```
+
+  + `ip prefix-list mylist: 1 entries`
+    * 显示名称为 mylist 的前缀列表，该前缀列表包含 1 个实体
+  + `seq 5 deny 1.1.1.1/8 (hit count: 0, refcount: 0)`
+    * 表示序列号为 5 的前缀列表内容，`hit count: 0` 表示被命中 0 次，`refcount: 0` 表示引用 0 次
+
+## `show ip prefix-list <detail | summary>`
+
+- 命令：
+  
+  + `show ip prefix-list [<detail | summary> [<list-name>] ] `
+- 功能：显示前缀列表内容
+- 参数：detail 表示显示详细信息， summary 表示显示摘要信息，`<list-name>`为前缀列表名称
+- 缺省情况：无
+- 命令模式：特权和配置模式
+- 使用指南：不指定前缀列表的名字时，会显示所有的前缀列表
+- 举例：
+
+  ```text
+  Switch#show ip prefix-list detail mylist 
+  ip prefix-list mylist: 
+    count: 2, range entries: 0, 
+    sequences: 5 - 10 seq 5 deny 1.1.1.1/8 (hit count: 0, refcount: 0) 
+    seq 10 permit 2.2.2.2/8 (hit count: 0, refcount: 0) 
+  Switch#show ip prefix-list summary mylist 
+  ip prefix-list mylist: 
+    count: 2, range entries: 0, sequences: 5 - 10
+  ```
+
+  + `ip prefix-list mylist`:
+    * 显示名称为 mylist 的前缀列表
+  + `count: 2, range entries: 0, sequences: 5 - 10`
+    * `count: 2` 表示 2 个前缀列表实体，`sequences: 5 – 10` 显示序列号，5 为起始序列号，10 为尾序列号
+  + `deny 1.1.1.1/8 (hit count: 0, refcount: 0)`
+    * `deny 1.1.1.1/8` 为前缀列表实体具体内容，`hit count: 0` 表示被命中 0 次，`refcount: 0` 表示引用 0 次
+
+## `show route-map`  33333333333333333333333
+
+- 命令：
+  
+  + `show route-map `
+- 功能：显示 route-map 内容
+- 参数：无
+- 缺省情况：无
+- 命令模式：特权和配置模式
+- 使用指南：无
+- 举例： 
+
+  ```text
+  Switch# show route-map 
+  route-map a, deny, sequence 10 
+    Match clauses: 
+      as-path 60 
+    Set clauses: 
+      metric 10
+  ```
+
+  + `route-map a, deny, sequence 10`
+    * `route-map a`表示 oute-map 的名称为 a ， `deny` 表示模式为 deny ， `sequence 10` 表示序列号为 10 
+  + `Match clauses:`
+    * `Match` 子句
+  + `as-path 60`
+    * `Match` 子句的具体内容
+  + `Set clauses:`
+    * `Set` 子句
+  + `metric 10`
+    * `Set` 子句的具体内容
+
+
+## `show router-id`
+- 命令：
+  + `show router-id`
+- 功能：显示路由器的 router-id 信息
+- 缺省情况：不显示
+- 命令模式：特权和配置模式
+- 举例： 
+
+```text
+例1：
+Switch#show router-id 
+Router ID: 20.1.1.1 (automatic) 
+```
+
+```text
+例2： 
+Switch#show router-id 
+Router ID: 20.1.1.2 (config)
+```
