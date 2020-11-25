@@ -907,6 +907,364 @@ no switchport hybrid allowed vlan`
   ```
   
 ### 1.2.7 show mac-vlan
+
+- 命令：`show mac-vlan`
+- 功能：显示交换机 MAC-based VLAN 的配置情况。
+- 参数：无。
+- 命令模式：特权和配置模式。
+- 使用指南：显示交换机 MAC-based VLAN 的配置情况。
+- 举例：显示当前 MAC-based VLAN 的配置情况。
+
+  ```text
+  Switch#show mac-vlan
+  MAC-Address         VLAN_ID      Priority
+  ------------------ ------------ -------
+  00-e0-4c-77-ab-9d       2            2
+  00-0a-eb-26-8d-f3       2            2
+  00-03-0f-11-22-33     5            5
+  ```
+  
+### 1.2.8 show mac-vlan interface
+- 命令：`show mac-vlan interface`
+- 功能：显示处于 MAC-based VLAN 的端口。
+- 参数：无。
+- 命令模式：特权和配置模式。
+- 使用指南：显示使能了 MAC-based VLAN 的端口，端口后括号内标出了端口的属性，A 表示 Access 口，T 表示 Trunk 口，H表示 Hybrid 口。
+- 举例：显示当前使能了 MAC-based VLAN 的端口。
+
+  ```text
+  Switch#show mac-vlan interface 
+  Ethernet1/0/1(A)        Ethernet1/0/2(A) 
+  Ethernet1/0/3(A)        Ethernet1/0/4(A) 
+  Ethernet1/0/5(H)        Ethernet1/0/6(T)
+  ```
+  
+### 1.2.9 show protocol-vlan
+
+- 命令：`show portocol-vlan`
+- 功能：显示交换机 Protocol-based VLAN 的配置情况。
+- 参数：无。
+- 命令模式：特权和配置模式。
+- 使用指南：显示交换机 Protocol-based VLAN 的配置情况。
+- 举例：显示当前 Protocol-based VLAN 的配置情况。
+ 
+  ```text
+  Switch#show protocol-vlan
+  Protocol_Type                    VLAN_ID          Priority
+  ------------------            ------------        ---------
+  mode ethernetii etype 0x800        200               4
+  mode ethernetii etype 0x860        200               4
+  mode snap etype 0xabc              100               5
+  mode llc dsap 0xac ssap 0xbd       100               5
+  ```
+
+### 1.2.10 show subnet-vlan
+
+- 命令：`show subnet-vlan` 
+- 功能：显示交换机 IP-subnet-based VLAN 的配置情况。
+- 参数：无。 
+- 命令模式：特权和配置模式。
+- 使用指南：显示交换机 IP-subnet-based VLAN 的配置情况。
+- 举例：显示当前 IP-subnet-based VLAN 的配置情况。
+ 
+  ```text
+  Switch#show subnet-vlan
+  IP-Address              Mask          VLAN_ID
+  ------------------ -----------------  -------
+  192.168.1.165       255.255.255.0       2
+  202.200.121.21      255.255.0.0         2
+  10.0.0.1            255.248.0.0         5
+  ```
+  
+###   1.2.11 show subnet-vlan interface
+
+- 命令：`show subnet-vlan interface` 
+- 功能：显示处于 IP-subnet-based VLAN 的端口。
+- 参数：无。 
+- 命令模式：特权和配置模式。
+- 使用指南：显示使能了 IP-subnet-based VLAN 的端口，端口后括号内标出了端口的属性，A表示 Access 口，T 表示 Trunk 口，H 表示 Hybrid 口。
+- 举例：显示当前使能了 IP-subnet-based VLAN 的端口。
+ 
+  ```text
+  Switch#show subnet-vlan interface 
+  Ethernet1/0/1(A)         Ethernet1/0/2(A) 
+  Ethernet1/0/3(A)         Ethernet1/0/4(A) 
+  Ethernet1/0/5(H)         Ethernet1/0/6(T)
+  ```
+### 1.2.12 subnet-vlan
+
+- 命令：`subnet-vlan ip-address <ipv4-addrss> mask <subnet-mask> vlan <vlan-id> priority <priority-id> no subnet-vlan {ip-address <ipv4-addrss> mask <subnet-mask>|all}` 
+- 功能： 添加IP子网与 VLAN 的对应关系，即指定IP子网加入指定 VLAN ；本命令的 no 命令为删除该/全部对应关系。
+- 参数： ipv4-address 为 IPv4 地址，格式为点分十进制，每段取值范围0~255；subnet-mask 为子网掩码，
+        格式为点分十进制，每段取值范围0~255；priority-id 为优先级，用于 VLAN tag 中，取值范围0~7；
+        vlan-id 为 VLAN 号，取值范围为1~4094；all 为所有子网。
+- 命令模式： 全局配置模式。
+- 缺省情况： 没有IP子网加入 VLAN。
+- 使用指南： 该命令将指定的IP子网加入到指定 VLAN 中。若有指定的IP子网的无 VLAN 标签数据包从交换机端口进入，它将匹配到指定的 VLAN 号，从而进入指定的 VLAN，不管该数据包从哪个端口进入，其所属 VLAN 是一致的。该命令设置后不对有 VLAN 标签的数据包进行干涉。
+- 举例： 将IP子网为192.168.1.0/24的网络设备划入 VLAN 300。
+
+  ```text
+  Switch#config 
+  Switch(config)#subnet-vlan ip-address 192.168.1.1 mask 255.255.255.0 vlan 300 priority 0
+  ```
+  
+### 1.2.13 switchport mac-vlan enable
+
+- 命令：`switchport mac-vlan enable
+     no switchport mac-vlan enable`
+- 功能：打开端口的 MAC-based VLAN 功能；本命令的no命令为关闭端口的 MAC-based VLAN 功能。
+- 参数：无。 
+- 命令模式：端口配置模式。
+- 缺省情况：端口打开 MAC-based VLAN 功能。
+- 使用指南：当添加MAC地址属于指定 VLAN 后，缺省全局使能 MAC-based VLAN 功能，此命令可将在指定端口上关闭 MAC-based VLAN 功能，以适应用户特定的应用。
+- 举例：关闭端口1的 MAC-based VLAN 功能。
+
+  ```text
+  Switch#config 
+  Switch(config)#interface ethernet 1/0/1 
+  Switch(Config-If-Ethernet1/0/1)#no switchport mac-vlan enable  
+  ```
+  
+### 1.2.14 switchport subnet-vlan enable
+
+- 命令：`switchport subnet-vlan enable no switchport subnet-vlan enable`
+- 功能：打开端口的IP-subnet-based VLAN功能；本命令的no命令为关闭端口的IP-subnet-based VLAN功能。
+- 参数：无。 
+- 命令模式：端口配置模式。
+- 缺省情况：端口打开IP-subnet-based VLAN功能。
+- 使用指南：当添加IP子网属于指定VLAN后，缺省全局使能IP-subnet-based VLAN功能，此命令可将在指定端口上关闭IP-subnet-based VLAN功能，以适应用户特定的应用。
+- 举例：关闭端口1的IP-subnet-based VLAN功能。
+
+  ```text
+  Switch#config 
+  Switch(config)#interface ethernet 1/0/1 
+  Switch(Config-If-Ethernet1/0/1)#no switchport subnet-vlan enable
+  ```
+## 1.3 Voice VLAN配置命令
+
+### 1.3.1 show voice-vlan
+
+- 命令：`show voice-vlan `
+- 功能：显示交换机 Voice VLAN 的配置情况。
+- 参数：无。 
+- 命令模式：特权和配置模式。
+- 使用指南：显示交换机 Voice VLAN 的配置情况。
+- 举例：显示当前 Voice VLAN 的配置情况。
+
+  ```text
+  switch#show voice-vlan 
+  Voice VLAN ID:2
+  Ports:ethernet1/0/1;ethernet1/0/3
+  Voice name       MAC-Address           Mask  Priority 
+  -------------- -----------------     ------- -------- 
+  financePhone    00-e0-4c-77-ab-9d       0xff     5
+  manager         00-0a-eb-26-8d-f3       0xfe     6 
+  Mr_Lee          00-03-0f-11-22-33       0x80     5 
+  NULL            00-03-0f-11-22-33       0x0      5
+  ```
+
+### 1.3.2 switchport voice-vlan enable
+
+- 命令：`switchport voice-vlan enable no switchport voice-vlan enable`
+- 功能：打开端口的 Voice VLAN 功能；本命令的 no 命令为关闭端口的 Voice VLAN 功能。
+- 参数：无。
+- 命令模式：端口配置模式。
+- 缺省情况：端口打开 Voice VLAN 功能。
+- 使用指南：当添加语音设备到 Voice VLAN 后，缺省全局使能 Voice VLAN 功能，此命令可在指定端口上关闭 Voice VLAN 功能，以适应用户特定的应用。
+- 举例：关闭端口3的 Voice VLAN 功能。
+
+  ```text
+  switch#config 
+  switch(config)#interface ethernet 1/0/3 
+  switch(Config-If-Ethernet1/0/3)#no switchport voice-vlan enable
+  ```
+  
+### 1.3.3 voice-vlan
+
+- 命令：`voice-vlan mac <mac-address> mask <mac-mask> priority <priority-id> [name <voice-name>] no voice-vlan {mac <mac-address> mask <mac-mask>|name <voice-name> |all}` 
+- 功能：指定某语音设备加入 Voice VLAN ；本命令的 no 命令为设备离开 Voice VLAN 。
+- 参数：mac-address 为语音设备 MAC 地址，格式为”xx-xx-xx-xx-xx-xx”；mac-mask为MAC地址后8位的掩码，取值：0xff, 0xfe, 0xfc, 0xf8, 0xf0, 0xe0, 0xc0,0x80, 0x0；priority-id 为语音流的优先级，取值范围0~7；voice-name 为语音设备的名字，便于管理；all 为所有语音设备 MAC 地址。
+- 命令模式：全局配置模式。缺省情况：没有语音设备加入 Voice VLAN。
+- 使用指南：该命令将指定的语音设备加入到 Voice VLAN 中。若有指定语音设备的无 VLAN 标签数据包从交换机端口进入，不管该数据包从哪个端口进入，其均属于 Voice VLAN。该命令设置后不对有 VLAN 标签的数据包进行干涉。
+- 举例：将研发部MAC地址为00-03-0f-11-22-00到00-03-0f-11-22-ff的256台语音设备加入 Voice VLAN。
+
+  ```text
+  switch#config
+  switch(config)#voice-vlan vlan 100
+  ```
+  
+### 1.3.4 voice-vlan vlan
+
+- 命令：`voice-vlan vlan <vlan-id> no voice-vlan` 
+- 功能：设置指定VLAN为 Voice VLAN ；本命令的no命令为取消该 VLAN 为 Voice VLAN。
+- 参数：vlan-id 为指定的 VLAN 号。
+- 命令模式：全局配置模式。
+- 缺省情况：没有 Voice VLAN。
+- 使用指南：设置指定 VLAN 为 Voice VLAN，同一时刻只能有一个 Voice VLAN 。Voice VLAN 与 MAC-based VLAN 不能同时使用。
+- 举例：将 VLAN100 置为 Voice VLAN。
+
+  ```text
+  switch#config 
+  switch(config)#voice-vlan vlan 100
+  ```
+  
+## 1.4 Multi-to-One VLAN translation配置命令
+
+### 1.4.1 vlan-translation n-to-1
+
+- 命令：`vlan-translation n-to-1 <WORD> to <new-vlan-id> no vlan-translation n-to-1 <WORD>` 
+- 功能：开启/关闭端口的 Multi-to-One VLAN translation 功能。
+- 参数：WORD为映射前的 VLAN ID ，取值范围为1-4094，用‘;’和‘-’连接。如果在相同端口存在两个 VLAN 范围转化为不同的 VLAN ID，则要求这两个 VLAN 范围不能有重叠部分。 new-vlan-id 为映射后的 VLAN ID，取值范围为1-4094。
+- 命令模式：端口配置模式缺省情况：端口默认没有开启该功能。
+- 使用指南：Multi-to-One VLAN translation 功能应用在网络边缘层，用于将边缘网络的多个 VLAN 映射到
+          主干网一个VLAN，同时当数据流从主干网络返回网络边缘层时，会自动还原数据流边缘层的 VLAN 信息，达到多对一的
+          VLAN 映射效果，从而节省主干网络的 VLAN 资源。注意：使用该功能时，设备上必须先建立映射前与映射后的 VLAN ，
+          同时开启该功能的下联端口和连接骨干网的上联端口必须以 Tagged 的方式加入到映射前与映射后的 VLAN ；该功能不能同
+          时和 dot1q-tunnel，VLAN translation 功能同时使用。
+- 注意：该功能要在开启 MAC 软件学习后使用。交换机的 access 口不支持此功能。 
+- 举例：在端口Ethernet 1/0/1将 VLAN 范围为1-5的数据流转为 VLAN 100，并将从 VLAN 100 流出的属于 VLAN 范围1-5的数据流分别转换为自己对应的 VLAN ID ；连接骨干网的上联端口为 Ethernet 1/0/5。
+
+  ```text 
+  Switch(config)#vlan 1-5;100 
+  Switch(config)#interface ethernet 1/0/1
+  Switch(Config-If-Ethernet1/0/1)#switchport mode trunk 
+  Switch(Config-If-Ethernet1/0/1)#vlan-translation n-to-1 1-5 to 100 
+  Switch(config)#interface ethernet 1/0/5 
+  Switch(Config-If-Ethernet1/0/5)#switchport mode trunk
+  ```
+  
+### 1.4.2 show vlan-translation n-to-1
+
+- 命令：`show vlan-translation n-to-1 [<interface-name>]` 
+- 功能：显示开启该功能的端口配置。
+- 参数：interface-name指定要显示的端口名称，如不指定该参数，则显示所有开启该功能的端口信息。
+- 命令模式：特权配置模式缺省情况：缺省没有该功能信息。
+- 使用指南：把GVRP报文调试信息开关打开。注意：交换机的access口不支持此功能。
+- 举例：显示开启该功能的所有端口信息。
+
+  ```text
+  Switch# show vlan-translation n-to-1 
+  Interface Ethernet1/0/1: 
+  vlan-translation n-to-1 enable, vlan 1-4 to 100 
+  vlan-translation n-to-1 enable,vlan 5-8;13 to 101 
+  Interface Ethernet1/0/2: 
+  vlan-translation n-to-1 enable,vlan 1-4 to 100
+  ```
+  
+## 1.5 Super VLAN配置命令
+
+### 1.5.1 supervlan
+
+- 命令：`supervlan no supervlan`
+- 功能：将 vlan 设置为 super vlan；本命令的 no 操作为恢复缺省情况。
+- 参数：无。
+- 命令模式：VLAN 配置模式。
+- 缺省情况：不配置。
+- 使用指南：将 VLAN 设置为 Super vlan ，必须是普通 VLAN ，此 VLAN 不能是 SUB VLAN，设置 truck 口时自动滤除 Super vlan，不能向 Super vlan 中加入端口。
+- 举例：将 vlan 2 设置为 supervlan。 
+
+  ```text
+  Swithc#config
+  Switch(config)#vlan 2 
+  Switch (config-vlan2)#supervlan
+  ```
+  
+### 1.5.2 subvlan
+
+- 命令：`subvlan WORD no subvlan {WORD | all} `
+- 功能：将 vlan 设置为 subvlan ；本命令的 no 操作为恢复缺省情况。
+- 参数：WORD为 VLAN ID，可以使用“-”和“；”表示更多的 VLAN。
+       all表示所有 subvlan。
+- 命令模式：VLAN 配置模式。
+- 缺省情况：不配置。
+- 使用指南：将 VLAN 设置为 Sub vlan，该 VLAN 必须已经存在，必须是普通 VLAN，此 VLAN 不能是其他 SUPER VLAN 的 SUB VLAN，也不能是 SUPER VLAN，每一个 Super VLAN 可以和127个 Sub VLAN 建立映射关系。系统最多允许建立1024个 Super VLAN。
+- 举例：将 vlan 3 设置为 subvlan。
+
+  ```text
+  Swithc#config 
+  Switch(config)#vlan 2-3 
+  Switch(config)#vlan 2 
+  Switch (config-vlan2)#supervlan 
+  Switch (config-vlan2)#subvlan 3
+  ```
+  
+### 1.5.3 arp-proxy subvlan
+
+- 命令：`arp-proxy subvlan {WORD | all} no arp-proxy subvlan {WORD | all}` 
+- 功能：使能 subvlan 的 arp proxy 功能，此 VLAN 收到的流量可以被代理到其他 subvlan；本命令的 no 操作为恢复缺省情况。
+- 参数：WORD 为 VLAN ID，可以使用“-”和“；”表示更多的 VLAN。 all 表示所有 subvlan。
+- 命令模式：接口配置模式。
+- 缺省情况：不配置。
+- 使用指南：此接口必须是 supervlan 的接口。此 VLAN 收到的流量可以被代理到其他 subvlan --当交换机从这个 VLAN 收到 ARP REQUEST 时，用自己的 MAC 回应 ARP REPLY，以便流量可以通过交换机软转发出去。
+- 举例：开启 vlan2 的所有 subvlan 的 arp-proxy 功能。 
+ 
+  ```text
+  Swithc#config 
+  Switch(config)#interface vlan 2 
+  Switch (config-if-vlan2)#arp-proxy subvlan all
+  ```
+  
+### 1.5.4 ip-addr-range subvlan
+
+- 命令：`ip-addr-range subvlan <vlan-id> <ipv4-addrss> to <ipv4-addrss> no ip-addr-range subvlan <vlan-id>`
+- 功能：为某个 subvlan 指定地址范围，交换机收到流量后，发送 ARP REQUEST 时需要检查数据包的目的 IP 地址是否在地址范围内，如果不在，不发送 ARP REQUEST；本命令的 no 操作为恢复缺省情况。
+- 参数：`<vlan-id>`为 VLAN ID，范围1-4094。`<ipv4-addrss>`表示IPv4地址，格式为点分十进制，每段取值范围0~255。
+- 命令模式：接口配置模式。
+- 缺省情况：无地址范围。
+- 使用指南：交换机从配置了地址范围的 subvlan 收到流量后，发送 ARP REQUEST 时需要检查数据包的目的 IP 地址是否在地址范围内，如果不在，不发送 ARP REQUEST。
+- 举例：设置 subvlan3 的地址范围。
+
+  ```text
+  Swithc#config 
+  Switch(config)#interface vlan 2 
+  Switch (config-if-vlan2)#ip-addr-range subvlan 3 1.1.1.1 to 1.1.1.10
+  ```
+
+### 1.5.5 ip-addr-range
+
+- 命令：`ip-addr-range <ipv4-addrss> to <ipv4-addrss> no ip-addr-range` 
+- 功能：为某个接口指定地址范围，交换机收到流量后，发送 ARP REQUEST 时需要检查数据包的目的 IP 地址是否在地址范围内，如果不在，不发送 ARP REQUEST；本命令的 no 操作为恢复缺省情况。
+- 参数： `<ipv4-addrss>`表示IPv4地址，格式为点分十进制，每段取值范围0~255。
+- 命令模式：接口配置模式。
+- 缺省情况：无地址范围。
+- 使用指南：交换机从配置了地址范围的接口收到流量后，发送 ARP REQUEST 时需要检查数据包的目的IP地址是否在地址范围内，如果不在，不发送 ARP REQUEST；如果这个接口是 SUPER VLAN 的接口，从这个接口收到的 ARP REQUEST，所请求的 IP 地址不在地址范围内，则不代理这个 ARP REQUEST。
+- 举例：设置 interface vlan 2 的地址范围。 
+
+  ```text
+  Swithc#config 
+  Switch(config)#interface vlan 2 
+  Switch (config-if-vlan2)#ip-addr-range 1.1.1.1 to 1.1.1.10
+  ```
+  
+### 1.5.6 show supervlan
+
+- 命令：`show supervlan [<vlan-id>]` 
+- 功能：显示系统的 super vlan。
+- 参数：`<vlan-id>`为 VLAN ID ，范围1-4094。
+- 命令模式：特权和配置模式。
+- 使用指南：如果不指定 VLAN ID ，则显示所有的 supervlan 信息。
+- 举例：显示当前 supervlan 信息。
+
+```text
+Swithc#show supervlan 
+VLAN Name                  Type       sub VLAN Ports
+---- -------- ---------- --------- ----------------------------------------
+2 VLAN0002               Universal    3       Ethernet1/0/2 
+                                      4       Ethernet1/0/3
+```
+
+
+
+
+
+
+
+
+
+
+   
+
+
   
 
 
