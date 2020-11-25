@@ -9,6 +9,63 @@
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
   + 至少看看到 [第十章、認識與學習BASH](http://linux.vbird.org/linux_basic/0320bash.php)
 
+## 挂载软件源镜像
+
+创建挂载目录：
+
+```bash
+mkdir /mnt/iso
+```
+
+挂载 ISO 镜像：
+
+```bash
+mount -t iso9660 -o loop /opt/CentOS-7-x86_64-Everything-1503-01.iso /mnt/iso
+```
+
+配置软件源
+
+```bash
+cd /etc/yum.repos.d
+mv CentOS-Base.repo CentOS-Base.repo.bak
+vi CentOS-Media.repo
+```
+
+编辑 `CentOS-Media.repo` 文件：
+
+```diff
+ # CentOS-Media.repo
+ #
+ # This repo is used to mount the default locations for a CDROM / DVD on
+ #  CentOS-6.  You can use this repo and yum to install items directly off the
+ #  DVD ISO that we release.
+ #
+ # To use this repo, put in your DVD and use it with the other repos too:
+ #  yum --enablerepo=c6-media [command]
+ #
+ # or for ONLY the media repo, do this:
+ #
+ #  yum --disablerepo=\* --enablerepo=c6-media [command]
+ 
+ [c6-media]
+ name=CentOS-$releasever - Media
++baseurl=file:///mnt/iso/
+-baseurl=file:///media/CentOS/
+-        file:///media/cdrom/
+-        file:///media/cdrecorder/
++gpgcheck=0
+-gpgcheck=1
++enabled=1
+-enabled=0
+ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+```
+
+更新软件源：
+
+```bash
+yum update
+```
+
 <!--
 ## 常用指令
 
