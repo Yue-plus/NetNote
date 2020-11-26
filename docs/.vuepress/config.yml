@@ -101,12 +101,17 @@ themeConfig:
       - '08-2_static-routing'
       - '08-3_RIP'
       - '08-4_RIPng'
-      - '17_info-center'
+      - '14-1'
+      - '14-2'
+      - '14-3'
+      - '14-4'
       - '15-1command'
       - '15-2monitor'
       - '16-1_VSF-base'
       - '16-2_VSF-MAD'
       - '16-3_VSF-debug'
+      - '17_info-center'
+     
     '/net/manual/operate/':
       - '07_DHCP'
     '/net/':
