@@ -234,3 +234,243 @@
   ```
   
 ### 1.1.15 spanning-tree maxage
+
+- 命令：`spanning-tree maxage <time> no spanning-tree maxage` 
+- 功能：设置交换机 BPDU 信息的最大老化时间值；本命令的 no 操作为恢复缺省值。
+- 参数：`<time>` 为最大老化时间值，单位为秒，取值范围为6~40。
+- 命令模式：全局配置模式。
+- 缺省情况：最大老化时间缺省为20秒。
+- 使用指南：BPDU 的生命周期称为最大老化时间。最大老化时间和转发延时、Hello 时间之间是有关联的，用户在配置 MSTP 时间参数时必须满足如下条件，否则会影响 MSTP 的正确工作： 2×(Bridge_Forward_Delay – 1.0 seconds) >= Bridge_Max_Age Bridge_Max_Age >= 2 ×(Bridge_Hello_Time + 1.0 seconds)
+- 举例：在全局模式配置 maxage 时间为25秒。
+
+  ```text
+  Switch(config)#spanning-tree maxage 25
+  ```
+  
+### 1.1.16 spanning-tree max-hop
+
+- 命令：`spanning-tree max-hop <hop-count> no spanning-tree max-hop` 
+- 功能：设置 BPDU 支持在 MSTP 域中传输的最大跳数；本命令的 no 操作为恢复缺省值。
+- 参数：`<hop-count>`为最大跳数，取值范围为1~40。
+- 命令模式：全局配置模式。
+- 缺省情况：最大跳数缺省为20。
+- 使用指南：在 MSTP 协议中不仅保留 Max-age 表示 BPDU 的生命周期，在 MSTP 域中还增加了 Max-hop
+        表示 BPDU 的生命周期，Max-hop 在网络中的传输呈递减状态。从 MSTI 的根网桥发出时 Max-hop 为最
+        大值，BPDU 每被接收一次，该 BPDU 的 Max-hop 值就减少一跳，当交换机端口接收到 Max-hop 为0的
+        BPDU 时，该端口就会丢弃该 BPDU，并且将本端口作为指定端口发送 BPDU。
+举例：设置最大跳数为32。
+
+  ```text
+  Switch(config)#spanning-tree max-hop 32
+  ```
+  
+### 1.1.17 spanning-tree mcheck
+
+- 命令：`spanning-tree mcheck` 
+- 功能：迫使交换机端口迁移到 MSTP 模式下运行。
+- 命令模式：端口配置模式。
+- 缺省情况：端口运行在 MSTP 模式下。
+- 使用指南：如果在与当前以太网端口相连的网段内存在运行 IEEE 802.1D STP 协议的网桥，该端口会迁移到 STP 兼容模式下运行。
+        在网络比较稳定的情况下，虽然网段内运行STP协议的网桥被拆离，但与之相连的运行 MSTP 协议的交换机的端口仍然会运行在 STP 兼
+        容模式下，此时可以通过该命令迫使其迁移到 MSTP 模式下运行。端口迁移到 MSTP 模式下运行后，如果再次收到新的 STP 报文，端口
+        又会回到 STP 兼容模式下。该命令必须在交换机运行在 IEEE802.1s MSTP 模式下时进行配置，如果交换机的协议运行模式被配置为
+        IEEE802.1D STP 模式，则该命令无效。
+- 举例：强制端口1/0/2迁移到 MSTP 模式下运行。
+
+  ```text
+  Switch(Config-If-Ethernet1/0/2)#spanning-tree mcheck
+  ```
+  
+### 1.1.18 spanning-tree mode
+
+- 命令：`spanning-tree mode {mstp | stp | rstp} no spanning-tree mode` 
+- 功能：设置交换机运行 Spanning Tree 的模式；本命令的 no 操作为恢复交换机缺省的模式。
+- 参数：mstp 为设置交换机运行 IEEE802.1s 的 MSTP 模式；stp 为设置交换机运行 IEEE802.1D STP 模式; rstp为设置交换机运行 IEEE802.1w RSTP 模式。
+- 命令模式：全局配置模式。
+- 缺省情况：交换机缺省运行 MSTP 模式。
+- 使用指南：当交换机运行 IEEE802.1D STP 模式时，只能发送标准的 802.1D BPDU 帧和 TCN BPDU ，对接收到的任何 MSTP BPDU 都将丢弃。
+- 举例：设置交换机运行 STP 模式。
+
+  ```text
+  Switch(config)#spanning-tree mode stp
+  ```
+  
+### 1.1.19 spanning-tree mst configuration
+
+- 命令：`spanning-tree mst configuration no spanning-tree mst configuration`
+
+- 功能：进入交换机的 MST 配置模式，在交换机的 MST 配置模式下，可配置交换机有关 MSTP 域的参数；本命令的 no 操作为恢复交换机的 MSTP 域参数的缺省值。
+
+- 命令模式：全局配置模式。
+
+- 缺省情况：用户在没有进入MST配置模式之前，MSTP 域的参数缺省如下：
+
+  | MSTP域参数 |                参数缺省值                |
+  | :--------: | :--------------------------------------: |
+  |  Instance  | 只有实例0存在，且VLAN1~4094均映射在实例0 |
+  |    Name    |            取本交换机网桥MAC             |
+  |  Revision  |                    0                     |
+
+- 使用指南：无论交换机是否启动了 MSTP 协议，都可以进入 MSTP 域配置模式，并在配置后保存当前配置。当交换机运行 MSTP 模式时，系统会根据配置的 MSTP 域参数计算出本交换机的 MST 配置标识（MST Configuration Identifier），只有 MSTP 域配置标识相同的交换机才会认为是在同一个 MSTP 域中，且能进行 MSTI 的计算。
+- 举例：进入交换机的 MST 配置模式。
+
+  ```text
+  Switch(config)#spanning-tree mst configuration 
+  Switch(Config-Mstp-Region)# 
+  ```
+  
+### 1.1.20 spanning-tree mst cost
+
+- 命令：`spanning-tree mst <instance-id> cost <cost> no spanning-tree mst <instance-id> cost` 
+
+- 功能：设置当前以太网端口在指定实例的端口路径代价；本命令的 no 操作为恢复缺省值。
+
+- 参数：`<instance-id>` 为指定实例的实例 ID，取值范围为0~64；`<cost>` 为路径代价值，对于不同的 cost 格式，取值范围有所不同，对于默认 dot1t 模式，取值范围为1~200,000,000，对于 dot1d 模式，取值范围为1-65535。
+
+- 命令模式：端口配置模式。
+
+- 缺省情况：缺省情况下，端口的路径代价与端口的带宽相关。
+
+  | 端口类型 | 缺省路径开销 |   建议取值范围   |
+  | :------: | :----------: | :--------------: |
+  |  10Mbps  |   2000000    | 2000000~20000000 |
+  | 100Mbps  |    200000    |  200000~2000000  |
+  |  1Gbps   |    20000     |   20000~200000   |
+  |  10Gbps  |     2000     |   20000~200000   |
+
+  对汇聚端口，端口缺省路径代价如下：
+
+  | 端口类型 | 汇聚端口个数（在允许汇聚的个数范围内） | 缺省路径开销 |
+  | :------: | :------------------------------------: | :----------: |
+  |  10Mbps  |                   N                    |  2000000/N   |
+  | 100Mbps  |                   N                    |   200000/N   |
+  |  1Gbps   |                   N                    |   20000/N    |
+  |  10Gbps  |                   N                    |    2000/N    |
+
+  
+- 使用指南：通过配置端口路径代价可以控制该实例端口到根网桥的根路径代价，从而控制该实例根端口、指定端口等的选举。
+- 举例：在端口1/0/2上设置实例2对应的 MSTP 端口路径代价为3000000。
+
+  ```text
+  Switch(Config-If-Ethernet1/0/2)#spanning-tree mst 2 cost 3000000
+  ```
+  
+### 1.1.21 spanning-tree cost-format
+
+- 命令：`spanning-tree cost-format {dot1d | dot1t}`
+- 功能：在交换机的全局配置模式下可修改路径开销值的表示方式，有 dot1d 和 dot1t 格式可选用，默认使用 dot1t 格式。
+- 命令模式：全局配置模式。
+- 缺省情况：系统缺省使用 dot1t 格式计算路径开销值。
+- 使用指南：cost 值的表示方法有两种，分别是 IEEE802.1d-2008 上标示的 dot1d 方式，和 IEEE802.1t 上标示的 dot1t 方式。两种方法定义的路径开销值的取值范围不同，dot1d 的取值范围是1-65535，dot1t的取值范围是1-200000000。若用户已使用 spanning-tree cost 命令手动配置过链路上的 cost 值，则使用 cost-format 命令修改 cost 表示方法的配置不能成功，除非用户将手动配置清除。
+- 举例：在全局模式修改 cost 格式
+ 
+  ```text
+  Switch(config)#spanning-tree cost-format dot1d
+  ```
+  
+### 1.1.22 spanning-tree mst loopguard
+
+- 命令：`spanning-tree [mst <instance-id>] loopguard no spanning-tree [mst <instance-id>] loopguard`
+- 功能：配置 spanning-tree 的指定实例上启动 loopguard 功能，本命令的 no 操作恢复为不在该实例下启动该功能。
+- 参数：`<instance-id>` ：MSTP 实例ID。
+- 缺省：不启动 loopguard 功能。
+- 命令模式：端口模式
+- 使用指南：通过配置该命令，可以避免单向链路失效导致 root 端口或 alternate 端口变成 designated 端口；在端口收包定时器到时时将配置了 loopguard 的端口置为 Block 状态。
+- 举例：配置实例0的端口1/0/2为loopguard模式。
+
+  ```text
+  Switch(Config)#interface ethernet 1/0/2 
+  Switch(Config-Ethernet-1/0/2)#spanning-tree mst 0 loopguard 
+  Switch(Config-Ethernet-1/0/2)#
+  ```
+  
+### 1.1.23 spanning-tree mst port-priority
+
+- 命令：`spanning-tree mst <instance-id> port-priority <port-priority> no spanning-tree mst <instance-id> port-priority`
+- 功能：设置当前端口在指定实例的优先级值；本命令的no操作为恢复缺省端口的优先级值。
+- 参数：`<instance-id>` 为指定实例的实例 ID，取值范围为0~64；`<port-priority>` 为端口优先级值，取值范围为0~240之间的16倍数，即取值范围为0、16、32、48…240。
+- 命令模式：端口配置模式。
+- 缺省情况：端口缺省优先级值为128。
+- 使用指南：通过配置端口优先级可以控制指定实例的端口ID，进而影响该实例的根端口、指定端口等选举。端口优先级值越小，优先级越高。
+- 举例：在端口1/0/2设置实例1的端口优先级为32。
+
+  ```text
+  Switch(config)#interface ethernet 1/0/2 
+  Switch(Config-If-Ethernet1/0/2)#spanning-tree mst 1 port-priority 32
+  ```
+  
+### 1.1.24 spanning-tree mst priority
+
+- 命令：`spanning-tree mst <instance-id> priority <bridge-priority> no spanning-tree mst <instance-id> priority` 
+- 功能：设置交换机在指定实例的网桥优先级；本命令的 no 操作为恢复交换机在指定实例的缺省优先级值。
+- 参数：`<instance-id>` 为指定实例的实例ID，取值范围为0~64；`<bridge-priority>` 为交换机的优先级，取值范围为0~61440之间的4096的倍数，即取值范围为0、4096、8192…61440。
+- 命令模式：全局配置模式。
+- 缺省情况：交换机缺省的优先级为32768。
+- 使用指南：通过配置交换机网桥优先级可以改变指定实例的网桥ID，进而用于该实例的根网桥、指定端口等选举。交换机网桥优先级值越小，优先级越高。
+- 举例：配置交换机实例2的优先级为4096。
+
+  ```text
+  Switch(config)#spanning-tree mst 2 priority 4096
+  ```
+  
+### 1.1.25 spanning-tree mst rootguard
+
+- 命令： `spanning-tree mst <instance-id> rootguard no spanning-tree mst <instance-id> rootguard` 
+- 功能：配置 spanning-tree 的指定实例上启动 rootguard 功能，本命令的 no 操作恢复为不在该实例下启动该功能。 
+- 参数：`<instance-id>` ：MSTP 实例ID。 
+- 命令模式：端口模式。
+- 缺省情况：不启动 rootguard 功能
+- 使用指南：根保护功能是基于端口配置的，不允许端口成为mstp 的根端口，也就是说端口要始终保持在指定端口状态。如果在配置了root guard 的端口接收到了更优的bpdu 报文，根保护功能会把该端口设置为root_inconsistent(blocked)状态，而不是根据该bpdu 重新计算，选择出一个新的根端口。当交换机不再接收更优的bpdu 报文，该端口就不会再阻塞，根据生成树协议，端口状态从discarding，learning，最后转变到forwarding状态。恢复是自动的，不需要人为干预。通过root guard 功能，能够很好的保护二层网络的拓扑结构，不会因为其它设备的加入而改变根网桥，从而不会改变现有网络用户数据所走的链路。
+- 举例：配置spanning-tree的实例0启动rootguard功能。
+
+  ```text
+  Switch(config)#interface ethernet 1/0/2 
+  Switch(Config-If-Ethernet1/0/2)#spanning-tree mst 0 rootguard 
+  Switch(Config-If-Ethernet1/0/2)#
+  ```
+  
+### 1.1.26 spanning-tree portfast
+
+- 命令：`spanning-tree portfast [bpdufilter | bpduguard] [recovery <30-3600>] no spanning-tree portfast` 
+- 功能：配置端口为边缘端口，并指定模式 BPDU filter、BPDU guard 或缺省模式（协议规定的模式，即收到 BPDU 报文后转为非边缘端口）。本命令的 no 操作配置端口为非边缘端口。 
+- 参数：bpdufilter：配置边缘端口模式为 BPDU filter bpduguard：配置边缘端口模式为 BPDU guard recovery：配置边缘端口执行 bpduguard 违背操作后可以自动恢复`<30-3600>`：恢复时间，默认不进行恢复 
+- 命令模式：端口模式。
+- 缺省情况：非边缘端口。 
+- 使用指南：对于边缘端口可以在变为指定端口时直接进入转发态，而对于边缘端口可以有三种模式，缺省模式下边缘端口收到 BPDU 后会转为非边缘端口。BPDU filter 模式下收到 BPDU 会丢弃该报文不处理，BPDU guard 模式下收到 BPDU 会丢弃报文并关闭端口。同时只能有一种模式。no 命令将端口恢复为非边缘端口。
+- 举例：配置边缘端口模式为 BPDU guard，恢复时间为60s。
+
+  ```text
+  Switch(config)#interface ethernet 1/0/2 
+  Switch(Config-If-Ethernet1/0/2)#spanning-tree portfast bpduguard recovery 60 
+  Switch(Config-If-Ethernet1/0/2)#
+  ```
+  
+### 1.1.27 spanning-tree port-priority
+
+- 命令：`spanning-tree port-priority <port-priority> no spanning-tree port-priority` 
+- 功能：配置端口的优先级。本命令的no操作为恢复缺省端口的优先级值。
+- 参数：`<port-priority>` 为端口优先级值，取值范围为0~240之间的16倍数，即取值范围为0、16、32、48…240。
+- 命令模式：端口模式。 
+- 缺省情况：交换机缺省的优先级为32768。
+- 使用指南：配置端口的优先级，可以用于端口的选举。优先级值越小，优先级越高。
+- 举例：配置端口1的优先级为4096。
+
+  ```text
+  Switch(config-If-Ethernet1/0/1)#spanning-tree port-priority 4096
+  ```
+  
+### 1.1.28 spanning-tree priority
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
