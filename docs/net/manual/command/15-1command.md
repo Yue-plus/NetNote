@@ -14,7 +14,7 @@ Switch(config)#no power inline enable
 ```
 
 
-- power inline enable(端口)
+# power inline enable(端口)
 - 命令：
   + `power inline enable no power inline enable `
 - 功能：打开/关闭端口 PoE 供电。
