@@ -347,7 +347,6 @@
   |  1Gbps   |                   N                    |   20000/N    |
   |  10Gbps  |                   N                    |    2000/N    |
 
-  
 - 使用指南：通过配置端口路径代价可以控制该实例端口到根网桥的根路径代价，从而控制该实例根端口、指定端口等的选举。
 - 举例：在端口1/0/2上设置实例2对应的 MSTP 端口路径代价为3000000。
 
@@ -363,7 +362,7 @@
 - 缺省情况：系统缺省使用 dot1t 格式计算路径开销值。
 - 使用指南：cost 值的表示方法有两种，分别是 IEEE802.1d-2008 上标示的 dot1d 方式，和 IEEE802.1t 上标示的 dot1t 方式。两种方法定义的路径开销值的取值范围不同，dot1d 的取值范围是1-65535，dot1t的取值范围是1-200000000。若用户已使用 spanning-tree cost 命令手动配置过链路上的 cost 值，则使用 cost-format 命令修改 cost 表示方法的配置不能成功，除非用户将手动配置清除。
 - 举例：在全局模式修改 cost 格式
- 
+
   ```text
   Switch(config)#spanning-tree cost-format dot1d
   ```
@@ -460,6 +459,227 @@
   ```
   
 ### 1.1.28 spanning-tree priority
+
+- 命令：`spanning-tree priority <bridge-priority> no spanning-tree priority`
+- 功能：设置交换机的网桥优先级；本命令的no操作为恢复交换机的缺省优先级值。
+- 参数：`<bridge-priority>` 为交换机的优先级，取值范围为0~61440之间的4096的倍数，即取值范围为0、4096、8192…61440。
+- 命令模式：全局配置模式。缺省情况：交换机缺省的优先级为32768。
+- 使用指南：通过配置交换机网桥优先级可以改变网桥ID，进而用于根网桥、指定端口等选举。交换机网桥优先级值越小，优先级越高。
+- 举例：配置交换机的优先级为4096。
+
+  ```text
+  Switch(config)#spanning-tree priority 4096
+  ```
+  
+### 1.1.29 spanning-tree rootguard
+
+- 命令：`spanning-tree rootguard no spanning-tree rootguard`
+- 功能：设置端口为根端口。本命令的 no 操作为设置端口为非根端口。
+- 参数：无。 
+- 命令模式：端口模式。 
+- 缺省情况：端口为非根端口。 
+- 使用指南：根保护功能是基于端口配置的，不允许端口成为 mstp 的根端口，也就是说端口要始终保持在指定端口状态。如果在配置了root guard 的端口接收到了更优的 bpdu 报文，根保护功能会把该端口设置为 root_inconsistent(blocked) 状态，而不是根据该 bpdu 重新计算，选择出一个新的根端口。当交换机不再接收更优的 bpdu 报文，该端口就不会再阻塞，根据生成树协议，端口状态从 discarding，learning ，最后转变到 forwarding 状态。恢复是自动的，不需要人为干预。通过 root guard 功能，能够很好的保护二层网络的拓扑结构，不会因为其它设备的加入而改变根网桥，从而不会改变现有网络用户数据所走的链路。
+- 举例：配置端口1为根端口。
+
+  ```text
+  Switch(config-If-Ethernet1/0/1)#spanning-tree rootguard
+  ```
+
+### 1.1.30 spanning-tree tcflush (全局模式)
+
+- 命令：`spanning-tree tcflush {enable | disable | protect} no spanning-tree tcflush` 
+- 功能：配置全局处理拓扑改变导致的 FLUSH 的方式，其 no 形式恢复为默认的模式。
+- 参数：
+    + enable：表示标准的每次 TC 都 FLUSH 的模式。
+    + disable：表示对 TC 不做 FLUSH 处理。 
+    + protect：表示限制 TC 进行 FLUSH 的次数。
+- 命令模式：全局配置模式。
+- 缺省情况：enable。
+- 使用指南：按协议要求，拓扑改变传播时，传播的端口应当清除 MAC/ARP表（FLUSH），但在实际环境中，有时用户的网络比较单纯，不需要也不希望每次拓扑改变都清除 MAC/ARP 表，同时要考虑可能有拓扑改变攻击的情况，因此，我们允许用户通过配置决定拓扑改变传播时的行为。默认使用遵守协议的行为，可以配置为不 FLUSH 或每10秒最多一次 FLUSH。注意：如果网络环境比较复杂，特别是用户可能从生成树的一个支路快速转移到另一支路的情况，不要使用 DISABLE 的方式。全局的配置对所有没有单独配置的端口生效
+- 举例：配置全局处理拓扑改变导致的 FLUSH 的方式为对 TC 不做 FLUSH 处理。
+
+  ```text
+  Switch(config)#spanning-tree tcflush disable 
+  Switch(config)#
+  ```
+  
+### 1.1.31 spanning-tree tcflush (端口模式)
+
+- 命令：`spanning-tree tcflush {enable | disable | protect} no spanning-tree tcflush`
+- 功能：配置端口处理拓扑改变导致的FLUSH的方式，其no形式恢复为默认的模式。
+- 参数：
+     + nable：表示标准的每次 TC 都 FLUSH 的模式。
+     + isable：表示对 TC 不做FLUSH处理。 
+     + rotect：表示限制 TC 进行 FLUSH 的次数。
+- 命令模式：端口配置模式。
+- 缺省情况：使用全局的模式。
+- 使用指南：按协议要求，拓扑改变传播时，传播的端口应当清除 MAC/ARP 表（FLUSH），但在实际环境中，有时用户的网络比较单纯，不需要也不希望每次拓扑改变都清除 MAC/ARP 表，同时要考虑可能有拓扑改变攻击的情况，因此，我们允许用户通过配置决定拓扑改变传播时的行为。默认使用遵守协议的行为，可以配置为不 FLUSH 或每10秒最多一次 FLUSH 。注意：如果网络环境比较复杂，特别是用户可能从生成树的一个支路快速转移到另一支路的情况，不要使用 DISABLE 的方式。
+- 举例：配置端口处理拓扑改变导致的 FLUSH 的方式为对 TC 不做 FLUSH 处理。
+
+  ```text
+  Switch(config)#interface ethernet 1/0/2 
+  Switch(Config-If-Ethernet1/0/2)#spanning-tree tcflush disable 
+  Switch(Config-If-Ethernet1/0/2)#
+  ```
+  
+### 1.1.32 spanning-tree transmit-hold-count
+
+- 命令：`spanning-tree transmit-hold-count <tx-hold-count-value> no spanning-tree transmit-hold-count`
+- 功能：设置端口的最大发送速率。
+- 参数：tx-hold-count-value：取值范围是1-20，默认值是10。
+- 命令模式：全局配置模式。
+- 缺省情况：默认值是10。
+- 使用指南：在每一个 Hello Time时间间隔内可以发送的最大 BPDU 数，用于控制 BPDU 的流量。该变量值应用于整个 MST 网桥。
+- 举例：设置最大发送速率为20。 
+
+  ```text
+  Switch(config)#spanning-tree transmit-hold-count 20
+  ```
+  
+## 1.2 监测和调试命令
+
+### 1.2.1 debug spanning-tree
+
+- 命令：`debug spanning-tree no debug spanning-tree` 
+- 功能：打开 MSTP 的调试信息；本命令的no操作为关闭 MSTP 调试信息。
+- 命令模式：特权模式。
+- 使用指南：该命令是 MSTP 庞大复杂 debug 功能的总开关，逐级打开需要 debug 的相应信息开关后再打开此总开关就能够输出 debug 打印信息了。各级 debug 开关的功能包括：查看MSTP协议运行中 bpdu 报文的发送接收、事件的处理、状态机、计时器等等。一般情况下，这些调试信息是给技术人员调试使用，用户不需要关注。
+- 举例：打开端口1/0/1接收 BPDU 报文的 debug 信息。
+
+  ```text
+  Switch#debug spanning-tree 
+  Switch#debug spanning-tree bpdu rx interface e1/0/1
+  ```
+  
+### 1.2.2 show mst-pending
+
+- 命令：`show mst-pending`
+- 功能：在 MSTP 域配置模式下显示当前配置的 MSTP 域的参数配置情况
+- 命令模式：特权和配置模式
+- 使用指南：在 MSTP 域配置模式下，输入本命令可以查看 MSTP 域当前的配置参数，如 MSTP 域名字、修正数值、VLAN 和 Instance 的映射情况。注意：在退出 MSTP 域配置模式之前，该命令显示的参数配置情况可能尚未生效
+- 举例：显示交换机的 MSTP 域当前的参数配置情况
+
+  ```text
+  Switch(config)#spanning-tree mst configuration
+  Switch(Config-Mstp-Region)#show mst-pending
+  
+  Name       digitalchina
+  Revision  0
+  Instance  Vlans Mapped
+  ----------------------------------
+  00         1-29, 31-39, 41-4093
+  03         30
+  04         40 
+  05         4094 
+  ----------------------------------
+  Switch(Config-Mstp-Region)#
+  ```
+  
+### 1.2.3 show spanning-tree
+
+- 命令：`show spanning-tree [mst [<instance-id>]] [interface <interface-list>] [detail]` 
+
+- 功能：显示 MSTP 协议及各实例信息。
+
+- 参数：`<interface-list>` 为端口列表；`<instance-id>` 为实例的值，范围为0-64； `<interface-list>` 为端口列表；detail 为显示详细的 spanning-tree 信息。
+
+- 命令模式：特权和配置模式。
+
+- 使用指南：通过 show spanning-tree 命令可以查看该网桥及各实例的 MSTP 信息，域配置信息以及端口的 MSTP 信息等。
+
+- 举例：显示网桥 MSTP 信息，显示信息内容如下表所示。
+
+  ```text
+  Switch#sh spanning-tree
+            
+                   -- MSTP Bridge Config Info --  
+  Standard : IEEE 802.1s Bridge 
+  MAC : 00:03:0f:01:0e:30 
+  Bridge Times : Max Age 20, Hello Time 2, Forward Delay 15 
+  Force Version: 3
+  
+  ########################### Instance 0 ########################### Self Bridge Id : 32768 - 00:03:0f:01:0e:30 
+  Root Id : 16384.00:03:0f:01:0f:52 
+  Ext.RootPathCost : 200000 
+  Region Root Id : this switch 
+  Int.RootPathCost : 0 
+  Root Port ID : 128.1 
+  Current port list in Instance 0: 
+  Ethernet1/0/1 Ethernet1/0/2 (Total 2) 
+  PortName   ID   ExtRPC  IntRPC    State Role       DsgBridge DsgPort 
+  ------------ ------- --------- --------- --- ---- ------------------ 
+  Ethernet1/0/1 128.001 0 0 FWD ROOT 16384.00030f010f52 128.007 Ethernet1/0/2 128.002 0 0 BLK ALTR 16384.00030f010f52 128.011
+  
+  ########################### Instance 3 ########################### Self Bridge Id : 0.00:03:0f:01:0e:30 
+  Region Root Id : this switch 
+  Int.RootPathCost : 0 
+  Root Port ID : 0 
+  Current port list in Instance 3: 
+  Ethernet1/0/1 Ethernet1/0/2 (Total 2) 
+  PortName       ID     IntRPC      State Role   DsgBridge     DsgPort 
+  -------------- ------- --------- --- ---- ------------------ ------- Ethernet1/0/1 128.001 0 FWD MSTR 0.00030f010e30 128.001 Ethernet1/0/2 128.002 0 BLK ALTR 0.00030f010e30 128.002
+  
+  ########################### Instance 4 ###########################
+  Self Bridge Id : 32768.00:03:0f:01:0e:30 
+  Region Root Id : this switch 
+  Int.RootPathCost : 0 
+  Root Port ID : 0 
+  Current port list in Instance 4: 
+  Ethernet1/0/1 Ethernet1/0/2 (Total 2) 
+  PortName      ID       IntRPC     State Role DsgBridge      DsgPort 
+  -------------- ------- --------- --- ---- ------------------ ------- Ethernet1/0/1 128.001 0 FWD MSTR 32768.00030f010e30 128.001 Ethernet1/0/2 128.002 0 BLK ALTR 32768.00030f010e30 128.002
+  ```
+  
+  |            显示内容            | 解释                                             |
+  | :----------------------------: | ------------------------------------------------ |
+  |            网桥信息            |                                                  |
+  |            Standard            | STP版本                                          |
+  |           Bridge MAC           | 代表本网桥的MAC                                  |
+  |          Bridge Times          | 本网桥Max Age，Hello Time及Forward Delay的配置值 |
+  |         Force Version          | 当前运行stp协议的Version值                       |
+  |            实例信息            |                                                  |
+  |         Self Bridge Id         | 该实例对应的本网桥优先级及MAC                    |
+  |            Root Id             | 该实例对应的根网桥优先级及MAC                    |
+  |        Ext.RootPathCost        | 网桥到整个网络总根的路径代价                     |
+  |        Int.RootPathCost        | 网桥到该实例域根的路径代价                       |
+  |          Root Port ID          | 网桥上该实例的根端口                             |
+  | 该实例上MSTP协议生效的端口列表 |                                                  |
+  |            PortName            | 端口名字                                         |
+  |               ID               | 端口优先级及端口index索引值                      |
+  |             ExtRPC             | 端口到整个网络总根的路径代价                     |
+  |             IntRPC             | 端口到该实例域根的路径代价                       |
+  |             State              | 该实例对应的端口状态                             |
+  |              Role              | 该实例对应的端口角色                             |
+  |           DsgBridge            | 该实例端口对应的上游指定网桥                     |
+  |            DsgPort             | 该实例端口对应的上游指定端口                     |
+ 
+###  1.2.4 show spanning-tree mst config
+
+- 命令：`show spanning-tree mst config` 
+- 功能：在特权模式下显示生效的 MSTP 域的参数配置情况。
+- 命令模式：特权和配置模式。
+- 使用指南：在特权配置模式下，输入本命令可以查看 MSTP 域生效的当前参数，如 MSTP 域名、修正数值、VLAN 和 Instance 的映射情况。
+- 举例：显示交换机的 MSTP 域的配置情况。
+
+  ```text
+  Switch#show spanning-tree mst config 
+  Name       digitalchina 
+  Revision   0 
+  Instance   Vlans Mapped 
+  ---------------------------------- 
+  00         1-29, 31-39, 41-4094 
+  03         30 
+  04         40 
+  ----------------------------------
+  ```
+
+
+
+  
+
+
+
+
 
 
 
