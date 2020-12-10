@@ -66,6 +66,24 @@ vi CentOS-Media.repo
 yum update
 ```
 
+## firewall（防火墙）
+
+### 安装
+
+```sh
+yum install firewalld
+```
+
+### 设置服务
+
+```sh
+systemctl start firewalld # 启动
+systemctl status firewalld # 查看状态
+systemctl enable firewalld # 开机启动
+systemctl disable firewalld # 开机不启动
+systemctl stop firewalld # 停止运行
+```
+
 <!--
 ## 常用指令
 

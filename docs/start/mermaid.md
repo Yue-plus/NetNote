@@ -1,21 +1,21 @@
 # mermaid 语法
 
-该项目通过 [vuepress-plugin-mermaidjs](https://github.com/eFrane/vuepress-plugin-mermaidjs) 插件来支持使用 [mermaid-js](http://mermaid-js.github.io/mermaid/)（[GitHub](https://github.com/mermaid-js/mermaid)）绘制各种图表。
+该项目通过 [vuepress-plugin-mermaidjs](https://github.com/eFrane/vuepress-plugin-mermaidjs) 插件来支持使用 [mermaid-js](https://mermaid-js.github.io/mermaid/#/)（[GitHub](https://github.com/mermaid-js/mermaid)）绘制各种图表。
 
 支持：
-- [流程图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/flowchart.html)
-- [序列图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/sequenceDiagram.html)
-- [类图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/classDiagram.html)
-- [状态图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/stateDiagram.html)
-- [实体关系图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/entityRelationshipDiagram.html)
-- [用户旅程图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/user-journey.html)
-- [甘特图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/gantt.html)
+- [流程图](https://mermaid-js.github.io/mermaid/#/flowchart)
+- [序列图](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
+- [类图](https://mermaid-js.github.io/mermaid/#/classDiagram)
+- [状态图](https://mermaid-js.github.io/mermaid/#/stateDiagram)
+- [实体关系图](https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram)
+- [用户旅程图](https://mermaid-js.github.io/mermaid/#/user-journey)
+- [甘特图](https://mermaid-js.github.io/mermaid/#/gantt)
 - [指令图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/directives.html)
-- [饼图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/pie.html)
+- [饼图](https://mermaid-js.github.io/mermaid/#/pie)
 
 > [关于写作那些事之快速上手Mermaid流程图](https://baijiahao.baidu.com/s?id=1666117882411053133)
 
-## [流程图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/flowchart.html)
+## [流程图](https://mermaid-js.github.io/mermaid/#/flowchart)
 
 > ```mermaid
 > graph LR
@@ -33,7 +33,7 @@ graph LR
     C -->|Two| E[Result two]
 ```
 
-## [序列图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/sequenceDiagram.html)
+## [序列图](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
 
 > ```mermaid
 > sequenceDiagram
@@ -61,7 +61,7 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 ```
 
-## [类图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/classDiagram.html)
+## [类图](https://mermaid-js.github.io/mermaid/#/classDiagram)
 
 > ```mermaid
 > classDiagram
@@ -87,7 +87,7 @@ classM ..|> classN : Realization
 classO .. classP : Link(Dashed)
 ```
 
-## [状态图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/stateDiagram.html)
+## [状态图](https://mermaid-js.github.io/mermaid/#/stateDiagram)
 
 > ```mermaid
 >     stateDiagram-v2
@@ -111,7 +111,7 @@ classO .. classP : Link(Dashed)
         note left of State2 : This is the note to the left.
 ```
 
-## [实体关系图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/entityRelationshipDiagram.html)
+## [实体关系图](https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram)
 
 > ```mermaid
 > erDiagram
@@ -127,7 +127,7 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-## [用户旅程图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/user-journey.html)
+## [用户旅程图](https://mermaid-js.github.io/mermaid/#/user-journey)
 
 > ```mermaid
 > journey
@@ -153,7 +153,7 @@ journey
       Sit down: 5: Me
 ```
 
-## [甘特图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/gantt.html)
+## [甘特图](https://mermaid-js.github.io/mermaid/#/gantt)
 
 > ```mermaid
 > gantt
@@ -197,7 +197,7 @@ Alice->>Bob: Hi Bob
 Bob->>Alice: Hi Alice
 ```
 
-## [饼图](http://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/pie.html)
+## [饼图](https://mermaid-js.github.io/mermaid/#/pie)
 
 > ```mermaid
 > pie
