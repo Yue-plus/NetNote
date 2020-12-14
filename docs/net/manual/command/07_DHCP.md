@@ -689,6 +689,184 @@
   ```text
   Switch#clear ipv6 dhcp statistics 
   ```
-- 相关命令：show ipv6 dhcp statistics
+- 相关命令：`show ipv6 dhcp statistics`
+
+### 2.4 debug ipv6 dhcp client packet
+
+- 命令：`debug ipv6 dhcp client { event | packet } no debug ipv6 dhcp client { event | packet }` 
+- 功能：显示 DHCPv6 前缀请求客户端收发报文的 debug 显示，本命令的 no 操作关闭 DHCPv6 前缀请求客户端的 debug 显示信息
+- 缺省情况：缺省调试开关是关闭的
+- 命令模式：特权用户配置模式
+- 举例：
+
+  ```text
+  Switch# debug ipv6 dhcp client packet
+  ``` 
+  
+### 2.5 debug ipv6 dhcp detail
+
+- 命令：`debug ipv6 dhcp detail no debug ipv6 dhcp detail`
+- 功能：显示DHCPv6收发各类报文详细内容的 debug 显示，本命令的 no 操作关闭 DHCPv6 收发报文内容的 debug 显示信息
+- 缺省情况：缺省调试开关是关闭的
+- 命令模式：特权用户配置模式
+- 举例：
+
+  ```text
+  Switch# debug ipv6 dhcp detail
+  ```
+  
+### 2.6 debug ipv6 dhcp relay packet
+
+- 命令：`debug ipv6 dhcp relay packet no debug ipv6 dhcp relay packet`
+- 功能：显示 DHCPv6 中继代理收发报文的 debug 显示，本命令的 no 操作关闭 DHCPv6 中继代理的 debug 显示信息
+- 缺省情况：缺省调试开关是关闭的
+- 命令模式：特权用户配置模式
+- 举例：
+
+  ```text
+  Switch# debug ipv6 dhcp relay packet
+  ```
+  
+### 2.7 debug ipv6 dhcp server
+
+- 命令：`debug ipv6 dhcp server {event | packet} no debug ipv6 dhcp server {event | packet}`
+- 功能：显示 DHCPv6 服务器的事件和收发报文的情况，本命令的 no 操作关闭 DHCPv6 服务器的 debug 显示信息
+- 参数：event 表示开启/关闭 DHCPv6 服务器事件的 debug 显示，如地址分配情况；packet 表示开启/关闭 DHCPv6 服务器收发报文的 debug 显示
+- 缺省情况：缺省调试开关是关闭的
+- 命令模式：特权用户配置模式
+- 举例：
+
+  ```text
+  Switch#debug ipv6 dhcp server packet
+  ```
+  
+### 2.8 dns-server
+
+- 命令：`dns-server <ipv6-address> no dns-server <ipv6-address>`
+- 功能：为DHCPv6客户机配置 DNS 服务器 IPv6 地址；本命令的 no 操作为删除 DNS 服务器 IPv6 地址
+- 参数：`<ipv6-address>`为DNS服务器的 IPv6 地址
+- 缺省情况：系统默认没有配置地址池的DNS服务器地址
+- 命令模式：DHCPv6 地址池模式
+- 使用指南：本命令最多可配置3次，即每个地址池最多允许3个 DNS 服务器地址，而且服务器地址只能是 IPv6 地址
+- 举例：设置 DHCPv6 客户机的DNS服务器的地址为2001:da8::1
+
+  ```text
+  Switch(dhcp-1-config)#dns-server 2001:da8::1
+  ```
+  
+### 2.9 domain-name
+
+- 命令：`domain-name <domain-name> no domain-name <domain-name>`
+- 功能：为 DHCPv6 客户机配置域名；本命令的 no 操作为删除域名
+- 参数：`<domain-name>` 为域的名称，最长不超过32字符
+- 命令模式：DHCPv6 地址池模式
+- 缺省情况：系统默认没有配置地址池的域名参数
+- 使用指南：本命令最多可配置 3 次，即每个地址池最多允许 3 个域名参数
+- 举例：指定 DHCPv6 客户机的域名为 test.com.cn
+
+  ```text
+  Switch(dhcp-1-config)#domain-name test.com.cn
+  ```
+  
+### 2.10 excluded-address
+
+- 命令：`excluded-address <ipv6-address> no excluded-address <ipv6-address>`
+- 功能：配置地址池中不用于动态分配的 IPv6 地址，以避免某些专用地址不被分配；本命令的 no 操作为取消该项配置
+- 参数：`<ipv6-address>` 为不用于动态分配的地址池中的某个 IPv6 地址
+- 缺省情况：地址池缺省没有配置不用于动态分配的 IPv6 地址。
+- 命令模式：DHCPv6 地址池模式
+- 使用指南：使用本命令可以将地址池中的一个或多个地址排除不做 DHCPv6 分配，这些地址由系统管理员留作其它用途。本命令在一个地址池中可以配置多次
+- 举例：将 2001:da8:123::1 地址保留，不用于动态分配。
+
+  ```text
+  Switch(config)#excluded-address 2001:da8:123::1
+  ```
+  
+### 2.11 ipv6 address
+
+- 命令：`ipv6 address <prefix-name> <ipv6-prefix/prefix-length> no ipv6 address <prefix-name> <ipv6-prefix/prefix-length>`
+- 功能：在指定接口上配置使用代理前缀生成的 IPv6 地址。本命令的 no 操作在指定接口上删除使用代理前缀生成的 IPv6 地址
+- 参数：`<prefix-name>`是一个长度小于32的字符串，表示前缀请求客户端获得前缀或手动配置而保存在通用前缀池中的前缀名。`<ipv6-prefix/prefix-length>`表示 IPv6 地址中排除`<prefix-name>`前缀部分的后续地址位
+- 命令模式：接口配置模式
+- 缺省情况：系统默认不在接口配置全局地址
+- 使用指南：接口IPv6地址将由`<prefix-name>`和`<ipv6-prefix/prefix-length>`组合而成，最终 IPv6 地址的前缀长度将由`<prefix-length>`指定。如果开启了路由器公告，将公告前64位前缀。系统在接口上删除由`<prefix-name>`和`<ipv6-prefix/prefix-length>`组合而成的 IPv6 地址，并停止公告该前缀。一个接口的一个前缀名只能配置唯一的`<ipv6-prefix/prefix-length>`.
+- 举例：如果前缀名 my-prefix 表示 2001:da8:221::/48，本命令将在 Vlan1 接口生成 2001:da8:221:2008::2008
+
+  ```text
+  Switch(Config-if-Vlan1)# ipv6 address my-prefix 0:0:0:2008::2008/64
+  ```
+  
+### 2.12 ipv6 dhcp client pd
+
+- 命令：`ipv6 dhcp client pd <prefix-name> [rapid-commit] no ipv6 dhcp client pd`
+- 功能：在指定接口上启动客户端前缀代理请求功能。本命令的 no 操作在指定接口上关闭客户端前缀代理请求功能，并删除获得的前缀
+- 参数：`<prefix-name>`是一个长度小于32的字符串，表示成功获得代理前缀后，使用该名称保存在通用前缀池中。如果指定了 rapid-commit 选项，且前缀代理服务器端也使能了 rapid-commmit 功能，则前缀代理服务器将向前缀请求客户端直接发出 REPLY 报文，通过一次消息交换完成前缀代理请求过程
+- 命令模式：接口配置模式
+- 缺省情况：系统默认不启动客户端前缀代理请求功能。
+- 使用指南：系统在接口上启动客户端前缀代理请求功能，发出 SOLICIT 报文，希望从服务器获得代理前缀。一旦获得了前缀，就可以通
+        过其他命令（比如ipv6 address 命令）引用通用前缀池中的这个前缀。本命令与 ipv6 dhcp server 和 ipv6 dhcp relay de
+        stination 命令互斥。如果系统在接口上关闭客户端前缀代理请求功能，则从通用前缀池中删除获得的前缀，同时删除使用该前缀生成
+        的接口地址，不再使用该前缀进行路由公告。如果已经通过 ipv6general-prefix 命令配置了同一通用前缀名，则不能注册此通用前缀名。
+- 举例：
+
+  ```text
+  Switch(Config-if-Vlan1)#ipv6 dhcp client pd ClientA rapid-commit
+  ```
+  
+### 2.13 ipv6 dhcp client pd hint
+
+- 命令：`ipv6 dhcp client pd hint <prefix|prefix-length> no ipv6 dhcp client pd hint <prefix|prefix-length>`
+- 功能：在指定接口上指定客户端希望获取的前缀和前缀长度的功能。本命令的 no 操作在指定接口上删除客户端希望获取的前缀和前缀长度
+- 参数：`<prefix|prefix-length>` 表示客户端希望获取的前缀和前缀长度
+- 命令模式：接口配置模式
+- 缺省情况：系统默认不指定客户端希望获取的前缀和前缀长度的功能
+- 使用指南：系统在接口上为客户端指定了其希望获取的前缀和前缀长度，如果在接口上启动了客户端前缀代理请求功能且前缀服务器使能了 hint 功能，则服务器端优先把客户端希望获取得前缀和前缀长度分配给客户端。系统目前只允许配置一个 hint 前缀
+- 举例：
+  ```text
+  Switch(vlan-1-config)#ipv6 dhcp client pd hint 2001::/48
+  ```
+  
+### 2.14 ipv6 dhcp pool
+
+- 命令：`ipv6 dhcp pool <poolname> no ipv6 dhcp pool <poolname>`
+- 功能：配置 DHCPv6 地址池，进入 DHCPv6 地址池模式，在此模式下配置可分配给客户端的地址前缀、DNS 服务器、域名等信息；本命令的 no 操作为删除该地址池
+- 参数：`<poolname>`为DHCPv6地址池名，最长不超过32个字符
+- 缺省情况：系统默认不配置任何DHCPv6地址池
+- 命令模式：全局配置模式
+- 使用指南：在全局模式下定义一个 DHCPv6 地址池，进入到 DHCPv6 地址池配置模式。如果想要删除一个地址池，则需要先解除与该地址相关的接口绑定，并且清除所有相关的地址绑定
+- 举例：定义一个地址池，取名1。
+
+  ```text
+  Switch(config)#ipv6 dhcp pool 1
+  ```
+  
+### 2.15 ipv6 dhcp relay destination
+
+- 命令：`ipv6 dhcp relay destination { [<ipv6-address>] [ interface { <interface-name> | vlan <1-4096> } ] } no ipv6 dhcp relay destination { [<ipv6-address>] [ interface { <interface-name> | vlan <1-4096> } ] }`
+- 功能：配置 DHCPv6 接口中继代理为客户端递交中继报文的目的 IPv6 地址，可以是另外的 DHCPv6 中继代理的地址也可以是 DHCPv6 服务器的地址。本命令的 no 操作取消该项配置。
+- 参数：`<ipv6-address>`为DHCPv6中继代理转发中继报文的目的 IPv6 地址；`<interface-name>`或 vlan 参数是转发出报文的交换机接口名或接口号，`<interface-name>`只能为三层接口 vlan 名称，vlan 接口号的取值范围为1～4096。当`<ipv6-address>`为全球单播地址时，不配置转发的接口参数；当`<ipv6-address>`为本地链路地址时，必须配置转发的接口名称；当只配置报文转发出的接口名称时，此时默认转发目的地址为所有 DHCPv6 服务器的本地站点多播地址 All_DHCP_Servers (FF05::1:3)。
+- 命令模式：接口配置模式。
+- 缺省情况：系统默认没有配置 DHCPv6 中继代理的目的 IPv6 地址。
+- 使用指南：配置本命令指示本接口启用 DHCPv6 中继代理功能，以后把配置的地址作为 RELAY-FORWARD 报文的目的地址，该地址可以是另外的 DHCPv6 中继代理的地址也可以是 DHCPv6 服务器的地址。系统最多允许配置3个中继代理的目的地址。注意只有该接口所有 DHCPv6 中继代理的目的地址都被删除，该接口的 DHCPv6 中继代理功能才不可用。本命令与 ipv6 dhcp server 和 ipv6 dhcp client pd 命令互斥
+- 举例：
+
+  ```text
+  Switch(Config-if-Vlan1)#ipv6 dhcp relay destination 2001:da8::1
+  ```
+  
+### 2.16 ipv6 dhcp server
+
+
+
+
+
+  
+
+
+
+
+
+
+
 
 
