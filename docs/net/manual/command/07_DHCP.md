@@ -856,6 +856,72 @@
   
 ### 2.16 ipv6 dhcp server
 
+- 命令：`ipv6 dhcp server <poolname> [preference <value>] [rapid-commit] [allow-hint] no ipv6 dhcp server <poolname>`
+- 功能：配置本命令绑定了 DHCPv6 服务器在接口使用的 DHCPv6 地址池。本命令的 no 操作删除指定接口上的 DHCPv6 地址池，停止本接口的 DHCPv6 服务
+- 参数：`<poolname>` 是一个长度小于32的字符串，表示与本接口关联的 DHCPv6 地址池名称。如果指定了 rapid-commit 选项，则DHCPv6服务器收到客户端的 SOLICIT 报文后，向客户端直接发出 REPLY 报文，通过一次消息交换完成地址或前缀请求过程。如果指定了 preference 选项，则`<value>`表示本服务器的优先值，取值范围是 0～255，默认值是 0，值越大服务器优先级越高。如果指定了 allow-hint 选项，表示优先满足客户端期望分配的配置参数，这些期望参数在客户端发出的请求报文中给出
+- 命令模式：接口配置模式
+- 缺省情况：系统默认没有配置接口的 DHCPv6 地址池
+- 使用指南：配置本命令记录了 DHCPv6 服务器在接口使用的 DHCPv6 地址池，及在该接口提供 DHCPv6 服务的相关参数。一个接口上可以绑定多个 DHCPv6 地址池，可以同时为直连链路的 DHCPv6 请求以及来自中继代理的 DHCPv6 请求报文分配地址
+- 举例：
+
+  ```text
+  Switch(Config-if-Vlan1)#ipv6 dhcp server PoolA preference 80 rapid-commit allow-hint
+  ```
+  
+### 2.17 ipv6 general-prefix
+
+- 命令：`ipv6 general-prefix <prefix-name> <ipv6-prefix/prefix-length> no ipv6 general-prefix <prefix-name>`
+- 功能：定义一个IPv6 通用前缀。本命令的no操作取消该项配置
+- 参数：`<prefix-name>`是一个长度小于32的字符串，表示 IPv6 通用前缀名称。`<ipv6-prefix/prefix-length>`表示定义的 IPv6 通用前缀
+- 命令模式：全局配置模式
+- 缺省情况：系统默认没有配置 IPv6 通用前缀
+- 使用指南：定义了 IPv6 通用前缀后，在接口上可以引用该通用前缀生成接口 IPv6 地址。在使用上通用前缀一般表示企业级的 IPv6 前缀，这样在接口上输入地址时只需要给出通用前缀名加上接口前缀后续部分，简化了用户书写。定义的通用前缀将保存在通用前缀池中。系统最多可配置 8 个通用前缀。当删除指定的通用前缀名称时，如果有接口引用了这个通用前缀，本命令执行不成功。一个通用前缀名只能配置一个通用前缀。如果有接口使能 IPv6 dhcp 前缀代理客户端占用了通用前缀名，则不能使用此命令配置相同的通用前缀名
+- 举例：把 2001:da8:221::/48 前缀分配给通用前缀名 my-prefix
+
+  ```text
+  Switch(config)# ipv6 general-prefix my-prefix 2001:da8:221::/48
+  ```
+  
+### 2.18 ipv6 local pool
+
+- 命令：`ipv6 local pool <poolname> <prefix/prefix-length> <assigned-length> no ipv6 local pool <poolname>`
+- 功能：配置 IPv6 代理前缀池。本命令的 no 操作删除 IPv6 代理前缀池
+- 参数：`<poolname>`表示 IPv6 代理前缀池的名字，它是长度小于 32 的字符串。`<prefix/prefix-length>`表示分配给这个代理前缀池的前缀和前缀长度。`<assigned-length>`表示分配给使用这个代理前缀池的前缀请求客户端的前缀长度，它不能小于`<prefix-length>`
+- 命令模式：全局配置模式
+- 缺省情况：系统默认没有配置 IPv6 代理前缀池
+- 使用指南：本命令将与 prefix-degation pool 命令配合使用，向前缀请求客户端分配前缀。删除 IPv6 代理前缀池后，地址池中与之关联的 prefix-delegation 命令将无效。
+
+### 2.19 lifetime
+
+- 命令：`lifetime {<valid-time> | infinity} {<preferred-time> | infinity} no lifetime` 
+- 功能：配置 DHCPv6 地址池动态分配地址或前缀的生存期。本命令的 no 操作恢复默认配置
+- 参数：`<valid-time>` 和`<preferred-time>`分别为本地址池分配 IPv6 地址的有效生存期和优选生存期，单位为秒，取值范围是 1-31536000，但`<preferred-time>`必须不大于`<valid-time>`。参数 infinity 表示生存期为无限值
+- 命令模式：DHCPv6 地址池模式
+- 缺省情况：地址池有效生存期和优选生存期默认为 2592000秒(30天) 和 604800秒(7天)
+- 举例：配置有效生存期为 1000秒，优选生存期为 600秒
+
+  ```text
+  Switch(config)#lifetime 1000 600
+  ```
+  
+### 2.20 network-address
+
+- 命令：`network-address <ipv6-pool-start-address> {<ipv6-pool-end-address> | <prefix-length>} [eui-64] no network-address`
+- 功能：配置 DHCPv6 地址池可分配的 IPv6 地址范围；本命令的 no 操作为取消该项配置
+- 参数：`<ipv6-pool-start-address>`为地址池IPv6起始地址；`<ipv6-pool-end-address>`为地址池IPv6终止地址；`<prefix-length>`为前缀长度，取值范围为3-128，建议配置为64，依据`<prefix-length>`计算出地址池 IPv6 终止地址。`<ipv6-pool-end-address>` 和`<prefix-length>`二者取其一。如果配置的`<prefix-length>`为64，同时配置了 eui-64 选项，则 DHCPv6 服务器向客户端分配基于 EUI-64 规范的 IPv6 地址，否则将按自然顺序为客户端分配地址
+- 缺省情况：DHCPv6 地址池默认没有配置可分配的 IPv6 地址范围
+- 命令模式：DHCPv6 地址池模式
+- 使用指南：DHCPv6 服务器使用本命令配置可分配的 IPv6 地址范围，一个地址池只能分配一个地址范围。注意在使用 DHCPv6 服务器并配置前缀长度的时候，应该使地址池中前缀长度大于或等于交换机上对应网段的三层接口 IPv6 地址的前缀长度。如果`<ipv6-pool-end-address>`比`<ipv6-pool-start-address>`大，本命令立即返回
+- 举例：地址池1的可分配的地址范围为 2001:da8:123::100-2001:da8:123::200
+
+  ```text
+  Switch(dhcp-1-config)#network-address 2001:da8:123::100 2001:da8:123::200
+  ```
+  
+### 2.21 prefix-delegation
+
+
+
 
 
 
