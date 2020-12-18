@@ -645,7 +645,7 @@
   Switch#show ip helper-address 
   Forward protocol       Interface       Forward server 
   67(active)               Vlan1           192.168.1.1
-  ``` 
+  ```
   
 # 第2章 DHCPv6配置命令
 
@@ -661,7 +661,7 @@
   ```text
   Switch#clear ipv6 dhcp binding
   ```
- 
+
 - 相关命令：`show ipv6 dhcp binding`
 
 ### 2.2 clear ipv6 dhcp conflict
@@ -701,7 +701,7 @@
 
   ```text
   Switch# debug ipv6 dhcp client packet
-  ``` 
+  ```
   
 ### 2.5 debug ipv6 dhcp detail
 
@@ -920,6 +920,243 @@
   
 ### 2.21 prefix-delegation
 
+- 命令：`prefix-delegation <ipv6-prefix/prefix-length> <client-DUID> [iaid <iaid>] [lifetime <valid-time> <preferred-time>] no prefix-delegation <ipv6-prefix/prefix-length> <client-DUID> [iaid <iaid>]`
+- 功能：配置分配给特定前缀请求客户端的代理前缀。本命令的 no 操作删除分配给特定前缀请求客户端的代理前缀
+- 参数：`<ipv6-prefix/prefix-length>` 为分配给特定前缀请求客户端的代理前缀。`<client-DUID>` 为指定前缀请求客户端的 DUID，本文支持 DUID-LLT 类型的 DUID，它是长度为14的字符串， 同时支持 DUID-LL 类型的 DUID。`<iaid>` 是客户端请求报文中 IA_PD 选项中指定的 IAID 值。`<valid-time>` 和 `<preferred-time>` 分别为客户分配 IPv6 前缀的有效生存期和优选生存期，单位为秒，取值范围是 1-31536000，但`<preferred-time>`必须小于`<valid-time>`，如果不配置，默认的值`<valid-time>`为2592000，`<preferred-time>`为604800
+- 命令模式：DHCPv6 地址池配置模式
+- 缺省情况：系统默认没有配置分配给特定前缀请求客户端的代理前缀
+- 使用指南：本命令指定 IPv6 前缀与某个前缀请求客户端静态绑定。如果没有配置IAID则客户端的任何IA都可以获取此前缀。一个地址池最多可以配置8个静态绑定的代理前缀。在前缀代理服务中，静态绑定前缀优先于前缀池被使用
+- 举例：以下命令把 2001:da8::/48 分配给 DUID 为 0001000600000005000BBFAA2408 ，IAID 为12的前缀请求客户端。
+
+  ```text
+  Switch(dhcp-1-config)#prefix-delegation      2001:da8::/48 
+  0001000600000005000BBFAA2408 12
+  ```
+
+### 2.22 prefix-delegation pool
+
+- 命令：`prefix-delegation pool <poolname> [lifetime <valid-time> <preferred-time>] no prefix-delegation pool <poolname>`
+- 功能：配置 DHCPv6 地址池使用的代理前缀池名称。本命令的 no 操作删除 DHCPv6 地址池使用的代理前缀池名称
+- 参数：`<poolname>`为代理前缀池的名称，它是长度小于32的字符串。`<valid-time>` 和`<preferred-time>`分别为从该前缀池分配 IPv6 前缀的有效生存期和优选生存期，单位为秒，取值范围是 1-31536000，但`<preferred-time>`必须不大于`<valid-time>`，如果不配置，默认的值`<valid-time>`为2592000，`<preferred-time>`为604800。参数 infinity 表示生存期为无限值
+- 命令模式：DHCPv6 地址池配置模式。
+- 缺省情况：系统默认没有配置 DHCPv6 地址池使用的代理前缀池名称
+- 使用指南：本命令指定 DHCPv6 地址池使用的代理前缀池名称，服务器提供代理前缀服务时将从该前缀池中分配可用的前缀给客户端。本命令与 ipv6 local pool 命令配合使用。一个地址池最多可以绑定1个代理前缀池。在删除 DHCPv6 地址池使用的代理前缀池名称时，如果地址池已不关联代理前缀池，也没有配置静态绑定代理前缀，则服务器的前缀代理服务将不可用
+- 举例：
+
+  ```text
+  Switch(dhcp-1-config)#prefix-delegation pool abc
+  ```
+  
+### 2.23 service dhcpv6
+
+- 命令：`service dhcpv6 no service dhcpv6`
+- 功能：启动DHCPv6服务器功能；本命令的 no 操作为关闭 DHCPv6 服务
+- 参数：无
+- 缺省情况：DHCPv6 服务缺省是关闭的
+- 命令模式：全局配置模式
+- 使用指南：DHCPv6 服务包括 DHCPv6 服务器功能、DHCPv6 中继的功能和 DHCPv6 前缀代理功能。DHCPv6 服务器功能、DHCPv6 中继功能和 DHCPv6 前缀代理功能配置在接口上。只有打开 DHCPv6 服务器功能，交换机才能在接口上给 DHCPv6 客户机分配 IP 地址、开启 DHCPv6 的 RELAY 功能以及开启 DHCPv6 前缀代理功能
+- 举例：打开 DHCPv6 服务器。
+
+  ```text
+  Switch(config)#service dhcpv6
+  ```
+  
+### 2.24 show ipv6 dhcp
+
+- 命令：`show ipv6 dhcp`
+- 功能：显示交换机 DHCPv6 服务的使能开关以及 DUID
+- 命令模式：特权和配置模式
+- 使用指南：显示交换机 DHCPv6 服务的使能开关以及 DUID，服务器标识符选项只会使用 DUID-LLT 类型的 DUID
+- 举例：
+
+  ```text
+  Switch#show ipv6 dhcp
+  DHCPv6 is enabled 
+  LLT DUID is <00:01:00:01:43:b7:1b:81:00:03:0f:01:5f:9d>
+  LL DUID is <00:03:00:01:00:03:0f:01:5f:9d>
+  ```
+  
+### 2.25 show ipv6 dhcp binding
+
+- 命令：`show ipv6 dhcp binding [<ipv6-address> | pd <ipv6-prefix|prefix-length> | count]`
+- 功能：显示 DHCPv6 所有的地址或前缀绑定信息
+- 参数：`<ipv6-address>`为某指定的 IPv6 地址；count 表示显示 DHCPv6 地址绑定表项数量信息
+- 命令模式：特权和配置模式
+- 使用指南：显示 DHCPv6 所有的地址或前缀绑定信息，包括类型、DUID、IAID、前缀、超时时间等
+- 举例: 
+
+  ```text
+  Switch#show ipv6 dhcp binding 
+  Client: iatype IANA, iaid 0x0e001d92 
+  DUID: 00:01:00:01:0f:55:82:4f:00:19:e0:3f:d1:83 
+  IANA leased address: 2001:da8::10 
+  Preferred lifetime 604800 seconds, valid lifetime 2592000 seconds 
+  Lease obtained at %Jan 01 01:34:44 1970 
+  Lease expires at %Jan 31 01:34:44 1970 (2592000 seconds left) 
+  The number of DHCPv6 bindings is 1
+  ```
+  
+### 2.26 show ipv6 dhcp conflict
+
+- 命令：`show ipv6 dhcp conflict`
+- 功能：显示有冲突记录的地址的日志信息
+- 命令模式：特权和配置模式
+- 举例：
+
+  ```text
+  witch#show ipv6 dhcp conflict
+  ```
+  
+### 2.27 show ipv6 dhcp interface
+
+- 命令：`show ipv6 dhcp interface [<interface-name>]`
+- 功能：显示交换机DHCPv6接口的信息
+- 参数：`<interface-name>` 为交换机接口名称及接口号，如果没有提供`<interface-name>`参数，则系统显示当前所有 DHCPv6 接口的信息。
+- 命令模式：特权和配置模式
+- 使用指南：显示交换机DHCPv6接口的信息，包括接口工作模式（Prefix delegation client、DHCPv6 server、DHCPv6 relay），以及各种模式下的相关配置信息
+- 举例
+
+    ```text
+    Switch#show ipv6 dhcp interface vlan10
+    Vlan10 is in server mode 
+    Using pool: poolv6 
+    Preference value: 20 
+    Rapid-Commit is disabled
+    ```
+
+### 2.28 show ipv6 dhcp pool
+
+- 命令：`show ipv6 dhcp pool [<poolname>]`
+- 功能：显示DHCPv6地址池的信息
+- 参数：`<poolname>`为系统当前已配置 DHCPv6 地址池名称，长度小于32个字符。如果不提供`<poolname>`参数，则系统显示所有 DHCPv6 地址池的信息
+- 命令模式：特权和配置模式
+- 使用指南：显示交换机 DHCPv6 地址池的配置信息以及动态分配信息，包括 DHCPv6 地址池的名称，DHCPv6 地址池的前缀信息，排除地址，DNS server 等配置信息，以及关联的前缀池信息。对于用作地址分配服务器模式的地址池，显示已经分配的地址绑定个数。对于用作前缀代理服务器模式的地址池，显示已分配的前缀个数
+- 举例：
+
+  ```text
+  Switch#show ipv6 dhcp pool poolv6
+  ```
+  
+### 2.29 show ipv6 dhcp statistics
+
+- 命令：`show ipv6 dhcp statistics`
+- 功能：显示 DHCPv6 服务器的对各种 DHCPv6 数据包的统计信息
+- 命令模式：特权和配置模式。
+- 举例：
+
+    ```text
+    Switch#show ipv6 dhcp statistics
+    Address pools               1 
+    Active bindings             0 
+    Expiried bindings           0 
+    Malformed message           0
+    
+    Message Recieved
+    DHCP6SOLICIT                0 
+    DHCP6ADVERTISE              0 
+    DHCP6REQUEST                0 
+    DHCP6REPLY                  0 
+    DHCP6RENEW                  0 
+    DHCP6REBIND                 0
+    DHCP6RELEASE                0 
+    DHCP6DECLINE                0 
+    DHCP6CONFIRM                0 
+    DHCP6RECONFIGURE            0 
+    DHCP6INFORMREQ              0 
+    DHCP6RELAYFORW              0 
+    DHCP6RELAYREPLY             0
+    
+    Message Send
+    DHCP6SOLICIT                0 
+    DHCP6ADVERTISE              0 
+    DHCP6REQUEST                0 
+    DHCP6REPLY                  0 
+    DHCP6RENEW                  0 
+    DHCP6REBIND                 0 
+    DHCP6RELEASE                0 
+    DHCP6DECLINE                0 
+    DHCP6CONFIRM                0 
+    DHCP6RECONFIGURE            0 
+    DHCP6INFORMREQ              0 
+    DHCP6RELAYFORW              0 
+    DHCP6RELAYREPLY             0
+    
+    
+    
+    | 显示信息          | 解释                           |
+    | ----------------- | ------------------------------ |
+    | Address pools     | 配置的DHCPv6地址池个数         |
+    | Active bindings   | 自动分配地址的个数             |
+    | Expiried bindings | 绑定超期的个数                 |
+    | Malformed message | 错误信息的个数；               |
+    | Message Recieved  | 接收DHCPv6数据包的统计         |
+    | DHCP6SOLICIT      | 其中DHCPv6 SOLICIT报文个数     |
+    | DHCP6ADVERTISE    | 其中DHCPv6 ADVERTISE报文个数   |
+    | DHCPv6REQUEST     | 其中DHCPv6 REQUEST报文个数     |
+    | DHCP6REPLY        | 其中DHCPv6 REPLY报文个数       |
+    | DHCP6RENEW        | 其中DHCPv6 RENEW报文个数       |
+    | DHCP6RELEASE      | 其中DHCPv6 RELEASE报文个数     |
+    | DHCP6DECLINE      | 其中DHCPv6 DECLINE报文个数     |
+    | DHCP6CONFIRM      | 其中DHCPv6 CONFIRM报文个数     |
+    | DHCP6RECONFIGURE  | 其中DHCPv6 RECONFIGURE报文个数 |
+    | DHCP6INFORMREQ    | 其中DHCPv6 INFORMREQ报文个数   |
+    | DHCP6RELAYFORW    | 其中DHCPv6 RELAYFORW报文个数   |
+    | Message Send      | 发送DHCPv6数据包的统计         |
+    | DHCP6SOLICIT      | 其中DHCPv6 SOLICIT报文个数     |
+    | DHCP6ADVERTISE    | 其中DHCPv6 ADVERTISE报文个数   |
+    | DHCPv6REQUEST     | 其中DHCPv6 REQUEST报文个数     |
+    | DHCP6REPLY        | 其中DHCPv6 REPLY报文个数       |
+    | DHCP6RENEW        | 其中DHCPv6 RENEW报文个数       |
+    | DHCP6REBIND       | 其中DHCPv6 REBIND报文个数      |
+    | DHCP6RELEASE      | 其中DHCPv6 RELEASE报文个数     |
+    | DHCP6DECLINE      | 其中DHCPv6 DECLINE报文个数     |
+    | DHCP6CONFIRM      | 其中DHCPv6 CONFIRM报文个数     |
+    | DHCP6RECONFIGURE  | 其中DHCPv6 RECONFIGURE报文个数 |
+    | DHCP6INFORMREQ    | 其中DHCPv6 INFORMREQ报文个数   |
+    | DHCP6RELAYFORW    | 其中DHCPv6 RELAYFORW报文个数   |
+    ```
+  
+### 2.30 show ipv6 general-prefix
+
+- 命令：`show ipv6 general-prefix`
+- 功能：显示 IPv6 通用前缀池的信息
+- 命令模式：特权和配置模式
+- 使用指南：显示 IPv6 通用前缀池的信息，包括通用前缀池中的前缀数目，每个前缀的名称，获取该前缀的接口，具体的前缀值
+- 举例：
+
+  ```text
+  Switch#show ipv6 general-prefix
+  ```
+  
+### 2.31 show ipv6 local pool
+
+- 命令：`show ipv6 local pool`
+- 功能：显示 DHCPv6 前缀池的信息和统计
+- 命令模式：特权和配置模式
+- 使用指南：显示 DHCPv6 前缀池的信息和统计，包括前缀池的名称，DHCPv6 池中的前缀、前缀长度、分配的前缀长度，可以自由分配前缀的个数，已经分配的前缀的个数和前缀信息
+- 举例：
+
+  ```text
+  Switch#show ipv6 local pool 
+  Pool        Prefix            Free          In use 
+    a         2010::1/0/48      65536            0
+  ```
+  
+## 第3章 DHCP option 82配置命令
+
+### 3.1 debug ip dhcp relay packet
+
+- 命令：`debug ip dhcp relay packet`
+- 功能：使用本命令显示 DHCP 中继代理处理数据包的信息，包括 option 82 选项的添加和剥离动作信息
+- 参数：无
+- 命令模式：特权配置模式使用指南：运行时使用本命令显示中继代理处理中继数据包的过程，并显示相应的 option82 动作信息
+- 举例：配置显示 DHCP 中继代理处理数据包的信息
+
+  ```text
+  Switch#debug ip dhcp relay packet
+  ```
+  
+### 3.2 ip dhcp relay information option
 
 
 
@@ -927,6 +1164,19 @@
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
