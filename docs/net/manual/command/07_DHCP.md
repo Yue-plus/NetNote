@@ -1115,7 +1115,7 @@
     | DHCP6INFORMREQ    | 其中DHCPv6 INFORMREQ报文个数   |
     | DHCP6RELAYFORW    | 其中DHCPv6 RELAYFORW报文个数   |
     ```
-  
+
 ### 2.30 show ipv6 general-prefix
 
 - 命令：`show ipv6 general-prefix`
@@ -1158,12 +1158,221 @@
   
 ### 3.2 ip dhcp relay information option
 
+- 命令：`ip dhcp relay information option no ip dhcp relay information option`
+- 功能：设置本命令启用交换机中继代理的 option82 功能，本命令的 no 操作关闭交换机中继代理的 option82 功能
+- 参数：无
+- 缺省情况：系统默认关闭 option82 功能
+- 命令模式：全局配置模式
+- 使用指南：只有配置本命令 DHCP 中继代理才能在 DHCP 请求报文中添加 option82 选项交给服务器处理。启用本功能之前确保系统已经使能 DHCP 服务并配置转发目的端口67的 udp 广播报文
+- 举例：开启交换机中继代理的 option82 功能
 
-
-
-
-
+  ```text
+  Switch(config)#service dhcp 
+  Switch(config)#ip forward-protocol udp bootps 
+  Switch(config)#ip dhcp relay information option
+  ```
   
+### 3.3 ip dhcp relay information option delimiter
+
+- 命令：`ip dhcp relay information option delimiter [colon | dot | slash | space] no ip dhcp relay information option delimiter`
+- 功能：该命令用来配置用户在全局定义的用来生成 option82 子选项的各参数的分隔符，该命令的 no 形式恢复分隔符为默认值，即 slash
+- 参数：无
+- 缺省情况：系统默认分隔符为 slash (“/”)。
+- 命令模式：全局配置模式
+- 使用指南：当用户在全局自定义了用来生成 option82 子选项（remote-id，circuit-id）的各参数后，该命令配置的分隔符用来分隔这些参数。
+- 举例：配置 option82 子选项各参数分隔符为dot（“.”）。
+
+  ```text
+  Switch(config)#ip dhcp relay information option delimiter dot
+  ```
+  
+### 3.4 ip dhcp relay information option remote-id
+
+- 命令：`ip dhcp relay information option remote-id {standard | <remote-id>} no ip dhcp relay information option remote-id`
+- 功能：本命令用于设置从接口接收的 DHCP 请求报文添加 option 82 子选项2(远程ID选项)的具体内容。本命令的 no 操作把添加 option 82子选项2(远程ID选项)的形式设置为 standard
+- 参数：standard 表示默认的交换机 VLAN MAC 格式，`<remote-id>`为用户自己指定的 option 82 的 remote-id 内容，它是一个长度小于等于64的字符串
+- 命令模式：全局配置模式
+- 缺省情况：系统默认使用 standard 形式设置 option 82 中的 remote-id
+- 使用指南：因为交换机添加的 option 82 信息要配合第三方的 DHCP 服务器使用，在交换机的标准 remote-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 remote-id 的内容
+- 举例：设置 DHCP option82 选项的子选项 remote-id 为 street-1-1。
+
+  ```text
+  Switch(config)# ip dhcp relay information option remote-id street-1-1
+  ```
+  
+### 3.5 ip dhcp relay information option remote-id format
+
+- 命令：`ip dhcp relay information option remote-id format {default | vs-hp}`
+- 功能：本命令设置交换机中继代理的 option82 功能 remote-id 默认格式
+- 参数：default 表示 remote-id 为十六进制格式的交换机 VLAN MAC 地址，vs-hp 表示 remote-id 兼容设备厂商HP的 remote-id 格式
+- 缺省情况：系统默认 option82 功能 remote-id 格式为 default
+- 命令模式：全局配置模式
+- 使用指南：默认 remote-id 格式定义如下：
+          ![1.jpg](./img/07/1.jpg)
+          其中MAC为交换机VLAN MAC地址。
+          兼容设备厂商HP的remote-id格式定义如下：
+          ![2.jpg](./img/07/2.jpg)
+          其中IP为DHCP报文来自三层接口的主IP地址。
+- 举例：配置交换机中继代理 option82 功能 remote-id 为兼容设备厂商HP格式。
+
+  ```text
+  Switch(config)#ip dhcp relay information option remote-id format vs-hp
+  ```
+  
+### 3.6 ip dhcp relay information option self-defined remote-id
+
+- 命令：`ip dhcp relay information option self-defined remote-id {hostname | mac | string WORD} no ip dhcp relay information option self-defined remote-id`
+- 功能：该命令用来配置 option82 的生成方式，用户可以自定义用来生成 option82 子选项 remote-id 的参数（集）
+- 参数： WORD 自定义的 remote-id 字符串，最大长度为64。缺省情况：缺省采用标准生成方式
+- 命令模式：全局配置模式
+- 使用指南：配置本命令后，若用户没有在接口上配置 remote-id，则根据本命令的自定义生成方式来生成 option82 子选项 remote-id。对于 mac，如果是用 ascii 的形式填到报文中则采用形如 00-02-d1-2e-3a-0d 的形式。对于 mac，如果是用 ascii 的形式填到报文中则采用形如 00-02-d1-2e-3a-0d 的形式，如果是 hex 形式则占6个字节。各个选项按照命令配置的顺序填入报文，中间用分隔符分隔（分隔符为 ip dhcp relay information option delimiter 配置）
+- 举例：配置 option82 子选项 remote-id 的生成方式为 hostname 和字符串“abc”。
+
+  ```text
+  Switch(config)#ip dhcp relay information option self-defined remote-id hostname string abc
+  ```
+  
+### 3.7 ip dhcp relay information option self-defined remote-id format
+
+- 命令：`ip dhcp relay information option self-defined remote-id format [ascii | hex]`
+- 功能：该命令用来配置 relay option82 中 remote-id 的生成格式
+- 参数：无。
+- 缺省情况：系统默认生成格式为 ascii
+- 命令模式：全局配置模式使用指南：本命令的生成格式指定了用命令 ip dhcp relay information option type self-defined remote-id 生成 remote-id 的格式。
+- 举例：配置 relay option82 中 remote-id 的生成格式为hex。
+
+  ```text
+  Switch(config)# ip dhcp relay information option self-defined remote-id format hex
+  ```
+  
+### 3.8 ip dhcp relay information option self-defined subscriber-id
+
+- 命令：`ip dhcp relay information option self-defined subscriber-id {vlan | port | id (switch-id (mac | hostname)| remote-mac)| string WORD } no ip dhcp relay information option self-defined subscriber-id`
+- 功能：该命令用来配置 option82 的生成方式，用户可以自定义用来生成 option82 子选项 circuit-id 的参数（集）。参数：WORD 自定义的 circuit-id 字符串，最大长度为64
+- 缺省情况：缺省采用标准生成方式
+- 命令模式：全局配置模式
+- 使用指南：配置本命令后，若用户没有在接口上配置 circuit-id，则根据本命令的自定义生成方式来生成 option82 子选项 circuit-id。用该命令生成的 circuit-id 的格式为：若 self-defined format为ascii，则填入的 vlan 选项形如“Vlan2”，port选项形如“Ethernet1/0/1”，mac 选项和 remote-mac 选项形如 “00-02-d1-2e-3a-0d” ；若 self-defined format 为 hex ，则填入的 vlan 选项占两个字节，port 选项占4个字节，一个字节表示slot（对于机架式交换机，表示插槽号；对于盒式交换机，为1），一个字节表示 Module（默认为0），两个字节表示端口号，从1开始，mac 选项和 remote-mac 选项占6个字节。各个选项按照命令配置的顺序填入报文，中间用分隔符分隔（分隔符为ip dhcp relay information option delimiter配置）
+- 举例：配置生成 option82 子选项 circuit-id 的生成方式为 port，mac。
+
+  ```text
+  Switch(config)# ip dhcp relay information option self-defined subscriber-id port id switch-id mac
+  ```
+  
+### 3.9 ip dhcp relay information option self-defined subscriber-id format
+
+- 命令：`ip dhcp relay information option self-defined subscriber-id format [ascii | hex]`
+- 功能：该命令用来配置 relay option82中circuit-id 的生成格式
+- 参数：无
+- 缺省情况：系统默认生成格式为 ascii
+- 命令模式：全局配置模式使用指南：本命令的生成格式指定了用命令 ip dhcp relay information option type self-defined subscriber-id 生成 circuit-id 的格式
+- 举例：配置 relay option82中circuit-id 的生成格式为 hex。
+
+  ```text
+  Switch(config)# ip dhcp relay information option self-defined subscriber-id format hex
+  ```
+  
+### 3.10 ip dhcp relay information option subscriber-id
+
+- 命令：`ip dhcp relay information option subscriber-id {standard | <circuit-id>} no ip dhcp relay information option subscriber-id`
+- 功能：本命令用于设置从接口接收的 DHCP 请求报文添加 option 82 子选项1(电路ID选项)的形式，standard 表示标准的 vlan 名加物理端口名形式，如“Vlan2+Ethernet1/0/12”，`<circuit-id>`为用户自己指定的 option 82 的 circuit-id 内容，它是一个长度小于64的字符串。本命令的 no 操作把添加 option 82 子选项1(电路ID选项)的形式设置为 standard 形式
+- 参数：无
+- 命令模式：接口配置模式
+- 缺省情况：系统默认使用 standard 形式设置 option 82 中的 circuit-id
+- 使用指南：因为交换机添加的 option 82 信息要配合第三方的 DHCP 服务器使用，在交换机的标准 circuit-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 circuit-id 的内容
+- 举例：设置 DHCP option82 选项的子选项 circuit-id为foobar 
+
+  ```text
+  Switch(config-if-vlan1)#ip dhcp relay information option subscriber-id foobar
+  ```
+  
+### 3.11 ip dhcp relay information option subscriber-id format
+
+- 命令：ip dhcp relay information option subscriber-id format {hex | acsii | vs-hp}
+- 功能：本命令设置交换机中继代理的option82功能subscriber-id默认格式
+- 参数：hex表示subscriber-id为十六进制格式的VLAN和端口信息，acsii表示subscriber-id为ACSII格式的VLAN和端口信息，vs-hp表示subscriber-id兼容设备厂商HP的格式
+- 缺省情况：系统默认option82功能subscriber-id格式为acsii
+- 命令模式：全局配置模式
+- 使用指南：ASCII格式的VLAN和端口信息形如“Vlan1+Ethernet1/0/11”。十六进制格式的
+          VLAN和端口信息定义如下：
+          ![3.jpg](./img/07/3.jpg)
+          其中，VLAN字段填写交换机VLAN ID。Slot对于机架式交换机，表示插槽号；对于盒式交换机，为1。Module默认为0。Port表示端口号，从1开始。
+          兼容设备厂商HP的subscriber-id格式定义如下：
+          ![4.jpg](./img/07/4.jpg)
+          其中Port表示端口号，从1开始
+- 举例：配置交换机中继代理option82功能subscriber-id格式为十六进制格式
+
+  ```text
+  Switch(config)#ip dhcp relay information option subscriber-id format hex
+  ```
+  
+### 3.12 ip dhcp relay information policy
+
+- 命令：`ip dhcp relay information policy {drop | keep | replace} no ip dhcp relay information policy`
+- 功能：本命令用于设置系统对于接收到的含有 option82 选项的 DHCP 请求报文的重转发策略，其中 drop 模式表示如果报文中含有 option82 选项，则系统丢弃该 DHCP 报文不作处理；keep 模式表示系统保持现有报文中的 option82 选项不变转发给服务器处理；replace 模式表示系统使用自己的 option82 选项替换现有报文中的 option82 选项，然后转发给服务器处理。本命令的no操作设置 option82 选项DHCP报文的重转发策略为 replace
+- 参数：无
+- 命令模式：接口配置模式
+- 缺省情况：系统默认使用 replace 模式使用本系统的 option82 选项替换现有报文中的 option 选项。使用指南：由于 DHCP 客户端报文向 DHCP 服务器传递的过程中可能经过多个 DHCP 中继代理，该路径上后续中继需要设置策略决定如何对先前中继添加的 option82 选项进行处理。Option 82 重转发策略的选择要配合 DHCP 服务器的配置策略而定
+- 举例：设置 DHCP 报文 option82 选项的重转发策略为 keep
+ 
+  ```text
+  Switch(config-if-vlan1)#ip dhcp relay information policy keep
+  ``` 
+  
+### 3.13 ip dhcp server relay information enable
+
+- 命令：`ip dhcp server relay information enable no ip dhcp server relay information enable`
+- 功能：本命令用于设置交换机 DHCP 服务器支持对 option82 选项的识别。本命令的 no 操作使服务器忽略处理 option 82 选项
+- 参数：无
+- 命令模式：全局配置模式
+- 缺省情况：系统默认不启用 option82 选项识别功能
+- 使用指南：如果希望交换机 DHCP 服务器识别 option82 选项并在应答报文中返回 option 82 信息，需要配置本命令，否则交换机 DHCP 服务器会忽视 option82 选项的存在
+- 举例：设置 DHCP 服务器支持 option82 选项
+
+  ```text
+  Switch(config)# ip dhcp server relay information enable
+  ```
+  
+### 3.14 show ip dhcp relay information option
+
+- 命令：show ip dhcp relay information option
+- 功能：本命令显示系统DHCP option 82的状态信息，包括option82使能开关，接口重转发策略，接口电路ID模式，以及交换机DHCP服务器option82使能开关
+- 参数：无
+- 命令模式：特权和全局配置模式
+- 使用指南：运行时使用本命令检查中继代理option82状态信息。
+- 举例：
+
+  ```text
+  Switch#show ip dhcp relay information option 
+  ip dhcp server relay information option(i.e. option 82) is disabled 
+  ip dhcp relay information option(i.e. option 82) is enabled
+   
+  Vlan2: 
+        ip dhcp relay information policy keep 
+        ip dhcp relay information option subscriber-id standard 
+  Vlan3: 
+        ip dhcp relay information policy replace 
+        ip dhcp relay information option subscriber-id foobar
+  ```
+  
+## 第4章 DHCP option 60和option 43命令
+
+### 4.1 option 43 ascii LINE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
