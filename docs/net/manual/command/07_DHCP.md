@@ -1358,7 +1358,139 @@
 
 ### 4.1 option 43 ascii LINE
 
+- 命令：`option 43 ascii LINE no option 43`
+- 功能：在 ip dhcp pool 模式下以 ascii 格式配置 option 43 字符串。本命令的 no 操作为删除配置的 option 43
+- 参数：LINE：以 ascii 格式配置的 option 43 字符串，字符串长度范围为 1-255
+- 缺省情况：默认没有配置 option 43 字符串
+- 命令模式：ip dhcp pool 模式
+- 使用指南：无
+- 举例：以 ascii 格式配置 option 43 为"AP 1000"
 
+  ```text
+  switch(config)#ip dhcp pool a 
+  switch (dhcp-a-config)#option 43 ascii AP 1000
+  ```
+  
+### 4.2 option 43 hex WORD
+
+- 命令：`option 43 hex WORD no option 43`
+- 功能：在 ip dhcp pool 模式下以 hex 格式配置 option 43 字符串。本命令的 no 操作为删除配置的 option 43
+- 参数：WORD：以 hex 格式配置的 option 43字符串，如 a1241b
+- 缺省情况：默认没有配置 option 43
+- 命令模式：ip dhcp pool 模式
+- 使用指南：当使用 hex 方式配置 option 43 时，字符串需要按照 TLV（Type-Length-Value）的格式填写。比如通过 option 43 下发 ip 地址10.1.1.1，则此处的 hex 字符串应该为 01040A010101，其中 Type=0x01，表示 IP 地址；Length=0x04，即 IP 地址的长度为4字节；Value=0x0A010101，即10.1.1.1的十六进制格式
+- 举例：以 hex 格式配置 option 43 为"01040a010101"
+
+  ```text
+  switch(config)#ip dhcp pool a 
+  switch (dhcp-a-config)#option 43 hex 01040a010101
+  ```
+  
+### 4.3 option 43 ip A.B.C.D
+
+- 命令：`option 43 ip A.B.C.D no option 43`
+- 功能：在 ip dhcp pool 模式下以IP格式配置 option 43 字符串。本命令的 no 操作为删除配置的 option 43
+- 参数：A.B.C.D：以IP格式配置的 option 43，如 192.168.1.1
+- 缺省情况：默认没有配置 option 43。
+- 命令模式：ip dhcp pool 模式
+- 使用指南：用该命令配置形如"192.168.1.1"的 option 43，则填入报文中的 option 43 为"C0A80101"。
+- 举例：以IP格式配置 option 43 为"192.168.1.1"。
+
+  ```text
+  switch(config)#ip dhcp pool a 
+  switch (dhcp-a-config)#option 43 ip 192.168.1.1
+  ```
+  
+### 4.4 option 60 ascii LINE
+
+- 命令：`option 60 ascii LINE no option 60`
+- 功能：在 ip dhcp pool 模式下以 ascii 格式配置 option 60 字符串。本命令的 no 操作为删除配置的 option 60
+- 参数：LINE：以 ascii 格式配置的 option 60 字符串，字符串长度范围为1-255
+- 缺省情况：默认没有配置 option 60 字符串
+- 命令模式：ip dhcp pool 模式
+- 使用指南：无
+- 举例：以 ascii 格式配置 option 60 为"AP 1000"。
+
+  ```text
+  switch(config)#ip dhcp pool a 
+  switch (dhcp-a-config)#option 60 ascii AP 1000
+  ```
+  
+### 4.5 option 60 hex WORD
+
+- 命令：`option 60 hex WORD no option 60`
+- 功能：在 ip dhcp pool 模式下以 hex 格式配置 option 60 字符串。本命令的 no 操作为删除配置的 option 60
+- 参数：WORD：以 hex 格式配置的 option 60 字符串，如a1241b
+- 缺省情况：默认没有配置 option 60
+- 命令模式：ip dhcp pool 模式
+- 使用指南：无。
+- 举例：以 hex 格式配置 option 60 为"41502031303030"。
+
+  ```text
+  switch(config)#ip dhcp pool a 
+  switch(dhcp-a-config)#option 60 hex 41502031303030
+  ```
+  
+### 4.6 option 60 ip A.B.C.D
+
+- 命令：`option 60 ip A.B.C.D no option 60`
+- 功能：在 ip dhcp pool 模式下以IP格式配置 option 60 字符串。本命令的 no 操作为删除配置的 option 60
+- 参数：A.B.C.D：以IP格式配置的 option 60，如192.168.1.1
+- 缺省情况：默认没有配置 option 60。
+- 命令模式：ip dhcp pool 模式
+- 使用指南：用该命令配置形如"192.168.1.1"的 option 60，则匹配报文中的 option 60 为"C0A80101"。
+- 举例：以IP格式配置 option 60 为"192.168.1.1"。
+
+  ```text
+  switch(config)#ip dhcp pool a 
+  switch (dhcp-a-config)#option 60 ip 192.168.1.1
+  ```
+
+## 第5章 DHCPv6 option37，38配置命令
+
+### 5.1.1 address range
+
+- 命令：`address range <start-ip> <end-ip> no address range <start-ip> <end-ip>`
+- 功能：本命令在 DHCPv6 地址池配置模式下用来为 DHCPv6 服务器地址池中的一个 DHCPv6 class 设置一个地址范围，no 命令用来移除这个地址范围。不支持 prefix/plen 形式
+- 参数：
+     + start-ip：定义地址池中地址范围的起始地址
+     + end-ip：定义地址池中地址范围的结束地址
+- 缺省情况：无
+- 命令模式：DHCPv6 地址池 class 配置模式使用指南：使用该命令为 class 分配的地址范围应做地址检查，保证分配到的地址范围不超出所在地址池的地址范围。一个 class 仅分配一段地址范围，在同一地址池中的多个 class 所分配的地址范围是可以有重叠的。如果不用该命令为一个 DHCPv6 class 在DHCPv6服务器地址池中分配地址范围，那么默认这个 class 的地址范围是地址池中的整个子网
+- 举例：将名为 CLASS1 的 DHCPv6 class 关联到 dhcpv6 pool 1 中，为 CLASS1 分配地址范围为 2001:da8:100:1::2 到2001:da8:100:1::30
+
+  ```text
+  Switch(Config)#ipv6 dhcp pool 1
+  Switch(dhcp-1-config)#class CLASS1
+  Switch(dhcp-1-class-CLASS1-config)#address   range   2001:da8:100:1::2 2001:da8:100:1::30
+  ```
+  
+### 5.1.2 class
+
+- 命令：`class <class-name> no class <class-name>`
+- 功能：本命令在DHCPv6地址池配置模式下将 class 关联到地址池中，并进入地址池中 class 的配置模式，用 no 命令删除这种关联
+- 参数：class-name：DHCPv6 class的名字
+- 缺省情况：无
+- 命令模式：DHCPv6 地址池配置模式使用指南：应该首先用 IPv6 DHCP Class 全局配置命令定义好这个 class。如果用 class 命令输入了一个尚不存在的 class 名，那么将不创建该 class
+- 举例：将名为 CLASS1 的 DHCPv6 class 关联到 dhcpv6 pool 1 中
+
+  ```text
+  Switch(Config)#ipv6 dhcp pool 1 
+  Switch(dhcp-1-config)#class CLASS1
+  ```
+  
+### 5.1.3 ipv6 dhcp class
+
+
+
+
+   
+
+
+
+
+
+  
 
 
 
