@@ -1496,7 +1496,9 @@
 ### 5.1.4 ipv6 dhcp relay remote-id
 
 - 命令：`ipv6 dhcp relay remote-id <remote-id> no ipv6 dhcp relay remote-id`
-- 功能：本命令用于设置从接口接收的 DHCPv6 请求报文添加 option 37 选项的形式，`<remote-id>` 为用户自定义的option 37的remote-id内容，它是一个长度小于128的字符串。本命令的no操作恢复option 37 的remote-id选项的形式为默认的enterprise-number和vlan MAC地址
+- 功能：
+  本命令用于设置从接口接收的 DHCPv6 请求报文添加 option 37 选项的形式，`<remote-id>` 为用户自定义的 option 37 的 remote-id 内容，它是一个长度小于 128 的字符串。
+  本命令的no操作恢复 option 37 的 remote-id 选项的形式为默认的 enterprise-number 和 vlan MAC 地址
 - 参数：remote-id：用户自定义的 option 37 的内容
 - 缺省情况：系统默认使用 vlan MAC 地址作为 remote-id 的内容，vlan MAC 形式如 “00-01-ac-12-23”，中间的连字符为 ‘-’
 - 命令模式：接口配置模式使用指南：因为交换机添加的 option 37 信息有可能配合第三方的 DHCPv6 服务器使用，在交换机的默认 remote-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 remote-id 的内容。系统默认使用 enterprise-number 和 vlan MAC 地址作为 remote-id 的内容
@@ -1611,7 +1613,7 @@
 - 参数：hex 表示 remote-id 为十六进制格式的交换机 VLAN MAC 地址，acsii 表示 remote-id 为为 ACSII 格式的交换机 VLAN MAC 地址
 - 缺省情况：系统默认 option37 功能 remote-id 格式为 acsii
 - 命令模式：全局配置模式使用指南：十六进制的 remote-id 格式定义如下：
-  ![5.jpg](./img/5.jpg)
+  ![5.jpg](./img/07/5.jpg)
   其中MAC为交换机 VLAN MAC 地址。
 - 举例：配置交换机 DHCP snooping option37 功能 remote-id 为默认格式
 
