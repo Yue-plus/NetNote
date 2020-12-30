@@ -1481,6 +1481,156 @@
   
 ### 5.1.3 ipv6 dhcp class
 
+- 命令：`ipv6 dhcp class <class-name> no ipv6 dhcp class <class-name>`
+- 功能：本命令用于定义一个 DHCPv6 class 并进入 DHCPv6 class 配置模式，no 命令用于删除这个 DHCPv6 class
+- 参数：class-name：DHCPv6 class 的名字，它是一个长度小于32的字符串
+- 缺省情况：无
+- 命令模式：全局配置模式
+- 使用指南：在一个 DHCPv6 class 中可以配置一组 option 37 或者 option 38 选项内容，或者同时配置 option 37 和 option 38 选项内容。该命令当服务器端支持 DHCPv6 class 的时候才能使用
+- 举例：定义一个名为 CLASS1 的 DHCPv6 class。
+
+  ```text
+  witch(Config)# ipv6 dhcp class CLASS1
+  ```
+
+### 5.1.4 ipv6 dhcp relay remote-id
+
+- 命令：`ipv6 dhcp relay remote-id <remote-id> no ipv6 dhcp relay remote-id`
+- 功能：本命令用于设置从接口接收的 DHCPv6 请求报文添加 option 37 选项的形式，`<remote-id>` 为用户自定义的option 37的remote-id内容，它是一个长度小于128的字符串。本命令的no操作恢复option 37 的remote-id选项的形式为默认的enterprise-number和vlan MAC地址
+- 参数：remote-id：用户自定义的 option 37 的内容
+- 缺省情况：系统默认使用 vlan MAC 地址作为 remote-id 的内容，vlan MAC 形式如 “00-01-ac-12-23”，中间的连字符为 ‘-’
+- 命令模式：接口配置模式使用指南：因为交换机添加的 option 37 信息有可能配合第三方的 DHCPv6 服务器使用，在交换机的默认 remote-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 remote-id 的内容。系统默认使用 enterprise-number 和 vlan MAC 地址作为 remote-id 的内容
+- 举例：设置 DHCPv6 option 37 选项的 remote-id为abc
+
+  ```text
+  Switch(Config-if-vlan1)# ipv6 dhcp relay remote-id abc
+  ```
+  
+### 5.1.5 ipv6 dhcp relay remote-id option
+
+- 命令：`ipv6 dhcp relay remote-id option no ipv6 dhcp relay remote-id option`
+- 功能：设置本命令允许交换机中继支持 option 37 选项功能，本命令的 no 操作关闭交换机中继的 option 37 选项功能
+- 参数：无
+- 缺省情况：系统默认关闭交换机中继的 option 37 选项功能。
+- 命令模式：全局配置模式
+- 使用指南：只有配置本命令 DHCPv6 中继代理才能在 DHCPv6 请求报文中添加 option 37 选项交给服务器或下一级中继代理处理。执行本命令之前确保系统已经使能 DHCPv6 服务
+- 举例：开启交换机中继支持 option 37 选项功能。
+
+  ```text
+  Switch(Config)#service dhcpv6 
+  Switch(Config)#ipv6 dhcp relay remote-id option
+  ```
+  
+### 5.1.6 ipv6 dhcp relay subscriber-id
+
+- 命令：`ipv6 dhcp relay subscriber-id <subscriber-id> no ipv6 dhcp relay subscriber-id`
+- 功能：本命令用于设置从接口接收的 DHCPv6 请求报文添加 option 38 选项的形式，`<subscriber-id>` 为用户自定义的 option 38 的 subscriber-id 内容，它是一个长度小于 128 的字符串。本命令的 no 操作恢复 option 38 的 subscriber-id 选项的形式为默认的VLAN名加物理端口名形式，如 “Vlan2+Ethernet1/0/2”
+- 参数：subscriber-id：用户自定义的 option 38 的内容
+- 缺省情况：系统默认使用 VLAN 名加物理端口名形式的形式设置 option 38 中的 subscriber-id
+- 命令模式：接口配置模式
+- 使用指南：因为交换机添加的 option 38 信息有可能配合第三方的 DHCPv6 服务器使用，在交换机的标准 subscriber-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 subscriber-id 的内容。系统默认使用VLAN名加物理端口名形式的形式设置 option 38 中的 subscriber-id
+- 举例：设置 DHCPv6 option 38 选项的 subscriber-id 为 abc
+
+  ```text
+  Switch(Config-if-vlan1)# ipv6 dhcp relay subscriber-id abc
+  ```
+  
+### 5.1.7 ipv6 dhcp relay subscriber-id option
+
+- 命令：`ipv6 dhcp relay subscriber-id option no ipv6 dhcp relay subscriber-id optio`
+- 功能：设置本命令允许交换机中继支持 option 38 选项功能，本命令的 no 操作关闭交换机中继的 option 38 选项功能
+- 参数：无
+- 缺省情况：系统默认关闭交换机中继的 option 38选项功能
+- 命令模式：全局配置模式使用指南：只有配置本命令 DHCPv6 中继代理才能在 DHCPv6 请求报文中添加 option 38 选项交给服务器或下一级中继代理处理。执行本命令之前确保系统已经使能 DHCPv6 服务。系统默认关闭交换机中继的 option 38 选项功能
+- 举例：开启交换机中继支持 option 38 选项功能
+
+  ```text
+  Switch(Config)#service dhcpv6
+  Switch(Config)#ipv6 dhcp relay subscriber-id option
+  ```
+  
+### 5.1.8 ipv6 dhcp relay subscriber-id select delimiter
+
+- 命令：`ipv6 dhcp relay subscriber-id select (sp | sv | pv | spv) delimiter WORD (delimiter WORD | ) no ipv6 dhcp relay subscriber-id select delimiter`
+- 功能：配置用户配置选项来生成 subscriber-id，no 命令恢复为最初的默认配置即 VLAN 名加端口名的形式
+- 参数：(sp | sv | pv | spv)：此选项是对 slot，port，vlan 的组合形式的选择，sp 代表 slot 和 port，sv 代表 slot 和 vlan，pv 代表 port 和 vlan，spv 代表 slot、port 和 vlan。WORD：slot，port，vlan 分隔符，取值范围是(#|.|,|;|:|/|space)，注意，这里有两个 delimiter WORD，第一个是 slot 和 port 间的分隔符，第二个是 port 和 vlan 间的分隔符
+- 缺省情况：默认此配置为空
+- 命令模式：全局配置模式
+- 使用指南：该命令对已经自定义 subscriber-id 的端口不起作用，如果配置该命令后，用户又自定义端口的 subscriber-id，则以用户自定义为准。默认此配置为空
+- 举例： 
+
+  ```text
+  Swithch(config)# ipv6 dhcp relay subscriber-id select sp delimiter 
+  ```
+  
+### 5.1.9 ipv6 dhcp server remote-id option
+
+- 命令：`ipv6 dhcp server remote-id option no ipv6 dhcp server remote-id option`
+- 功能：本命令用于设置 DHCPv6 服务器支持对 option 37 选项的识别。本命令的 no 操作使系统不支持 option 37 选项
+- 参数：无
+- 缺省情况：系统默认不支持 option 37 选项功能
+- 命令模式：全局配置模式
+- 使用指南：如果希望交换机 DHCPv6 服务器识别 option 37 选项并做处理，需要配置本命令，否则交换机 DHCPv6 服务器会忽视 option 37 选项的存在。系统默认不支持 option 37 选项功能
+- 举例：设置 DHCPv6 服务器支持 option 37 选项。
+
+  ```text
+  Switch(Config)# ipv6 dhcp server remote-id option
+  ```
+  
+### 5.1.10 ipv6 dhcp server select relay-forw
+
+- 命令：`ipv6 dhcp server select relay-forw no ipv6 dhcp server select relay-forw`
+- 功能：本命令用于设置 DHCPv6 服务器支持对报文中存在多个 option 37 选项或者 option38 选项时对其进行选择，选择最里层 relay-forw 中的 option 37 选项和 option38 选项。本命令的no操作恢复默认设置，即选择原始报文中的 option 37 选项和 option38 选项
+- 参数：无
+- 缺省情况：系统默认选择原始报文中的 option 37 选项和 option38 选项。
+- 命令模式：接口配置模式
+- 使用指南：使用该命令前确定服务器端已开启对 option 37 选项和 option38 选项的支持。系统默认选择原始报文中的 option 37 选项和 option38 选
+- 举例：设置 DHCPv6 服务器 vlan1 接口选择最里层 relay-forw 中的 option 37 和 option38 选项选项
+
+  ```text
+  Switch(Config-if-vlan1)# ipv6 dhcp server select relay-forw
+  ```
+  
+### 5.1.11 ipv6 dhcp server subscriber-id option
+
+- 命令：`ipv6 dhcp server subscriber-id option no ipv6 dhcp server subscriber-id option`
+- 功能：本命令用于设置 DHCPv6 服务器支持对 option 38 选项的识别。本命令的 no 操作使系统不支持 option 38 选项
+- 参数：无
+- 缺省情况：系统默认不支持 option 38 选项功能
+- 命令模式：全局配置模式使用指南：如果希望交换机 DHCPv6 服务器识别 option 38 选项并做处理，需要配置本命令，否则交换机 DHCPv6 服务器会忽视 option 38 选项的存在。系统默认不支持 option 38 选项功能
+- 举例：设置 DHCPv6 服务器支持 option 38 选项
+
+  ```text
+  Switch(Config)# ipv6 dhcp server subscriber-id option
+  ```
+  
+### 5.1.12 ipv6 dhcp snooping information option remote-id format
+
+- 命令：`ipv6 dhcp snooping information option remote-id format {hex | acsii }`
+- 功能：本命令设置交换机中继代理的 DHCPV6 option37 功能 remote-id 格式
+- 参数：hex 表示 remote-id 为十六进制格式的交换机 VLAN MAC 地址，acsii 表示 remote-id 为为 ACSII 格式的交换机 VLAN MAC 地址
+- 缺省情况：系统默认 option37 功能 remote-id 格式为 acsii
+- 命令模式：全局配置模式使用指南：十六进制的 remote-id 格式定义如下：
+  ![5.jpg](./img/5.jpg)
+  其中MAC为交换机 VLAN MAC 地址。
+- 举例：配置交换机 DHCP snooping option37 功能 remote-id 为默认格式
+
+  ```text
+  Switch(config)#ipv6 dhcp snooping information option remote-id format acsii
+  ```
+  
+### 5.1.13 ipv6 dhcp snooping information option subscriber-id format
+
+
+
+
+  
+
+
+  
+
+
+
 
 
 
