@@ -1287,7 +1287,7 @@
   
 ### 3.11 ip dhcp relay information option subscriber-id format
 
-- 命令：ip dhcp relay information option subscriber-id format {hex | acsii | vs-hp}
+- 命令：`ip dhcp relay information option subscriber-id format {hex | acsii | vs-hp}`
 - 功能：本命令设置交换机中继代理的option82功能subscriber-id默认格式
 - 参数：hex表示subscriber-id为十六进制格式的VLAN和端口信息，acsii表示subscriber-id为ACSII格式的VLAN和端口信息，vs-hp表示subscriber-id兼容设备厂商HP的格式
 - 缺省情况：系统默认option82功能subscriber-id格式为acsii
@@ -1334,7 +1334,7 @@
   
 ### 3.14 show ip dhcp relay information option
 
-- 命令：show ip dhcp relay information option
+- 命令：`show ip dhcp relay information option`
 - 功能：本命令显示系统DHCP option 82的状态信息，包括option82使能开关，接口重转发策略，接口电路ID模式，以及交换机DHCP服务器option82使能开关
 - 参数：无
 - 命令模式：特权和全局配置模式
@@ -1623,6 +1623,130 @@
   
 ### 5.1.13 ipv6 dhcp snooping information option subscriber-id format
 
+- 命令：`ipv6 dhcp snooping information option subscriber-id format {hex | acsii }`
+- 功能：本命令设置 DHCPv6 snooping option38 功能 subscriber-id 默认格式
+- 参数：hex 表示 subscriber-id 为十六进制格式的 VLAN 和端口信息，acsii 表示 subscriber-id 为 ACSII 格式的 VLAN 和端口信息
+- 缺省情况：系统默认 option38 功能 subscriber-id 格式为 acsii
+- 命令模式：全局配置模式
+- 使用指南：ASCII 格式的VLAN和端口信息形如 Vlan1+Ethernet1/0/11。十六进制格式的 VLAN 和端口信息定义如下
+          的 VLAN 和端口信息定义如下：
+          ！[6.jpg](./img/6.jpg)
+          其中，VLAN 字段填写交换机 VLAN ID。Slot 对于机架式交换机，表示插槽号；对于盒式交换机，为1。Module 默认为0。Port 表示端口号，从1开始
+- 举例：配置交换机 DHCP snooping option38 功能 subscriber-id 格式为十六进制格式。
+
+  ```text
+  Switch(config)#ipv6 dhcp snooping information option subscriber-id format hex
+  ```
+  
+### 5.1.14 ipv6 dhcp snooping remote-id
+
+命令：`ipv6 dhcp snooping remote-id <remote-id> no ipv6 dhcp snooping remote-id`
+功能：本命令用于设置在接收的DHCPv6请求报文中添加 option 37 选项的形式，`<remote-id>`为用户自定义的 option 37 中 remote-id 的内容，它是一个长度小于128的字符串。本命令的 no 操作恢复 option 37 中 remote-id 的内容为默认的 enterprise-number 和 vlan MAC 地址
+参数：remote-id：用户自定义的 option 37 的内容
+缺省情况：系统默认使用 vlan MAC 地址作为 remote-id 的内容，vlan MAC 形式如“00-01-ac-12-23”，中间的连字符为‘-’
+命令模式：端口配置模式
+使用指南：因为交换机添加的 option 37 信息有可能配合第三方的 DHCPv6 服务器使用，在交换机的标准 remote-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 remote-id 的内容。系统默认使用 enterprise-number 和 vlan MAC 地址作为 remote-id 的内容
+举例：设置 DHCPv6 option 37 选项的 remote-id为abc。
+
+  ```text
+  Switch(Config-if-Ethernet1/0/1)#ipv6 dhcp snooping remote-id abc
+  ```
+
+### 5.1.15 ipv6 dhcp snooping remote-id option
+
+- 命令：`ipv6 dhcp snooping remote-id option no ipv6 dhcp snooping remote-id option`
+- 功能：设置本命令允许 DHCPv6 SNOOPING 支持 option 37 选项功能，本命令的 no 操作关闭 DHCPv6 SNOOPING 的 option 37 选项功能
+- 参数：无
+- 缺省情况：系统默认关闭 DHCPv6 SNOOPING 中的 option 37 选项功能
+- 命令模式：全局配置模式
+- 使用指南：只有配置本命令 DHCPv6 SNOOPING 才能在 DHCPv6 报文中添加 option 37 选项交给中继代理或服务器。执行本命令之前确保系统已经使能 DHCPv6 SNOOPING。系统默认关闭 DHCPv6 SNOOPING 中的 option 37 选项功能
+- 举例：开启 DHCPv6 SNOOPING 的 option 37 选项功能
+
+  ```text
+  Switch(Config)#ipv6 dhcp snooping enable
+  Switch(Config)#ipv6 dhcp snooping remote-id option
+  ```
+  
+### 5.1.16 ipv6 dhcp snooping remote-id policy
+
+- 命令：`ipv6 dhcp snooping remote-id policy {drop | keep | replace} no ipv6 dhcp snooping remote-id policy`
+- 功能：本命令用于设置系统对于接收到的含有 option 37 选项的 DHCPv6 报文的重转发策略，其中drop模式表示如果报文中含有 option 37 选项，则系统丢弃该 DHCPv6 报文不作处理；keep 模式表示系统保持现有报文中的 option 37 选项不变转发给服务器处理；replace模式表示系统使用自己的 option 37 选项替换现有报文中的 option 37 选项，然后转发给服务器处理。本命令的no操作设置 option 37 选项 DHCPv6 报文的重转发策略为 replace
+- 参数：无
+- 缺省情况：系统默认使用 replace 模式使用本系统的 option 37 选项替换现有报文中的 option 选项
+- 命令模式：全局配置模式使用指南：由于 DHCPv6 客户端报文可能已经含有 option 37 选项信息，所以须制定 DHCPv6 SNOOPING 对该信息的处理策略。如果重转发策略设置为 replace，系统预先必须开启 option 37 选项功能。系统默认使用 replace 模式使用本系统的 option 37 选项替换现有报文中的 option 选项
+- 举例：设置 DHCPv6 SNOOPING 对 DHCPv6 报文的 ption 37 选项的重转发策略为 keep
+
+  ```text
+  Switch(Config)# ipv6 dhcp snooping remote-id policy keep
+  ```
+  
+### 5.1.17 ipv6 dhcp snooping subscriber-id
+
+- 命令：`ipv6 dhcp snooping subscriber-id <subscriber-id> no ipv6 dhcp snooping subscriber-id`
+- 功能：本命令用于设置在接收的 DHCPv6 请求报文中添加 option 38 选项的形式，`<subscriber-id>`为用户自定义的 option 38 中 subscriber-id 的内容，它是一个长度小于 128 的字符串。本命令的 no 操作恢复 option 38 中 subscriber-id 的内容为默认的 VLAN 名加物理端口名形式，如 “Vlan2+Ethernet1/0/2”
+- 参数：subscriber-id：用户自定义的 option 38 的内容
+- 缺省情况：系统默认使用 VLAN 名加物理端口名形式的形式设置 option 38 中的 subscriber-id
+- 命令模式：端口配置模式
+- 使用指南：因为交换机添加的 option 38 信息有可能配合第三方的 DHCPv6 服务器使用，在交换机的标准 subscriber-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 subscriber-id 的内容。系统默认使用VLAN名加物理端口名形式的形式设置 option 38 中的 subscriber-id
+- 举例：设置 DHCPv6 option 38 选项的 subscriber-id 为 abc
+
+  ```text
+  Switch(Config-if-Ethernet1/0/1)#ipv6 dhcp snooping subscriber-id abc
+  ```
+  
+### 5.1.18 ipv6 dhcp snooping subscriber-id option
+
+- 命令：`ipv6 dhcp snooping subscriber-id option no ipv6 dhcp snooping subscriber-id option`
+- 功能：设置本命令允许 DHCPv6 SNOOPING 支持 option 38 选项功能，本命令的 no 操作关闭 DHCPv6 SNOOPING 的 option 38 选项功能
+- 参数：无
+- 缺省情况：系统默认关闭 DHCPv6 SNOOPING 中的 option 38 选项功能
+- 命令模式：全局配置模式
+- 使用指南：只有配置本命令 DHCPv6 SNOOPING 才能在 DHCPv6 报文中添加 option 38 选项交给中继代理或服务器。执行本命令之前确保系统已经使能 DHCPv6 SNOOPING。系统默认关闭 DHCPv6 SNOOPING 中的 option 38 选项功能
+- 举例：开启 DHCPv6 SNOOPING 的 option 38 选项功能
+
+  ```text
+  Switch(Config)#ipv6 dhcp snooping enable
+  Switch(Config)#ipv6 dhcp snooping subscriber-id option
+  ```
+  
+### 5.1.19 ipv6 dhcp snooping subscriber-id policy
+
+- 命令：`ipv6 dhcp snooping subscriber-id policy {drop | keep | replace} no ipv6 dhcp snooping subscriber-id policy`
+- 功能：本命令用于设置系统对于接收到的含有 option 38 选项的 DHCPv6 报文的重转发策略，其中 drop 模式表示如果报文中含有 option 38 选项，则系统丢弃该 DHCPv6 报文不作处理；keep 模式表示系统保持现有报文中的 option 38 选项不变转发给服务器处理；replace 模式表示系统使用自己的 option 38 选项替换现有报文中的 option 38 选项，然后转发给服务器处理。本命令的 no 操作设置 option 38 选项 DHCPv6 报文的重转发策略为 replace
+- 参数：无
+- 缺省情况：系统默认使用 replace 模式使用本系统的 option 38 选项替换现有报文中的 option 38 选项
+- 命令模式：全局配置模式
+- 使用指南：由于 DHCPv6 客户端报文可能已经含有 option 38 选项信息，所以须制定 DHCPv6SNOOPING 对该信息的处理策略。如果重转发策略设置为 replace，系统预先必须开启 option 38 选项功能。系统默认使用 replace 模式使用本系统的 option 38 选项替换现有报文中的 option 38 选项
+- 举例：设置 DHCPv6 SNOOPING 对 DHCPv6 报文的 option 38 选项的重转发策略为 keep
+
+  ```text
+  Switch(Config)# ipv6 dhcp snooping subscriber-id policy keep
+  ```
+  
+### 5.1.20 ipv6 dhcp snooping subscriber-id select delimiter
+
+- 命令：`ipv6 dhcp snooping subscriber-id select (sp | sv | pv | spv) delimiter WORD (delimiter WORD | ) no ipv6 dhcp snooping subscriber-id select delimiter`
+- 功能：配置用户配置选项来生成 subscriber-id，no 命令恢复为最初的默认配置即 VLAN 名加端口名的形式
+- 参数：(sp | sv | pv | spv)：此选项是对 slot，port，vlan 的组合形式的选择，sp 代表 slot 和 port，sv 代表 slot 和 vlan，pv 代表 port 和 vlan，spv 代表 slot、port 和 vlan。WORD：slot，port，vlan 分隔符，取值范围是(#|.|,|;|:|/|space)，注意，这里有两个 delimiter WORD，第一个是 slot 和 port 间的分隔符，第二个是 port 和 vlan 间的分隔符
+- 缺省情况：默认此配置为空
+- 命令模式：全局配置模式
+- 使用指南：该命令对已经自定义 subscriber-id 的端口不起作用，如果配置该命令后，用户又自定义端口的 subscriber-id，则以用户自定义为准。默认此配置为空
+- 举例：
+
+  ```text
+  Swithc(config)# ipv6 dhcp snooping subscriber-id select sv delimiter #
+  ```
+  
+### 5.1.21 ipv6 dhcp use class
+
+
+
+  
+
+
+  
+
+  
 
 
 
