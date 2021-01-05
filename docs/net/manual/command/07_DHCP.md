@@ -1619,7 +1619,7 @@
 
   ```text
   Switch(config)#ipv6 dhcp snooping information option remote-id format acsii
-  ```
+  ```5555555555555
   
 ### 5.1.13 ipv6 dhcp snooping information option subscriber-id format
 
@@ -1737,69 +1737,228 @@
   Swithc(config)# ipv6 dhcp snooping subscriber-id select sv delimiter #
   ```
   
-### 5.1.21 ipv6 dhcp use class
+### 5.1.21 `ipv6 dhcp use class`
 
+- 命令：`ipv6 dhcp use class
+       no ipv6 dhcp use class`
+- 功能：本命令用于设置 DHCPv6 服务器在进行地址分配时支持使用 DHCPv6  class，本命令的 no 操作使服务器在进行地址分配时不支持使用 DHCPv6  
+     class，但是却并不删除已经配置的有关 DHCPv6 class 的信息。
+- 参数：无。
+- 缺省情况：系统默认 DHCPv6 服务器在进行地址分配时支持使用 DHCPv6 class。命令模式：全局配置模式
+- 使用指南：默认 DHCPv6 服务器在进行地址分配时支持使用DHCPv6 class，进行 no 命令操作时并不删除已配置的 DHCPv6 class 信息。执行本命令之前确保系统已经使能 
+        DHCPv6服务。系统默认 DHCPv6 服务器在进行地址分配时支持使用 DHCPv6 class。
+- 举例：设置 DHCPv6 服务器在进行地址分配时支持使用 DHCPv6 class。
 
-
+  ```text
+  Switch(Config)# ipv6 dhcp use class
+  ```
   
+### 5.1.22 `remote-id subscriber-id`
 
+- 命令：`{remote-id [*] <remote-id> [*] | subscriber-id [*] <subscriber-id> [*]}
+       no {remote-id [*] <remote-id> [*] | subscriber-id [*] < subscriber-id> [*]}`
+- 功能：本命令在 IPv6 DHCP Class 配置模式下配置匹配该 class 的option37 选项和 option38选项。
+- 参数：`<remote-id>`:  字符串，用来匹配 37 选项中 remote-id 的内容，范围在 1-128 字节。
+       `<subscriber-id>`:字符串，用来匹配 38 选项中 subscriber-id 的内容，范围在 1-128字节。
+       [*]:可匹配 0 个或多个字符。
+- 缺省情况：无。
+- 命令模式：IPv6 DHCP Class 配置模式
+- 使用指南：该命令用来设置一个与已经定义的 DHCPv6  class  相匹配的模式。可以在一个 DHCPv6  class 配置多条命令。如果忽略该命令，在 IPv6  DHCP Class 
+        模式下不配置任何模式， 那么就认为任何一个 remote-id 或者 subscriber-id 都与这个 DHCPv6 class 相匹配，但是这个 remote-id 或者 
+        subscriber-id 必须是在 DHCPv6 packet 中存在的。
+- 举例：在名为 CLASS1  的 DHCPv6  class  中配置若干属于该 class  的 remote-id  或者
+subscriber-id 内容。
 
+  ```text
+  Switch(Config)# ipv6 dhcp class CLASS1 Switch(Dhcpv6-class)#remote-id abc* subscriber-id bcd* 
+  Switch(Dhcpv6-class)#remote-id edf*
+  Switch(Dhcpv6-class)#subscriber *mmn
+  ```
+
+## 5.2 监测和调试命令
+
+### 5.2.1 `debug ipv6 dhcp detail`
+
+- 命令：`debug ipv6 dhcp detail`
+- 功能：显示 DHCPv6 收发各类报文详细内容的 debug 显示，如果报文中携带 option  37、 option 38，其内容也会显示出来。这个命令在 server 端和 relay 端均适用。
+- 参数：无。
+- 命令模式：特权用户配置模式
+- 使用指南：开启/关闭 DHCPv6 收发报文详细内容的 debug 显示。
+举例：
+
+  ```text
+  Switch# debug ipv6 dhcp detail
+  %Jan 01 01:38:45 2006 DHCPv6 DETAILS: contents of SOLICIT packet
+  %Jan 01 01:38:45 2006         transaction-ID: 0x00b2d47c
+  %Jan 01 01:38:45 2006     elapsed time option(8), option-len 2
+  %Jan 01 01:38:45 2006         elapsed time: 0
+  %Jan 01 01:38:45 2006     client ID option(1), option-len 14
+  %Jan 01 01:38:45 2006         DUID: 00:01:00:01:0f:55:82:4f:00:19:e0:3f:d1:83
+  %Jan 01 01:38:45 2006     identity association option(3), option-len 12
+  %Jan 01 01:38:45 2006         IANA: 0x0e001d92, T1 0, T2 0
+  %Jan 01 01:38:45 2006     vendor class option(16), option-len 14
+  %Jan 01 01:38:45 2006         enterprise number : 311
+  %Jan 01 01:38:45 2006     option request option(6), option-len 6
+  %Jan 01 01:38:45 2006         requested-option: domain search list
+  %Jan 01 01:38:45 2006         requested-option: DNS server list
+  %Jan 01 01:38:45 2006         requested-option: vendor specific info
+  %Jan 01 01:38:45 2006     remote-id option(37), option-len 14
+  %Jan 01 01:38:45 2006         remote-id : 0x0a0b0c
+  %Jan 01 01:38:45 2006     subscriber-id option(38), option-len 16
+  %Jan 01 01:38:45 2006         subscriber-id : 0x0a0b0c0d
+  ```
   
+### 5.2.2 `debug ipv6 dhcp relay packet`
 
+- 命令：`debug ip dhcp relay packet`
+- 功能：使用本命令显示系统处理中继数据包的信息
+- 参数：无。
+- 命令模式：特权配置模式
+- 使用指南：运行时使用本命令显示中继代理处理中继数据包的过程，并显示相应的 option 37
+          和 option 38 的动作
+- 举例：
+
+  ```text
+  Switch# debug ip dhcpv6 relay packet
+  %May    19    16:45:34    2010    DHCPv6    RELAY    PACKET:    received    msg0    from
+  <fe80::211:22ff:fe33:4455> on <Vlan8>
+  %May   19   16:45:34   2010   DHCPv6   RELAY   PACKET:   add   subscriber-id   option
+  “Vlan8+Ethernet1/0/12”
+  ```
+
+### 5.2.3 `debug ipv6 dhcp snooping packet`
+
+- 命令：`debug ipv6 dhcp snooping packet`
+- 功能：调试 DHCPv6 SNOOPING 报文信息，如果添加、删除option37 与 option38，相应信息也会显示。
+- 参数：无。
+- 命令模式：特权用户配置模式
+- 使用指南：开启/关闭 DHCPv6 snooping  处理dhcpv6 报文的信息，包括接收报文类型，报文源 MAC，目的 MAC，客户端标识 client DUID，IA 
+- 地址，优先生存期（preferred lifetime），有效生存期（valid lifetime），报文丢弃等。
+- 举例：
+
+  ```text
+  switch#debug ipv6 dhcp snooping packet dhcpv6 snooping packet debug is on
+  switch#%Jan  05  00:26:40  2006  DHCP6SNP  EVENT:  Parse  packet  SOLICIT  from fe80::200:ff:fe00:1
+  src MAC 00-00-00-00-00-01 interface Ethernet1/0/23 vlan 24
+  %Jan 05 00:26:40 2006 DHCP6SNP PACKET: Receive DHCPv6 packet SOLICIT from fe80::200:ff:fe00:1 src MAC 00-00-00-00-00-01, dst MAC 33-33-00-01-00-02, interface Ethernet1/0/23 vlan 24, transaction-ID 6137412, smac host flag 0, dmac host flag 0 %Jan 05 00:26:40 2006 DHCP6SNP PACKET: Forward packet SOLICIT (protocol 0x37) %Jan 05 00:26:40 2006 DHCP6SNP PACKET: to vlan 24 except port Ethernet1/0/23 (designPort flag 0) %Jan 05 00:26:40 2006 DHCP6SNP PACKET: and return packet to network stack switch#
+  ```
   
+### 5.2.4 `show ipv6 dhcp relay option`
 
+- 命令：`show ipv6 dhcp relay option`
+- 功能：本命令显示系统中继代理的配置信息，包括中继代理 option  37 和 option  38 使能开关。
+- 参数：无。
+- 命令模式：特权配置模式
+- 使用指南：运行时使用本命令检查中继代理对 option 37 和option 38 选项的配置状态
+- 举例：
 
+  ```text
+  Switch#show ipv6 dhcp relay option remote-id option enable
+  subscriber-id option enable
+  Interface Vlan 1: remote-id option configure “abc”
+  ```
 
+### 5.2.5 `show ipv6 dhcp snooping option`
+
+- 命令：`show ipv6 dhcp snooping option`
+- 功能：本命令显示系统 snooping 的配置信息，包括其中的 option 37 和option 38 使能开关。参数：无。
+- 命令模式：特权配置模式
+- 使用指南：运行时使用本命令检查中 snooping 对 option 37 和option 38 选项的配置状态
+- 举例：
+
+  ```text
+  Switch#show ipv6 dhcp snooping option remote-id option enable
+  subscriber-id option enable
+  The slot port vlan select option is : port and vlan
+  The delimiter is : #
+  ```
+
+##  第6章 DHCP Snooping 配置命令
+
+### 6.1 `debug ip dhcp snooping binding`
+
+- 命令：
+  - `debug ip dhcp snooping binding`
+  - `no debug ip dhcp snooping binding`
+- 功能：该命令用来打开 DHCP snooping 调试开关，调试 DHCP snooping 绑定数据的状态。命令模式：特权用户配置模式。
+- 使用指南：主要用于调试 DHCP snooping 任务根据绑定数据添加 ARP 表项，dot1x 用户，信任用户表项的状态。
+
+### 6.2 `debug ip dhcp snooping event`
+
+- 命令：
+  + `debug ip dhcp snooping event`
+  + `no debug ip dhcp snooping event`
+- 功能：该命令用来打开 DHCP snooping 调试开关，调试 DHCP snooping 任务的状态。命令模式：特权用户配置模式。
+- 使用指南：主要用于调试 DHCP snooping 任务状态，可以输出 DHCP snooping 检查绑定数据，执行端口动作等状态。
+
+### 6.3 `debug ip dhcp snooping packet interface`
+
+- 命令：`debug ip dhcp snooping packet interface {[ethernet] <InterfaceName>} no debug ip dhcp snooping packet {[ethernet] <InterfaceName>}`
+- 功能：该命令用来打开 DHCP snooping 调试开关，调试 DHCP snooping 接收报文的消息。
+- 参数：`<InterfaceName>`：接口名称。
+- 命令模式：特权用户配置模式。
+- 使用指南： DHCP snooping 从特定端口接收报文的消息。
+
+### 6.4 `debug ip dhcp snooping packet`
+
+- 命令：`debug ip dhcp snooping packet no debug ip dhcp snooping packet`
+- 功能：该命令用来打开DHCP snooping调试开关，调试DHCP snooping处理报文的流程
+- 命令模式：特权用户配置模式
+- 使用指南： DHCP snooping处理DHCP报文的调试信息。这些调试信息包括报文处理流程的每个步骤：添加报警信息、添加绑定信息、转发DHCP报文、添加/剥离option 82等等。
+
+### 6.5 `debug ip dhcp snooping update`
+
+- 命令：`debug ip dhcp snooping update no debug ip dhcp snooping update`
+- 功能：该命令用来打开DHCP snooping调试开关，调试 DHCP snooping 和 HELPER SERVER 之间的通讯信息
+- 命令模式：特权配置模式
+- 使用指南： 调试 DHCP snooping 接收、发送与 HELPER SERVER 之际的通讯报文消息。
+
+### 6.6 `enable trustview key`
+
+- 命令：
+  + `enable trustview key {0|7} <password>`
+  + `no enable trustview key`
+- 功能：配置私有报文的 DES 加密密钥，本命令同时也是交换机启用私有报文加密/散列功能的开关。
+- 参数：`<password>`是长度小于 16 的字符串，用作 DES 加密密钥。0 表示以明文方式显示密钥，7 表示以密文方式显示密钥。
+- 命令模式：全局配置模式。
+- 缺省情况：交换机默认没有配置 DES 加密密钥，即交换机默认不启用私有报文加密/散列功能。
+- 使用指南：交换机与 DCN 内网安全管理后台系统通过私有报文进行私有信息的传输，在默认情况下，私有报文是以明文传递的，为了防止私有报文被窃听破解，可选择对私有报文的内容进行加密，同时，管理员也需要在 DCN 内网安全管理后台配置相同的密钥。
+- 举例：使能私有报文的加密/散列功能。
+
+  ```text
+  witch(config)#enable trustview key 0 digitalchina
+  ```
   
+### 6.7 `ip dhcp snooping`
 
+- 命令：`ip dhcp snooping enable no ip dhcp snooping enable`
+- 功能：开启DHCP Snooping功能
+- 参数：无
+- 命令模式：全局配置模式
+- 缺省情况：DHCP snooping默认关闭
+- 使用指南： 开启后将监听所有非信任端口的DHCP Server包
+- 举例：启动DHCP snooping功能
 
+  ```text
+  switch(config)#ip dhcp snooping enable
+  ```
   
+### 6.8 ip dhcp snooping action
 
-
-
-
-
-
-   
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+命令：`ip dhcp snooping action {shutdown|blackhole} [recovery <second>]no ip dhcp snooping action`
+功能：设置或删除端口上的自动防御动作。
+参数：
+  - shutdown:端口检测到伪装 DHCP Server 时，将 shutdown 此端口。
+  - blackhole：端口检测到伪装 DHCP Server 时，将以伪装数据包的 vid 和源 mac 设置 blackhole 来阻止此 Mac 的流量。
+  - recovery：用户可选设置自动防御动作执行后还可以自动恢复（no shut 端口或删除相应的 blackhole）。
+  - `<second>`：用户指定多长时间后恢复防御动作，单位：秒，范围是 10-3600。
+命令模式：端口配置模式。
+缺省情况：没有默认的防御动作。
+使用指南：必须全局开启 DHCP  snooping，才能配置此命令。信任端口不会检测 DHCP Server 
+伪装，所以永远不会触发相应的防御动作。当端口从非信任端口变更为信任端口时，端口上原来的防御动作将自动去除。
+举例：设置端口 ethernet1/0/1 的DHCP snooping 防御动作为设置 blackhole，自动恢复时间为 30 秒。
+```text
+switch(config)#interface ethernet 1/0/1
+switch(Config- Ethernet 1/0/1)#ip dhcp snooping action blackhole recovery 30
+```
 
