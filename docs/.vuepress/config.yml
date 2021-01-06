@@ -66,6 +66,15 @@ themeConfig:
             -
               text: 命令手册
               link: /net/manual/command/
+        -
+          text: 思科模拟器
+          items:
+            -
+              text: Cisco Packet Tracer Help
+              link: https://help.cisco.yueplus.ink/Simplified%20Chinese/
+            -
+              text: GitHub
+              link: https://github.com/Yue-plus/cisco_packet_tracer_help
     -
       text: 系统服务
       items:
