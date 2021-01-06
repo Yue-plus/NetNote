@@ -1952,13 +1952,132 @@ subscriber-id 内容。
   - blackhole：端口检测到伪装 DHCP Server 时，将以伪装数据包的 vid 和源 mac 设置 blackhole 来阻止此 Mac 的流量。
   - recovery：用户可选设置自动防御动作执行后还可以自动恢复（no shut 端口或删除相应的 blackhole）。
   - `<second>`：用户指定多长时间后恢复防御动作，单位：秒，范围是 10-3600。
-命令模式：端口配置模式。
-缺省情况：没有默认的防御动作。
-使用指南：必须全局开启 DHCP  snooping，才能配置此命令。信任端口不会检测 DHCP Server 
-伪装，所以永远不会触发相应的防御动作。当端口从非信任端口变更为信任端口时，端口上原来的防御动作将自动去除。
-举例：设置端口 ethernet1/0/1 的DHCP snooping 防御动作为设置 blackhole，自动恢复时间为 30 秒。
+- 命令模式：端口配置模式。
+- 缺省情况：没有默认的防御动作。
+- 使用指南：必须全局开启 DHCP  snooping，才能配置此命令。信任端口不会检测 DHCP Server 
+- 伪装，所以永远不会触发相应的防御动作。当端口从非信任端口变更为信任端口时，端口上原来的防御动作将自动去除。
+- 举例：设置端口 ethernet1/0/1 的DHCP snooping 防御动作为设置 blackhole，自动恢复时间为 30 秒。
+  ```text
+  switch(config)#interface ethernet 1/0/1
+  switch(Config- Ethernet 1/0/1)#ip dhcp snooping action blackhole recovery 30
+  ```
+  
+### 6.9 ip dhcp snooping action MaxNum
+
+- 命令：`ip dhcp snooping action {<maxNum>|default}`
+- 功能： 设置端口上同时生效的防御动作数目。
+- 参数：`<maxNum>`:  每个端口的防御动作数目，范围是 1-200，默认为 10。 default：恢复默认的防御动作数目。
+- 命令模式：全局配置模式。缺省情况：默认数目为 10。
+- 使用指南：设置防御动作数目限制，是为了防止交换机被攻击而耗尽系统资源。如果报警信息的数目大于了设置的值，那么最早的防御动作将被强行恢复，并下发新的防御动作。
+- 举例：配置端口防御动作数量为 100。
+
+  ```text
+  switch(config)#ip dhcp snooping action 100
+  ```
+
+### 6.10 ip dhcp snooping binding
+
+- 命令：`ip dhcp snooping binding enable  no ip dhcp snooping binding enable`
+- 功能：开启 DHCP snooping 绑定功能
+- 参数：无。
+- 命令模式：全局配置模式。
+- 缺省情况：DHCP snooping 绑定默认关闭。
+- 使用指南：开启后将记录所有信任端口的 DHCP Server 分配的绑定信息。只有启动 DHCP snooping 功能之后，才能启动绑定功能。
+- 举例：启动 DHCP snooping 绑定功能。
+
 ```text
-switch(config)#interface ethernet 1/0/1
-switch(Config- Ethernet 1/0/1)#ip dhcp snooping action blackhole recovery 30
+switch(config)#ip dhcp snooping binding enable
 ```
+相关命令：`ip dhcp snooping enable`
+
+### 6.11 ip dhcp snooping binding arp
+
+本款交换机不支持此命令
+
+### 6.12 ip dhcp snooping binding dot1x
+
+- 命令：`ip dhcp snooping binding dot1x  no ip dhcp snooping binding dot1x`
+- 功能：开启 DHCP snooping 绑定 DOT1X 功能
+- 参数：无。
+- 命令模式：端口配置模式。
+- 缺省情况：所有端口默认不启动绑定 DOT1X 功能。
+- 使用指南：开启后 DHCP snooping 将把捕获的绑定信息通知到 DOT1X 模块，作为 DOT1X
+- 受控用户。这个命令和ip dhcp snooping binding user-control 命令互斥。 只有启动DHCP snooping 绑定功能之后，才能配置绑定DOT1X 功能。
+- 举例：在端口 ethernet1/0/1 启动绑定 DOT1X 功能。
+
+  ```text
+  switch(config)#interface ethernet 1/0/1
+  switch(Config- Ethernet 1/0/1)# ip dhcp snooping binding dot1x
+  ```
+
+相关命令：
++ `ip dhcp snooping binding enable`
++ `ip dhcp snooping binding user-control`
+
+### 6.13 ip dhcp snooping binding user
+
+- 命令： `ip  dhcp  snooping  binding  user  <mac>  address  <ipaddress>    interface [Ethernet] <ifname>
+         no ip dhcp snooping binding user <mac> interface [Ethernet] <ifname>`
+- 功能： 配置静态绑定用户信息
+参数：
+   + `<mac>：`静态绑定用户的 MAC 地址，MAC 地址是绑定用户的唯一索引值；
+   + `<ipaddress>：`静态绑定用户的 IP 地址；
+   + `<ifname>：`静态绑定用户的接入端口。命令模式：全局配置模式。
+- 缺省情况：DHCP snooping 默认没有静态绑定表项。
+- 使用指南：静态绑定用户和 DHCP  snooping  捕获的动态绑定用户一样处理，可以通知 DOT1X 作为DOT1X 的受控用户，可以直接添加信任用户表项，可以添加绑定 ARP 表项。静态绑定用户永远不会被老化，并且优先级大于动态绑定用户。只有启动DHCP snooping绑定功能之后，才能配置静态绑定用户。
+- 举例：配置静态绑定用户。
+
+  ```text
+  switch(config)#ip  dhcp  snooping  binding  user  00-03-0f-12-34-56  address  192.168.1.16interface Ethernet 1/0/16
+  ```
+  
+相关命令：`ip dhcp snooping binding enable`
+
+### 6.14 ip dhcp snooping binding user-control
+
+- 命令：`ip dhcp snooping binding user-control  no ip dhcp snooping binding user-control`
+- 功能：开启 DHCP snooping 绑定用户功能
+- 参数：无。
+- 命令模式：端口配置模式。
+- 缺省情况：所有端口默认不启动绑定用户功能。
+- 使用指南：开启后 DHCP snooping 将把捕获的绑定信息直接作为信任用户允许访问所有资源。这个命令和 ip dhcp snooping binding dot1x 命令互斥。
+         只有启动DHCP snooping 绑定功能之后，才能配置绑定用户功能，这个命令不受基于
+         VLAN 的ip dhcp snooping 限制，只受全局 ip dhcp snooping enable 限制
+- 举例：在端口 ethernet1/0/1 启动绑定 USER 功能。
+
+  ```text
+  switch(config)#interface ethernet 1/0/1
+  switch(Config- Ethernet 1/0/1)#ip dhcp snooping binding user-control
+  ``` 
+
+相关命令：`ip dhcp snooping binding enable
+         ip dhcp snooping binding dot1x`
+         
+### 6.15 ip dhcp snooping binding user-control max-user
+
+- 命令：`ip dhcp snooping binding user-control max-user <number>
+     no ip dhcp snooping binding user-control max-user`
+- 功能： 设置 DHCP  snooping 绑定用户功能时指定端口最多允许接入的用户数；本命令的no 操作为恢复缺省值。
+- 参数：`<number>` 最多允许的接入用户数，取值范围为 0~1024。命令模式：端口配置模式。
+- 缺省情况：每个端口缺省最多允许接入的用户数为 1024。
+- 使用指南：这个命令限制在端口使能 ip dhcp snooping binding user-contrl 
+        时，根据绑定信息下发成信任用户的最大数目。在默认情况下，允许将绑定信息下发成信任用户的数目为 
+        1024。由于交换机的硬件资源有限，真正下发为信任用户的数据取决于交换机的硬件资源。在交换机存在空闲硬件资源的情况下，如果通过此命令调整最大用户数，如果调整后的最大用户数大于调整前的用户数，则DHCP
+        snooping 将未能设置成信任用户的绑定信息下发到硬件成为信任用户。如果将最大用户数调小，则 DHCP snooping 
+        根据新的最大用户数值重新调整下发到硬件的绑定信息数。当下发到硬件的绑定信息数达到最大值后，新的 DHCP用户无法成为信任用户，则无法通过交换机访问其他网络资源。
+- 举例：在端口 Ethernet1/0/1  启动绑定 dhcp  snooping  binding  user  功能，设置端口
+     Ethernet1/0/1 最多允许接入 5 个用户。
+     
+  ```text
+  Switch(Config-If-Ethernet1/0/1)#ip dhcp snooping binding user-control max-user 5
+  ```
+
+相关命令：`ip dhcp snooping binding user-control`
+
+### 6.16 ip dhcp snooping information enable
+
+
+
+
+
 
