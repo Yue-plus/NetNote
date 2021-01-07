@@ -2434,7 +2434,7 @@ switch(config)#ip dhcp snooping binding enable
   ``` 
 
 ### 6.34 show ip dhcp snooping binding all
-- 命令：show ip dhcp snooping binding all
+- 命令：`show ip dhcp snooping binding all`
 - 功能：显示当前 DHCP snooping 全局绑定信息。参数：无。
 - 命令模式：特权和全局配置模式。缺省情况：无。
 - 使用指南：该命令可查看 DHCP  Snooping  全局绑定信息，每条显示表项包括 DHCP Snooping 绑定对应的 MAC 地址，IP 地址，所属端口名和 Vlan ID，以及绑定状态标识。必须全局开启 DHCP snooping，才能配置此命令。
@@ -2469,7 +2469,7 @@ switch(config)#ip dhcp snooping binding enable
   
 ### 6.35 show trustview status
 
-- 命令：show trustview status
+- 命令：`show trustview status`
 - 功能：显示交换机收发 DCN 内网安全管理后台系统 TrustView 各种类型私有报文的状态信息。
 - 参数：无。
 - 命令模式：特权和全局配置模式
@@ -2500,7 +2500,7 @@ switch(config)#ip dhcp snooping binding enable
 
 ### 7.1 ip dhcp snooping information enable
 
-- 命令：ip dhcp snooping information enableno ip dhcp snooping information enable
+- 命令：`ip dhcp snooping information enableno ip dhcp snooping information enable`
 - 功能：设置本命令启用交换机DHCP SNOOPING 的 option  82 功能，本命令的 no 操作关闭交换机DHCP SNOOPING 的option 82 功能。
 - 参数：无。
 - 缺省情况：DHCP SNOOPING 默认关闭option 82 功能。命令模式：全局配置模式。
