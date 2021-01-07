@@ -1313,10 +1313,10 @@
 - 命令模式：接口配置模式
 - 缺省情况：系统默认使用 replace 模式使用本系统的 option82 选项替换现有报文中的 option 选项。使用指南：由于 DHCP 客户端报文向 DHCP 服务器传递的过程中可能经过多个 DHCP 中继代理，该路径上后续中继需要设置策略决定如何对先前中继添加的 option82 选项进行处理。Option 82 重转发策略的选择要配合 DHCP 服务器的配置策略而定
 - 举例：设置 DHCP 报文 option82 选项的重转发策略为 keep
- 
+
   ```text
   Switch(config-if-vlan1)#ip dhcp relay information policy keep
-  ``` 
+  ```
   
 ### 3.13 ip dhcp server relay information enable
 
@@ -1619,8 +1619,9 @@
 
   ```text
   Switch(config)#ipv6 dhcp snooping information option remote-id format acsii
-  ```5555555555555
+  ​```5555555555555
   
+  ```
 ### 5.1.13 ipv6 dhcp snooping information option subscriber-id format
 
 - 命令：`ipv6 dhcp snooping information option subscriber-id format {hex | acsii }`
@@ -1630,7 +1631,7 @@
 - 命令模式：全局配置模式
 - 使用指南：ASCII 格式的VLAN和端口信息形如 Vlan1+Ethernet1/0/11。十六进制格式的 VLAN 和端口信息定义如下
           的 VLAN 和端口信息定义如下：
-          ！[6.jpg](./img/6.jpg)
+          ！[6.jpg](./img/07/6.jpg)
           其中，VLAN 字段填写交换机 VLAN ID。Slot 对于机架式交换机，表示插槽号；对于盒式交换机，为1。Module 默认为0。Port 表示端口号，从1开始
 - 举例：配置交换机 DHCP snooping option38 功能 subscriber-id 格式为十六进制格式。
 
@@ -2031,6 +2032,7 @@ switch(config)#ip dhcp snooping binding enable
   switch(config)#ip  dhcp  snooping  binding  user  00-03-0f-12-34-56  address  192.168.1.16interface Ethernet 1/0/16
   ```
   
+
 相关命令：`ip dhcp snooping binding enable`
 
 ### 6.14 ip dhcp snooping binding user-control
@@ -2048,7 +2050,7 @@ switch(config)#ip dhcp snooping binding enable
   ```text
   switch(config)#interface ethernet 1/0/1
   switch(Config- Ethernet 1/0/1)#ip dhcp snooping binding user-control
-  ``` 
+  ```
 
 相关命令：`ip dhcp snooping binding enable
          ip dhcp snooping binding dot1x`
@@ -2075,6 +2077,480 @@ switch(config)#ip dhcp snooping binding enable
 相关命令：`ip dhcp snooping binding user-control`
 
 ### 6.16 ip dhcp snooping information enable
+
+- 命令：`ip dhcp snooping information enable
+        no ip dhcp snooping information enable`
+- 功能：设置本命令启用交换机DHCP snooping 的 option 82 功能，本命令的 no 操作关闭交换机 DHCP snooping 的 option 82 功能。
+- 参数：无。
+- 缺省情况：DHCP snooping 默认关闭 option 82 功能。命令模式： 全局配置模式。
+- 使用指南：只有配置本命令 DHCP snooping 才能在 DHCP 请求报文中添加标准的 option 82 选项并转发。option 82 子选项 1(电路 ID 选项)  的形式为标准的 
+          vlan 名加物理端口名形式，如 vlan1+ethernet1/0/12。option 82 子选项 2(远端 ID 选项)  的形式为交换机 cpu mac，如 
+          00030f023301。如果接收到的含有 option 82 选项的 DHCP 请求报文，DHCP snooping使用自己的 option 82 选项替换现有报文中的 option 82 
+- 选项；如果接收到的含有 option 82选项的 DHCP 应答报文，则将报文中的 option 82 选项丢弃再转发 DHCP 报文。
+- 举例：开启交换机 dhcp snooping 的 option 82 功能。 Switch(config)#ip dhcp snooping enable Switch(config)#ip 
+       dhcp snooping binding enable
+   
+  ```text
+  Switch(config)#ip dhcp snooping information enable
+  ```
+  
+### 6.17 ip dhcp snooping information option allow-untrusted (replace|)
+
+- 命令：`ip dhcp snooping information option allow-untrusted (replace|)  no ip dhcp snooping information 
+       option allow-untrusted (replace|)`
+- 功能：本命令用于设置允许从 DHCP  snooping  的非信任端口接收含有 option82  选项的 DHCP 报文，在设置参数 replace 时，允许替换 option82 
+- 选项；关闭此命令时，所有非信任端口将丢弃含有 option82 选项的 DHCP 报文。
+- 参数：无。
+- 命令模式：全局配置模式
+- 缺省情况：系统默认丢弃非信任端口接收的含有 option82 选项的 DHCP 报文。
+- 使用指南：启用DHCP snooping 功能的交换机一般来说直接连接最终用户，为了防止用户私自添加 option82 选项，默认关闭 allow-untrusted 功能。启用 DHCP  
+        snooping 功能的交换机级联时，请配置级联端口为信任端口。
+举例：全局打开允许接收含有 option82 选项的 DHCP 报文功能。
+
+  ```text
+  Switch(config)#ip dhcp snooping information option allow-untrusted
+  ```
+  
+### 6.18 ip dhcp snooping information option delimiter
+
+- 命令：`ip dhcp snooping information option delimiter [colon | dot | slash | space] no ip dhcp snooping information option delimiter`
+- 功能：该命令用来配置用户在全局定义的用来生成 option82 子选项的各参数的分隔符，该命令的 no 形式恢复分隔符为默认值，即 slash。
+- 参数：无。
+- 缺省情况：系统默认分隔符为 slash (“/”)。命令模式：全局配置模式
+- 使用指南：当用户在全局自定义了用来生成 option82 子选项（remote-id，circuit-id）的各参数后，该命令配置的分隔符用来分隔这些参数。
+- 举例：配置 option82 子选项各参数分隔符为 dot（“.”）。
+
+  ```text
+  Switch(config)# ip dhcp snooping information option delimiter dot
+  ```
+  
+### 6.19 ip dhcp snooping information option remote-id
+
+- 命令：`ip dhcp snooping information option remote-id {standard | <remote-id>} no ip dhcp snooping information option remote-id`
+- 功能：本命令用于设置从端口接收的 DHCP 请求报文添加 option 82 子选项 2(远程 ID 选项)的具体内容。本命令的 no  操作把添加 option  82  子选项 2(远程 ID  选项)的形式设置为 standard。
+- 参数：standard 表示默认的交换机VLAN MAC 格式，`<remote-id>`为用户自己指定的 option 82 的 remote-id 内容，它是一个长度小于等于 64 的字符串。
+- 命令模式：全局配置模式
+- 缺省情况：系统默认使用 standard 形式设置 option 82 中的 remote-id。
+- 使用指南：因为交换机添加的 option 82 信息要配合第三方的 DHCP 服务器使用，在交换机的标准 remote-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 remote-id 的内容。
+- 举例：设置 DHCP option82 选项的子选项 remote-id 为 street-1-1。
+
+  ```text
+  Switch(config)# ip dhcp snooping information option remote-id street-1-1
+  ```
+  
+### 6.20 ip dhcp snooping information option self-defined remote-id
+
+- 命令：`ip dhcp snooping information option self-defined remote-id {hostname | mac | string WORD}no ip dhcp snooping information option self-defined remote-id`
+- 功能：该命令用来配置 option82  的生成方式，用户可以自定义用来生成 option82  子选项remote-id 的参数（集）。
+- 参数： WORD  自定义的 remote-id 字符串，最大长度为 64。缺省情况：缺省采用标准生成方式。
+- 命令模式：全局配置模式
+- 使用指南：配置本命令后，若用户没有在全局配置命令 ip dhcp snooping information option remote-id 则根据本命令的自定义生成方式来生成 option82 
+        子选项 remote-id。对于 mac，如果是用 ascii 的形式填到报文中则采用形如 00-02-d1-2e-3a-0d 的形式，如果是 hex 形式则占 6 
+        个字节。各个选项按照命令配置的顺序填入报文，中间用分隔符分隔（分隔符为 ip
+        dhcp snooping information option delimiter 配置）。
+- 举例：配置 option82 子选项 remote-id 的生成方式为 mac 和自定义的字符串“abc”。
+
+  ```text
+  Switch(config)# ip dhcp snooping information option self-defined remote-id mac string abc
+  ```
+  
+### 6.21 ip dhcp snooping information option self-defined remote-id format
+
+- 命令：`ip dhcp snooping information option self-defined remote-id format [ascii | hex]`
+- 功能：该命令用来配置 snooping option82 中 remote-id 的生成格式
+- 参数：无。
+- 缺省情况：系统默认生成格式为 ascii
+- 命令模式：全局配置模式
+- 使用指南：本命令的生成格式指定了用命令 ip  dhcp  snooping  information  option  type self-defined remote-id 生成 remote-id 的格式。
+- 举例：配置 snooping option82 中 remote-id 的生成格式为 hex。
+
+  ```text
+  Switch(config)# ip dhcp snooping information option self-defined remote-id format hex
+  ```
+  
+### 6.22 ip dhcp snooping information option self-defined subscriber-id
+
+- 命令：`ip dhcp snooping information option self-defined subscriber-id {vlan | port | id (switch-id (mac | hostname)| remote-mac) | string WORD}no ip dhcp snooping information option type self-defined subscriber-id`
+- 功能：该命令用来配置 option82  的生成方式，用户可以自定义用来生成 option82  子选项circuit-id 的参数（集）。
+- 参数： WORD  自定义的 circuit-id 字符串，最大长度为 64
+- 缺省情况：缺省采用标准生成方式。
+- 命令模式：全局配置模式
+- 使用指南：配置本命令后，若用户没有在端口上配置 circuit-id 则根据本命令的自定义生成方式来生成 option82 子选项 circuit-id。用该命令生成的 circuit-id 
+        的格式为：若 self-defined subscriber-id format 为ascii，则填入的vlan 选项形如“Vlan2”，port 选项形如“Ethernet1/0/1”， mac 
+        选项和 remote-mac 选项形如“00-02-d1-2e-3a-0d”；若 self-defined format 为 hex，则填入的 vlan 选项占两个字节，port 选项占 4 
+        个字节，一个字节表示 slot（对于机架式交换机，表示插槽号；对于盒式交换机，为 1），一个字节表示 Module（默认为 0），两个字节表示端口号，从 1 开始，mac 选项和 
+        remote-mac 选项占 6 个字节。各个选项按照命令配置的顺序填入报文，中间用分隔符分隔（分隔符为 ip  dhcp  snooping  information  option 
+        delimiter 配置 ）。
+- 举例：配置 option82 子选项 circuit-id 的生成方式为 vlan，port 和 remote-mac。
+
+  ```text
+  Switch(config)#ip dhcp snooping information option self-defined subscriber-id vlan port id remote-mac
+  ```
+  
+### 6.23 ip dhcp snooping information option self-defined subscriber-id format
+
+- 命令：`ip dhcp snooping information option self-defined subscriber-id format [ascii | hex]`
+- 功能：该命令用来配置 snooping option82 中 circuit-id 的生成格式
+- 参数：无。
+- 缺省情况：系统默认生成格式为 ascii
+- 命令模式：全局配置模式
+- 使用指南：本命令的生成格式指定了用命令 ip  dhcp  snooping  information  option  type self-defined subscriber -id 生成 circuit-id 的格式。
+- 举例：配置 snooping option82 中 circuit-id 的生成格式为 hex。
+
+  ```text
+  Switch(config)#ip dhcp snooping information option self-defined subscriber-id format hex
+  ```
+  
+### 6.24 ip dhcp snooping information option subscriber-id
+
+- 命令：`ip dhcp snooping information option subscriber-id {standard | <circuit-id>} no ip dhcp snooping information option subscriber-id`
+- 功能：本命令用于设置从端口接收的 DHCP 请求报文添加 option 82 子选项 1(电路 ID 选项)的具体内容。本命令的 no  操作把添加 option  82  子选项 1(电路 ID  选项)的形式设置为 standard。
+- 参数： standard  表示标准的 vlan  名加物理端口名形式，如 Vlan2+Ethernet1/0/12，`<circuit-id>`为用户自己指定的 option 82 的 circuit-id 内容，它是一个长度小于等于 64 的字符串。
+- 命令模式：端口配置模式
+- 缺省情况：系统默认使用 standard 形式设置 option 82 中的 circuit-id。
+- 使用指南：因为交换机添加的 option 82 信息要配合第三方的 DHCP 服务器使用，在交换机的标准 circuit-id 形式不能满足服务器的要求时，提供一种手段由用户依据服务器情况自己指定 circuit-id 的内容。
+- 举例：设置 DHCP option82 选项的子选项 circuit-id 为 P2。
+
+  ```text
+  Switch(config)# ip dhcp snooping information option subscriber-id P2
+  ```
+  
+### 6.25 ip dhcp snooping information option subscriber-id format
+
+- 命令：`ip dhcp snooping information option subscriber-id format {hex | acsii | vs-hp}`
+- 功能：本命令设置 DHCP snooping option82 功能 subscriber-id 默认格式
+- 参数：hex 表示 subscriber-id 为十六进制格式的VLAN 和端口信息，acsii 表示为ACSII格式的VLAN和端口信息，vs-hp表示subscriber-id兼容设备厂商HP的格式。
+- 缺省情况：系统默认option82功能subscriber-id格式为acsii
+- 命令模式：全局配置模式
+- 使用指南：ASCII  格式的 VLAN  和端口信息形如 Vlan1+Ethernet1/0/11。十六进制格式的 VLAN 和端口信息定义如下：
+
+![7.jpg](./img/07/7.jpg)
+
+其中，VLAN字段填写交换机VLAN ID。Slot对于机架式交换机，表示插槽号；对于盒式交换机，为1。Module默认为0。Port表示端口号，从1开始。兼容设备厂商HP的subscriber-id格式定义如下：
+
+![8.jpg](./img/07/8.jpg)
+
+其中Port 表示端口号，从 1 开始。
+- 举例：配置交换机 DHCP snooping option82 功能 subscriber-id 格式为十六进制格式。
+
+  ```text
+  Switch(config)#ip dhcp snooping information option subscriber-id format hex
+  ```
+  
+### 6.26 ip dhcp snooping limit-rate
+
+- 命令：`ip dhcp snooping limit-rate <pps> no ip dhcp snooping limit-rate`
+- 功能：设置交换机 DHCP 报文最大转发速率。
+- 参数：`<pps>`：每秒钟转发的 DHCP 报文数量，范围是 0-100，默认为 100
+- 命令模式：全局配置模式。
+- 缺省情况：默认数目为100。
+- 使用指南：启动DHCP snooping之后，交换机监控所有DHCP报文并执行软件转发，交换机软件性能与交换机型号、当前负载状态等相关。
+- 举例：设置交换机DHCP报文转发速率为50pps。
+
+  ```text
+  switch(config)#ip dhcp snooping limit-rate 50
+  ```
+  
+### 6.27 ip dhcp snooping timeout detection
+
+- 命令：`ip dhcp snooping timeout detection <0-7200> no ip dhcp snooping timeout detection`
+- 功能：设置绑定表项的流量监测超时时间。
+- 参数：可配置的流量监测超时时间范围为 0-7200，默认值为 3。单位为秒。
+- 命令模式：全局配置模式。
+- 使用指南：绑定表项处于保护模式时，每过一段时间，会检查下在该时间段内是否有该源 mac  
+- 的流量通过；若有流量通过，会继续处于保护模式；若没有流量通过，会启动静默定时器，并在该静默时间段内仍处于保护模式。若在静默时间段内，仍没有流量经过，则删除表项的保护模式。
+- 举例：
+
+  ```text
+  Config)#ip dhcp snooping timeout detection 100
+  ```
+  
+### 6.28 ip dhcp snooping timeout quiet
+
+- 命令：`ip dhcp snooping timeout quiet <0-4294967295> no ip dhcp snooping timeout quiet`
+- 功能：设置绑定表项的流量监测静默时间。
+- 参数：可配置的流量监测静默时间范围为 0-4294967295，默认值为 0。单位为秒。命令模式：全局配置模式。
+- 使用指南：绑定表项处于保护模式时，每过一段时间，会检查下在该时间段内是否有该源 mac  
+- 的流量通过；若有流量通过，会继续处于保护模式；若没有流量通过，会启动静默定时器，并在该静默时间段内仍处于保护模式。若在静默时间段内，仍没有流量经过，则删除
+- 表项的保护模式。
+- 举例：
+
+  ```text
+  (Config)#ip dhcp snooping timeout quiet 1000
+  ```
+  
+### 6.29 ip dhcp snooping trust
+
+- 命令：`ip dhcp snooping trust no ip dhcp snooping trust`
+- 功能：设置或删除端口的 DHCP snooping 信任属性
+- 参数：无。
+- 命令模式：端口配置模式。
+- 缺省情况：所有端口默认为非信任端口。
+- 使用指南：必须全局开启 DHCP snooping，才能配置此命令。当端口从非信任端口变更为信任端口时，端口上原来的防御动作将自动去除，所有安全历史记录将清除（不会清除系统日志中的信息）。
+- 举例：设置端口 ethernet1/0/1 为DHCP snooping 信任端口。
+
+  ```text
+  switch(config)#interface ethernet 1/0/1
+  switch(Config- Ethernet 1/0/1)#ip dhcp snooping trust
+  ```
+  
+### 6.30 ip dhcp snooping vlan
+
+- 命令：`ip dhcp snooping vlan (WORD | )  no ip dhcp snooping vlan (WORD | )`
+- 功能：在 vlan 中使能 dhcp snooping 功能。
+- 参数：无参数。默认在所有 vlan 上使能 dhcp snooping，否则在参数指定的 vlan 上使能 dhcp snooping。
+- 命令模式：全局配置模式。
+- 缺省情况：默认不在 vlan 中使能 dhcp snooping 功能。
+- 使用指南：no ip dhcp snooping vlan `<vlan-id>`表示在指定 vlan 上禁用 dhcp snooping 功能。举例：启动 DHCP snooping 功能。
+
+  ```text
+  switch(config)#ip dhcp snooping vlan 10
+  switch(config)#no ip dhcp snooping vlan 10
+  ```
+  
+### 6.31 ip user helper-address
+
+- 命令：`ip  user  helper-address  <svr_addr>  [port  <udp_port>  ]  source  <src_addr> [secondary] no ip user helper-address [secondary]`
+- 功能：设置 HELPER SERVER 地址和端口号。
+- 参数：`<svr_addr>`：HELPER SERVER 的 IP 地址，点分十进制形式。 udp_port：HELPER SERVER 的UDP 端口号，范围是 1－65535，默认值是 9119。 src_addr：交换机本地管理 IP 地址，点分十进制形式。sencondary：是否为第二 SERVER 地址
+- 命令模式：全局配置模式。
+- 缺省情况：没有 HELPER SERVER 地址。
+- 使用指南：DHCP snooping 把监控到的绑定信息发送到 HELPER SERVER 保存，当交换机异常启动之后，可以从 HELPER SERVER 恢复这些绑定数据。HELPER 
+         SERVER 功能一般集成到 DCBI 软件包中。DHCP snooping 和HELPER SERVER 通过 UDP 协议进行通讯，并且通过重传保证数据可靠到达。HELPER  SERVER  
+         配置还可以用于从服务器下发 DOT1X 用户数据，具体用法见`《dot1x 配置》`章节。
+         可以配置两个HELPER SERVER 地址，DHCP snooping 尽量和 PRIMARY SERVER 创建连接；只有 PRIMARY SERVER 不可达时，才和 SECONDARY 
+         SERVER 建立连接。请注意： source 地址是交换机的有效管理 IP 地址，如果交换机管理 IP 地址更新，应该及时更新此配置。
+- 举例： 配置本地管理 IP 地址为 100.1.1.1，主 HELPER SERVER 地址为 100.1.1.100，端口号为默认值。
+
+  ```text
+  switch(config)#interface vlan 1
+  switch(Config- If-Vlan1)#ip address 100.1.1.1 255.255.255.0 switch(Config-If-Vlan1)exit
+  switch(config)#ip user helper-address 100.1.1.100 source 100.1.1.1
+  ```
+  
+### 6.32 ip user private packet version two
+
+- 命令：`ip user private packet version two no ip user private packet version two`
+- 功能：在交换机和 DCN 内网安全管理系统 trustview 系统之间选择版本 2 私有报文进行通信。
+- 参数：无。
+- 命令模式：全局配置模式。
+- 缺省情况：交换机和 DCN 接入管理系统 DCBI 之间选择使用版本 1 私有报文进行通信。 使用指南：如果管理员使用 DCN 接入管理系统 DCBI，则需要在交换机和 DCBI 间使用版本 1 
+- 私有报文进行通信；如果使用 DCN 内网安全管理系统 TrustView，则必须使用版本 2的私有报文。
+- 举例：交换机使用版本 2 私有报文与 DCN 内网安全管理后台系统通信。
+
+  ```text
+  switch(config)#ip user private packet version two
+  ```
+
+相关命令：`ip user helper-address`
+
+### 6.33 show ip dhcp snooping
+
+- 命令：`show ip dhcp snooping [interface [ethernet] <interfaceName>]`
+- 功能：显示当前 DHCP snooping 的配置信息，或显示指定端口的防御动作记录。参数：`<interfaceName>`：指定端口名称。
+- 命令模式：特权和全局配置模式。
+- 缺省情况：无。
+- 使用指南： 如果不指定端口，那么显示当前 DHCP snooping 的配置信息，如果指定端口，那么显示指定端口的防御动作记录。
+- 举例：
+
+  ```text
+  switch#show ip dhcp snooping
+  DHCP Snooping is enable
+  
+  DHCP Snooping binding arp: disabled DHCP Snooping maxnum of action info:10
+  DHCP Snooping limit rate: 100(pps), switch ID: 0003.0F12.3456 DHCP Snooping droped packets: 0, 
+  discarded packets: 0  DHCP Snooping alarm count: 0, binding count: 0,
+  expired binding: 0, request binding: 0
+  
+  interface             trust           action         recovery     alarm num    bind num
+  --------------- ---------------- -------------- ---------------
+  Ethernet1/0/1       trust        none           0second       0                0
+  Ethernet1/0/2       untrust      none           0second       0                0
+  Ethernet1/0/3       untrust      none           0second       0                0
+  Ethernet1/0/4       untrust      none           0second       0                1
+  Ethernet1/0/5       untrust      none           0second       2                0
+  Ethernet1/0/6       untrust      none           0second       0                0
+  Ethernet1/0/7       untrust      none           0second       0                0
+  Ethernet1/0/8       untrust      none           0second       0                1
+  Ethernet1/0/9       untrust      none           0second       0                0
+  Ethernet1/0/10      untrust      none           0second       0                0
+  Ethernet1/0/11      untrust      none           0second       0                0
+  Ethernet1/0/12      untrust      none           0second       0                0
+  Ethernet1/0/13      untrust      none           0second       0                0
+  Ethernet1/0/14      untrust      none           0second       0                0
+  Ethernet1/0/15      untrust      none           0second       0                0
+  Ethernet1/0/16      untrust      none           0second       0                0
+  Ethernet1/0/17      untrust      none           0second       0                0
+  Ethernet1/0/18      untrust      none           0second       0                0
+  Ethernet1/0/19      untrust      none           0second       0                0
+  Ethernet1/0/20      untrust      none           0second       0                0
+  Ethernet1/0/21      untrust      none           0second       0                0
+  Ethernet1/0/22      untrust      none           0second       0                0
+  Ethernet1/0/23      untrust      none           0second       0                0
+  Ethernet1/0/24      untrust      none           0second       0                0
+  Ethernet1/0/25      untrust      none           0second       0                0
+  Ethernet1/0/26      untrust      none           0second       0                0
+  Ethernet1/0/27      untrust      none           0second       0                0
+  Ethernet1/0/28      untrust      none           0second       0                0
+  
+  
+  
+  | 显示信息                            | 解释                                                         |
+  | ----------------------------------- | ------------------------------------------------------------ |
+  | DHCP Snooping is enable             | DHCP Snooping全局开启或关闭状态                              |
+  | DHCP Snooping binding arp           | 是否启动绑定ARP功能。                                        |
+  | DHCP Snooping maxnum of action info | 端口防御动作数量限制                                         |
+  | DHCP Snooping limit rate            | 收包速率限制                                                 |
+  | switch ID                           | 交换机ID用户标记交换机，一般直接取CPU MAC地址。              |
+  | DHCP Snooping droped packets        | 因为接收到的DHCP报文超越限速而丢弃的报文数量。               |
+  | discarded packets                   | 因为系统内部任务之间通讯失败而丢弃报文数量，出现这种丢包现象很可能是因为交换机CPU太忙碌DHCP snooping任务得不到调度而无法处理接收到的DHCP报文。 |
+  | DHCP Snooping alarm count           | 报警信息数量                                                 |
+  | binding count                       | 绑定信息数量                                                 |
+  | expired binding                     | 已经超时暂时还没有被删除的绑定信息数量，没有立即删除超时绑定信息可能是因为交换机需要向helper server通告这些信息，而helper server暂时还没有确认收到。 |
+  | request binding                     | REQUEST信息数量。                                            |
+  | interface                           | 端口名称。                                                   |
+  | trust                               | 端口名称。                                                   |
+  | action                              | 端口的自动防御动作。                                         |
+  | recovery                            | 端口自动防御动作的恢复时间                                   |
+  | alarm num                           | 端口自动防御动作历史记录数目                                 |
+  | bind num                            | 端口相关绑定信息数量。  
+                                       
+  switch#show ip dhcp snooping int Ethernet1/0/1
+  interface Ethernet1/0/1 user config: 
+  trust attribute: untrust
+  action: none
+  binding dot1x: disabled
+  binding user: disabled
+  recovery interval:0(s)
+  Alarm info: 0
+  
+  Binding info: 0
+  
+  Expired Binding: 0
+  
+  Request Binding: 0
+  
+  ![9.jpg](./img/07/9.jpg)
+  ``` 
+
+### 6.34 show ip dhcp snooping binding all
+- 命令：show ip dhcp snooping binding all
+- 功能：显示当前 DHCP snooping 全局绑定信息。参数：无。
+- 命令模式：特权和全局配置模式。缺省情况：无。
+- 使用指南：该命令可查看 DHCP  Snooping  全局绑定信息，每条显示表项包括 DHCP Snooping 绑定对应的 MAC 地址，IP 地址，所属端口名和 Vlan ID，以及绑定状态标识。必须全局开启 DHCP snooping，才能配置此命令。
+- 举例：
+
+  ```text
+  switch#show ip dhcp snooping binding all
+  ip dhcp snooping static binding count:1169, dynamic binding count:0
+  
+  
+  MAC                  IP address           Interface       Vlan ID     Flag
+  -----------------------------------------------------------
+  00-00-00-00-11-11    192.168.40.1      Ethernet1/0/1       1           S
+  00-00-00-00-00-10    192.168.40.10     Ethernet1/0/2       1           D
+  00-00-00-00-00-11    192.168.40.11     Ethernet1/0/4       1           D
+  00-00-00-00-00-12    192.168.40.12     Ethernet1/0/4       1           D
+  00-00-00-00-00-13    192.168.40.13     Ethernet1/0/4       1           SU
+  00-00-00-00-00-14    192.168.40.14     Ethernet1/0/4       1           SU
+  00-00-00-00-00-15    192.168.40.15     Ethernet1/0/5       1           SL
+  00-00-00-00-00-16    192.168.40.16     Ethernet1/0/5       1           SL
+  ------------------------------------------------------
+  绑定状态flag  解释
+  S  静态绑定由 shell 命令配置
+  D  动态绑定类型
+  U  绑定已上传至服务器
+  R  静态绑定由服务器配置
+  O DHCP 应答带有 option82 选项
+  L  绑定已通知硬件驱动
+  X  绑定成功通知 dot1x 模块
+  E  绑定通知 dot1x
+  ```
+  
+### 6.35 show trustview status
+
+- 命令：show trustview status
+- 功能：显示交换机收发 DCN 内网安全管理后台系统 TrustView 各种类型私有报文的状态信息。
+- 参数：无。
+- 命令模式：特权和全局配置模式
+- 缺省情况：无。
+- 使用指南：管理员可以使用此命令来显示交换机收发 TrustView 系统各种类型私有报文的状态信息，包括版本通知是否成功，私有报文加密是否协商成功，free resource，web 重定向
+- 网页地址，收到的强制下线报文数目，收到的强制计费报文数目。
+- 举例：
+
+  ```text
+  Switch#show trustview status
+  Primary TrustView Server 200.101.0.9:9119 
+      TrustView version2 message inform successed
+      TrustView inform free resource successed
+      TrustView inform web redirect address successed 
+      TrustView inform user binding data successed
+      TrustView version2 message encrypt/digest enabled
+  Key: 08:02:33:34:35:36:37:38
+  Rcvd 106 encrypted messages, in which MD5-error 0 messages, DES-error 0 messages
+  Sent 106 encrypted messages
+  Free resource is 200.101.0.9/255.255.255.255
+  Web redirect address for unauthencated users is <http://200.101.0.9:8080>
+  Rcvd 0 force log-off packets
+  Rcvd 19 force accounting update packets
+  using version two private packet
+  ```
+  
+## 第7章 DHCP Snooping option 82配置命令
+
+### 7.1 ip dhcp snooping information enable
+
+- 命令：ip dhcp snooping information enableno ip dhcp snooping information enable
+- 功能：设置本命令启用交换机DHCP SNOOPING 的 option  82 功能，本命令的 no 操作关闭交换机DHCP SNOOPING 的option 82 功能。
+- 参数：无。
+- 缺省情况：DHCP SNOOPING 默认关闭option 82 功能。命令模式：全局配置模式。
+- 使用指南：只有配置本命令 DHCP SNOOPING 才能在 DHCP 请求报文中添加标准的 option 82 选项并转发。option  82 子选项 1（电路 ID 选项）的形式为标准的 
+          vlan 名加物理端口名形式，如“Vlan1+Ethernet1/0/12”。option 82 子选项 2（远端 ID 选项）的形式为交换机 CPU 
+          MAC，如“00030f023301”。如果接收到的含有 option  82 选项的 DHCP 请求报文，DHCP SNOOPING 使用自己的 option 82 选项替换现有报文中的 
+          option 82 选项；如果接收到的含有option 82 选项的 DHCP 应答报文，则将报文中的 option 82 选项丢弃再转发 DHCP 报文
+- 举例：开启交换机 DHCP SNOOPING 的 option 82 功能。
+
+  ```text
+  Switch(config)#ip dhcp snooping enable Switch(config)#ip dhcp snooping binding enable
+  Switch(config)#ip dhcp snooping information enable
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
