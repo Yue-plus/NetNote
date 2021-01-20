@@ -26,7 +26,7 @@
 - [《Java核心技术·卷 II》（原书第11版）](https://book.douban.com/subject/34935138/)
   + ![《Java核心技术-卷2》](/img/book/《Java核心技术-卷2》.jpg)
 
-## 环境配置
+## 配置环境变量
 
 ### Windows 10
 
@@ -60,3 +60,53 @@
     OpenJDK Runtime Environment (build 15.0.1+9-18)
     OpenJDK 64-Bit Server VM (build 15.0.1+9-18, mixed mode, sharing)
     ```
+
+## Gradle 构建工具
+
+::: tip
+Gradle 是一个基于 Apache Ant 与 Apache Maven 概念的项目自动化构建开源工具。
+
+[Gradle 官网](https://gradle.org/)
+:::
+
+### Gradle 配置
+
+1. 可以使用 [阿里巴巴开源镜像站 - Maven 镜像](https://developer.aliyun.com/mirror/maven)。
+
+   `build.gradle.kts` 配置示例：
+   
+   ```kts
+   repositories {
+       maven { setUrl("https://maven.aliyun.com/repository/public/") }
+       maven { setUrl("https://maven.aliyun.com/repository/spring/") }
+       mavenCentral()
+   }
+   ```
+
+2. 配置 Gradle 网络代理
+
+   > 参考 [配置构建环境](https://docs.gradle.org/current/userguide/build_environment.html#sec:accessing_the_web_via_a_proxy)
+
+   可以在 `GRADLE_USER_HOME`、项目根目录下、Gradle 安装目录下，创建 `gradle.properties` 文件：
+
+   配置 HTTP 代理：
+
+   ```properties
+   systemProp.http.proxyHost=www.somehost.org
+   systemProp.http.proxyPort=8080
+   systemProp.http.proxyUser=userid
+   systemProp.http.proxyPassword=password
+   systemProp.http.nonProxyHosts=*.nonproxyrepos.com|localhost
+   ```
+
+   配置 HTTPS 代理：
+
+   ```properties
+   systemProp.https.proxyHost=www.somehost.org
+   systemProp.https.proxyPort=8080
+   systemProp.https.proxyUser=userid
+   systemProp.https.proxyPassword=password
+   systemProp.http.nonProxyHosts=*.nonproxyrepos.com|localhost
+   ```
+
+   ![Gradle 设置代理](./img/gradle-proxy.jpg)
