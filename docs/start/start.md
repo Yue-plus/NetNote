@@ -22,6 +22,7 @@
 - [Motrix ——一款开源的全能下载工具](https://motrix.app/zh-CN/)
 - [WinSCP ——开源图形化 SFTP 客户端](https://winscp.net/eng/download.php)
 - [PotPlayer ——本地视频播放器](https://potplayer.daum.net/)
+- [Windows Terminal](https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701)
 
 ## 注册 GitHub 账号
 
