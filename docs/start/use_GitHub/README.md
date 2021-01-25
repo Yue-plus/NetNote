@@ -10,7 +10,7 @@ GitHub 是一个<span style="color: black; background-color: black;">全球最�
 > - [Git 教程 - 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
 > - [如何使用 GitHub？- 知乎](https://www.zhihu.com/question/20070065)
 
-<iframe src="//player.bilibili.com/player.html?aid=373578019&bvid=BV1yo4y1d7UK&cid=280550883&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=373578019&bvid=BV1yo4y1d7UK&cid=280550883&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
 
 ## 从主库创建拉取请求
 
