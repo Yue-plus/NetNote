@@ -98,6 +98,7 @@ themeConfig:
     '/coding/':
       - 'Web/'
       - 'Java/'
+      - 'RabbitMQ/'
     '/net/manual/command/':
       - '01-1_base'
       - '01-2_FS'
@@ -120,7 +121,6 @@ themeConfig:
       - '16-2_VSF-MAD'
       - '16-3_VSF-debug'
       - '17_info-center'
-     
     '/net/manual/operate/':
       - '07_DHCP'
     '/net/':
