@@ -99,6 +99,8 @@ themeConfig:
       - 'Web/'
       - 'Java/'
       - 'RabbitMQ/'
+      - 'MariaDB/'
+      - 'Redis/'
     '/net/manual/command/':
       - '01-1_base'
       - '01-2_FS'
