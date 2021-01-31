@@ -9,6 +9,8 @@
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
   + 至少看看到 [第十章、認識與學習BASH](http://linux.vbird.org/linux_basic/0320bash.php)
 
+<iframe src="//player.bilibili.com/player.html?aid=99111795&bvid=BV187411y7hF&cid=169181090&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
+
 ## 挂载软件源镜像
 
 创建挂载目录：
