@@ -32,6 +32,8 @@
 
 ## 本地安装 Git
 
+<iframe src="//player.bilibili.com/player.html?aid=98007542&bvid=BV1FE411P7B3&cid=167296411&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"  style="width: 100%; height: 380px;"> </iframe>
+
 前往 [Git 官网](https://git-scm.com/) 下载安装包，下一步到底。
 
 > [Git - 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
