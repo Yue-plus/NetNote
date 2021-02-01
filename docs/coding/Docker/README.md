@@ -424,7 +424,7 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 	+	在标签的行分隔文件中读取
 - `--link`
 	+	将链接添加到另一个容器
-- `--link-local-ip
+- `--link-local-ip`
 	+	容器 IPv4/IPv6 链路本地地址
 - `--log-driver`
 	+	容器的日志记录驱动程序
@@ -441,7 +441,7 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 - `--memory-swappiness`
 	+ 默认为：`-1`
   +	调整容器内存交换（0 到 100）
-- `--mount
+- `--mount`
 	+	将文件系统装载附加到容器
 - `--name`
 	+	为容器分配名称
@@ -489,9 +489,9 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 - `--sig-proxy`
 	+ 默认为 `true`
   +	代理接收到进程的信号
-- `--stop-signal
+- `--stop-signal`
 	+ SIGTERM	停止容器的信号
-- `--stop-timeout
+- `--stop-timeout`
 	+	`1.25+` 可用
   + 停止容器的超时（以秒为单位）
 - `--storage-opt`
