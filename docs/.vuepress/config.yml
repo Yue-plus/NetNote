@@ -36,6 +36,18 @@ themeConfig:
         -
           text: Java
           link: /coding/Java/
+        -
+          text: MariaDB
+          link: /coding/MariaDB/
+        -
+          text: Redis
+          link: /coding/Redis/
+        -
+          text: RabbitMQ
+          link: /coding/RabbitMQ/
+        -
+          text: Docker
+          link: /coding/Docker/
     -
       text: 网络搭建
       items:
@@ -101,6 +113,7 @@ themeConfig:
       - 'MariaDB/'
       - 'Redis/'
       - 'RabbitMQ/'
+      - 'Docker/'
     '/net/manual/command/':
       - '01-1_base'
       - '01-2_FS'
