@@ -287,3 +287,234 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
   + 如果服务器支持多平台，则设置平台
 - `--quiet , -q`
   + 禁止详细输出
+
+### `docker run`
+
+在新容器中运行命令。
+
+语法：`docker run [OPTIONS] IMAGE [COMMAND] [ARG...]`
+
+> [参考官方手册](https://docs.docker.com/engine/reference/commandline/run/)
+
+选项：
+- `--add-host`
+	+	添加自定义主机到 IP 映射（主机：ip）
+- `--attach , -a`
+	+	连接到 STDIN、STDOUT 或 STDERR
+- `--blkio-weight`
+	+	块 IO（相对权重），介于 10 和 1000 之间，或 0 禁用（默认 0）
+- `--blkio-weight-device`
+	+	块 IO 权重（相对设备重量）
+- `--cap-add`
+	+	添加 Linux 功能
+- `--cap-drop`
+  +	放弃 Linux 功能
+- `--cgroup-parent`
+	+	容器的可选父 cgroup
+- `--cgroupns
+	+	`1.41+` 可用
+  + 要使用的 C组命名空间（主机|私有）"主机"：
+    在 Docker 主机的 cgroup 命名空间"私有"中运行容器：
+    在其自己的专用 cgroup 命名空间中运行容器'：
+    使用由守护程序上的默认 cgroupns 模式选项配置的 cgroup 命名空间（默认）
+- `--cidfile`
+	+	将容器 ID 写入文件
+- `--cpu-count`
+	+	CPU 计数（仅窗口）
+- `--cpu-percent`
+	+	CPU 百分比（仅窗口）
+- `--cpu-period`
+	+	限制 CPU CFS（完全公平的调度程序）周期
+- `--cpu-quota`
+	+	限制 CPU CFS（完全公平的调度程序）配额
+- `--cpu-rt-period`
+	+	`1.25+` 可用
+  + 以微秒为单位限制 CPU 实时周期
+- `--cpu-rt-runtime`
+	+	`1.25+` 可用
+  + 以微秒为单位限制 CPU 实时运行时间
+- `--cpu-shares , -c`
+	+	CPU 共享（相对权重）
+- `--cpus`
+	+	`1.25+` 可用
+  + CPU 数量
+- `--cpuset-cpus`
+  + 允许执行的 CPU （0-3， 0，1）
+- `--cpuset-mems`
+	+	允许执行的 MEM （0-3， 0，1）
+- `--detach , -d`
+	+	在后台运行容器并打印容器 ID
+- `--detach-keys`
+	+	覆盖分离容器的键序列
+- `--device`
+	+	将主机设备添加到容器
+- `--device-cgroup-rule`
+	+	将规则添加到 cGroup 允许的设备列表
+- `--device-read-bps`
+	+	限制设备读取速率（字节/秒）
+- `--device-read-iops`
+	+	限制设备读取速率（IO/秒）
+- `--device-write-bps`
+	+	将写入速率（字节/秒）限制为设备
+- `--device-write-iops`
+	+	将写入速率（IO/秒）限制为设备
+- `--disable-content-trust`
+	+ 默认为：`true`
+  +	跳过镜像验证
+- `--dns`
+	+	设置自定义 DNS 服务器
+- `--dns-opt`
+	+	设置 DNS 选项
+- `--dns-option`
+	+	设置 DNS 选项
+- `--dns-search`
+	+	设置自定义 DNS 搜索域
+- `--domainname`
+	+	容器 NIS 域名
+- `--entrypoint`
+	+	覆盖图像的默认入口点
+- `--env , -e`
+	+	设置环境变量
+- `--env-file`
+	+	在环境变量文件中读取
+- `--expose`
+	+	暴露端口或一系列端口
+- `--gpus`
+	+	`1.40+` 可用
+  + 要添加到容器的 GPU 设备（"全部"通过所有 GPU）
+- `--group-add`
+	+	添加要加入的其他组
+- `--health-cmd`
+	+	命令运行以检查运行状况
+- `--health-interval`
+	+	运行检查之间的时间（ms | s | h）（默认 0s）
+- `--health-retries`
+	+	报告不正常行为所需的连续故障
+- `--health-start-period`
+	+	`1.29+` 可用
+  + 容器的开始周期在开始运行状况重倒数之前初始化（ms | s | h）（默认 0s）
+- `--health-timeout`
+	+	允许运行一次检查的最大时间（ms | s | h）（默认 0s）
+- `--help`
+	+ 输出帮助
+- `--hostname , -h`
+	+	容器主机名
+- `--init`
+	+	`1.25+` 可用
+  + 在容器内运行一个 init，该容器转发信号并收获进程
+- `--interactive , -i`
+	+	即使未连接，也保持 STDIN 打开
+- `--io-maxbandwidth`
+	+	系统驱动器的最大 IO 带宽限制（仅窗口）
+- `--io-maxiops`
+	+	系统驱动器的最大 IOps 限制（仅 Windows）
+- `--ip`
+	+	IPv4 地址（例如：`172.30.100.104`）
+- `--ip6`
+	+	IPv6 地址（例如：`2001:db8::33`）
+- `--ipc`
+	+	要使用的 IPC 模式
+- `--isolation`
+	+	容器隔离技术
+- `--kernel-memory`
+	+	内核内存限制
+- `--label , -l`
+	+	在容器上设置元数据
+- `--label-file`
+	+	在标签的行分隔文件中读取
+- `--link`
+	+	将链接添加到另一个容器
+- `--link-local-ip
+	+	容器 IPv4/IPv6 链路本地地址
+- `--log-driver`
+	+	容器的日志记录驱动程序
+- `--log-opt`
+	+	日志驱动程序选项
+- `--mac-address`
+	+	容器 MAC 地址（例如：`92:d0:c6:0a:29:33`）
+- `--memory , -m`
+	+	内存限制
+- `--memory-reservation`
+	+	内存软限制
+- `--memory-swap`
+	+	交换限制等于内存加交换：'-1'，支持无限制交换
+- `--memory-swappiness`
+	+ 默认为：`-1`
+  +	调整容器内存交换（0 到 100）
+- `--mount
+	+	将文件系统装载附加到容器
+- `--name`
+	+	为容器分配名称
+- `--net`
+	+	将容器连接到网络
+- `--net-alias`
+	+	为容器添加网络范围别名
+- `--network`
+	+	将容器连接到网络
+- `--network-alias`
+	+	为容器添加网络范围别名
+- `--no-healthcheck`
+	+	禁用任何容器指定的运行状况检查
+- `--oom-kill-disable`
+	+	禁用 OOM 杀手
+- `--oom-score-adj`
+	+	调整主机的 OOM 首选项 （-1000 到 1000）
+- `--pid`
+	+	要使用的 PID 命名空间
+- `--pids-limit`
+	+	调整容器皮斯限制（设置为 -1 无限制）
+- `--platform`
+	+	`1.32+` 可用
+  + 设置平台，如果服务器是多平台功能
+- `--privileged`
+	+	向此容器授予扩展权限
+- `--publish , -p`
+	+	将容器的端口发布到主机
+- `--publish-all , -P`
+	+	将所有公开端口发布到随机端口
+- `--pull	missing`
+	+ 运行前拉图像（"始终"|"缺少"|"从不"）
+- `--read-only`
+	+	将容器的根文件系统装载为只读
+- `--restart	no`
+	+ 重新启动策略，在容器退出时应用
+- `--rm`
+	+	容器退出时自动移除容器
+- `--runtime`
+	+	用于此容器的运行时
+- `--security-opt`
+	+	安全选项
+- `--shm-size`
+	+	大小 /开发/shm
+- `--sig-proxy`
+	+ 默认为 `true`
+  +	代理接收到进程的信号
+- `--stop-signal
+	+ SIGTERM	停止容器的信号
+- `--stop-timeout
+	+	`1.25+` 可用
+  + 停止容器的超时（以秒为单位）
+- `--storage-opt`
+	+	容器的存储驱动程序选项
+- `--sysctl`
+	+	Sysctl 选项
+- `--tmpfs`
+	+	装载 tmpfs 目录
+- `--tty , -t`
+	+	分配伪 TTY
+- `--ulimit`
+	+	极限选项
+- `--user , -u`
+	+	用户名或 UID（格式：`<name|uid>[:<group|gid>]`）
+- `--userns`
+	+	要使用的用户名空间
+- `--uts`
+	+	要使用的 UTS 命名空间
+- `--volume , -v`
+	+	绑定装载卷
+- `--volume-driver`
+	+	容器的可选卷驱动程序
+- `--volumes-from`
+	+	从指定的容器中装载卷
+- `--workdir , -w`
+	+	容器内的工作目录
