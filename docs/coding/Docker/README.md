@@ -38,6 +38,12 @@ Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级�
 **安装完成：**
 ![主界面](./img/docker_desktop.jpg)
 
+## `Dockerfile`
+
+官方文档：
+[`Dockerfile` 文档（英文）](https://docs.docker.com/engine/reference/builder/)
+[`Dockerfile` 最佳实践（英文）](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)
+
 ## 常用命令
 
 可以在官网找到 [所有命令](https://docs.docker.com/reference/)
@@ -518,3 +524,34 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 	+	从指定的容器中装载卷
 - `--workdir , -w`
 	+	容器内的工作目录
+
+## `docker exec`
+
+在正在运行的容器中执行命令。
+
+语法：`docker exec [OPTIONS] CONTAINER COMMAND [ARG...]`
+
+> [参考官网手册](https://docs.docker.com/engine/reference/commandline/exec/)
+
+选项：
+- `--detach , -d`
+	+	分离模式：在后台运行命令
+- `--detach-keys`
+	+	覆盖分离容器的键序列
+- `--env , -e`
+	+	`1.25+` 以上可用
+  + 设置环境变量
+- `--env-file`
+	+	`1.25+` 以上可用
+  + 在环境变量文件中读取
+- `--interactive , -i`
+	+	即使未连接，也保持 STDIN 打开
+- `--privileged`
+	+	向命令授予扩展权限
+- `--tty , -t`
+	+	分配伪 TTY
+- `--user , -u`
+	+	用户名或 UID（格式：`<name|uid>[:<group|gid>]`）
+- `--workdir , -w`
+	+	`1.35+` 以上可用
+  + 容器内的工作目录
