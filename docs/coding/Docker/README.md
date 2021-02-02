@@ -9,7 +9,14 @@ Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级�
 [Docker Hub](https://hub.docker.com/)
 :::
 
+## 教程
+
 <iframe src="//player.bilibili.com/player.html?aid=838132893&bvid=BV1og4y1q7M4&cid=191591478&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
+
+- [Docker 教程 | 菜鸟教程](https://www.runoob.com/docker/docker-tutorial.html)
+  + [Docker 安装 Redis | 菜鸟教程](https://www.runoob.com/docker/docker-install-redis.html)
+- [Docker 教程 | w3cschool](https://www.w3cschool.cn/docker/)
+- [Docker 从入门到实践 | w3cschool](https://www.w3cschool.cn/reqsgr/)
 
 ## 安装
 
@@ -40,13 +47,22 @@ Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级�
 
 ## `Dockerfile`
 
+::: tip
+Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。
+
 官方文档：
 [`Dockerfile` 文档（英文）](https://docs.docker.com/engine/reference/builder/)
 [`Dockerfile` 最佳实践（英文）](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/)
+:::
+
+- [Dockerfile | 菜鸟教程](https://www.runoob.com/docker/docker-dockerfile.html)
+- [Dockerfile基本结构 | w3cschool](https://www.w3cschool.cn/reqsgr/redknozt.html)
 
 ## 常用命令
 
 可以在官网找到 [所有命令](https://docs.docker.com/reference/)
+
+> 可以使用 <kbd>Ctrl</kbd> + <kbd>F</kbd> 在页面中快速搜索
 
 ### `docker version`
 
@@ -525,7 +541,7 @@ To get more help with docker, check out our guides at https://docs.docker.com/go
 - `--workdir , -w`
 	+	容器内的工作目录
 
-## `docker exec`
+### `docker exec`
 
 在正在运行的容器中执行命令。
 

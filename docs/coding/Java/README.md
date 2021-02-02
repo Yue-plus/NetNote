@@ -70,6 +70,8 @@ Maven 是流行的 Java 项目构建系统，Maven 项目对象模型(POM)，可
 [Apache Maven 官网](https://maven.apache.org/)
 :::
 
+- [Maven 教程_w3cschool](https://www.w3cschool.cn/maven/)
+
 ### Apache Ant
 
 ::: tip
@@ -78,6 +80,8 @@ Apache Ant，是一个将软件编译、测试、部署等步骤联系在一起�
 [Apache Ant 官网](https://ant.apache.org/)
 :::
 
+- [Apache Ant 教程_w3cschool](https://www.w3cschool.cn/ant/)
+
 ### Gradle
 
 ::: tip
@@ -85,6 +89,8 @@ Gradle 是一个基于 Apache Ant 与 Apache Maven 概念的项目自动化构�
 
 [Gradle 官网](https://gradle.org/)
 :::
+
+- [Gradle 教程_w3cschool](https://www.w3cschool.cn/gradle/)
 
 #### Gradle 配置
 

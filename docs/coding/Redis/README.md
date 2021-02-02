@@ -11,7 +11,12 @@ Redis 具有内置的复制，Lua 脚本，LRU 驱逐，事务和不同级别的
 [Redis 中文网站](http://redis.cn/)
 :::
 
+## 教程
+
 <iframe src="//player.bilibili.com/player.html?aid=840034966&bvid=BV1S54y1R7SB&cid=171960979&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
+
+- [Redis 教程_w3cschool](https://www.w3cschool.cn/redis/)
+- [Redis 教程 | 菜鸟教程](https://www.runoob.com/redis/redis-tutorial.html)
 
 ## 安装
 
