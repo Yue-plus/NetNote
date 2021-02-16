@@ -1,6 +1,8 @@
 # Web 前端
 
 **[MDN Web 文档](https://developer.mozilla.org/zh-CN/)**
+- [HTTP 教程 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
+- [渐进式 Web 应用（PWA）| MDN](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
 
 ## HTML
 

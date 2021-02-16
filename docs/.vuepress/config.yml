@@ -4,6 +4,15 @@ locales:
   '/':
     lang: 'zh-CN'
 base: /
+head:
+  - ["link", { rel: 'icon', href: '/img/logo.png' }]
+  - ['link', { rel: 'manifest', href: '/manifest.webmanifest' }]
+  - ['meta', { name: 'theme-color', content: '#3eaf7c' }]
+  - ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }]
+  - ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+  - ['link', { rel: 'apple-touch-icon', href: '/img/logo_192.png' }]
+  - ['meta', { name: 'msapplication-TileImage', content: '/img/logo_192.png' }]
+  - ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
 themeConfig:
   nav:
     -
@@ -177,4 +186,5 @@ plugins:
   - '@vuepress/back-to-top'
   - '@vuepress/medium-zoom'
   - '@vuepress/last-updated'
+  - '@vuepress/pwa'
   - 'vuepress-plugin-mermaidjs'
