@@ -85,6 +85,9 @@
 - [Vue.js——渐进式 JavaScript 框架](https://cn.vuejs.org/)
 - [Angular——跨平台 JavaScript 框架](https://angular.cn/)
 - [React——用于构建用户界面的 JavaScript 库](https://react.docschina.org/)
+- [Axios——易用、简洁且高效的 HTTP 库](http://www.axios-js.com/)
+  [GitHub](https://github.com/axios/axios)
+  [NPM](https://www.npmjs.com/package/axios)
 
 ### 图标库
 
