@@ -46,6 +46,9 @@ themeConfig:
           text: Java
           link: /coding/Java/
         -
+          text: Spring
+          link: /coding/Spring/
+        -
           text: MariaDB
           link: /coding/MariaDB/
         -
@@ -116,6 +119,8 @@ themeConfig:
       - 'markdown'
       - 'mermaid'
       - 'yaml'
+    '/coding/Spring/Framework/WebServlet/':
+      - '4.WebSockets'
     '/coding/':
       - 'Web/'
       - 'Java/'
