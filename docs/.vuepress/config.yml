@@ -120,10 +120,12 @@ themeConfig:
       - 'mermaid'
       - 'yaml'
     '/coding/Spring/Framework/WebServlet/':
+      - '../../'
       - '4.WebSockets'
     '/coding/':
       - 'Web/'
       - 'Java/'
+      - 'Spring/'
       - 'MariaDB/'
       - 'Redis/'
       - 'RabbitMQ/'

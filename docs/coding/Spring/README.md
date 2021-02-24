@@ -1,6 +1,3 @@
----
-sidebar: false
----
 # Spring Projects
 
 ::: tip
