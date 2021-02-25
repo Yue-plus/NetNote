@@ -46,7 +46,7 @@ themeConfig:
           text: Java
           link: /coding/Java/
         -
-          text: Spring
+          text: Spring Projects
           link: /coding/Spring/
         -
           text: MariaDB
@@ -121,7 +121,11 @@ themeConfig:
       - 'yaml'
     '/coding/Spring/Framework/WebServlet/':
       - '../../'
+      - '1.SpringWebMVC'
+      - '2.REST_Clients'
+      - '3.Testing'
       - '4.WebSockets'
+      - '5.OtherWebFrameworks'
     '/coding/':
       - 'Web/'
       - 'Java/'
