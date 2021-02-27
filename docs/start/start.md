@@ -8,8 +8,13 @@
 - [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows)
 - [Notepad++ ——代替 Windows 自带记事本](https://notepad-plus-plus.org/downloads/)
 
-浏览器插件：
-- [沙拉查词](https://saladict.crimx.com/)。
+浏览器：
+- [Microsoft Edge](https://www.microsoft.com/zh-cn/edge)
+- [Google Chrome](https://www.google.com/intl/zh-CN/chrome/)
+- [FireFox 开发者版](https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-developer)
+- 浏览器插件：
+  + [沙拉查词](https://saladict.crimx.com/)
+  + [Dark Reader](https://darkreader.org/)
 
 系统环境：
 - [Git](https://git-scm.com/)
@@ -222,3 +227,29 @@ netsh winhttp reset proxy
 ```sh
 netsh winhttp show proxy
 ```
+
+## 附：Windows PowerShell 无法加载文件，因为在此系统上禁止运行脚本。
+
+```ps
+cnpm : 无法加载文件 C:\Users\Yue_plus\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运脚本。
+有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+所在位置 行:1 字符: 1
++ cnpm install
++ ~~~~
+    + CategoryInfo          : SecurityError: (:) []，PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+
+![PowerShell 报错](./img/PS_error.png)
+
+参阅 <https:/go.microsoft.com/fwlink/?LinkID=135170>
+
+**解决方法**：
+
+先以 **管理员身份** 在 PowerShell 中运行一下指令：
+
+```ps
+set-ExecutionPolicy RemoteSigned
+```
+
+然后就不会报错了。

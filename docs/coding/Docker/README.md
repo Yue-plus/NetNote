@@ -40,7 +40,13 @@ Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级�
 安装时会自动打开 Windows 功能——虚拟机平台，如果勾选了
 <abbr title="适用于 Linux 的 Windows 子系统">WSL</abbr>
 可能会要求安装 [适用于 x64 计算机的 WSL2 Linux 内核更新包](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10#step-4---download-the-linux-kernel-update-package)
-下载安装后重启即可。
+下载安装后在 PowerShell 中使用以下指令将 WSL2 设为默认：
+
+```ps
+wsl --set-default-version 2
+```
+
+最后重启计算机即可。
 
 **安装完成：**
 ![主界面](./img/docker_desktop.jpg)
