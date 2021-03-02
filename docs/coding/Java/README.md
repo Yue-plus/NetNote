@@ -72,6 +72,14 @@ Maven 是流行的 Java 项目构建系统，Maven 项目对象模型(POM)，可
 
 - [Maven 教程_w3cschool](https://www.w3cschool.cn/maven/)
 
+#### 将 Maven 项目转换为 Gradle 项目
+
+参考 [执行自动转换](https://docs.gradle.org/current/userguide/migrating_from_maven.html#migmvn:automatic_conversion)
+
+```sh
+gradle init --type pom
+```
+
 ### Apache Ant
 
 ::: tip
