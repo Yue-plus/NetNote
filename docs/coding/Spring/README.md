@@ -11,6 +11,14 @@
 
 ### Web Servlet
 
+::: tip 5.3.4 版
+
+文档的此部分涵盖对基于 Servlet API 构建并部署到 Servlet 容器的 Servlet 技术栈 Web 应用程序的支持。
+各个章节包括 [Spring MVC]()、View Technologies、CORS 支持与 WebSocket 支持。
+对于反应式堆栈 Web 应用程序，请参阅“反应式堆栈上的 Web”。
+:::
+
+
 1. [Spring Web MVC](./Framework/WebServlet/1.SpringWebMVC.html)
 2. [REST 客户端](./Framework/WebServlet/2.REST_Clients.html)
 3. [测试](./Framework/WebServlet/3.Testing.html)
