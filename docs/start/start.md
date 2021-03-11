@@ -1,5 +1,15 @@
 # 开始项目
 
+## 在开始之前
+
+确保自己的系统为 **Windows 10 专业版**
+
+![系统版本](./img/system_info.jpg)
+
+如果是 **家庭中文版** 请到 [微软官网](https://www.microsoft.com/zh-cn/software-download/windows10) 下载工具，重装系统。
+
+![下载安装工具](./img/system_download.jpg)
+
 ## 推荐安装以下软件
 
 编辑器：
@@ -28,12 +38,6 @@
 - [WinSCP ——开源图形化 SFTP 客户端](https://winscp.net/eng/download.php)
 - [PotPlayer ——本地视频播放器](https://potplayer.daum.net/)
 - [Windows Terminal](https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701)
-
-## 注册 GitHub 账号
-
-前往<span style="color: black; background-color: black;">~~全球最大的同性交友网站~~</span>面向开源及私有软件项目的托管平台 [GitHub](https://github.com/) 注册并登入账号。
-
-前往本项目地址 <https://github.com/Yue-plus/NetNote>，点击 Watch、Star、Fork。
 
 ## 本地安装 Git
 
@@ -85,9 +89,22 @@ The key's randomart image is:
 
 现在，`<个人文件夹>/.ssh/` 中应该有 `id_rsa`（私钥）与 `id_rsa.pub`（公钥）两个文件。
 
-## GitHub 添加 SSH Key
+## 注册 GitHub/Gitee 账号
+
+前往<span style="color: black; background-color: black;">~~全球最大的同性交友网站~~</span>面向开源及私有软件项目的托管平台 [GitHub](https://github.com/) 注册并登入账号。
+
+前往<span style="color: black; background-color: black;">~~全国最大的同性交友网站~~</span>云端软件开发协作平台 [Gitee](https://gitee.com/) 注册并登入账号。
+
+前往本项目：
+- GitHub 地址 <https://github.com/Yue-plus/NetNote>，点击 Watch、Star、Fork。
+- Gitee 地址 <https://gitee.com/yue_plus/NetNote>，点击 Watch、Star、Fork。
+
+
+## 添加 SSH Key
 
 用 **记事本打开** `<个人文件夹>/.ssh/id_rsa.pub` 文件。
+
+### GitHub
 
 打开 [GitHub.com](https://github.com/) 参照以下截图添加 SSH Key：
 
@@ -96,6 +113,12 @@ The key's randomart image is:
 ![添加 SSH Key 02](./img/02.png)
 
 最后点击 **[Add SSH Key]**
+
+### Gitee
+
+打开 [设置 -> SSH 公钥](https://gitee.com/profile/sshkeys)
+
+![添加 SSH Key](./img/gitee_add_ssh-key.jpg)
 
 ## 本地安装 NodeJS
 
@@ -110,8 +133,11 @@ The key's randomart image is:
 找一个合适的路径，执行以下指令：
 
 ```sh
-# 克隆仓库（注意替换为 GitHub 用户名：<username>）
+# GitHub 克隆仓库（注意替换为自己的用户名：<username>）
 git clone git@github.com:<username>/NetNote.git
+
+# Gitee 克隆仓库（注意替换为自己的用户名：<username>）
+git clone git@gitee.com:<username>/NetNote.git
 
 cd NetNote
 
@@ -145,45 +171,77 @@ yarn docs:dev
 
 每个文档都可以放在独立的文件夹下，维护自己的 `img` 文件夹。
 
-```text
-doc
-├─.vuepress
-│  └─public
-│      └─img
-├─coding
-│  ├─Java
-│  │  └─img
-│  │      └─01-Path
-│  └─Web
-├─net
-│  ├─acap
-│  ├─base
-│  ├─router
-│  ├─security
-│  ├─switch
-│  └─wan
-├─serve
-│  ├─Linux
-│  │  ├─01-Base
-│  │  ├─02-Chrony
-│  │  ├─03-NFS
-│  │  ├─04-MariaDB
-│  │  ├─05-Apache
-│  │  ├─06-Tomcat
-│  │  ├─07-Samba
-│  │  ├─08-NIS
-│  │  ├─09-Postfix
-│  │  └─10-Pacemaker
-│  ├─VM
-│  │  ├─Cloud
-│  │  └─img
-│  │      └─setup
-│  └─WS
-└─start
-    ├─img
-    └─use_IDEA
-        └─img
+::: details 目录结构
+```text文件夹 PATH 列表
+卷序列号为 ACB4-8525
+C:.
+├─.github
+│  └─workflows
+├─docs
+│  ├─.vuepress
+│  │  └─public
+│  │      └─img
+│  │          ├─book
+│  │          └─portrait
+│  ├─coding
+│  │  ├─Docker
+│  │  │  └─img
+│  │  ├─Java
+│  │  │  └─img
+│  │  │      └─01-Path
+│  │  ├─MariaDB
+│  │  │  └─img
+│  │  ├─RabbitMQ
+│  │  │  └─img
+│  │  ├─Redis
+│  │  ├─Spring
+│  │  │  └─Framework
+│  │  │      └─WebServlet
+│  │  │          └─img
+│  │  └─Web
+│  ├─net
+│  │  ├─01-base
+│  │  │  └─img
+│  │  ├─acap
+│  │  ├─manual
+│  │  │  ├─command
+│  │  │  │  └─img
+│  │  │  │      └─07
+│  │  │  └─operate
+│  │  ├─router
+│  │  ├─security
+│  │  │  └─img
+│  │  ├─switch
+│  │  └─wan
+│  ├─serve
+│  │  ├─Linux
+│  │  │  ├─01-Base
+│  │  │  │  └─img
+│  │  │  ├─02-Chrony
+│  │  │  ├─03-NFS
+│  │  │  ├─04-MariaDB
+│  │  │  ├─05-Apache
+│  │  │  │  └─img
+│  │  │  ├─06-Tomcat
+│  │  │  ├─07-Samba
+│  │  │  ├─08-NIS
+│  │  │  ├─09-Postfix
+│  │  │  └─10-Pacemaker
+│  │  ├─VM
+│  │  │  ├─DCC-CRL1000
+│  │  │  │  └─img
+│  │  │  └─VMware
+│  │  │      └─img
+│  │  └─WS
+│  └─start
+│      ├─img
+│      ├─use_GitHub
+│      │  └─img
+│      └─use_IDEA
+│          └─img
+└─node_modules/
 ```
+:::
 
 ## 附：终端设置代理
 
@@ -244,7 +302,7 @@ cnpm : 无法加载文件 C:\Users\Yue_plus\AppData\Roaming\npm\cnpm.ps1，因�
 
 参阅 <https:/go.microsoft.com/fwlink/?LinkID=135170>
 
-**解决方法**：
+### 解决方法：
 
 先以 **管理员身份** 在 PowerShell 中运行一下指令：
 
