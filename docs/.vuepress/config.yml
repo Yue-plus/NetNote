@@ -111,6 +111,9 @@ themeConfig:
         -
           text: Linux
           link: /serve/Linux/
+    -
+      text: Gitee
+      link: https://gitee.com/yue_plus/NetNote
   sidebar:
     '/start/':
       - 'start'
