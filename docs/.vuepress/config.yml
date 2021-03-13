@@ -173,6 +173,9 @@ themeConfig:
       - 'VMware/'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
+      - 'DHCP'
+      - 'Hyper-V'
+      - 'WDS'
       - 'DFS'
       - 'NLB'
       - 'FailoverCluster'
