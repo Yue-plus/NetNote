@@ -1,3 +1,3 @@
 # NetNote
 
-# <https://Note.YuePlus.ink/start/>
+# <https://Note.YuePlus.ink/>
