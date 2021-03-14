@@ -175,10 +175,10 @@ themeConfig:
     '/serve/VM/':
       - 'DCC-CRL1000/'
       - 'VMware/'
+      - 'Hyper-V/'
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DHCP'
-      - 'Hyper-V'
       - 'WDS'
       - 'DFS'
       - 'NLB'

@@ -157,6 +157,23 @@ yarn docs:dev
 
 > 更多配置可参考 **[VuePress 介绍](https://vuepress.vuejs.org/zh/guide/)**
 
+## 参与项目
+
+本项目使用了 [VuePress](https://vuepress.vuejs.org/zh/) 静态网站生成器，参考 [项目目录结构](#附-项目目录结构) 使用 [Markdown 语法](/start/markdown.html) 来编写/修改 `.md` 文件。
+
+新建页面请参考 [默认主题配置](https://vuepress.vuejs.org/zh/theme/default-theme-config.html) 修改项目内的 `/docs/.vuepress/config.yml` 文件。
+
+当前计划任务：
+
+- 网络搭建
+  + [操作手册](/net/manual/operate/)
+  + [命令手册](/net/manual/command/)
+- 系统服务
+  + 云平台与虚拟机
+    * [Hyper-V](/serve/VM/Hyper-V/)
+  + [Windows Server](/serve/WS/)
+  + [Linux](/serve/Linux/)
+
 ## 部署
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。
