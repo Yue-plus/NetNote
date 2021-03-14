@@ -22,6 +22,9 @@ themeConfig:
           text: 开始项目
           link: /start/start.html
         -
+          text: VScode 使用方法
+          link: /start/use_VScode/
+        -
           text: GitHub 使用方法
           link: /start/use_GitHub/
         -
@@ -118,6 +121,7 @@ themeConfig:
     '/start/':
       - 'start'
       - 'use_GitHub/'
+      - 'use_VScode/'
       - 'use_IDEA/'
       - 'markdown'
       - 'mermaid'
