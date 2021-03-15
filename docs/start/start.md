@@ -163,6 +163,8 @@ yarn docs:dev
 
 新建页面请参考 [默认主题配置](https://vuepress.vuejs.org/zh/theme/default-theme-config.html) 修改项目内的 `/docs/.vuepress/config.yml` 文件。
 
+参考 [中文文案排版指北（简体中文版）](https://mazhuang.org/wiki/chinese-copywriting-guidelines/)
+
 当前计划任务：
 
 - 网络搭建
