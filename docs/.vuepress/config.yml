@@ -179,7 +179,7 @@ themeConfig:
     '/serve/WS/':
       - 'ActiveDirectoryDomain'
       - 'DHCP'
-      - 'WDS'
+      - 'WDS/'
       - 'DFS'
       - 'NLB'
       - 'FailoverCluster'
