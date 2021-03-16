@@ -8,7 +8,7 @@
 
 如果是 **家庭中文版** 请到 [微软官网](https://www.microsoft.com/zh-cn/software-download/windows10) 下载工具，重装系统。
 
-![下载安装工具](./img/system_download.jpg)
+![下载安装工具](/img/other/system_download.jpg)
 
 ## 推荐安装以下软件
 

@@ -105,6 +105,9 @@ themeConfig:
     -
       text: 系统服务
       items:
+        -
+          text: 基本操作
+          link: /serve/base/
         - 
           text: 云平台与虚拟机
           link: /serve/VM/
@@ -172,6 +175,8 @@ themeConfig:
       - 'acap/'
       - 'security/'
       - 'wan/'
+    '/serve/base/':
+      - 'sys_install/'
     '/serve/VM/':
       - 'DCC-CRL1000/'
       - 'VMware/'
