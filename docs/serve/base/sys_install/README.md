@@ -9,6 +9,8 @@
 
 ## 获取安装镜像
 
+### 原版镜像
+
 可以从以下渠道获得 Windows 安装镜像：
 
 - [下载 Windows 10 - Microsoft](https://www.microsoft.com/zh-cn/software-download/windows10)
@@ -24,6 +26,21 @@
   ```text
   magnet:?xt=urn:btih:65AC835ABC26EA04F0CBF4B8D18F99C5633F6DF9&dn=cn_windows_10_consumer_editions_version_20h2_updated_feb_2021_x64_dvd_8ddab99d.iso&xl=6223781888
   ```
+
+### 获取 `.GHO` 镜像
+
+::: danger
+现在 <span title="Yue_plus">个人</span> 极度 **不推荐** 这种系统安装方式！
+
+现在 **深度技术**、**雨林木风**、**萝卜家园**、**番茄花园** 等工作室都早已悉数解散。
+现在最新的 Ghost 系统镜像都不同程度的含有 主页绑定、自带 2345 全家桶等辣鸡软件、甚至自带病毒程序等。
+:::
+
+#### 看起来还行的 Ghost 镜像网站
+
+- [系统之家](http://www.xitongzhijia.net/)
+- [系统城](http://www.xitongcheng.com/)
+- [系统天地](https://www.xitongtiandi.net/)
 
 ## 制作装机U盘
 
@@ -131,4 +148,8 @@ BIOS是个人电脑启动时加载的第一个软件。
 
 ### 使用 `.GHO` 镜像
 
+使用 [U盘 PE 系统](#u盘-pe-系统) 内的 **EIX 系统安装** 选择 **恢复镜像** 与 **目标分区** 点击一键恢复。
+
 ![Easy Image](./img/EasyImage2.jpg)
+
+恢复完成后会重启数次。
