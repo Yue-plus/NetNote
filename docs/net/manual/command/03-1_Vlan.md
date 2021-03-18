@@ -872,8 +872,7 @@ no switchport hybrid allowed vlan`
   
 ### 1.2.5 protocol-vlan
 
-- 命令：`protocol-vlan mode {ethernetii etype <etype-id>|llc {dsap <dsap-id> ssap 
-     <ssap-id>}|snap etype <etype-id>} vlan <vlan-id> priority <priority-id> no protocol-vlan {mode {ethernetii etype <etype-id>|llc {dsap <dsap-id> ssap <ssap-id>}|snap etype <etype-id>}|all}`
+- 命令：`protocol-vlan mode {ethernetii etype <etype-id>|llc {dsap <dsap-id> ssap <ssap-id>}|snap etype <etype-id>} vlan <vlan-id> priority <priority-id> no protocol-vlan {mode {ethernetii etype <etype-id>|llc {dsap <dsap-id> ssap <ssap-id>}|snap etype <etype-id>}|all}`
 - 功能：添加协议与 VLAN 的对应关系，即指定协议加入指定 VLAN；本命令的 no 命令为删除协议与 VLAN 的对应关系。
 - 参数：mode为配置封装类型，为 ethernetii、llc、snap；ethernetii 为EthernetII封装格式；etype-id 为报文协议类型，
      取值范围为 1536~65535；llc 为 LLC 封装格式；dsap-id 为目的服务接入点，取值范围为0~255；ssap-id 为源服务接入点，取值

@@ -1029,7 +1029,7 @@
 
 - 命令：`telnet-server max-connection {<max-connection-number>|default}`
 - 功能：配置交换机 Telnet 服务器支持的最大连接数。
-- 参数：<max-connection-number>为 Telnet 服务器支持的最大连接数，
+- 参数：`<max-connection-number>` 为 Telnet 服务器支持的最大连接数，
   范围为 5-16。default 选项恢复本命令的缺省配置。
 - 缺省情况：系统设置的缺省最大连接数为 5。
 - 命令模式：全局配置模式。
@@ -1625,10 +1625,8 @@
 ### `snmp-server host`
 
 - 命令：
-- snmp-server host {<host-ipv4-address> | <host-ipv6-address>} {v1 | v2c | {v3
-  {NoauthNopriv | AuthNopriv | AuthPriv}}} <user-string>
-- no snmp-server host {<host-ipv4-address> | <host-ipv6-address>} {v1 | v2c |
-{v3 {NoauthNopriv | AuthNopriv | AuthPriv}}} <user-string>
+  + `snmp-server host {<host-ipv4-address> | <host-ipv6-address>} {v1 | v2c | {v3{NoauthNopriv | AuthNopriv | AuthPriv}}} <user-string>`
+  + `no snmp-server host {<host-ipv4-address> | <host-ipv6-address>} {v1 | v2c | {v3 {NoauthNopriv | AuthNopriv | AuthPriv}}} <user-string>`
 - 功能：对 v1/v2c 版本来说，设置接收 SNMP 的 Trap 消息的网络管理站的 IPv4 或 IPv6 地址及 Trap 团体字符串，对 v3 版本来说，设置接收 SNMP 的 Trap 消息的网络管理站的 IPv4 或 IPv6 地址及 Trap 用户名和安全级别；本命令的 no 操作为取消这个网络管理站的 IPv4 或 IPv6 地址。
 - 命令模式：全局配置模式。
 - 参数：`<host-ipv4-addr>`为接收 Trap 消息的 NMS 管理站 IP 地址；
@@ -1741,7 +1739,7 @@
   + `no snmp-server view <view-string> [ <oid-string> ]`
 - 功能：该命令用来创建或者更新视图的信息；本命令的no 形式用来删除视图信息。
 - 命令模式：全局配置模式。
-- 参数：<view-string> `视图名，为1-32 个字符；
+- 参数：`<view-string>` 视图名，为1-32 个字符；
   `<oid-string> OID `号或者对应的节点名，为1-255 个字符；
   `include | exclude `包含/不包含此 OID 。
 - 使用指南：该命令不仅支持以变量 OID 的字符串作为参数输入，同时还支持以节点名作为参数输入。
@@ -2078,7 +2076,7 @@ superuser。
 
 ### `copy`
 
-- 命令：copy <srcFileName> <desFileName>
+- 命令：`copy <srcFileName> <desFileName>`
 - 功能：复制flash 中的文件。
 - 参数：`<srcFileName>`为源文件路径，可以是相对路径，也可以是绝对路径；
 `<desFileName>`为目的文件路径，必须是绝对路径；目标文件后缀名必须和源文件后缀名相同。
@@ -2164,14 +2162,14 @@ superuser。
 
 ### `load`
 
-命令：load<filename>
+命令：`load<filename>`
 功能：通过tftp 方式加载文件。
-参数：<filename>为需要加载的文件名称。
+参数：`<filename>` 为需要加载的文件名称。
 缺省情况：无。
 命令模式：boot 配置模式。
 使用指南：输入load + filename 命令，可通过TFTP 加载文件。
 举例：加载boot.rom 文件。
-[Boot]:load boot.rom
+`[Boot]:load boot.rom`
 
 ### `nobootpassword`
 

@@ -142,7 +142,7 @@
   + `match ipv6 address <ipv6-acl-name | prefix-list list-name>`
   + `no match ipv6 address [<ipv6-acl-name | prefix-list list-name>]`
 - 功能：配置匹配 ipv6 路由前缀，本命令的 no 操作为删除配置
-- 参数：`address` 表示匹配的是路由前缀，<ipv6-acl-name >为 ipv6 access-list 名称，prefix-list 表示要按前缀列表规则进行匹配， list-name 为前缀列表名称
+- 参数：`address` 表示匹配的是路由前缀，`<ipv6-acl-name>` 为 ipv6 access-list 名称，prefix-list 表示要按前缀列表规则进行匹配， list-name 为前缀列表名称
 - 命令模式： `route-map` 配置模式
 - 使用指南：本命令按路由中的路由前缀进行匹配，如果匹配成功，则执行 route-map 中 permitdeny 操作
 - 举例：

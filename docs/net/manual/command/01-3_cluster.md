@@ -172,21 +172,25 @@
 
 ## cluster update member
 
-命令：cluster update member <member-id> <src-url> <dst-filename> [ascii | binary]
+命令：`cluster update member <member-id> <src-url> <dst-filename> [ascii | binary]`
 功能：命令交换机上对成员交换机进行远程升级。
-参数说明：member-id：取值范围：1-128，可以使用连接号“-”和分号“；”同时选择多个
-member；
-src-url：被拷贝的源文件的位置；
-dst-filename：文件存放在交换机flash 中的文件名；
-ascii 表示文件传输使用ASCII 标准；binary 表示文件传输使用二进制标准，缺省
-为binary 方式。
-当src-url 是FTP 地址时的格式为：
-ftp://<username>:<password>@<ipadress>/<filename>，其中<username>为FTP 用户名，<password>为FTP 用户口令，<ipadress>为FTP 服务器的IP 地址，<filename>为
-FTP 下载文件名。
-当src-url 是TFTP 地址时的格式为：tftp://<ipadress>/<filename>，其中<ipadress>为
-TFTP 服务器的IP 地址，<filename>为TFTP 下载文件名。
+参数说明：
+- `member-id`：
+  + 取值范围：`1-128`，可以使用连词符 `-` 与分号 `;` 同时选择多个 `member`；
+- `src-url`：被拷贝的源文件的位置；
+- `dst-filename`：文件存放在交换机 flash 中的文件名；
+  `ascii` 表示文件传输使用ASCII 标准；
+  `binary` 表示文件传输使用二进制标准，缺省为 `binary` 方式。
+- 当 `src-url` 是 FTP 地址时的格式为：
+  `ftp://<username>:<password>@<ipadress>/<filename>`，其中
+  `<username>` 为 FTP 用户名，
+  `<password>` 为 FTP 用户口令，
+  `<ipadress>` 为 FTP 服务器的 IP 地址，
+  `<filename>` 为 FTP 下载文件名。
+- 当 `src-url` 是 TFTP 地址时的格式为：`tftp://<ipadress>/<filename>`，其中
+  `<ipadress>` 为 TFTP 服务器的IP 地址，
+  `<filename>` 为 TFTP 下载文件名。
 filename 的特殊关键字：
-
 
 ## debug cluster
 
