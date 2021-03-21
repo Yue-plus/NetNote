@@ -159,7 +159,7 @@ yarn docs:dev
 
 ## 参与项目
 
-本项目使用了 [VuePress](https://vuepress.vuejs.org/zh/) 静态网站生成器，参考 [项目目录结构](#附-项目目录结构) 使用 [Markdown 语法](/start/markdown.html) 来编写/修改 `.md` 文件。
+本项目使用了 [VuePress2](https://vuepress2.netlify.app/zh/) 静态网站生成器，参考 [项目目录结构](#附-项目目录结构) 使用 [Markdown 语法](/start/markdown.html) 来编写/修改 `.md` 文件。
 
 新建页面请参考 [默认主题配置](https://vuepress.vuejs.org/zh/theme/default-theme-config.html) 修改项目内的 `/docs/.vuepress/config.yml` 文件。
 

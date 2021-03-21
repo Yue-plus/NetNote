@@ -1,10 +1,13 @@
 ---
 home: true
+title: 首页
 heroImage: /img/logo.png
 heroText: NetNote
 tagline: 只要学不死，就往死里学！
-actionText: 我爱学习！ →
-actionLink: /start/start.html
+actions:
+  - text: 我爱学习！ →
+    link: /start/start.html
+    type: primary
 ---
 
 # 贡献者
