@@ -6,17 +6,18 @@ export default defineUserConfig<DefaultThemeOptions>({
   title: 'NetNote',
   description: '只要学不死，就往死里学！',
 
+  head: [
+    ['link', { rel: 'icon', href: '/img/logo.png' }],
+    ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'apple-touch-icon', href: '/img/logo_192.png' }],
+    ['meta', { name: 'msapplication-TileImage', content: '/img/logo_192.png' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+  ],
+
   themeConfig: {
-    head: [
-      ["link", { rel: 'icon', href: '/img/logo.png' }],
-      ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-      ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-      ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-      ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-      ['link', { rel: 'apple-touch-icon', href: '/img/logo_192.png' }],
-      ['meta', { name: 'msapplication-TileImage', content: '/img/logo_192.png' }],
-      ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
-    ],
     navbar: [
       {
         text: '起步',
@@ -237,4 +238,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     contributorsText: '此页贡献者：',
     lastUpdatedText: '上次更新'
   },
+
+  plugins: [
+    ['@vuepress/pwa']
+  ]
 })
