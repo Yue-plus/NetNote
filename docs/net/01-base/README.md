@@ -276,11 +276,21 @@ S5750E-28C-SI#reload
 Process with reboot? [Y/N] y
 ```
 
-<!--
-### [DCN DCFW-1800E-N3002-Pro下一代防火墙](http://www.dcnetworks.com.cn/goods/148.html)
+<!-- ### [DCN DCFW-1800E-N3002-Pro下一代防火墙](http://www.dcnetworks.com.cn/goods/148.html) -->
 
 ### [DCN DCR-2655 模块化路由器](http://www.dcnetworks.com.cn/goods/131.html)
--->
+
+进入 CLI 界面，输入：
+
+```text {1,3,5}
+Router>enable
+Router#Jan  1 00:36:39 Unknown user enter privilege mode from console 0, level = 15
+Router#reset
+Incomplete command
+Router#write   
+Saving current configuration...
+OK!
+```
 
 ### [DCN DCWS-6028 无线控制器](http://www.dcnetworks.com.cn/goods/120.html)
 
