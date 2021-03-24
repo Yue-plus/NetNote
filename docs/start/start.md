@@ -126,7 +126,15 @@ The key's randomart image is:
 
 ## 本地安装 Yarn
 
-前往 [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable) 下载安装包，下一步到底。
+可参考 [Yarn 官网](https://yarnpkg.com/)。
+
+在 [本地安装 NodeJS](#本地安装-nodejs) 后，在终端输入：
+
+```bash
+npm install -g yarn
+```
+
+可使用 `yarn -v` 验证安装，如果输出版本号则安装成功。
 
 ## 拉取项目
 

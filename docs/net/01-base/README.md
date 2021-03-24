@@ -280,12 +280,13 @@ Process with reboot? [Y/N] y
 ### [DCN DCFW-1800E-N3002-Pro下一代防火墙](http://www.dcnetworks.com.cn/goods/148.html)
 
 ### [DCN DCR-2655 模块化路由器](http://www.dcnetworks.com.cn/goods/131.html)
+-->
 
 ### [DCN DCWS-6028 无线控制器](http://www.dcnetworks.com.cn/goods/120.html)
 
-### [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html)
--->
+在开机（能进入配置 CLI）后，用回形针戳下一 **RST** 孔。
 
+<!-- ### [DCN WL8200-I2 室内放装型无线AP](http://www.dcnetworks.com.cn/goods/26.html) -->
 
 ## 推荐阅读
 
