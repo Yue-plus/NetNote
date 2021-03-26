@@ -184,7 +184,16 @@ yarn docs:dev
   + [Windows Server](/serve/WS/)
   + [Linux](/serve/Linux/)
 
-## 部署
+## 获取资源
+
+在培训室内网环境，计算机右键，**添加网络位置**：
+
+- `\\ws19\Yue_plus 的共享`
+- `\\ws19\公共文件夹`
+
+![添加网络位置向导](./img/03.jpg)
+
+## 部署项目
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。
 
