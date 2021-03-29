@@ -242,6 +242,24 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
 
   plugins: [
-    ['@vuepress/pwa']
+    ['@vuepress/pwa'],
+    ['@vuepress/plugin-pwa-popup', {
+      locales: {
+        '/': {
+          message: '发现新内容可用',
+          buttonText: '刷新',
+        }
+      }
+    }],
+    ['@vuepress/docsearch', {
+      appId: '0YWM7BGDQI',
+      apiKey: '9dc6fe12516690be51dea370e78001f6',
+      indexName: 'note.yueplus.ink',
+      locales: {
+        '/': {
+          placeholder: '在此搜索文档'
+        }
+      }
+    }]
   ]
 })
