@@ -34,6 +34,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         text: '编程',
         children: [
           '/coding/Web/',
+          '/coding/Python/',
           '/coding/Java/',
           '/coding/Spring/',
           '/coding/MariaDB/',
@@ -115,6 +116,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/coding/Web/README.md',
             '/coding/Java/README.md',
             '/coding/Spring/README.md',
+            'coding/Python/README.md',
             '/coding/MariaDB/README.md',
             '/coding/Redis/README.md',
             '/coding/RabbitMQ/README.md',
