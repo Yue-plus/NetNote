@@ -6,3 +6,4 @@ deploy.sh
 .idea
 .vscode
 *.log
+.env

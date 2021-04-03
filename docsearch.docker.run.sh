@@ -1,0 +1,1 @@
+docker run --env-file=.env -e "CONFIG=$(cat /d/code/NetNote/docsearch.config.json | jq -r tostring)" algolia/docsearch-scraper

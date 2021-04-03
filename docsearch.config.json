@@ -1,0 +1,24 @@
+{
+  "index_name": "note.yueplus.ink",
+  "start_urls": [
+    "https://note.yueplus.ink/"
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "lvl0": "main h1",
+    "lvl1": "main h2",
+    "lvl2": "main h3",
+    "lvl3": "main h4",
+    "lvl4": "main h5",
+    "lvl5": "main h6",
+    "text": "main p, main li",
+    "lang": {
+      "selector": "/html/@lang",
+      "type": "xpath",
+      "global": true
+    }
+  },
+  "custom_settings": {
+    "attributesForFaceting": ["lang", "tags"]
+  }
+}
