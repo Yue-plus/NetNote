@@ -204,6 +204,64 @@ cmdtxt <variable> {enum1 | … | enumN} [option1 | … | optionN]
 - 对特权用户配置命令 `show interface ethernet 1/0/1`，只要输入 `sh in e 1/0/1` 即可。
 - 对特权用户配置命令 `show running-config`，如果仅输入 `sh r`，系统会报 `>Ambiguous command!`，因为 Shell 无法区分 `show r` 是 `show radius` 命令还是 `show running-config` 命令，因此必须输入 `sh ru`，Shell 才能正确的解析。
 
+## 使用 `telnet` 管理
+
+### 交换机开启 `telnet` 功能
+
+```text
+S5750E-28C-SI>enable 
+S5750E-28C-SI#config 
+S5750E-28C-SI(config)#telnet-server enable 
+Telnet server has been already enabled.
+S5750E-28C-SI(config)
+```
+
+### 开启 Windows `Telnet` 客户端
+
+![开启 Windows `Telnet` 客户端](./img/telnet.jpg) 
+
+```shell script
+telnet [-a][-e escape char][-f log file][-l user][-t term][host [port]]
+ -a      企图自动登录。除了用当前已登陆的用户名以外，与 -l 选项相同。
+ -e      跳过字符来进入 telnet 客户端提示。
+ -f      客户端登录的文件名
+ -l      指定远程系统上登录用的用户名。
+         要求远程系统支持 TELNET ENVIRON 选项。
+ -t      指定终端类型。
+         支持的终端类型仅是: vt100, vt52, ansi 和 vtnt。
+ host    指定要连接的远程计算机的主机名或 IP 地址。
+ port    指定端口号或服务名。
+
+```
+
+### 使用 `telnet` 客户端管理交换机
+
+先配置好交换机 DHCP 服务，**或者** 配置本机 IP 地址：
+
+![配置本地 IP](./img/config_ipv4.jpg)
+<asdasd>
+```sh
+telnet 192.168.1.10
+```
+
+```telnet
+login:admin
+Password:*****
+S5750E-28C-SI#help
+命令行系统提供了先进的帮助手段.  当需要帮助时,
+任何时候都可以在命令行中输入 '?'寻求帮助.
+
+如果没有可匹配的内容, 则帮助提示为空, 需要输入其它信息直到
+输入 '?' 显示匹配内容.
+帮助信息有两种风格:
+1. 当输入一个命令参数时(例如'show ?'), 可以得到全部的帮助信息,
+   帮助信息中列举了所有可能的参数.
+2. 当希望知道哪些参数与输入字符匹配,则可以输入参数的部分字符,
+   (如'show ve?'), 则可以获得部分的帮助信息.
+
+S5750E-28C-SI#
+```
+
 ## 使用网页管理
 
 通过网页管理交换机的 **必要条件**：
