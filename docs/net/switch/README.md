@@ -9,7 +9,7 @@
 
 ## 神州数码二层交换机划分vlan如下所示:
 
-``` sh
+```text
 S4600-28P-SI>enable
 S4600-28P-SI#config
 S4600-28P-SI(config)#vlan 10
@@ -23,6 +23,7 @@ S4600-28P-SI(config-if-port-range)#exit
 S4600-28P-SI(config)#
 如果还要改其他vlan和端口把上面的数字改一下就行了
 ```
+
 ## 神州数码交换机改名如下所示:
 ```sh
 S4600-28P-SI#config
