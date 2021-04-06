@@ -338,16 +338,17 @@ Process with reboot? [Y/N] y
 
 ### [DCN DCR-2655 模块化路由器](http://www.dcnetworks.com.cn/goods/131.html)
 
+删除 `startup-config` 文件即恢复出厂设置，`delete` 命令默认为删除该文件。
+
 进入 CLI 界面，输入：
 
-```text {1,3,5}
-Router>enable
-Router#Jan  1 00:36:39 Unknown user enter privilege mode from console 0, level = 15
-Router#reset
-Incomplete command
-Router#write   
-Saving current configuration...
-OK!
+```text {1,4}
+Router>enable 
+Router#Jan  1 01:07:18 Unknown user enter privilege mode from console 0, level = 15
+
+Router#delete 
+this file will be erased,are you sure?(y/n)y
+Router#
 ```
 
 ### [DCN DCWS-6028 无线控制器](http://www.dcnetworks.com.cn/goods/120.html)
