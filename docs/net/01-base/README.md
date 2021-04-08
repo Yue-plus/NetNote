@@ -239,7 +239,7 @@ telnet [-a][-e escape char][-f log file][-l user][-t term][host [port]]
 先配置好交换机 DHCP 服务，**或者** 配置本机 IP 地址：
 
 ![配置本地 IP](./img/config_ipv4.jpg)
-<asdasd>
+
 ```sh
 telnet 192.168.1.10
 ```
