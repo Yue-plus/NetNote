@@ -347,3 +347,34 @@ set-ExecutionPolicy RemoteSigned
 ```
 
 然后就不会报错了。
+
+## 附：没有 `telnet` 指令
+
+![没有 `telnet` 指令](./img/no_telnet.jpg)
+
+### Windows 10
+
+在 **控制面版** -> **程序** -> **程序和功能** -> **启用或关闭 Windows 功能** 中，勾选 **Telnet 客户端**：
+
+![启用或关闭 Windows 功能](./img/add_win10_telnet.jpg)
+
+### Windows Server
+
+在 **服务器管理器** -> **添加角色和功能** 中，添加 **Telnet Client** 功能：
+
+![添加服务器功能](./img/add_WS_telnet.jpg)
+
+### `telnet` 指令帮助
+
+```text
+telnet [-a][-e escape char][-f log file][-l user][-t term][host [port]]
+ -a      企图自动登录。除了用当前已登陆的用户名以外，与 -l 选项相同。
+ -e      跳过字符来进入 telnet 客户端提示。
+ -f      客户端登录的文件名
+ -l      指定远程系统上登录用的用户名。
+         要求远程系统支持 TELNET ENVIRON 选项。
+ -t      指定终端类型。
+         支持的终端类型仅是: vt100, vt52, ansi 和 vtnt。
+ host    指定要连接的远程计算机的主机名或 IP 地址。
+ port    指定端口号或服务名。
+```
