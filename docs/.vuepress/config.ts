@@ -34,6 +34,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         text: '编程',
         children: [
           '/coding/Web/',
+          '/serve/WS/PS/',
           '/coding/Python/',
           '/coding/Java/',
           '/coding/Spring/',
@@ -114,9 +115,10 @@ export default defineUserConfig<DefaultThemeOptions>({
           text: '编程',
           children: [
             '/coding/Web/README.md',
+            '/serve/WS/PS/README.md',
             '/coding/Java/README.md',
             '/coding/Spring/README.md',
-            'coding/Python/README.md',
+            '/coding/Python/README.md',
             '/coding/MariaDB/README.md',
             '/coding/Redis/README.md',
             '/coding/RabbitMQ/README.md',
@@ -201,12 +203,13 @@ export default defineUserConfig<DefaultThemeOptions>({
           isGroup: true,
           text: 'Windows Server',
           children: [
-            '/serve/WS/ActiveDirectoryDomain.md',
+            '/serve/WS/AD/README.md',
             '/serve/WS/DHCP.md',
             '/serve/WS/WDS/README.md',
             '/serve/WS/DFS.md',
             '/serve/WS/NLB.md',
-            '/serve/WS/FailoverCluster.md'
+            '/serve/WS/FailoverCluster.md',
+            '/serve/WS/PS/README.md'
           ]
         }
       ],
@@ -237,6 +240,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     docsBranch: 'main',
     docsDir: 'docs',
     editLinkPattern: ':repo/edit/:branch/:path',
+    contributors: true,
     contributorsText: '此页贡献者：',
     lastUpdatedText: '上次更新'
   },
