@@ -7,6 +7,81 @@ Active Directory 使用结构化数据存储作为目录信息的逻辑层次组
 [Active Directory 域服务](https://docs.microsoft.com/zh-cn/windows-server/identity/ad-ds/active-directory-domain-services)
 :::
 
+## 开始之前
+
+### 本例环境
+
+### 修改计算机名
+
+### 设置固定 IP 地址
+
+## Active Directory 域配置
+
+### 添加 Active Directory 域服务角色
+
+### 提升为主域控制器
+
+### 将域控制器添加到现有域
+
+## 常见问题
+
+### Error 001：尝试将此计算机配置为域控制器时出错
+
+#### 错误详情
+
+尝试将此计算机配置为域控制器时出错
+
+操作失败的原因是:
+
+试图将此计算机加入“skills.com”域失败。
+
+无法完成域加入，原因是试图加入的域的 SID 与本计算机的 SID 相同。
+未正确克隆的操作系统安装会出现这种情况。
+你应该在本计算机上运行 `sysprep`，以便生成一个新的计算机 SID。
+有关详细信息，请参阅 <http://go.microsoft.com/fwlink/?LinkId=168895>。
+
+![尝试将此计算机配置为域控制器时出错_img-001.jpg](./img/E001/img-001.jpg)
+
+#### 出错原因
+
+Windows 使用 SID 来表示所有的安全对象（security principals）。
+安全对象包括主机、域、计算机账户、用户与安全组。
+名字 Name 是用来代表 SID 的一个方法，可以允许用户改名而无需更新 ACL（access control list）。
+SID 是一串数字代码包含了架构版本数字，一个 48 位的 ID 权威值，一个 32 位的子全位置或者 RID 值。
+权威值识别颁发出 SID 的代理，这个代理一般是 windows 本地系统或者域。
+子权威值识别颁发权威的委派，RID 则是 Windows 用来创建唯一 SID 用到的一个普通 SID。
+
+相同 SID 在单机使用过程中可能没有什么问题。
+但是在 Windows 内部，每个账号具有一个惟一的 Security ID，可以在
+`HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList`
+看到。
+
+SID是用来识别账户的惟一标志，而不是通常以为的机器名\用户名。
+
+而现有的克隆虚拟机是把整个安装好的系统分区直接克隆下来，这样多台机器就有了相同的SID，这样在你加入域的时候，会报错，工作不正常。
+
+#### 解决方法
+
+1. 点击 **开始菜单** -> **Windows 系统** -> **运行** -> 输入 `sysprep` 回车。
+2. 双击 `Sysprep.exe` **勾选 [√] 通用**，点击确定后将自动重启计算机。
+
+![系统准备工具](./img/E001/img-002.jpg)
+
+> 参考：
+> - [Windows server 2012 R2 解决“无法完成域加入，原因是试图加入的域的SID与本计算机的SID相同 - 小油2018 - 博客园](https://www.cnblogs.com/xiaoyou2018/p/10677437.html)
+> - [Windows server 2012 R2 解决“无法完成域加入，原因是试图加入的域的SID与本计算机的SID相同。”_段传涛  的专栏-CSDN博客_无法完成域加入](https://blog.csdn.net/duanchuanttao/article/details/53467060)
+> - [Windows中的SID详解 - jack_Meng - 博客园](https://www.cnblogs.com/mq0036/p/3518542.html)
+
+
+
+
+
+
+
+
+
+
+<!--
 为什么要使用域？假设你是公司的系统管理员，你们公司有一千台电脑。
 如果你要为每台电脑设置登录帐户，设置权限(比如是否允许登录帐户安装软件)，那你要分别坐在这一千台电脑前工作。
 如果你要做一些改变，你也要分别在这一千台电脑上修改。
@@ -51,3 +126,4 @@ Active Directory 使用结构化数据存储作为目录信息的逻辑层次组
 
 Active Directory用户账户bai用于验证用户身份，指派用户的访问权限。用户必须使用用户账户登录到特定的计算机和域。登录到网络的每个用户应有自己的惟一账户和密码。用户账户也可用作某些应用程序的服务账户。
 在域控制器上建立的是域用户账户，账户数据存储在AD中，用来登录域、访问域内的资源。非域控制器的计算机上还有本地账户。本地账户数据存储在本机中，不会发布到AD中，只能用来登录账户所在计算机，访问该计算机上的资源。本地账户主要用于工作组环境，对于加入域的计算机来说，一般不再建立和管理本地账户，除非要以本地账户登录。
+-->
