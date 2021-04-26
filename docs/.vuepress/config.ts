@@ -241,7 +241,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     docsDir: 'docs',
     editLinkPattern: ':repo/edit/:branch/:path',
     contributors: true,
-    contributorsText: '此页贡献者：',
+    contributorsText: '此页贡献者',
     lastUpdatedText: '上次更新'
   },
 
