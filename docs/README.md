@@ -10,6 +10,10 @@ actions:
     type: primary
 ---
 
+::: tip
+可以按 <kbd>Ctrl</kbd> + <kbd>F5</kbd> 获取页面更新
+:::
+
 # 贡献者
 
 <style>
