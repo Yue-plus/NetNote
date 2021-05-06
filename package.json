@@ -4,11 +4,12 @@
     "docs:build": "vuepress build docs"
   },
   "devDependencies": {
-    "vuepress": "^2.0.0-beta.6"
+    "vuepress": "^2.0.0-beta.12"
   },
   "dependencies": {
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.6",
-    "@vuepress/plugin-pwa": "^2.0.0-beta.6",
-    "@vuepress/plugin-pwa-popup": "^2.0.0-beta.6"
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.12",
+    "@vuepress/plugin-pwa": "^2.0.0-beta.12",
+    "@vuepress/plugin-pwa-popup": "^2.0.0-beta.12"
   }
 }
+ 
