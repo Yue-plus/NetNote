@@ -9,6 +9,10 @@ Microsoft Docs:
 - [配置网络基础结构以支持 NLB 操作模式 - Windows Client](https://docs.microsoft.com/zh-cn/troubleshoot/windows-client/networking/configure-network-to-support-nlb-operation-mode)
 :::
 
+## 教程
+
+- [2020中职网搭国赛 NLB服务器配置_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/BV1P64y117tM)
+
 ## 安装
 
 在 **添加角色和功能向导** 中添加 _功能_：**网络负载平衡**：
