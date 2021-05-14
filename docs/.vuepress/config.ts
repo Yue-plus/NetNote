@@ -204,6 +204,7 @@ export default defineUserConfig<DefaultThemeOptions>({
           text: 'Windows Server',
           children: [
             '/serve/WS/AD/README.md',
+            '/serve/WS/IIS/README.md',
             '/serve/WS/DHCP.md',
             '/serve/WS/WDS/README.md',
             '/serve/WS/DFS.md',
