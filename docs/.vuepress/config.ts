@@ -207,6 +207,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             '/serve/WS/IIS/README.md',
             '/serve/WS/DHCP.md',
             '/serve/WS/WDS/README.md',
+            '/serve/WS/FS/README.md',
             '/serve/WS/DFS.md',
             '/serve/WS/NLB/README.md',
             '/serve/WS/FailoverCluster.md',
