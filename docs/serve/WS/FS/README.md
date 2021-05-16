@@ -23,6 +23,7 @@ Windows Server 点击 **服务器管理器** 右上角的 *工具* -> **计算�
 
 参考：
 - [2020中职网搭国赛 故障转移群集配置_哔哩哔哩 (゜-゜)つロ 干杯~-bilibili](https://www.bilibili.com/video/BV1h54y1j7zS)
+  [00:00 ~ 01:39]
 - [Windows磁盘管理、动态磁盘、RAID10_razorx的博客-CSDN博客](https://blog.csdn.net/weixin_42747982/article/details/83685711)
 - [RAID0 RAID1 RAID5 RAID10区别_c1052981766的专栏-CSDN博客](https://blog.csdn.net/c1052981766/article/details/49612793)
 
