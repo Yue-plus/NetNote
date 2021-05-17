@@ -13,15 +13,43 @@ Active Directory 使用结构化数据存储作为目录信息的逻辑层次组
 
 ### 修改计算机名
 
+右键 **此电脑** → **属性** → **高级系统设置** → **计算机名** → **更改**
+
+![修改计算机名](./img/img-001.jpg)
+
 ### 设置固定 IP 地址
+
+![设置固定 IP 地址](./img/ip-config.jpg)
 
 ## Active Directory 域配置
 
 ### 添加 Active Directory 域服务角色
 
+在 **服务器管理器** 中 **添加角色和功能**：
+
+![](./img/ActiveDirectory-001.jpg)
+![](./img/ActiveDirectory-002.jpg)
+
+安装完成后需要配置，[提升为主域控制器](#提升为主域控制器) 或 [将域控制器添加到现有域](#将域控制器添加到现有域)
+
+![](./img/ActiveDirectory-003.jpg)
+
 ### 提升为主域控制器
 
 ### 将域控制器添加到现有域
+
+
+![部署配置](./img/ActiveDirectory-010.jpg)
+
+![域控制器选项](./img/ActiveDirectory-011.jpg)
+
+**复制自：** （此处选择主域控制器）
+
+![其他选项](./img/ActiveDirectory-012.jpg)
+
+![路径](./img/ActiveDirectory-013.jpg)
+
+剩下几项没有要改的，点击 **安装**
 
 ## AD DS 发布共享
 
