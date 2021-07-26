@@ -257,14 +257,19 @@ export default defineUserConfig<DefaultThemeOptions>({
         }
       }
     }],
-    ['@vuepress/docsearch', {
-      appId: '0YWM7BGDQI',
-      apiKey: '9dc6fe12516690be51dea370e78001f6',
-      indexName: 'note.yueplus.ink',
+    // ['@vuepress/docsearch', {
+    //   appId: '0YWM7BGDQI',
+    //   apiKey: '9dc6fe12516690be51dea370e78001f6',
+    //   indexName: 'note.yueplus.ink',
+    //   locales: {
+    //     '/': {
+    //       placeholder: '在此搜索文档'
+    //     }
+    //   }
+    // }],
+    ['@vuepress/plugin-search', {
       locales: {
-        '/': {
-          placeholder: '在此搜索文档'
-        }
+        '/': { placeholder: '搜索' }
       }
     }]
   ]
