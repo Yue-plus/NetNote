@@ -124,6 +124,27 @@ The key's randomart image is:
 
 前往 [NodeJS 官网](https://nodejs.org/en/download/) 下载安装包，下一步到底。
 
+### 安装 `cnpm`
+
+由于国内众所周知的网络原因，推荐安装 `cnpm`，在安装依赖时代替 `npm` 命令：
+
+```shell
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+```
+
+安装后可使用 `cnpm -v` 验证：
+
+```shell {1}
+$ cnpm -v
+cnpm@7.0.0 (C:\Users\Yue_p\AppData\Roaming\npm\node_modules\cnpm\lib\parse_argv.js)
+npm@6.14.15 (C:\Users\Yue_p\AppData\Roaming\npm\node_modules\cnpm\node_modules\npm\lib\npm.js)
+node@16.8.0 (C:\Program Files\nodejs\node.exe)
+npminstall@5.0.2 (C:\Users\Yue_p\AppData\Roaming\npm\node_modules\cnpm\node_modules\npminstall\lib\index.js)
+prefix=C:\Users\Yue_p\AppData\Roaming\npm
+win32 x64 10.0.19043
+registry=https://registry.nlark.com
+```
+
 ## 本地安装 Yarn
 
 可参考 [Yarn 官网](https://yarnpkg.com/)。
@@ -135,6 +156,14 @@ npm install -g yarn
 ```
 
 可使用 `yarn -v` 验证安装，如果输出版本号则安装成功。
+
+### 安装 `tyarn`
+
+由于国内众所周知的网络原因，推荐安装 `tyarn`，在安装依赖时代替 `yarn` 命令：
+
+```shell
+npm install yarn tyarn -g
+```
 
 ## 拉取项目
 
@@ -163,7 +192,7 @@ yarn docs:dev
 
 通过浏览器访问：<http://127.0.0.1:8080/>
 
-> 更多配置可参考 **[VuePress 介绍](https://vuepress.vuejs.org/zh/guide/)**
+> 更多配置可参考 **[VuePress2 介绍](https://vuepress2.netlify.app/zh/guide/)**
 
 ## 参与项目
 
@@ -201,23 +230,25 @@ yarn docs:dev
 
 当前所有文档都保存在 `NetNote\docs\` 文件夹内。
 
-新建目录需修改 `NetNote\docs\.vuepress\config.yml` 文件。
+新建目录需修改 `NetNote\docs\.vuepress\config.ts` 文件。
 
 公共图片统一放在 `NetNote\docs\.vuepress\public\img` 文件夹内。
 
 每个文档都可以放在独立的文件夹下，维护自己的 `img` 文件夹。
 
 ::: details 目录结构
-```text文件夹 PATH 列表
-卷序列号为 ACB4-8525
+```text
+文件夹 PATH 列表
+卷序列号为 92AD-3B9E
 C:.
-├─.github
-│  └─workflows
 ├─docs
 │  ├─.vuepress
+│  │  ├─.cache/
+│  │  ├─.temp/
 │  │  └─public
 │  │      └─img
 │  │          ├─book
+│  │          ├─other
 │  │          └─portrait
 │  ├─coding
 │  │  ├─Docker
@@ -226,6 +257,8 @@ C:.
 │  │  │  └─img
 │  │  │      └─01-Path
 │  │  ├─MariaDB
+│  │  │  └─img
+│  │  ├─Python
 │  │  │  └─img
 │  │  ├─RabbitMQ
 │  │  │  └─img
@@ -239,6 +272,7 @@ C:.
 │  │  ├─01-base
 │  │  │  └─img
 │  │  ├─acap
+│  │  │  └─img
 │  │  ├─manual
 │  │  │  ├─command
 │  │  │  │  └─img
@@ -250,6 +284,9 @@ C:.
 │  │  ├─switch
 │  │  └─wan
 │  ├─serve
+│  │  ├─base
+│  │  │  └─sys_install
+│  │  │      └─img
 │  │  ├─Linux
 │  │  │  ├─01-Base
 │  │  │  │  └─img
@@ -266,14 +303,31 @@ C:.
 │  │  ├─VM
 │  │  │  ├─DCC-CRL1000
 │  │  │  │  └─img
+│  │  │  ├─Hyper-V
 │  │  │  └─VMware
 │  │  │      └─img
 │  │  └─WS
+│  │      ├─AD
+│  │      │  └─img
+│  │      │      ├─E001
+│  │      │      ├─E002
+│  │      │      ├─E003
+│  │      │      └─E004
+│  │      ├─FS
+│  │      │  └─img
+│  │      ├─IIS
+│  │      ├─NLB
+│  │      │  └─img
+│  │      ├─PS
+│  │      └─WDS
+│  │          └─img
 │  └─start
 │      ├─img
 │      ├─use_GitHub
 │      │  └─img
-│      └─use_IDEA
+│      ├─use_IDEA
+│      │  └─img
+│      └─use_VScode
 │          └─img
 └─node_modules/
 ```
