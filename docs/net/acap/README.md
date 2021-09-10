@@ -1,5 +1,9 @@
 # AC/AP 配置
 
+## AP 指示灯状态
+
+![AP 指示灯状态](./img/ap_status.jpg)
+
 ## ap上线:
 ```shell script
 config)#vlan 10

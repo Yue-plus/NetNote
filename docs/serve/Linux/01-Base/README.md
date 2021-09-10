@@ -8,6 +8,584 @@
 - [Linux 教程 | 菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html)
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
   + 至少看看到 [第十章、認識與學習BASH](http://linux.vbird.org/linux_basic/0320bash.php)
+- [Linux 就该这么学_w3cschool](https://www.w3cschool.cn/linuxprobe/)
+
+<iframe src="//player.bilibili.com/player.html?aid=99111795&bvid=BV187411y7hF&cid=169181090&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
+
+## 挂载软件源镜像
+
+创建挂载目录：
+
+```bash
+mkdir /mnt/iso
+```
+
+挂载 ISO 镜像：
+
+```bash
+mount -t iso9660 -o loop /opt/CentOS-7-x86_64-Everything-1503-01.iso /mnt/iso
+```
+
+配置软件源
+
+```bash
+cd /etc/yum.repos.d
+mv CentOS-Base.repo CentOS-Base.repo.bak
+vi CentOS-Media.repo
+```
+
+编辑 `CentOS-Media.repo` 文件：
+
+```diff
+ # CentOS-Media.repo
+ #
+ # This repo is used to mount the default locations for a CDROM / DVD on
+ #  CentOS-6.  You can use this repo and yum to install items directly off the
+ #  DVD ISO that we release.
+ #
+ # To use this repo, put in your DVD and use it with the other repos too:
+ #  yum --enablerepo=c6-media [command]
+ #
+ # or for ONLY the media repo, do this:
+ #
+ #  yum --disablerepo=\* --enablerepo=c6-media [command]
+ 
+ [c6-media]
+ name=CentOS-$releasever - Media
++baseurl=file:///mnt/iso/
+-baseurl=file:///media/CentOS/
+-        file:///media/cdrom/
+-        file:///media/cdrecorder/
++gpgcheck=0
+-gpgcheck=1
++enabled=1
+-enabled=0
+ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+```
+
+更新软件源：
+
+```bash
+yum update
+```
+
+## firewall（防火墙）
+
+### 安装
+
+```sh
+yum install firewalld
+```
+
+### 设置服务
+
+```sh
+systemctl start firewalld # 启动
+systemctl status firewalld # 查看状态
+systemctl enable firewalld # 开机启动
+systemctl disable firewalld # 开机不启动
+systemctl stop firewalld # 停止运行
+```
+
+## SELinux
+
+CentOS 中 SELinux 默认开启，可以使用以下指令查看状态：
+
+``` bash
+[root@host-10-20-70-107 ~]# sestatus -v
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      28
+
+Process contexts:
+Current context:                unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+Init context:                   system_u:system_r:init_t:s0
+/usr/sbin/sshd                  system_u:system_r:sshd_t:s0-s0:c0.c1023
+
+File contexts:
+Controlling terminal:           unconfined_u:object_r:user_devpts_t:s0
+/etc/passwd                     system_u:object_r:passwd_file_t:s0
+/etc/shadow                     system_u:object_r:shadow_t:s0
+/bin/bash                       system_u:object_r:shell_exec_t:s0
+/bin/login                      system_u:object_r:login_exec_t:s0
+/bin/sh                         system_u:object_r:bin_t:s0 -> system_u:object_r:shell_exec_t:s0
+/sbin/agetty                    system_u:object_r:getty_exec_t:s0
+/sbin/init                      system_u:object_r:bin_t:s0 -> system_u:object_r:init_exec_t:s0
+/usr/sbin/sshd                  system_u:object_r:sshd_exec_t:s0
+```
+
+## 设置时区
+
+CentOS 可以使用 `timedatectl` 指令设置时区。
+
+``` bash
+[root@host-10-20-70-107 ~]# timedatectl -h
+timedatectl [OPTIONS...] COMMAND ...
+
+查询或更改系统时间和日期设置。
+
+  -h --help                显示当前帮助信息
+     --version             显示软件包版本
+     --no-pager            不要将输出通过管道传给寻呼机
+     --no-ask-password     不提示输入密码
+  -H --host=[USER@]HOST    在远程主机上操作
+  -M --machine=CONTAINER   在本地容器上操作
+     --adjust-system-clock 更改本地 RTC 模式时调整系统时钟
+
+Commands:
+  status                   显示当前时间设置
+  set-time TIME            设置系统时间
+  set-timezone ZONE        设置系统时区
+  list-timezones           显示已知时区
+  set-local-rtc BOOL       控制 RTC 是否在当地时间
+  set-ntp BOOL             控制是否启用 NTP
+```
+
+### 示例
+
+将时区设置为亚洲上海：
+
+``` bash
+timedatectl set-timezone Asia/Shanghai
+```
+
+### 所有时区
+
+::: details
+```text
+Africa/Abidjan
+Africa/Accra
+Africa/Addis_Ababa
+Africa/Algiers
+Africa/Asmara
+Africa/Bamako
+Africa/Bangui
+Africa/Banjul
+Africa/Bissau
+Africa/Blantyre
+Africa/Brazzaville
+Africa/Bujumbura
+Africa/Cairo
+Africa/Casablanca
+Africa/Ceuta
+Africa/Conakry
+Africa/Dakar
+Africa/Dar_es_Salaam
+Africa/Djibouti
+Africa/Douala
+Africa/El_Aaiun
+Africa/Freetown
+Africa/Gaborone
+Africa/Harare
+Africa/Johannesburg
+Africa/Juba
+Africa/Kampala
+Africa/Khartoum
+Africa/Kigali
+Africa/Kinshasa
+Africa/Lagos
+Africa/Libreville
+Africa/Lome
+Africa/Luanda
+Africa/Lubumbashi
+Africa/Lusaka
+Africa/Malabo
+Africa/Maputo
+Africa/Maseru
+Africa/Mbabane
+Africa/Mogadishu
+Africa/Monrovia
+Africa/Nairobi
+Africa/Ndjamena
+Africa/Niamey
+Africa/Nouakchott
+Africa/Ouagadougou
+Africa/Porto-Novo
+Africa/Sao_Tome
+Africa/Tripoli
+Africa/Tunis
+Africa/Windhoek
+America/Adak
+America/Anchorage
+America/Anguilla
+America/Antigua
+America/Araguaina
+America/Argentina/Buenos_Aires
+America/Argentina/Catamarca
+America/Argentina/Cordoba
+America/Argentina/Jujuy
+America/Argentina/La_Rioja
+America/Argentina/Mendoza
+America/Argentina/Rio_Gallegos
+America/Argentina/Salta
+America/Argentina/San_Juan
+America/Argentina/San_Luis
+America/Argentina/Tucuman
+America/Argentina/Ushuaia
+America/Aruba
+America/Asuncion
+America/Atikokan
+America/Bahia
+America/Bahia_Banderas
+America/Barbados
+America/Belem
+America/Belize
+America/Blanc-Sablon
+America/Boa_Vista
+America/Bogota
+America/Boise
+America/Cambridge_Bay
+America/Campo_Grande
+America/Cancun
+America/Caracas
+America/Cayenne
+America/Cayman
+America/Chicago
+America/Chihuahua
+America/Costa_Rica
+America/Creston
+America/Cuiaba
+America/Curacao
+America/Danmarkshavn
+America/Dawson
+America/Dawson_Creek
+America/Denver
+America/Detroit
+America/Dominica
+America/Edmonton
+America/Eirunepe
+America/El_Salvador
+America/Fort_Nelson
+America/Fortaleza
+America/Glace_Bay
+America/Godthab
+America/Goose_Bay
+America/Grand_Turk
+America/Grenada
+America/Guadeloupe
+America/Guatemala
+America/Guayaquil
+America/Guyana
+America/Halifax
+America/Havana
+America/Hermosillo
+America/Indiana/Indianapolis
+America/Indiana/Knox
+America/Indiana/Marengo
+America/Indiana/Petersburg
+America/Indiana/Tell_City
+America/Indiana/Vevay
+America/Indiana/Vincennes
+America/Indiana/Winamac
+America/Inuvik
+America/Iqaluit
+America/Jamaica
+America/Juneau
+America/Kentucky/Louisville
+America/Kentucky/Monticello
+America/Kralendijk
+America/La_Paz
+America/Lima
+America/Los_Angeles
+America/Lower_Princes
+America/Maceio
+America/Managua
+America/Manaus
+America/Marigot
+America/Martinique
+America/Matamoros
+America/Mazatlan
+America/Menominee
+America/Merida
+America/Metlakatla
+America/Mexico_City
+America/Miquelon
+America/Moncton
+America/Monterrey
+America/Montevideo
+America/Montserrat
+America/Nassau
+America/New_York
+America/Nipigon
+America/Nome
+America/Noronha
+America/North_Dakota/Beulah
+America/North_Dakota/Center
+America/North_Dakota/New_Salem
+America/Ojinaga
+America/Panama
+America/Pangnirtung
+America/Paramaribo
+America/Phoenix
+America/Port-au-Prince
+America/Port_of_Spain
+America/Porto_Velho
+America/Puerto_Rico
+America/Punta_Arenas
+America/Rainy_River
+America/Rankin_Inlet
+America/Recife
+America/Regina
+America/Resolute
+America/Rio_Branco
+America/Santarem
+America/Santiago
+America/Santo_Domingo
+America/Sao_Paulo
+America/Scoresbysund
+America/Sitka
+America/St_Barthelemy
+America/St_Johns
+America/St_Kitts
+America/St_Lucia
+America/St_Thomas
+America/St_Vincent
+America/Swift_Current
+America/Tegucigalpa
+America/Thule
+America/Thunder_Bay
+America/Tijuana
+America/Toronto
+America/Tortola
+America/Vancouver
+America/Whitehorse
+America/Winnipeg
+America/Yakutat
+America/Yellowknife
+Antarctica/Casey
+Antarctica/Davis
+Antarctica/DumontDUrville
+Antarctica/Macquarie
+Antarctica/Mawson
+Antarctica/McMurdo
+Antarctica/Palmer
+Antarctica/Rothera
+Antarctica/Syowa
+Antarctica/Troll
+Antarctica/Vostok
+Arctic/Longyearbyen
+Asia/Aden
+Asia/Almaty
+Asia/Amman
+Asia/Anadyr
+Asia/Aqtau
+Asia/Aqtobe
+Asia/Ashgabat
+Asia/Atyrau
+Asia/Baghdad
+Asia/Bahrain
+Asia/Baku
+Asia/Bangkok
+Asia/Barnaul
+Asia/Beirut
+Asia/Bishkek
+Asia/Brunei
+Asia/Chita
+Asia/Choibalsan
+Asia/Colombo
+Asia/Damascus
+Asia/Dhaka
+Asia/Dili
+Asia/Dubai
+Asia/Dushanbe
+Asia/Famagusta
+Asia/Gaza
+Asia/Hebron
+Asia/Ho_Chi_Minh
+Asia/Hong_Kong
+Asia/Hovd
+Asia/Irkutsk
+Asia/Jakarta
+Asia/Jayapura
+Asia/Jerusalem
+Asia/Kabul
+Asia/Kamchatka
+Asia/Karachi
+Asia/Kathmandu
+Asia/Khandyga
+Asia/Kolkata
+Asia/Krasnoyarsk
+Asia/Kuala_Lumpur
+Asia/Kuching
+Asia/Kuwait
+Asia/Macau
+Asia/Magadan
+Asia/Makassar
+Asia/Manila
+Asia/Muscat
+Asia/Nicosia
+Asia/Novokuznetsk
+Asia/Novosibirsk
+Asia/Omsk
+Asia/Oral
+Asia/Phnom_Penh
+Asia/Pontianak
+Asia/Pyongyang
+Asia/Qatar
+Asia/Qyzylorda
+Asia/Riyadh
+Asia/Sakhalin
+Asia/Samarkand
+Asia/Seoul
+Asia/Shanghai
+Asia/Singapore
+Asia/Srednekolymsk
+Asia/Taipei
+Asia/Tashkent
+Asia/Tbilisi
+Asia/Tehran
+Asia/Thimphu
+Asia/Tokyo
+Asia/Tomsk
+Asia/Ulaanbaatar
+Asia/Urumqi
+Asia/Ust-Nera
+Asia/Vientiane
+Asia/Vladivostok
+Asia/Yakutsk
+Asia/Yangon
+Asia/Yekaterinburg
+Asia/Yerevan
+Atlantic/Azores
+Atlantic/Bermuda
+Atlantic/Canary
+Atlantic/Cape_Verde
+Atlantic/Faroe
+Atlantic/Madeira
+Atlantic/Reykjavik
+Atlantic/South_Georgia
+Atlantic/St_Helena
+Atlantic/Stanley
+Australia/Adelaide
+Australia/Brisbane
+Australia/Broken_Hill
+Australia/Currie
+Australia/Darwin
+Australia/Eucla
+Australia/Hobart
+Australia/Lindeman
+Australia/Lord_Howe
+Australia/Melbourne
+Australia/Perth
+Australia/Sydney
+Europe/Amsterdam
+Europe/Andorra
+Europe/Astrakhan
+Europe/Athens
+Europe/Belgrade
+Europe/Berlin
+Europe/Bratislava
+Europe/Brussels
+Europe/Bucharest
+Europe/Budapest
+Europe/Busingen
+Europe/Chisinau
+Europe/Copenhagen
+Europe/Dublin
+Europe/Gibraltar
+Europe/Guernsey
+Europe/Helsinki
+Europe/Isle_of_Man
+Europe/Istanbul
+Europe/Jersey
+Europe/Kaliningrad
+Europe/Kiev
+Europe/Kirov
+Europe/Lisbon
+Europe/Ljubljana
+Europe/London
+Europe/Luxembourg
+Europe/Madrid
+Europe/Malta
+Europe/Mariehamn
+Europe/Minsk
+Europe/Monaco
+Europe/Moscow
+Europe/Oslo
+Europe/Paris
+Europe/Podgorica
+Europe/Prague
+Europe/Riga
+Europe/Rome
+Europe/Samara
+Europe/San_Marino
+Europe/Sarajevo
+Europe/Saratov
+Europe/Simferopol
+Europe/Skopje
+Europe/Sofia
+Europe/Stockholm
+Europe/Tallinn
+Europe/Tirane
+Europe/Ulyanovsk
+Europe/Uzhgorod
+Europe/Vaduz
+Europe/Vatican
+Europe/Vienna
+Europe/Vilnius
+Europe/Volgograd
+Europe/Warsaw
+Europe/Zagreb
+Europe/Zaporozhye
+Europe/Zurich
+Indian/Antananarivo
+Indian/Chagos
+Indian/Christmas
+Indian/Cocos
+Indian/Comoro
+Indian/Kerguelen
+Indian/Mahe
+Indian/Maldives
+Indian/Mauritius
+Indian/Mayotte
+Indian/Reunion
+Pacific/Apia
+Pacific/Auckland
+Pacific/Bougainville
+Pacific/Chatham
+Pacific/Chuuk
+Pacific/Easter
+Pacific/Efate
+Pacific/Enderbury
+Pacific/Fakaofo
+Pacific/Fiji
+Pacific/Funafuti
+Pacific/Galapagos
+Pacific/Gambier
+Pacific/Guadalcanal
+Pacific/Guam
+Pacific/Honolulu
+Pacific/Kiritimati
+Pacific/Kosrae
+Pacific/Kwajalein
+Pacific/Majuro
+Pacific/Marquesas
+Pacific/Midway
+Pacific/Nauru
+Pacific/Niue
+Pacific/Norfolk
+Pacific/Noumea
+Pacific/Pago_Pago
+Pacific/Palau
+Pacific/Pitcairn
+Pacific/Pohnpei
+Pacific/Port_Moresby
+Pacific/Rarotonga
+Pacific/Saipan
+Pacific/Tahiti
+Pacific/Tarawa
+Pacific/Tongatapu
+Pacific/Wake
+Pacific/Wallis
+UTC
+```
+:::
 
 <!--
 ## 常用指令

@@ -1,6 +1,8 @@
 # Web 前端
 
 **[MDN Web 文档](https://developer.mozilla.org/zh-CN/)**
+- [HTTP 教程 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)
+- [渐进式 Web 应用（PWA）| MDN](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps)
 
 ## HTML
 
@@ -76,14 +78,22 @@
 - [《JavaScript 高级程序设计》（第四版）](https://book.douban.com/subject/35175321/)
   + ![《JavaScript 高级程序设计》](/img/book/《JavaScript高级程序设计》.jpg)
 
-## 库 & 框架
-
-### JavaScript 框架
+## JavaScript 框架
 
 - [Vue.js——渐进式 JavaScript 框架](https://cn.vuejs.org/)
-- [Angular——跨平台 JavaScript 框架](https://angular.cn/)
+  + [【尚硅谷】2021最新Vue迅速上手教程丨vue3.0入门到精通](https://www.bilibili.com/video/BV1Zy4y1K7SH)
 - [React——用于构建用户界面的 JavaScript 库](https://react.docschina.org/)
+  + [尚硅谷2021版React技术全家桶全套完整版（零基础入门到精通/男神天禹老师亲授）](https://www.bilibili.com/video/BV1wy4y1D7JT)
+- [Angular——跨平台 JavaScript 框架](https://angular.cn/)
 
-### 图标库
+
+## JavaScript 库
+
+- [jQuery](https://jquery.com/)
+- [Axios——易用、简洁且高效的 HTTP 库](http://www.axios-js.com/)
+  [GitHub](https://github.com/axios/axios)
+  [NPM](https://www.npmjs.com/package/axios)
+
+## 设计资源
 
 - [Iconfont-阿里巴巴矢量图标库](https://www.iconfont.cn/)
