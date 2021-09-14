@@ -50,10 +50,10 @@ actions:
     <br />
     520-miku
 </a>
-<a class="head-link" target="_blank" href="https://github.com/shu-shang-123">
-    <img class="head-img" src="/img/portrait/shu-shang-123.jpg" alt="shu-shang-123" />
+<a class="head-link" target="_blank" href="https://github.com/DAHE-JINYI">
+    <img class="head-img" src="/img/portrait/DAHE-JINYI.jpg" alt="DAHE-JINYI" />
     <br />
-    shu-shang-123
+    DAHE-JINYI
 </a>
 <a class="head-link" target="_blank" href="https://github.com/Ahuipro">
     <img class="head-img" src="/img/portrait/Ahuipro.jpg" alt="Ahuipro" />
