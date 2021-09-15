@@ -70,3 +70,8 @@ actions:
     <br />
     Zhou-izz
 </a>
+<a class="head-link" target="_blank" href="https://github.com/LX-plus">
+    <img class="head-img" src="/img/portrait/LX-plus.jpg" alt="LX-plus" />
+    <br />
+    LX-plus
+</a>
