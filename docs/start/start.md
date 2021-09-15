@@ -223,6 +223,9 @@ yarn docs:dev
 
 ![添加网络位置向导](./img/03.jpg)
 
+用户名：`wds`
+
+密码：<span style="color: black; background-color: black;">`Abcd1234`</span>
 ## 部署项目
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。
