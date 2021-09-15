@@ -23,6 +23,12 @@ IDEA 全称 [IntelliJ IDEA](https://www.jetbrains.com/idea/)，是 java 编程�
 
 拖入 IDEA 窗口安装。
 
+点击文件进入设置
+
+![设置](./img/04.png)
+
+再点击HTTP设置点击自动检测代理设置
+![设置](./img/05.png)
 <!-- TODO: 待添加截图 -->
 
 ### 更改颜色主题
@@ -32,7 +38,6 @@ IDEA 全称 [IntelliJ IDEA](https://www.jetbrains.com/idea/)，是 java 编程�
 ![IDEA 设置](./img/01.jpg)
 
 点击 **确定**。
-
 ## 友情链接
 
 [judasn/IntelliJ-IDEA-Tutorial](https://github.com/judasn/IntelliJ-IDEA-Tutorial#%E7%9B%AE%E5%BD%95contents)
