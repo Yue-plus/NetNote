@@ -38,6 +38,7 @@
 - [WinSCP ——开源图形化 SFTP 客户端](https://winscp.net/eng/download.php)
 - [PotPlayer ——本地视频播放器](https://potplayer.daum.net/)
 - [Windows Terminal](https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701)
+  > 打不开微软商店可以试试将 DNS 设为 `4.2.2.1` 和 `4.2.2.2`
 
 ## 本地安装 Git
 
