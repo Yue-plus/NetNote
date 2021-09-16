@@ -203,7 +203,8 @@ export default defineUserConfig<DefaultThemeOptions>({
           '/serve/WS/DFS.md',
           '/serve/WS/NLB/README.md',
           '/serve/WS/FailoverCluster.md',
-          '/serve/WS/PS/README.md'
+          '/serve/WS/PS/README.md',
+          '/serve/WS/CommonRequirements/README.md'
         ]
       }],
       '/serve/Linux/': [{

@@ -21,3 +21,4 @@
 - [NLB（负载均衡）服务配置](./NLB.md)
 - [Failover Cluster（故障转移群集）](./FailoverCluster.md)
 - [Power Shell](./PS/)
+- [Windows Server 配置常见需求](./CommonRequirements/)
