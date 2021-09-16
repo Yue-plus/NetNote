@@ -54,6 +54,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       },{
         text: '网络搭建',
         children: [
+          '/net/00-Abbreviation/',
           '/net/01-base/',
           '/net/switch/',
           '/net/router/',
@@ -169,6 +170,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/net/': [{
         text: '网络搭建',
         children: [
+          '/net/00-Abbreviation/README.md',
           '/net/01-base/README.md',
           '/net/switch/README.md',
           '/net/router/README.md',
