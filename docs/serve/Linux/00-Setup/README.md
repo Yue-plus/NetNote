@@ -36,3 +36,7 @@ VMware 虚拟机以及镜像安装
 ```
 7.做完以上步骤之后，就可以开始安装虚拟机了，点击完成开始安装
 ```
+
+## 可前往bilbil网站观看第三章
+
+<iframe src="//player.bilibili.com/player.html?aid=99111795&bvid=BV187411y7hF&cid=169181090&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
