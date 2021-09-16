@@ -197,9 +197,11 @@ yarn docs:dev
 
 ## 参与项目
 
-本项目使用了 [VuePress2](https://vuepress2.netlify.app/zh/) 静态网站生成器，参考 [项目目录结构](#附-项目目录结构) 使用 [Markdown 语法](/start/markdown.html) 来编写/修改 `.md` 文件。
+本项目使用了 [VuePress2](https://vuepress2.netlify.app/zh/) 静态网站生成器，参考 [项目目录结构](#附-项目目录结构)
+使用 [Markdown 语法](/start/markdown.html) 来编写/修改 `.md` 文件。
 
-新建页面请参考 [默认主题配置](https://vuepress.vuejs.org/zh/theme/default-theme-config.html) 修改项目内的 `/docs/.vuepress/config.ts` 文件。
+新建页面请参考 [默认主题配置](https://v2.vuepress.vuejs.org/zh/reference/default-theme/config.html#基础配置)
+修改项目内的 `/docs/.vuepress/config.ts` 文件。
 
 参考 [中文文案排版指北（简体中文版）](https://mazhuang.org/wiki/chinese-copywriting-guidelines/)
 
