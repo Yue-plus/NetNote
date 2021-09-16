@@ -55,6 +55,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       },{
         text: '网络搭建',
         children: [
+          '/net/00-Abbreviation/',
           '/net/01-base/',
           '/net/switch/',
           '/net/router/',
@@ -170,6 +171,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/net/': [{
         text: '网络搭建',
         children: [
+          '/net/00-Abbreviation/README.md',
           '/net/01-base/README.md',
           '/net/switch/README.md',
           '/net/router/README.md',
@@ -196,6 +198,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         text: 'Windows Server',
         children: [
           '/serve/WS/AD/README.md',
+          '/serve/WS/DNS/README.md',
           '/serve/WS/IIS/README.md',
           '/serve/WS/DHCP.md',
           '/serve/WS/WDS/README.md',
@@ -203,7 +206,8 @@ export default defineUserConfig<DefaultThemeOptions>({
           '/serve/WS/DFS.md',
           '/serve/WS/NLB/README.md',
           '/serve/WS/FailoverCluster.md',
-          '/serve/WS/PS/README.md'
+          '/serve/WS/PS/README.md',
+          '/serve/WS/CommonRequirements/README.md'
         ]
       }],
       '/serve/Linux/': [{

@@ -11,9 +11,14 @@
 
 ## 目录
 
-- [AD 域](./AD/)
+- [Active Directory 域服务](./AD/)
+- [DNS](./DNS/)
 - [DHCP](./DHCP.md)
+- [Web 服务器（IIS - Internet Information Services）](./IIS/)
 - [Windows 部署服务（WDS）](./WDS/)
+- [文件和储存服务](./FS/)
 - [DFS（分布式文件系统）服务配置](./DFS.md)
 - [NLB（负载均衡）服务配置](./NLB.md)
-- [故障转移群集配置](./FailoverCluster.md)
+- [Failover Cluster（故障转移群集）](./FailoverCluster.md)
+- [Power Shell](./PS/)
+- [Windows Server 配置常见需求](./CommonRequirements/)
