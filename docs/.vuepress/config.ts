@@ -1,6 +1,7 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 
+// 参考：https://v2.vuepress.vuejs.org/zh/reference/default-theme/config.html#基础配置
 export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CN',
   title: 'NetNote',
@@ -208,6 +209,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       '/serve/Linux/': [{
         text: 'Linux',
         children: [
+          '/serve/Linux/00-Setup/README.md',
           '/serve/Linux/01-Base/README.md',
           '/serve/Linux/02-Chrony/README.md',
           '/serve/Linux/03-NFS/README.md',
