@@ -192,3 +192,10 @@ $ java ./app.jar
 + }
 ```
 
+## 安卓（Android）开发
+
+> 在培训室内外环境下访问：`\\WS19\Yue_plus 的共享\Android`
+
+- [安卓开发者文档](https://developer.android.com/docs)
+    + [Android Studio](https://developer.android.com/studio)
+    + [命令行工具](https://developer.android.com/studio/command-line)
