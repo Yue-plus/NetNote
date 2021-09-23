@@ -40,6 +40,12 @@
 - [CSS3 教程 - 菜鸟教程](https://www.runoob.com/css3/css3-tutorial.html)
 - [CSS3 教程 - w3cschool](https://www.w3cschool.cn/css3/)
 
+### [Less](https://less.bootcss.com/#%E6%A6%82%E8%A7%88)
+
+### [stylus](https://www.stylus-lang.cn/)
+
+### [Sass](https://www.sass.hk/)
+
 ## JavaScript
 
 :::tip
