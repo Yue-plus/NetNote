@@ -44,7 +44,7 @@
 
 ### [stylus](https://www.stylus-lang.cn/)
 
-### [Sass](https://www.sass.hk/)
+### [Sass](https://sass.bootcss.com/documentation)
 
 ## JavaScript
 
