@@ -111,6 +111,13 @@ export default defineUserConfig<DefaultThemeOptions>({
           '/game/GodotEngine.md'
         ]
       }],
+      '/coding/Java/Gradle/': [{
+        text: 'Gradle',
+        children: [
+          '/coding/Java/README.md',
+          '/coding/Java/Gradle/README.md'
+        ]
+      }],
       '/coding/Spring/Framework/WebServlet/': [{
         text: 'Spring Projects',
         children: [
