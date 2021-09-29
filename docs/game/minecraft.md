@@ -14,6 +14,8 @@ Minecraft 是一款沙盒式建造游戏，缔造者为 Mojang Studios 创始人
 - [OpenJDK](https://jdk.java.net/)
 - [JavaSE](https://www.java.com/zh-CN/download/manual.jsp)
 - [Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki)
+- [Minecraft Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)
+- [CurseForge](https://www.curseforge.com/)
 
 ## 获取游戏
 
@@ -27,4 +29,72 @@ Minecraft 是一款沙盒式建造游戏，缔造者为 Mojang Studios 创始人
 推荐使用最新的 [OpenJDK](https://jdk.java.net/) 并设置 [配置好环境变量](/coding/Java/#配置环境变量)。
 
 由于 Java 版官方启动器速度感人，推荐使用 [HMCL](https://ci.huangyuhui.net/job/HMCL/) 启动器。
+
+## 服务器
+
+### 创建服务器
+
+1. 先获取服务器核心：
+
+   - [Minecraft.net（官方）](https://www.minecraft.net/zh-hans/download/server)
+   - [softonic（第三方）](https://minecraft-server.en.softonic.com/)
+
+    然后复制到一个单独的文件夹。
+
+2. 参考 [配置 Java 环境变量](/coding/Java/#配置环境变量)
+
+3. 试着运行一次服务器：
+
+   ```shell
+   java -jar minecraft_server.1.16.5.jar -nogui
+   ```
+
+   现在文件夹内应该有以下文件：
+
+   ```dir
+   eula.txt
+   logs/
+   minecraft_server.1.16.5.jar
+   server.properties
+   ```
+
+   需要同意 [MINECRAFT 最终用户许可协议](https://account.mojang.com/documents/minecraft_eula)，
+   如果同意协议需要修改目录下的 `eula.txt` 文件：
+
+   ```diff
+    #By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
+    #Wed Sep 29 15:13:24 CST 2021
+   -eula=false
+   +eula=true
+   ```
+
+4. 添加启动脚本
+
+参考 [教程/服务器启动脚本 - Minecraft Wiki，最详细的官方我的世界百科](https://minecraft.fandom.com/zh/wiki/教程/服务器启动脚本)
+
+### 配置服务器
+
+参考 [Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Server.properties?variant=zh-cn)
+修改服务器配置文件 `server.properties`
+
+#### 常用配置：
+
+##### 设置游戏难度：
+
+`server.properties` 第 15 行：`difficulty=`
+
+- `peaceful (0)` - 和平
+- `easy (1)` - 简单
+- `normal (2)` - 普通
+- `hard (3)` - 困难
+
+##### 限制服务器人数
+
+`server.properties` 第 18 行：`max-players=20`
+
+##### 关闭正版验证：
+
+`server.properties` 第 22 行：`online-mode=false` 设为 `true`
+
+
 
