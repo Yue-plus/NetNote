@@ -30,14 +30,36 @@ Minecraft 是一款沙盒式建造游戏，缔造者为 Mojang Studios 创始人
 
 由于 Java 版官方启动器速度感人，推荐使用 [HMCL](https://ci.huangyuhui.net/job/HMCL/) 启动器。
 
-## 安装 Mod
+## 安装 Forge
 
 前往 [Minecraft Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)
 获得 **对应版本** 的 Mod 安装器（installer）
 
-使用命令：`java -jar forge-1.16.5-36.2.6-installer.jar`
+使用命令打开安装器：`java -jar forge-1.16.5-36.2.6-installer.jar`
 
 ![](./img/forge_installer.png)
+
+> - client 为客户端
+> - server 为服务端
+
+## 安装 Mod
+
+Mod（模组）一般为 `.jar` 文件。
+在安装好 Forge 后直接把 `.jar` 文件丢到 `.minecraft/mods/` 文件夹里就好了。
+
+### CurseForge Modpack
+
+可能会遇到一些 `.zip` 格式的“模组包（Modpack）”：
+
+![](./img/CurseForgeModpack.png)
+
+这是 [CurseForge](https://www.curseforge.com/)
+的格式，需要使用他们的 [CurseForge 联机平台](https://download.curseforge.com/) 。
+
+或者可以使用 [curseDownloader](https://github.com/portablejim/curseDownloader/releases)
+工具，解析 Modpack 内的 `manifest.json` 文件来下载 `.jar` 文件。
+
+或者也可以参照 Modpack 内的 `modlist.html` 一个个手动下载。Orz
 
 ## 服务器
 
