@@ -10,7 +10,12 @@ IIS 意味着能发布网页，并且有 ASP（Active Server Pages）、JAVA、V
 
 ## 安装
 
+![](./img/添加服务器角色.png)
+![](./img/添加服务器功能.png)
+
 ## 配置简单站点
+
+![](./img/添加网站-01.png)
 
 ## 配置 AD 证书颁发机构 Web 注册
 
