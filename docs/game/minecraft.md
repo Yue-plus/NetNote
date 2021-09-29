@@ -30,6 +30,15 @@ Minecraft 是一款沙盒式建造游戏，缔造者为 Mojang Studios 创始人
 
 由于 Java 版官方启动器速度感人，推荐使用 [HMCL](https://ci.huangyuhui.net/job/HMCL/) 启动器。
 
+## 安装 Mod
+
+前往 [Minecraft Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)
+获得 **对应版本** 的 Mod 安装器（installer）
+
+使用命令：`java -jar forge-1.16.5-36.2.6-installer.jar`
+
+![](./img/forge_installer.png)
+
 ## 服务器
 
 ### 创建服务器
