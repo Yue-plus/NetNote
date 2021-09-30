@@ -108,9 +108,9 @@ Mod（模组）一般为 `.jar` 文件。
 参考 [Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Server.properties?variant=zh-cn)
 修改服务器配置文件 `server.properties`
 
-#### 常用配置：
+#### 常用配置
 
-##### 设置游戏难度：
+##### 设置游戏难度
 
 `server.properties` 第 15 行：`difficulty=`
 
@@ -123,9 +123,21 @@ Mod（模组）一般为 `.jar` 文件。
 
 `server.properties` 第 18 行：`max-players=20`
 
-##### 关闭正版验证：
+##### 关闭正版验证
 
 `server.properties` 第 22 行：`online-mode=false` 设为 `true`
 
+### 常见问题
 
+#### 客户端无法找到服务器
 
+##### 云主机
+
+腾讯云、阿里云等，需要到控制台里设置网络安全组，开放 Minecraft 服务器使用的端口（默认 25565）。
+
+##### Windows Server
+
+Windows 或者 Windows Server 需要在 **高级安全 Windows Defender 防火墙** 设置出/入站规则，
+开放 Minecraft 服务器使用的端口（默认 25565）。
+
+**不建议直接关闭防火墙！**
