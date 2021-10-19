@@ -37,6 +37,12 @@ make
 apt install g++ make
 ```
 
+### Ubuntu
+
+```shell
+sudo apt install redis-server
+```
+
 ## 配置
 
 参考修改 redis.conf

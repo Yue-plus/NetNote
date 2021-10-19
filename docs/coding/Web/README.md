@@ -20,6 +20,10 @@
 - [HTML5 教程 - 菜鸟教程](https://www.runoob.com/html/html5-intro.html)
 - [HTML5 教程 - w3cschool](https://www.w3cschool.cn/html5/)
 
+### [Pug](https://www.pugjs.cn/api/getting-started.html)
+
+### [Ejs](https://ejs.bootcss.com/)
+
 ## CSS
 
 :::tip
