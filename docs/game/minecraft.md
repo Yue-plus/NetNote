@@ -16,6 +16,7 @@ Minecraft 是一款沙盒式建造游戏，缔造者为 Mojang Studios 创始人
 - [Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Minecraft_Wiki)
 - [Minecraft Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)
 - [CurseForge](https://www.curseforge.com/)
+- [MC Map Item Tool](https://mc-map.djfun.de/)
 
 ## 获取游戏
 
