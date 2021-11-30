@@ -15,7 +15,7 @@
 编辑器：
 - [IntelliJ IDEA ——集成开发环境](/start/use_IDEA/)
 - [VScode ——开源代码编辑器](https://code.visualstudio.com/)
-- [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows)
+<!-- - [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows) （开始收费了，不再推荐） -->
 - [Notepad++ ——代替 Windows 自带记事本](https://notepad-plus-plus.org/downloads/)
 
 浏览器：

@@ -38,7 +38,6 @@ Active Directory 使用结构化数据存储作为目录信息的逻辑层次组
 
 ### 将域控制器添加到现有域
 
-
 ![部署配置](./img/ActiveDirectory-010.jpg)
 
 ![域控制器选项](./img/ActiveDirectory-011.jpg)
@@ -50,6 +49,15 @@ Active Directory 使用结构化数据存储作为目录信息的逻辑层次组
 ![路径](./img/ActiveDirectory-013.jpg)
 
 剩下几项没有要改的，点击 **安装**
+
+### 将新域添加到现有林（添加子域）
+
+首先确保即将添加的计算机已 [修改计算机名](#修改计算机名) 。
+
+完全域名为：`<计算机名>.<新域名>.<父域名>`；
+下图的完全域名为：`sdc.win.2021skills.com`：
+
+![将新域添加到现有林](./img/ActiveDirectory-013.png)
 
 ## AD DS 发布共享
 
