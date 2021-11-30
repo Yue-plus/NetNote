@@ -113,7 +113,8 @@ const sidebar = {
   '/serve/WS/': [{
     text: 'Windows Server',
     children: [
-      '/serve/WS/AD/README.md',
+      '/serve/WS/AD-DS/README.md',
+      '/serve/WS/AD-CS/README.md',
       '/serve/WS/DNS/README.md',
       '/serve/WS/IIS/README.md',
       '/serve/WS/DHCP.md',

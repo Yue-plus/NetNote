@@ -11,7 +11,7 @@
 
 ## 目录
 
-- [Active Directory 域服务](./AD/)
+- [Active Directory 域服务](docs/serve/WS/AD-DS/)
 - [DNS](./DNS/)
 - [DHCP](./DHCP.md)
 - [Web 服务器（IIS - Internet Information Services）](./IIS/)
