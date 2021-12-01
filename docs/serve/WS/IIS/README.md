@@ -1,4 +1,4 @@
-# Web 服务器（IIS - Internet Information Services）
+# Web 服务器（IIS）
 
 ::: tip
 IIS 是 Internet Information Services 的缩写，是一个 World Wide Web server。

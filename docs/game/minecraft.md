@@ -111,6 +111,14 @@ Mod（模组）一般为 `.jar` 文件。
 
 #### 常用配置
 
+##### 设置地图种子
+
+`server.properties` 中添加 `level-seed=`
+
+##### 关闭出生点保护
+
+`server.properties` 第 49 行：`spawn-protection=0`
+
 ##### 设置游戏难度
 
 `server.properties` 第 15 行：`difficulty=`
