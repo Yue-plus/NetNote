@@ -21,3 +21,22 @@ AD CS 是允许构建公钥基础设施（PKI）并为您的组织提供公钥�
 ![](./img/02.png)
 ![](./img/03.png)
 ![](./img/04.png)
+
+### 使用证书注册 Web 服务
+
+首先需要安装并配置以下服务器角色：
+
+- 证书颁发机构
+- 证书颁发机构 Web 注册联机响应程序
+- 网络设备注册服务证书注册 Web 服务
+
+然后打开 <https://[host]/CertSrv>：
+
+![](./img/05.png)
+![](./img/06.png)
+
+## 常见问题
+
+### Error 001：找不到任何证书模板。你没有从该 CA 申请证书的权限，或者在访问 Active Directory 时发生错误。
+
+[用户从 CA Web 注册页面请求证书时出错：找不到证书模板](https://docs.microsoft.com/zh-cn/troubleshoot/windows-server/windows-security/no-certificate-templates-be-found)
