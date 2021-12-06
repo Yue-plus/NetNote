@@ -72,3 +72,19 @@ Error 184 - Radeon Software 的安装无法继续，因为当前的操作系统�
 
 ![img.png](docs/serve/WS/CommonRequirements/img/安装显卡驱动/计算机管理.png)
 ![img_2.png](./img/安装显卡驱动/浏览我的电脑以查找驱动程序.png)
+
+## 虚拟打印机
+
+先安装打印和文件服务：
+
+![](./img/虚拟打印机/00.png)
+![](./img/虚拟打印机/01.png)
+![](./img/虚拟打印机/02.png)
+
+打印机，右键，添加打印机：
+
+![](./img/虚拟打印机/03.png)
+![](./img/虚拟打印机/04.png)
+![](./img/虚拟打印机/05.png)
+![](./img/虚拟打印机/06.png)
+![](./img/虚拟打印机/07.png)
