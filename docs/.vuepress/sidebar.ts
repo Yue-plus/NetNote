@@ -115,6 +115,7 @@ const sidebar = {
     children: [
       '/serve/WS/AD-DS/README.md',
       '/serve/WS/AD-CS/README.md',
+      '/serve/WS/AD-RMS/README.md',
       '/serve/WS/DNS/README.md',
       '/serve/WS/IIS/README.md',
       '/serve/WS/DHCP.md',
