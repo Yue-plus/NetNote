@@ -121,9 +121,10 @@ const sidebar = {
       '/serve/WS/DHCP.md',
       '/serve/WS/WDS/README.md',
       '/serve/WS/FS/README.md',
+      '/server/WS/iSCSI/README.md',
       '/serve/WS/DFS/README.md',
       '/serve/WS/NLB/README.md',
-      '/serve/WS/FailoverCluster.md',
+      '/serve/WS/FailoverCluster/README.md',
       '/serve/WS/PS/README.md',
       '/serve/WS/CommonRequirements/README.md'
     ]
