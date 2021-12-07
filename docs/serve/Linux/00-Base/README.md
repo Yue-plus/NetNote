@@ -9,7 +9,8 @@
 - [鳥哥的 Linux 私房菜](http://linux.vbird.org/)
   + 至少看看到 [第十章、認識與學習BASH](http://linux.vbird.org/linux_basic/0320bash.php)
 - [Linux 就该这么学_w3cschool](https://www.w3cschool.cn/linuxprobe/)
-__
+- [vi/vim 文本编辑器](https://www.runoob.com/linux/linux-vim.html)
+
 ## 挂载软件源镜像
 
 创建挂载目录：
