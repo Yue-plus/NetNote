@@ -1,6 +1,6 @@
 # Linux
 
-## [Linux（CentOS）基础](./01-Base/)
+## [Linux（CentOS）基础](./00-Base/)
 
 本章教程使用 CentOS 6.5/7 系统。
 
