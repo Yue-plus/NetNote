@@ -13,9 +13,7 @@ Unbound 是一个具有验证，递归和缓存等功能的 DNS 解析器。
 
 ## 安装
 
-### CentOS
-
-```shell {1}
+```bash {1}
 [root@host-192-168-30-100 ~]# sudo yum install unbound
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
@@ -83,3 +81,7 @@ Dependency Installed:
 
 Complete!
 ```
+
+## 配置
+
+
