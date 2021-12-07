@@ -17,10 +17,41 @@
 [故障转移群集 | Microsoft Docs](https://docs.microsoft.com/zh-cn/windows-server/failover-clustering/failover-clustering-overview)
 :::
 
-# 安装
+## 安装
 
 ![](./img/00.png)
+![](./img/01.png)
 
-# 新建
+## 验证配置
 
-# 销毁
+
+
+## 创建集群
+
+**新建集群前使用 `Clear-ClusterNode` 断开所有 iSCSI 设备**
+
+![](./img/02.png)
+![](./img/03.png)
+![](./img/04.png)
+![](./img/05.png)
+![](./img/06.png)
+![](./img/07.png)
+![](./img/08.png)
+![](./img/09.png)
+
+## 销毁
+
+## 常见问题
+
+### Error 001：由于此错误对象不存在。而无法确定节点是否为只读域控制器
+
+#### 错误详情
+
+- [Windows Server 2012 不支持将域控制器作为集群节点](https://docs.microsoft.com/zh-CN/troubleshoot/windows-server/identity/cannot-add-domain-controller-node-failover-cluster)
+- [如何将 Windows 服务器群集节点用作域控制器](https://docs.microsoft.com/zh-CN/troubleshoot/windows-server/high-availability/use-cluster-nodes-as-domain-controllers)
+
+![](./img/07.png)
+
+#### 解决方法
+
+**加入域控制器时选择只读域控制器**
