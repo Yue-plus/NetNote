@@ -82,6 +82,49 @@ Dependency Installed:
 Complete!
 ```
 
+安装完成后 **使用 `sudo systemctl start unbound` 启动服务**，
+使用 `sudo systeamctl enable unbound` 配置开机启动，
+使用 `sudo systeamctl status unbound` 查看服务状态：
+
+```bash {1}
+[root@host-192-168-30-100 ~]# systemctl status unbound
+● unbound.service - Unbound recursive Domain Name Server
+   Loaded: loaded (/usr/lib/systemd/system/unbound.service; disabled; vendor preset: disabled)
+   Active: active (running) since Mon 2021-12-06 22:53:33 EST; 5s ago
+  Process: 1728 ExecStartPre=/usr/sbin/unbound-anchor -a /var/lib/unbound/root.key -c /etc/unbound/icannbundle.pem (code=exited, status=0/SUCCESS)
+  Process: 1727 ExecStartPre=/usr/sbin/unbound-checkconf (code=exited, status=0/SUCCESS)
+ Main PID: 1731 (unbound)
+   CGroup: /system.slice/unbound.service
+           └─1731 /usr/sbin/unbound -d
+
+Dec 06 22:53:15 host-192-168-30-100 systemd[1]: Starting Unbound recursive Domain Name Server...
+Dec 06 22:53:15 host-192-168-30-100 unbound-checkconf[1727]: unbound-checkconf: no errors in /etc/unbound/unbound.conf
+Dec 06 22:53:33 host-192-168-30-100 systemd[1]: Started Unbound recursive Domain Name Server.
+Dec 06 22:53:33 host-192-168-30-100 unbound[1731]: [1731:0] notice: init module 0: validator
+Dec 06 22:53:33 host-192-168-30-100 unbound[1731]: Dec 06 22:53:33 unbound[1731:0] warning: increased limit(open files) from 1024 to 8290
+Dec 06 22:53:33 host-192-168-30-100 unbound[1731]: [1731:0] notice: init module 1: iterator
+Dec 06 22:53:33 host-192-168-30-100 unbound[1731]: [1731:0] info: start of service (unbound 1.4.20).
+```
+
 ## 配置
+
+Unbound 的配置文件为：[`/etc/unbound/unbound.conf`](/etc/unbound/unbound.conf)
+
+### 配置为本地 DNS 服务器
+
+1. 删除第 38、39 行开头的 `# `（取消注释）。
+2. 在第 183 行下加一行：
+   ```conf
+   access-control: 0.0.0.0/0 allow
+   ```
+3. 保存退出
+
+### 添加本地解析区域
+
+1. 切换工作区: `cd /etc/unbound/local.d/`
+2. 创建一个区域配置文件：`vim skillschina.com.conf`
+   ```conf
+   
+   ```
 
 
