@@ -4,12 +4,14 @@
 Unbound 是一个具有验证，递归和缓存等功能的 DNS 解析器。
 
 [官网](https://nlnetlabs.nl/projects/unbound/about/)
+[官方文档](https://unbound.docs.nlnetlabs.nl/en/latest/)
 :::
 
 ## 链接
 
 - [Unbound (简体中文) - ArchWiki](https://wiki.archlinux.org/title/Unbound_(简体中文))
 - [unbound域名解析 - 阿小杜 - 博客园](https://www.cnblogs.com/djlsunshine/p/9783290.html)
+- [UNbound DNS -UNbound域名解析_Alkaid__3的博客-CSDN博客_alkaid](https://blog.csdn.net/Alkaid__3/article/details/104836193)
 
 ## 安装
 
@@ -117,14 +119,49 @@ Unbound 的配置文件为：[`/etc/unbound/unbound.conf`](/etc/unbound/unbound.
    ```conf
    access-control: 0.0.0.0/0 allow
    ```
-3. 保存退出
+3. 将第 215 行，改为 `username: ""`，让所有用户都可访问。
+4. 将第 376 行，改为 `domain-insecure: "skillschina.com"`，跳过验证域，以避免信任链验证失败。
+5. 保存退出。
 
-### 添加本地解析区域
+### 添加本地正反向解析区域
 
 1. 切换工作区: `cd /etc/unbound/local.d/`
-2. 创建一个区域配置文件：`vim skillschina.com.conf`
+2. 创建一个区域配置文件：`sudo vim skillschina.com.conf`
    ```conf
-   
+   # 正向解析
+   local-data: "dns1.skillschina.com   3600 IN MX 5 127.0.0.1"
+   local-data: "dns2.skillschina.com   3600 IN A  192.168.30.101"
+   local-data: "ftp.skillschina.com    3600 IN A  192.168.30.104"
+   local-data: "www.skillschina.com    3600 IN A  192.168.30.101"
+   local-data: "market.skillschina.com 3600 IN A  192.168.30.102"
+   local-data: "mail.skillschina.com   3600 IN A  192.168.30.102"
+
+   # 反向解析
+   local-data-ptr: "192.168.30.100   dns1.skillschina.com"
+   local-data-ptr: "192.168.30.101   dns2.skillschina.com"
+   local-data-ptr: "192.168.30.104    ftp.skillschina.com"
+   local-data-ptr: "192.168.30.101    www.skillschina.com"
+   local-data-ptr: "192.168.30.102 market.skillschina.com"
+   local-data-ptr: "192.168.30.102   mail.skillschina.com"
    ```
+3. 配置完成后重启服务：`sudo systemctl restart unbound`
 
+## 验证配置
 
+> 如果没有 `nslookup` 之类的网络工具可以 `yum install bind-utils`
+
+```bash {1,8}
+[root@host-192-168-30-100 ~]# nslookup mail.skillschina.com
+Server:         192.168.30.100
+Address:        192.168.30.100#53
+
+Name:   mail.skillschina.com
+Address: 192.168.30.102
+
+[root@host-192-168-30-100 ~]# nslookup 192.168.30.102
+Server:         192.168.30.100
+Address:        192.168.30.100#53
+
+102.30.168.192.in-addr.arpa     name = market.skillschina.com.
+102.30.168.192.in-addr.arpa     name = mail.skillschina.com.
+```
