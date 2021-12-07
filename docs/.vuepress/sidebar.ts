@@ -133,6 +133,7 @@ const sidebar = {
     text: 'Linux',
     children: [
       '/serve/Linux/00-Base/README.md',
+      '/serve/Linux/01-Unbound/README.md',
       '/serve/Linux/02-Chrony/README.md',
       '/serve/Linux/03-NFS/README.md',
       '/serve/Linux/04-MariaDB/README.md',

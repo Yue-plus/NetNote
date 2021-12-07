@@ -1,0 +1,85 @@
+# Unbound（DNS）
+
+::: tip
+Unbound 是一个具有验证，递归和缓存等功能的 DNS 解析器。
+
+[官网](https://nlnetlabs.nl/projects/unbound/about/)
+:::
+
+## 链接
+
+- [Unbound (简体中文) - ArchWiki](https://wiki.archlinux.org/title/Unbound_(简体中文))
+- [unbound域名解析 - 阿小杜 - 博客园](https://www.cnblogs.com/djlsunshine/p/9783290.html)
+
+## 安装
+
+### CentOS
+
+```shell {1}
+[root@host-192-168-30-100 ~]# sudo yum install unbound
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+Resolving Dependencies
+--> Running transaction check
+---> Package unbound.x86_64 0:1.4.20-34.el7 will be installed
+--> Processing Dependency: unbound-libs(x86-64) = 1.4.20-34.el7 for package: unbound-1.4.20-34.el7.x86_64
+--> Processing Dependency: ldns >= 1.6.16-10 for package: unbound-1.4.20-34.el7.x86_64
+--> Processing Dependency: libunbound.so.2()(64bit) for package: unbound-1.4.20-34.el7.x86_64
+--> Processing Dependency: libldns.so.1()(64bit) for package: unbound-1.4.20-34.el7.x86_64
+--> Processing Dependency: libevent-2.0.so.5()(64bit) for package: unbound-1.4.20-34.el7.x86_64
+--> Running transaction check
+---> Package ldns.x86_64 0:1.6.16-10.el7 will be installed
+--> Processing Dependency: libpcap.so.1()(64bit) for package: ldns-1.6.16-10.el7.x86_64
+---> Package libevent.x86_64 0:2.0.21-4.el7 will be installed
+---> Package unbound-libs.x86_64 0:1.4.20-34.el7 will be installed
+--> Running transaction check
+---> Package libpcap.x86_64 14:1.5.3-9.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+===================================================================================
+ Package                        Arch        Version             Repository    Size
+===================================================================================
+Installing:
+ unbound                        x86_64      1.4.20-34.el7       c7-media     478 k
+Installing for dependencies:
+ ldns                           x86_64      1.6.16-10.el7       c7-media     476 k
+ libevent                       x86_64      2.0.21-4.el7        c7-media     214 k
+ libpcap                        x86_64      14:1.5.3-9.el7      c7-media     138 k
+ unbound-libs                   x86_64      1.4.20-34.el7       c7-media     299 k
+
+Transaction Summary
+====================================================================================
+Install  1 Package (+4 Dependent packages)
+
+Total download size: 1.6 M
+Installed size: 4.7 M
+Is this ok [y/d/N]: y
+Downloading packages:
+------------------------------------------------------------------------------------
+Total                                  62 MB/s | 1.6 MB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : libevent-2.0.21-4.el7.x86_64                                   1/5 
+  Installing : 14:libpcap-1.5.3-9.el7.x86_64                                  2/5 
+  Installing : ldns-1.6.16-10.el7.x86_64                                      3/5 
+  Installing : unbound-libs-1.4.20-34.el7.x86_64                              4/5 
+  Installing : unbound-1.4.20-34.el7.x86_64                                   5/5 
+  Verifying  : unbound-1.4.20-34.el7.x86_64                                   1/5 
+  Verifying  : ldns-1.6.16-10.el7.x86_64                                      2/5 
+  Verifying  : libevent-2.0.21-4.el7.x86_64                                   3/5 
+  Verifying  : 14:libpcap-1.5.3-9.el7.x86_64                                  4/5 
+  Verifying  : unbound-libs-1.4.20-34.el7.x86_64                              5/5 
+
+Installed:
+  unbound.x86_64 0:1.4.20-34.el7                                                                                                                                             
+
+Dependency Installed:
+  ldns.x86_64 0:1.6.16-10.el7            libevent.x86_64 0:2.0.21-4.el7
+  libpcap.x86_64 14:1.5.3-9.el7          unbound-libs.x86_64 0:1.4.20-34.el7           
+
+Complete!
+```

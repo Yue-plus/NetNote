@@ -4,6 +4,8 @@
 
 本章教程使用 CentOS 6.5/7 系统。
 
+## [Unbound（DNS）](./01-Unbound/)
+
 ## [Chrony（时间同步）](./02-Chrony/)
 
 ## [NFS（网络文件系统）](./03-NFS/)
