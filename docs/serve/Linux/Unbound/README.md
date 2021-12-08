@@ -151,12 +151,12 @@ Unbound 的配置文件为：[`/etc/unbound/unbound.conf`](/etc/unbound/unbound.
 2. 创建一个区域配置文件：`sudo vim skillschina.com.conf`
    ```conf
    # 正向解析
-   local-data: "dns1.skillschina.com   3600 IN MX 5 127.0.0.1"
-   local-data: "dns2.skillschina.com   3600 IN A  192.168.30.101"
-   local-data: "ftp.skillschina.com    3600 IN A  192.168.30.104"
-   local-data: "www.skillschina.com    3600 IN A  192.168.30.101"
-   local-data: "market.skillschina.com 3600 IN A  192.168.30.102"
-   local-data: "mail.skillschina.com   3600 IN A  192.168.30.102"
+   local-data: "dns1.skillschina.com   3600 IN A 192.168.30.100"
+   local-data: "dns2.skillschina.com   3600 IN A 192.168.30.101"
+   local-data: "ftp.skillschina.com    3600 IN A 192.168.30.104"
+   local-data: "www.skillschina.com    3600 IN A 192.168.30.101"
+   local-data: "market.skillschina.com 3600 IN A 192.168.30.102"
+   local-data: "mail.skillschina.com   3600 IN A 192.168.30.102"
 
    # 反向解析
    local-data-ptr: "192.168.30.100   dns1.skillschina.com"
