@@ -135,6 +135,7 @@ const sidebar = {
       '/serve/CentOS/Base/README.md',
       '/serve/CentOS/firewalld/README.md',
       '/serve/CentOS/Unbound/README.md',
+      '/serve/CentOS/CA/README.md',
       '/serve/CentOS/Chrony/README.md',
       '/serve/CentOS/NFS/README.md',
       '/serve/CentOS/MariaDB/README.md',
