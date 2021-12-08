@@ -61,7 +61,7 @@ const navbar = [
       '/serve/base/',
       '/serve/VM/',
       '/serve/WS/',
-      '/serve/Linux/'
+      '/serve/CentOS/'
     ]
   },{
     text: 'Gitee',

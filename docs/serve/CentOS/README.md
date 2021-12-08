@@ -1,8 +1,8 @@
-# Linux
-
-## [Linux（CentOS）基础](./Base/)
+# CentOS
 
 本章教程使用 CentOS 6.5/7 系统。
+
+## [CentOS 基础](./Base/)
 
 ## [Unbound（DNS）](./Unbound/)
 

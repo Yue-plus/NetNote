@@ -129,21 +129,21 @@ const sidebar = {
       '/serve/WS/CommonRequirements/README.md'
     ]
   }],
-  '/serve/Linux/': [{
-    text: 'Linux',
+  '/serve/CentOS/': [{
+    text: 'CentOS',
     children: [
-      '/serve/Linux/Base/README.md',
-      '/serve/Linux/firewalld/README.md',
-      '/serve/Linux/Unbound/README.md',
-      '/serve/Linux/Chrony/README.md',
-      '/serve/Linux/NFS/README.md',
-      '/serve/Linux/MariaDB/README.md',
-      '/serve/Linux/Apache/README.md',
-      '/serve/Linux/Tomcat/README.md',
-      '/serve/Linux/Samba/README.md',
-      '/serve/Linux/NIS/README.md',
-      '/serve/Linux/Postfix/README.md',
-      '/serve/Linux/Pacemaker/README.md'
+      '/serve/CentOS/Base/README.md',
+      '/serve/CentOS/firewalld/README.md',
+      '/serve/CentOS/Unbound/README.md',
+      '/serve/CentOS/Chrony/README.md',
+      '/serve/CentOS/NFS/README.md',
+      '/serve/CentOS/MariaDB/README.md',
+      '/serve/CentOS/Apache/README.md',
+      '/serve/CentOS/Tomcat/README.md',
+      '/serve/CentOS/Samba/README.md',
+      '/serve/CentOS/NIS/README.md',
+      '/serve/CentOS/Postfix/README.md',
+      '/serve/CentOS/Pacemaker/README.md'
     ]
   }]
 }
