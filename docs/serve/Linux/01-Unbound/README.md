@@ -10,8 +10,10 @@ Unbound 是一个具有验证，递归和缓存等功能的 DNS 解析器。
 ## 链接
 
 - [Unbound (简体中文) - ArchWiki](https://wiki.archlinux.org/title/Unbound_(简体中文))
+- [Configuring Unbound as a simple forwarding DNS server | Enable Sysadmin](https://www.redhat.com/sysadmin/forwarding-dns-2)
 - [unbound域名解析 - 阿小杜 - 博客园](https://www.cnblogs.com/djlsunshine/p/9783290.html)
 - [UNbound DNS -UNbound域名解析_Alkaid__3的博客-CSDN博客_alkaid](https://blog.csdn.net/Alkaid__3/article/details/104836193)
+- [使用unbound搭建DNS服务器，配置缓存以及防止DNS污染 - Nrehearsal](https://blog.return0.top/blog/2018/11/使用unbound搭建dns服务器配置缓存以及防止dns污染/)
 
 ## 安装
 
@@ -84,9 +86,10 @@ Dependency Installed:
 Complete!
 ```
 
-安装完成后 **使用 `sudo systemctl start unbound` 启动服务**，
-使用 `sudo systeamctl enable unbound` 配置开机启动，
-使用 `sudo systeamctl status unbound` 查看服务状态：
+安装完成后：
+**使用 `sudo systemctl start unbound` 启动服务**，
+**使用 `sudo systeamctl enable unbound` 配置开机启动**，
+**使用 `sudo systeamctl status unbound` 查看服务状态**：
 
 ```bash {1}
 [root@host-192-168-30-100 ~]# systemctl status unbound
@@ -112,16 +115,35 @@ Dec 06 22:53:33 host-192-168-30-100 unbound[1731]: [1731:0] info: start of servi
 
 Unbound 的配置文件为：[`/etc/unbound/unbound.conf`](/etc/unbound/unbound.conf)
 
+### 配置本机使用的 DNS 服务器
+
+1. 修改 `/etc/resolv.conf` 文件，第 3 行：`nameserver 192.168.30.100`（重启失效）
+2. 修改 `/etc/NetworkManager/NetworkManager.conf` 文件，在第 14 行下添加 `dns=`：
+   - `none` 为使用本地 DNS
+   - 可以填 IP 或域名
+
 ### 配置为本地 DNS 服务器
 
-1. 删除第 38、39 行开头的 `# `（取消注释）。
+1. 修改 `unbound.conf` 文件，删除第 38、39 行开头的 `# `（取消注释）。
 2. 在第 183 行下加一行：
    ```conf
    access-control: 0.0.0.0/0 allow
    ```
 3. 将第 215 行，改为 `username: ""`，让所有用户都可访问。
 4. 将第 376 行，改为 `domain-insecure: "skillschina.com"`，跳过验证域，以避免信任链验证失败。
-5. 保存退出。
+5. 修改 `/etc/resolv.conf` 文件，第 3 行：`nameserver 192.168.30.100`
+6. 使用 `firewall-cmd --permanent --add-service=dns` 指令，开启 53 端口。
+
+
+### 配置为存缓存 DNS 服务器
+
+1. 在 `unbound.conf` 文件，第 558 行下添加：
+   ```conf
+   forward-zone:
+         name: "."
+         forward-addr: 192.168.30.100
+   ```
+2. 重启服务：`sudo systemctl restart unbound`
 
 ### 添加本地正反向解析区域
 
@@ -146,7 +168,7 @@ Unbound 的配置文件为：[`/etc/unbound/unbound.conf`](/etc/unbound/unbound.
    ```
 3. 配置完成后重启服务：`sudo systemctl restart unbound`
 
-## 验证配置
+#### 验证配置
 
 > 如果没有 `nslookup` 之类的网络工具可以 `yum install bind-utils`
 
