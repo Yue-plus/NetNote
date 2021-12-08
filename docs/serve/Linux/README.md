@@ -1,27 +1,27 @@
 # Linux
 
-## [Linux（CentOS）基础](./00-Base/)
+## [Linux（CentOS）基础](./Base/)
 
 本章教程使用 CentOS 6.5/7 系统。
 
-## [Unbound（DNS）](./01-Unbound/)
+## [Unbound（DNS）](./Unbound/)
 
-## [Chrony（时间同步）](./02-Chrony/)
+## [Chrony（时间同步）](./Chrony/)
 
-## [NFS（网络文件系统）](./03-NFS/)
+## [NFS（网络文件系统）](./NFS/)
 
-## [MariaDB](./04-MariaDB/)
+## [MariaDB](./MariaDB/)
 
-## [Apache（MySQL 数据库）](./05-Apache/)
+## [Apache（MySQL 数据库）](./Apache/)
 
-## [Tomcat（Java Web 服务）](./06-Tomcat/)
+## [Tomcat（Java Web 服务）](./Tomcat/)
 
-## [Samba 服务](./07-Samba/)
+## [Samba 服务](./Samba/)
 
-## [NIS（网络信息服务）](./08-NIS/)
+## [NIS（网络信息服务）](./NIS/)
 
 > Network Information Service
 
-## [Postfix（电子邮件服务器）](./09-Postfix/)
+## [Postfix（电子邮件服务器）](./Postfix/)
 
-## [Pacemaker 集群管理](./10-Pacemaker/)
+## [Pacemaker 集群管理](./Pacemaker/)

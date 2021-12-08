@@ -132,17 +132,17 @@ const sidebar = {
   '/serve/Linux/': [{
     text: 'Linux',
     children: [
-      '/serve/Linux/00-Base/README.md',
-      '/serve/Linux/01-Unbound/README.md',
-      '/serve/Linux/02-Chrony/README.md',
-      '/serve/Linux/03-NFS/README.md',
-      '/serve/Linux/04-MariaDB/README.md',
-      '/serve/Linux/05-Apache/README.md',
-      '/serve/Linux/06-Tomcat/README.md',
-      '/serve/Linux/07-Samba/README.md',
-      '/serve/Linux/08-NIS/README.md',
-      '/serve/Linux/09-Postfix/README.md',
-      '/serve/Linux/10-Pacemaker/README.md'
+      '/serve/Linux/Base/README.md',
+      '/serve/Linux/Unbound/README.md',
+      '/serve/Linux/Chrony/README.md',
+      '/serve/Linux/NFS/README.md',
+      '/serve/Linux/MariaDB/README.md',
+      '/serve/Linux/Apache/README.md',
+      '/serve/Linux/Tomcat/README.md',
+      '/serve/Linux/Samba/README.md',
+      '/serve/Linux/NIS/README.md',
+      '/serve/Linux/Postfix/README.md',
+      '/serve/Linux/Pacemaker/README.md'
     ]
   }]
 }
