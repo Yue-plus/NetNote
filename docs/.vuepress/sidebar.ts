@@ -129,6 +129,14 @@ const sidebar = {
       '/serve/WS/CommonRequirements/README.md'
     ]
   }],
+  '/serve/CentOS/E-Mail/': [{
+    text: 'E-Mail',
+    children: [
+      '/serve/CentOS/',
+      '/serve/CentOS/E-Mail/Postfix.md',
+      '/serve/CentOS/E-Mail/Dovecot.md'
+    ]
+  }],
   '/serve/CentOS/': [{
     text: 'CentOS',
     children: [
@@ -143,10 +151,10 @@ const sidebar = {
       '/serve/CentOS/Tomcat/README.md',
       '/serve/CentOS/Samba/README.md',
       '/serve/CentOS/NIS/README.md',
-      '/serve/CentOS/Postfix/README.md',
+      '/serve/CentOS/E-Mail/README.md',
       '/serve/CentOS/Pacemaker/README.md'
     ]
   }]
-}
+};
 
 export default sidebar
