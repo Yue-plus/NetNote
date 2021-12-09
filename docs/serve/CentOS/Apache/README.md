@@ -25,7 +25,10 @@ sudo systemctl status httpd.service # 查看 Apache 运行状态
 ![测试Apache](./img/testApache.jpg)
 
 ## 配置
-1. 12.网站主目录为 `/skillschina/market/`，网页的内容是“迎访问网上交易系统”；（2分）
+
+### 配置简单网站
+
+1. 网站主目录为 `/skillschina/market/`，网页的内容是“迎访问网上交易系统”；（2分）
 
    - 建立目录
 
@@ -113,120 +116,68 @@ sudo systemctl status httpd.service # 查看 Apache 运行状态
      sudo systemctl restart httpd.service
      ```
 
-3. 创建 SSL 证书
+### [创建 SSL 证书](../CA/#创建-ssl-证书)
 
-   ```sh
-   sudo yum install openssl
-   cd /etc/pki/tls/certs/
-   sudo openssl genrsa -out server.key 1024 # 生成私钥
-   sudo openssl req -new -key server.key -out server.csr # 用私钥生成证书请求文件
-   ```
+### 配置 SSL 链接
 
-   此时要求输入证书信息：
+```sh
+sudo yum install mod_ssl.x86_64 # 安装 SSL 模块
+sudo systemctl restart httpd.service # 重启 Apache
+cd /etc/httpd/conf.d/
+sudo cp ssl.conf ssl.conf.bak # 备份默认 SSL 配置文件
+```
 
-   ```md
-   [yueplus@localhost certs]$ sudo openssl req -new -key server.key -out server.csr
-   You are about to be asked to enter information that will be incorporated
-   into your certificate request.
-   What you are about to enter is what is called a Distinguished Name or a DN.
-   There are quite a few fields but you can leave some blank
-   For some fields there will be a default value,
-   If you enter '.', the field will be left blank.
-   -----
+修改 `/etc/httpd/conf.d/ssl.conf`
 
-   # 国家/地区
-   Country Name (2 letter code) [XX]:CN
+```diff
+  95 #   Server Certificate:
+  96 # Point SSLCertificateFile at a PEM encoded certificate.  If
+  97 # the certificate is encrypted, then you will be prompted for a
+  98 # pass phrase.  Note that a kill -HUP will prompt again.  A new
+  99 # certificate can be generated using the genkey(1) command.
+-100 SSLCertificateFile /etc/pki/tls/certs/localhost.crt
++100 SSLCertificateFile /etc/pki/tls/certs/server.crt
+ 101 
+ 102 #   Server Private Key:
+ 103 #   If the key is not combined with the certificate, use this
+ 104 #   directive to point at the key file.  Keep in mind that if
+ 105 #   you've both a RSA and a DSA private key you can configure
+ 106 #   both in parallel (to also allow the use of DSA ciphers, etc.)
+-107 SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
++107 SSLCertificateKeyFile /etc/pki/tls/certs/server.key
+```
 
-   # 省/市/自治区
-   State or Province Name (full name) []:GD
+重启 Apache 使配置文件生效
 
-   # 城市/地点
-   Locality Name (eg, city) [Default City]:GZ
+```sh
+sudo systemctl restart httpd.service
+```
 
-   # 组织
-   Organization Name (eg, company) [Default Company Ltd]:market
+访问 `https://127.0.0.1` 查看页面证书：
 
-   # 组织单位
-   Organizational Unit Name (eg, section) []:DCN
+![SSL](./img/sslDone.jpg)
 
-   # 通用名称
-   Common Name (eg, your name or your server's hostname) []:market.skillschina.com
+### 配置仅支持 https 协议链接
 
-   # 之后全部按回车跳过
-   Email Address []:
-   
-   Please enter the following 'extra' attributes
-   to be sent with your certificate request
-   A challenge password []:
-   An optional company name []:
-   ```
+注释 `/etc/httpd/conf/httpd.conf` 文件，第 42 行：
 
-   用私钥、签名证书请求文件颁发证书，证书的申请机构和颁发机构都是自己：
+```diff
+ 34 # Listen: Allows you to bind Apache to specific IP addresses and/or
+ 35 # ports, instead of the default. See also the <VirtualHost>
+ 36 # directive.
+ 37 #
+ 38 # Change this to Listen on specific IP addresses as shown below to 
+ 39 # prevent Apache from glomming onto all bound IP addresses.
+ 40 #
+ 41 #Listen 12.34.56.78:80
+-42 Listen 80
++42 # Listen 80
+```
 
-   ```sh
-   sudo openssl x509 -days 365 -req -in server.csr -signkey server.key -out server.crt
-   ```
+重启 Apache 使配置文件生效
 
-4. 配置 SSL 链接
+```sh
+sudo systemctl restart httpd.service
+```
 
-   ```sh
-   sudo yum install mod_ssl.x86_64 # 安装 SSL 模块
-   sudo systemctl restart httpd.service # 重启 Apache
-   cd /etc/httpd/conf.d/
-   sudo cp ssl.conf ssl.conf.bak # 备份默认 SSL 配置文件
-   ```
-
-   修改 `/etc/httpd/conf.d/ssl.conf`
-
-   ```diff
-     95 #   Server Certificate:
-     96 # Point SSLCertificateFile at a PEM encoded certificate.  If
-     97 # the certificate is encrypted, then you will be prompted for a
-     98 # pass phrase.  Note that a kill -HUP will prompt again.  A new
-     99 # certificate can be generated using the genkey(1) command.
-   -100 SSLCertificateFile /etc/pki/tls/certs/localhost.crt
-   +100 SSLCertificateFile /etc/pki/tls/certs/server.crt
-    101 
-    102 #   Server Private Key:
-    103 #   If the key is not combined with the certificate, use this
-    104 #   directive to point at the key file.  Keep in mind that if
-    105 #   you've both a RSA and a DSA private key you can configure
-    106 #   both in parallel (to also allow the use of DSA ciphers, etc.)
-   -107 SSLCertificateKeyFile /etc/pki/tls/private/localhost.key
-   +107 SSLCertificateKeyFile /etc/pki/tls/certs/server.key
-   ```
-
-   重启 Apache 使配置文件生效
-
-   ```sh
-   sudo systemctl restart httpd.service
-   ```
-
-   访问 `https://127.0.0.1` 查看页面证书：
-
-   ![SSL](./img/sslDone.jpg)
-
-5. 配置仅支持 https 协议链接
-
-   注释 `/etc/httpd/conf/httpd.conf` 文件，第 42 行：
-
-   ```diff
-    34 # Listen: Allows you to bind Apache to specific IP addresses and/or
-    35 # ports, instead of the default. See also the <VirtualHost>
-    36 # directive.
-    37 #
-    38 # Change this to Listen on specific IP addresses as shown below to 
-    39 # prevent Apache from glomming onto all bound IP addresses.
-    40 #
-    41 #Listen 12.34.56.78:80
-   -42 Listen 80
-   +42 # Listen 80
-   ```
-
-   重启 Apache 使配置文件生效
-
-   ```sh
-   sudo systemctl restart httpd.service
-   ```
-
-   现在 `http://127.0.0.1` 将无法访问，只能访问 `https://127.0.0.1`
+现在 `http://127.0.0.1` 将无法访问，只能访问 `https://127.0.0.1`
