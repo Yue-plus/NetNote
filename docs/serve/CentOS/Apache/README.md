@@ -181,3 +181,41 @@ sudo systemctl restart httpd.service
 ```
 
 现在 `http://127.0.0.1` 将无法访问，只能访问 `https://127.0.0.1`
+
+### 配置访问日志路径与名称
+
+配置访问日志路径和名称为 `/var/log/httpd/www.skillschina.com-access_log`，日志类型为普通型（`common`）。
+
+修改 `/etc/httpd/conf/httpd.conf` 文件：
+
+```diff
+ 191 <IfModule log_config_module>
+ 192     #
+ 193     # The following directives define some format nicknames for use with
+ 194     # a CustomLog directive (see below).
+ 195     #
+ 196     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+ 197     LogFormat "%h %l %u %t \"%r\" %>s %b" common
+ 198 
+ 199     <IfModule logio_module>
+ 200       # You need to enable mod_logio.c to use %I and %O
+ 201       LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+ 202     </IfModule>
+ 203 
+ 204     #
+ 205     # The location and format of the access logfile (Common Logfile Format).
+ 206     # If you do not define any access logfiles within a <VirtualHost>
+ 207     # container, they will be logged here.  Contrariwise, if you *do*
+ 208     # define per-<VirtualHost> access logfiles, transactions will be
+ 209     # logged therein and *not* in this file.
+ 210     #
+ 211     #CustomLog "logs/access_log" common
+ 212 
+ 213     #
+ 214     # If you prefer a logfile with access, agent, and referer information
+ 215     # (Combined Logfile Format) you can use the following directive.
+ 216     #
+-217     CustomLog "logs/access_log" combined
++217     CustomLog "/var/log/httpd/www.skillschina.com-access_log" common
+ 218 </IfModule>
+```
