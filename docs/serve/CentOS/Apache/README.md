@@ -6,14 +6,16 @@ Apache 包含在 CentOS 的 `httpd` 服务中。
 
 输入：
 ```sh
-sudo yum update # 更新软件源
-sudo yum install httpd # 安装 Apache
+sudo yum update                                   # 更新软件源
+sudo yum install httpd                            # 安装 Apache
+sudo firewall-cmd --add-service=http --permanent  # 开放 80 端口
+sudo firewall-cmd --add-service=https --permanent # 开放 443 端口
 ```
 
 ## 启动
 
 ```sh
-sudo systemctl start httpd.service # 启动 Apache
+sudo systemctl start httpd.service  # 启动 Apache
 sudo systemctl enable httpd.service # 设置开机启动 Apache
 sudo systemctl status httpd.service # 查看 Apache 运行状态
 ```
@@ -83,7 +85,7 @@ sudo systemctl status httpd.service # 查看 Apache 运行状态
       136     #
      ```
 
-   - 
+   - 配置 SELinux
 
      + 推荐方法：
 
