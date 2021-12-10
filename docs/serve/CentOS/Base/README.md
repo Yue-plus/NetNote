@@ -793,6 +793,222 @@ $ sudo systemctl set-property httpd.service CPUShares=500
 -W<工作群组> 指定工作群组名称。
 ```
 
+## 计划任务
+
+### 使用 `at` 设置定时任务
+
+> 参考 [鳥哥的 Linux 私房菜 -- 第十五章、例行性工作排程(crontab)](http://linux.vbird.org/linux_basic/0430cron.php#atjob)
+
+#### 安装
+
+```shell
+sudo yum install atd      # 安装 at
+sudo systemctl enable atd # 设置开机启动
+sudo systemctl start atd  # 立即启动
+sudo systemctl status atd # 查看状态
+```
+
+#### manpages
+
+```text
+AT(1)                      Linux Programmer's Manual                     AT(1)
+
+NAME
+       at, batch, atq, atrm - 排队、检查或删除以后要执行的作业。
+
+总览
+       at  [-V]  [-q  队列]  [-f 文件] [-mldbv] 时间 at -c 作业 [作业...]  atq
+       [-V] [-q 队列] [-v]
+       atrm [-V] 作业 [作业...]
+       batch [-V] [-q 队列] [-f 文件] [-mv] [时间]
+描述
+       at 和 batch  从标准输入或一个指定的文件读取命令，这些命令在以后某个时间
+       用 /bin/sh 执行。
+
+       at      在指定的时间执行命令。
+
+       atq     列出用户的等待执行的作业；在用户是超级用户的情况下，列出所有人
+               的作业。
+
+       atrm    删除作业。
+
+       batch   在系统负载水平允许的时候执行命令；换句话说，当平均负   载降到低
+               于0.8，或降到了在  atrun 文件中指定的期望值时运行。 译注：atrun
+               文件参见 atd 手册页。
+
+       At 允许相当复杂的时间指定，它扩展了 POSIX.2 标准。它接受 HH:MM 的时间式
+       样，用来指定在一天的某个时间运行一个作业。  (如果时间已经过了则假定为第
+       二天。)你可以指定  midnight  (午夜)、  noon  (中午)  或   teatime   (下
+       午4点)，你可以用  AM  或 PM 后缀指定一天的上午或下午。你可以给出 month-
+       name day 加上可选 的年份的式样用来指定运行 at  的日期，或者给出  MMDDYY
+       、 MM/DD/YY 或 DD.MM.YY 式样用来指定运行 at 的日期。日期的指定 必须跟在
+       时间指定的后面。你也可以给出象 now + 计数 时间单位 的式样，这里的时间单
+       位可以是  minutes  、 hours 、 days 或 weeks， 你可以给时间加一个 today
+       后缀来指定 at 今天运行作业，可以 给时间加一个 tomorrow 后缀来指定 at 明
+       天运行作业。
+
+       例如，要在三天以后的下午 4 点运行一个作业，at 时间参数可以 指定为 4pm +
+       3 days。 要在7月31日上午10:00运行一个作业， at 时间参数可以指定为  10am
+       Jul   31，   要在明天上午1点运行一个  作业，at  时间参数可以指定为  1am
+       tomorrow。
+
+       时间指定的精确的定义可以在 /usr/share/doc/at/timespec 找到。
+
+       对于 at 和 batch 两者，从标准输入或以 -f 选项指定的文件中  读取命令并执
+       行之。工作路径、环境变量(除了 TERM、 DISPLAY 和 _)、 umask 从所期望的时
+       间起保持不变。从一个从执行 su(1) 命令得到的 shell  中调用的  at   -  或
+       batch  - 命令将保持当前的 userid。 用户的命令的标准错误输出和标准输出将
+       用邮件发给用户。发送邮件  使用命令  /usr/sbin/sendmail。   从一个从执行
+       su(1)命令得到的  shell 中执行了 at ，登录 shell 的所有者将接到邮件。 译
+       注：userid 是用户标识的意思。umask 是与每个进程相关联的文件  方式创建屏
+       蔽字。
+
+       超级用户可以在任何情况下使用这些命令。对于其他用户，使用  at 的权限由文
+       件 /etc/at.allow 和 /etc/at.deny 确定。
+
+       如果文件 /etc/at.allow 存在，在其中提及的用户名被允许使用 at 命令。
+
+       如果 /etc/at.allow 不存在，而 /etc/at.deny 存在，所有在 /etc/at.deny 中
+       未提及的用户被允许使用 at 命令。
+
+       如果两者均不存在，只用超级用户可以使用 at 命令。
+
+       一个空的 /etc/at.deny 意味着所有用户均被允许使用这些命令， 这是缺省的配
+       置。
+选项
+       -V      在标准错误上输出版本号。
+
+       -q queue
+               使用指定的队列。一个队列用一个字母标定，有效的的队列标定的 范围
+               是从a到z和从A到Z。at  的缺省队列是 a,batch 的缺省队列是 b。队列
+               的字母顺序越高，则队列运行时越谦让(运行级别越低)。   指定的队列
+               "=" 保留给当前运行的作业所在的队列。
+
+       如果一个作业被提交到一个以大写字母标定的队列，则与提交到  batch  同样对
+       待。如果给 atq 指定一个队列，则只显示在此指定 队列中的作业。
+
+       -m      当作业完成时即使没有输出也给用户发邮件。
+
+       -f file 从文件而不是标准输入中读取作业信息。
+
+       -l      是 atq 的别名。
+
+       -d      是 atrm 的别名。
+
+       -v      对于 atq， 显示完整的在队列中未被删除的作业，对于其他  命令，显
+               示作业将要执行的时间。
+
+       显示的时间的格式类似于"1997-02-20  14:50"，但如果设置了 POSIXLY_CORRECT
+       环境变量之后，格式类似于"Thu Feb 20 14:50:00 1996"。
+
+       -c      连接命令行中列出的作业并输出到标准输出。
+
+相关文件
+       /var/spool/at
+       /var/spool/at/spool
+       /proc/loadavg
+       /var/run/utmp
+       /etc/at.allow
+       /etc/at.deny
+
+参见
+       cron(1), nice(1), sh(1), umask(2), atd(8)
+
+缺陷
+       在 Linux 下正确的批处理操作依赖于挂装在/proc 上的一个 proc-  类型的目录
+       的存在。
+
+       如果文件  /var/run/utmp 不可获得或已经损坏，或者在 at 所期 待的时间用户
+       没有登录，向在环境变量 LOGNAME 中找到的 userid 发送邮件。如果 LOGNAME未
+       定义或是空的，假定为当前的userid。
+
+       当前实现的  at 和 batch 在用户竞争资源的时候是不适合的。 如果你的站点是
+       这种情况，你可以考虑其他的批处理系统， 例如 nqs。
+
+著作者
+       AT 大部分是由Thomas Koenig写的。ig25@rz.uni-karlsruhe.de.
+
+[中文版维护人]
+       mhss <jijingzhisheng@up369.com>
+       主要参照了：  Linux实用大全  /  陈向阳，方汉  编著.  -北京：   科学出版
+       社，1998.8
+
+[中文版最新更新]
+       2000/10/27
+
+《中国linux论坛man手册页翻译计划》:
+       http://cmpp.linuxforum.net
+
+跋
+       本页面中文版由中文 man 手册页计划提供。
+       中文 man 手册页计划：https://github.com/man-pages-zh/manpages-zh
+
+local                              Nov 1996                              AT(1)
+```
+
+#### 示例：两分钟后向全体已登入用户发送消息
+
+```shell
+at now + 2minutes
+wall hello
+```
+
+<kbd>Ctrl</kbd> + <kbd>D</kbd> 完成输入。
+
+#### 示例：20 分钟后重启系统
+
+```shell
+at now + 20minutes
+reboot
+```
+
+<kbd>Ctrl</kbd> + <kbd>D</kbd> 完成输入。
+
+### 使用 `crontab` 计划任务
+
+使用 `crontab -e` 指令编辑计划任务
+
+```bash {1,10}
+ubuntu@VM-12-14-ubuntu:~$ crontab -e
+no crontab for ubuntu - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+1. /bin/nano        <---- easiest
+2. /usr/bin/vim.basic
+3. /usr/bin/vim.tiny
+4. /bin/ed
+
+Choose 1-4 [1]: 2
+No modification made
+```
+
+#### 语法
+
+```bash {1}
+[root@study ~]# crontab [-u username] [-l|-e|-r]
+選項與參數：
+-u  ：只有 root 才能進行這個任務，亦即幫其他使用者建立/移除 crontab 工作排程；
+-e  ：編輯 crontab 的工作內容
+-l  ：查閱 crontab 的工作內容
+-r  ：移除所有的 crontab 的工作內容，若僅要移除一項，請用 -e 去編輯。
+
+範例一：用 dmtsai 的身份在每天的 12:00 發信給自己
+[dmtsai@study ~]$ crontab -e
+# 此時會進入 vi 的編輯畫面讓您編輯工作！注意到，每項工作都是一行。
+0   12  *  *  * mail -s "at 12:00" dmtsai < /home/dmtsai/.bashrc
+#分 時  日 月 週 |<==============指令串========================>|
+```
+
+> 参考 [鳥哥的 Linux 私房菜 -- 第十五章、例行性工作排程(crontab)](http://linux.vbird.org/linux_basic/0430cron.php#etc_crontab)
+
+#### 示例，每天每小时的 30 分，将 `/home` 目录实施压缩打包
+
+```shell
+30 * * * * tar -cvf /home.tar.xz /home
+```
+
+> [Linux tar 命令 | 菜鸟教程](https://www.runoob.com/linux/linux-comm-tar.html)
+
 ## Linux 安装
 
 1. 参考 [安装 VMware Workstation](/serve/VM/VMware/#安装-vmware)
