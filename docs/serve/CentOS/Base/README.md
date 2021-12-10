@@ -792,19 +792,18 @@ $ sudo systemctl set-property httpd.service CPUShares=500
 -U<用户名称> 指定用户名称。
 -W<工作群组> 指定工作群组名称。
 ```
-## Linux 安装
 
+## Linux 安装
 
 1. 参考 [安装 VMware Workstation](/serve/VM/VMware/#安装-vmware)
 2. 前往 [CentOS 官网](https://www.centos.org/download/) 下载系统镜像
-   > 培训室内网共享文件夹：`\\WS19\Yue_plus 的共享\LinuxOS`
-
+   > 培训室内网共享文件夹：`\\WS22\Yue_plus 的共享\LinuxOS`
 
  可前往bilbil网站观看第三章
 <iframe src="//player.bilibili.com/player.html?aid=99111795&bvid=BV187411y7hF&cid=169181090&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 380px;"> </iframe>
-```
-VMware 虚拟机以及镜像安装
-```
+
+## VMware 虚拟机以及镜像安装
+
 1.新建一个虚拟机
 
 ![image-20200829152047933](./img/01.png)
@@ -830,4 +829,3 @@ VMware 虚拟机以及镜像安装
 ![image-20200829152047933](./img/06.png)
 
 7.做完以上步骤之后，就可以开始安装虚拟机了，点击完成开始安装
-
