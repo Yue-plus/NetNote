@@ -31,3 +31,25 @@ yum install firewalld
 - 开机启动 `systemctl enable firewalld`
 - 开机不启动 `systemctl disable firewalld`
 - 停止运行 `systemctl stop firewalld`
+
+## 基本操作
+
+### 查看当前开放的端口
+
+```shell
+sudo firewall-cmd --list-ports
+```
+
+### 开放指定端口
+
+开放 80、443、25、22、110、53 端口：
+
+```shell
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --permanent --add-port=25/tcp
+sudo firewall-cmd --permanent --add-port=22/tcp
+sudo firewall-cmd --permanent --add-port=110/tcp
+sudo firewall-cmd --permanent --add-port=53/tcp
+sudo firewall-cmd --reload
+```
