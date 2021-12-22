@@ -15,7 +15,7 @@
 编辑器：
 - [IntelliJ IDEA ——集成开发环境](/start/use_IDEA/)
 - [VScode ——开源代码编辑器](https://code.visualstudio.com/)
-- [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows)
+<!-- - [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows) （开始收费了，不再推荐） -->
 - [Notepad++ ——代替 Windows 自带记事本](https://notepad-plus-plus.org/downloads/)
 
 浏览器：
@@ -220,10 +220,10 @@ yarn docs:dev
 
 在培训室内网环境，计算机右键，**添加网络位置**：
 
-- `\\ws19\Yue_plus 的共享`
-- `\\ws19\公共文件夹`
+- `\\ws22\Yue_plus 的共享`
+- `\\ws22\公共文件夹`
 
-![添加网络位置向导](./img/03.jpg)
+![添加网络位置向导](./img/03.png)
 
 用户名：`wds`
 
