@@ -46,6 +46,7 @@
 
 前往 [Git 官网](https://git-scm.com/) 下载安装包，下一步到底。
 
+> [Git - Book（官方教程）](https://git-scm.com/book/zh/v2)
 > [Git - 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
 
 ### 配置 Git
