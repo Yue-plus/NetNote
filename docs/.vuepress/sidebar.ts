@@ -96,6 +96,12 @@ const sidebar = {
       '/net/wan/README.md'
     ]
   }],
+  '/hack/base/': [{
+    text: '网络安全',
+    children: [
+      '/hack/base/README.md'
+    ]
+  }],
   '/serve/base/': [{
     text: '基本操作',
     children: [

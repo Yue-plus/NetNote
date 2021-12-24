@@ -56,6 +56,12 @@ const navbar = [
       }
     ]
   },{
+    text: '网络安全',
+    children: [
+      {text: '中华人民共和国网络安全法', link: 'http://www.cac.gov.cn/2016-11/07/c_1119867116.htm'},
+      '/hack/base/'
+    ]
+  },{
     text: '系统服务',
     children: [
       '/serve/base/',
