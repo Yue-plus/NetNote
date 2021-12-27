@@ -27,6 +27,7 @@ const navbar = [
       '/coding/Java/',
       '/coding/Spring/',
       '/coding/MariaDB/',
+      '/coding/PostgreSQL',
       '/coding/Redis/',
       '/coding/RabbitMQ/',
       '/coding/Docker/'

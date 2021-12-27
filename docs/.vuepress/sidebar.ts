@@ -47,6 +47,7 @@ const sidebar = {
       '/coding/Spring/README.md',
       '/coding/Python/README.md',
       '/coding/MariaDB/README.md',
+      '/coding/PostgreSQL/README.md',
       '/coding/Redis/README.md',
       '/coding/RabbitMQ/README.md',
       '/coding/Docker/README.md'
