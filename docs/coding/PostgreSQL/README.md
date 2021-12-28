@@ -11,6 +11,7 @@ PostgreSQL：世界上最先进的开源关系数据库
 ## 链接
 
 - [PostgreSQL 教程 | 菜鸟教程](https://www.runoob.com/postgresql/postgresql-tutorial.html)
+- [PostgreSQL新手入门 - 阮一峰的网络日志](https://www.ruanyifeng.com/blog/2013/12/getting_started_with_postgresql.html)
 
 ## 安装
 
@@ -86,3 +87,34 @@ sudo /usr/pgadmin4/bin/setup-web.sh
 
 ## 配置
 
+### 配置 PostgreSQL
+
+#### 设置密码
+
+```postgresql
+postgres=# \password postgres
+Enter new password:
+Enter it again:
+```
+
+### 配置 pgAdmin4-web
+
+```bash {1,8-10}
+ubuntu@VM-0-5-ubuntu:~$ sudo /usr/pgadmin4/bin/setup-web.sh
+Setting up pgAdmin 4 in web mode on a Debian based platform...
+Creating configuration database...
+NOTE: Configuring authentication for SERVER mode.
+
+Enter the email address and password to use for the initial pgAdmin user account:
+
+Email address: Yue_plus@foxmail.com
+Password:
+Retype password:
+pgAdmin 4 - Application Initialisation
+======================================
+
+Creating storage and log directories...
+We can now configure the Apache Web server for you. This involves enabling the wsgi module and configuring the pgAdmin 4 application to mount at /pgadmin4. Do you wish to continue (y/n)? y
+The Apache web server is running and must be restarted for the pgAdmin 4 installation to complete. Continue (y/n)? y
+Apache successfully restarted. You can now start using pgAdmin 4 in web mode at http://127.0.0.1/pgadmin4
+```
