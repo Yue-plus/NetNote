@@ -97,6 +97,29 @@ Enter new password:
 Enter it again:
 ```
 
+#### 设置数据允许远程连接
+
+编辑配置文件 `/etc/postgresql/14/main/postgresql.conf` 第 60 行：
+
+```diff
+-60 listen_addresses = 'localhost'          # what IP address(es) to listen on;
++60 listen_addresses = '*'                  # what IP address(es) to listen on;
+ 61                                         # comma-separated list of addresses;
+ 62                                         # defaults to 'localhost'; use '*' for all
+```
+
+#### 设置允许账户远程登入
+
+编辑配置文件 `/etc/postgresql/14/main/pg_hba.conf` 加一行：
+
+```conf
+host    all    all    0.0.0.0/0    scram-sha-256
+```
+
+> 参考：
+> - [PostgreSQL: Documentation: 14: 21.1. The pg_hba.conf File](https://www.postgresql.org/docs/14/auth-pg-hba-conf.html)
+> - [PostgreSQL的pg_hba.conf文件讲解 - 玄同太子 - 博客园](https://www.cnblogs.com/zhi-leaf/p/11442471.html)
+
 ### 配置 pgAdmin4-web
 
 ```bash {1,8-10}
