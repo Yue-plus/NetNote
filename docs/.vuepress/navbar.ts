@@ -1,5 +1,8 @@
 const navbar = [
   {
+    text: '致下一届',
+    link: '/ToNext.html'
+  },{
     text: '起步',
     children: [
       '/start/start.md',

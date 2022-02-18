@@ -77,3 +77,9 @@ actions:
     <br />
     LX-plus
 </a>
+
+# 许可证
+
+本项目使用 [MIT 许可证](https://github.com/Yue-plus/NetNote/blob/main/LICENSE) 开源。
+欢迎提交 [issues](https://github.com/Yue-plus/NetNote/issues/new/choose)
+与 [PR](https://github.com/Yue-plus/NetNote/compare)

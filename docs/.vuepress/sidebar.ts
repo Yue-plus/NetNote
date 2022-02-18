@@ -161,6 +161,12 @@ const sidebar = {
       '/serve/CentOS/E-Mail/README.md',
       '/serve/CentOS/Pacemaker/README.md'
     ]
+  }],
+  '/': [{
+    text: '致下一届',
+    children: [
+      '/ToNext.md'
+    ]
   }]
 };
 
