@@ -106,7 +106,8 @@ const sidebar = {
   '/serve/base/': [{
     text: '基本操作',
     children: [
-      '/serve/base/sys_install/README.md'
+      '/serve/base/sys_install/README.md',
+      '/serve/base/sys_config/README.md'
     ]
   }],
   '/serve/VM/': [{

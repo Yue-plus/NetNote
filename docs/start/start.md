@@ -6,39 +6,9 @@
 
 ![系统版本](./img/system_info.jpg)
 
-如果是 **家庭中文版** 请到 [微软官网](https://www.microsoft.com/zh-cn/software-download/windows10) 下载工具，重装系统。
+如果是 **家庭中文版** 请参考 [系统安装](/serve/base/sys_install/) 重装系统。
 
-![下载安装工具](/img/other/system_download.jpg)
-
-## 推荐安装以下软件
-
-编辑器：
-- [IntelliJ IDEA ——集成开发环境](/start/use_IDEA/)
-- [VScode ——开源代码编辑器](https://code.visualstudio.com/)
-<!-- - [Typora ——简洁的 Markdown 编辑器](https://www.typora.io/#windows) （开始收费了，不再推荐） -->
-- [Notepad++ ——代替 Windows 自带记事本](https://notepad-plus-plus.org/downloads/)
-
-浏览器：
-- [Microsoft Edge](https://www.microsoft.com/zh-cn/edge)
-- [Google Chrome](https://www.google.com/intl/zh-CN/chrome/)
-- [FireFox 开发者版](https://www.mozilla.org/zh-CN/firefox/all/#product-desktop-developer)
-- 浏览器插件：
-  + [沙拉查词](https://saladict.crimx.com/)
-  + [Dark Reader](https://darkreader.org/)
-
-系统环境：
-- [Git](https://git-scm.com/)
-- [Node.js](#本地安装-nodejs)
-- [yarn](#本地安装-yarn)
-- [GitHub CLI](https://cli.github.com/)
-
-装机推荐：
-- [bandizip ——压缩软件](http://www.bandisoft.com/bandizip/)
-- [Motrix ——一款开源的全能下载工具](https://motrix.app/zh-CN/)
-- [WinSCP ——开源图形化 SFTP 客户端](https://winscp.net/eng/download.php)
-- [PotPlayer ——本地视频播放器](https://potplayer.daum.net/)
-- [Windows Terminal](https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701)
-  > 打不开微软商店可以试试将 DNS 设为 `4.2.2.1` 和 `4.2.2.2`
+然后可以参考 [配置舒适的桌面环境](/serve/base/sys_config/) 。
 
 ## 本地安装 Git
 
@@ -439,3 +409,7 @@ telnet [-a][-e escape char][-f log file][-l user][-t term][host [port]]
  host    指定要连接的远程计算机的主机名或 IP 地址。
  port    指定端口号或服务名。
 ```
+
+## 附：打不开微软商店 / 无法系统登入微软账号
+
+打不开微软商店可以试试将 DNS 设为 `4.2.2.1` 和 `4.2.2.2`
