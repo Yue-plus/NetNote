@@ -47,3 +47,4 @@
 ### 辞书翻译
 
 - [有道翻译官](http://fanyiguan.youdao.com/)
+- [有道词典](http://cidian.youdao.com/)
