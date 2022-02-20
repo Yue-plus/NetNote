@@ -115,6 +115,7 @@ const sidebar = {
     children: [
       '/serve/VM/DCC-CRL1000/README.md',
       '/serve/VM/VMware/README.md',
+      '/serve/VM/VirtualBox/README.md',
       '/serve/VM/Hyper-V/README.md'
     ]
   }],
