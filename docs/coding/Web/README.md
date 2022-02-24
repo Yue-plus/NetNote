@@ -20,6 +20,10 @@
 - [HTML5 教程 - 菜鸟教程](https://www.runoob.com/html/html5-intro.html)
 - [HTML5 教程 - w3cschool](https://www.w3cschool.cn/html5/)
 
+### [Pug](https://www.pugjs.cn/api/getting-started.html)
+
+### [Ejs](https://ejs.bootcss.com/)
+
 ## CSS
 
 :::tip
@@ -39,6 +43,12 @@
 - [CSS 教程 - w3cschool](https://www.w3cschool.cn/css/)
 - [CSS3 教程 - 菜鸟教程](https://www.runoob.com/css3/css3-tutorial.html)
 - [CSS3 教程 - w3cschool](https://www.w3cschool.cn/css3/)
+
+### [Less](https://less.bootcss.com/#%E6%A6%82%E8%A7%88)
+
+### [stylus](https://www.stylus-lang.cn/)
+
+### [Sass](https://sass.bootcss.com/documentation)
 
 ## JavaScript
 
@@ -97,3 +107,8 @@
 ## 设计资源
 
 - [Iconfont-阿里巴巴矢量图标库](https://www.iconfont.cn/)
+
+### 字体
+
+- [思源字体](https://source.typekit.com/source-han-serif/cn/)
+- [文泉驿字体](http://wenq.org/)
