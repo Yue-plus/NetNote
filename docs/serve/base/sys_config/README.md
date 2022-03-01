@@ -2,13 +2,14 @@
 
 ## 软件推荐列表
 
-### 软件环境
+### 软件开发环境
 
 - [Windows Terminal](https://www.microsoft.com/zh-cn/p/windows-terminal/9n0dx20hk701)
 - [Git](https://git-scm.com/)
 - [Node.js](/start/start.html#本地安装-nodejs)
 - [yarn](/start/start.html#本地安装-yarn)
 - [GitHub CLI](https://cli.github.com/)
+- [Postman ——](https://www.postman.com/)
 
 ### 编辑器与集成开发环境
 
