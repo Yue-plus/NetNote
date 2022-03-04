@@ -85,9 +85,23 @@ sudo /usr/pgadmin4/bin/setup-web.sh
 
 > 参考 [pgAdmin 4 (APT) Download](https://www.pgadmin.org/download/pgadmin-4-apt/)
 
+### Windows
+
+参考 [PostgreSQL: Windows installers](https://www.postgresql.org/download/windows/) 获取下载链接：
+
+[exe 压缩包](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
+[zip 压缩包](https://www.enterprisedb.com/download-postgresql-binaries)
+
+::: warning
+安装时 **不要** 选中文，否则安装失败！
+（没有 PostgreSQL 14 的 Server 显示；计算机管理->服务和应用程序->服务中 也没有 postgresql-x64-11 这个服务 ）
+
+![](./img/windows-install.png)
+:::
+
 ## 配置
 
-### 配置 PostgreSQL
+### Ubuntu 配置 PostgreSQL
 
 #### 设置密码
 
