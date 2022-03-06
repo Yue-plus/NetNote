@@ -14,6 +14,21 @@ const navbar = [
       '/start/yaml.md'
     ]
   },{
+    text: '数学',
+    children: [
+      {text: 'GeoGebra - 数学教学软件', link: 'https://www.geogebra.org/'},
+      '/math/集合.md',
+      '/math/不等式.md',
+      '/math/函数.md',
+      '/math/指数函数与对数函数.md',
+      '/math/三角函数.md',
+      '/math/数列.md',
+      '/math/平面向量.md',
+      '/math/直线和圆的方程.md',
+      '/math/立体几何.md',
+      '/math/概率与统计初步.md'
+    ]
+  },{
     text: '游戏',
     children: [
       '/game/minecraft.md',

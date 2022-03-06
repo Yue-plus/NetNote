@@ -20,6 +20,21 @@ const sidebar = {
       '/game/GodotEngine.md'
     ]
   }],
+  '/math/': [{
+    text: '数学',
+    children: [
+      '/math/集合.md',
+      '/math/不等式.md',
+      '/math/函数.md',
+      '/math/指数函数与对数函数.md',
+      '/math/三角函数.md',
+      '/math/数列.md',
+      '/math/平面向量.md',
+      '/math/直线和圆的方程.md',
+      '/math/立体几何.md',
+      '/math/概率与统计初步.md'
+    ]
+  }],
   '/coding/Spring/Framework/WebServlet/': [{
     text: 'Spring Projects',
     children: [
