@@ -38,7 +38,7 @@
 #### 关于培训室
 
 “想要我的宝藏吗？如果想要的话，那就到
-<span style="color: black; background-color: black;">学校的戴尔台式机里</span>
+<span style="color: black; background-color: black;">培训室的戴尔 OptiPlex 5080 台式机里</span>
 去找吧，我全部都放在
 <span style="color: black; background-color: black;">D:\共享文件夹\Yue_plus 的共享</span>
 里了！”
