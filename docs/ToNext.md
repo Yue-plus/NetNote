@@ -69,3 +69,12 @@
 ### You-m 的留言
 
 **不会就百度**
+
+### HM-plus 的留言
+
+**多看神州数码的书和视频，多理解代码是何意思，多去敲敲代码，不会的百度或
+[加学长的 QQ 询问：1704607295](https://qm.qq.com/cgi-bin/qm/qr?k=fFhA_qCPMUdcomlT3WsFC5o1sx5MVLsg&noverify=0)**
+
+### LX-plus 的留言
+
+**他们说的都对**
