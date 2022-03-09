@@ -19,7 +19,7 @@ const navbar = [
       {text: 'GeoGebra - 数学教学软件', link: 'https://www.geogebra.org/'},
       '/math/集合.md',
       '/math/不等式.md',
-      '/math/函数.md',
+      '/math/函数/',
       '/math/指数函数与对数函数.md',
       '/math/三角函数.md',
       '/math/数列.md',

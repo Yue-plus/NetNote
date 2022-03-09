@@ -25,7 +25,7 @@ const sidebar = {
     children: [
       '/math/集合.md',
       '/math/不等式.md',
-      '/math/函数.md',
+      '/math/函数/README.md',
       '/math/指数函数与对数函数.md',
       '/math/三角函数.md',
       '/math/数列.md',
