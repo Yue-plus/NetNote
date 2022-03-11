@@ -17,7 +17,7 @@ const navbar = [
     text: '数学',
     children: [
       {text: 'GeoGebra - 数学教学软件', link: 'https://www.geogebra.org/'},
-      '/math/集合.md',
+      {text: '集合', link: '/math/301_集合/1.1_集合及其运算.md'},
       '/math/不等式.md',
       {text: '函数', link: '/math/303_函数/3.1_函数.md'},
       '/math/指数函数与对数函数.md',

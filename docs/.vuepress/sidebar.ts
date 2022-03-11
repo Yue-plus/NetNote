@@ -22,6 +22,12 @@ const sidebar = {
   }],
   '/math/': [
     {
+      text: '集合',
+      collapsible: true,
+      children: [
+        '/math/301_集合/1.1_集合及其运算.md'
+      ]
+    },{
       text: '函数',
       collapsible: true,
       children: [
@@ -32,7 +38,6 @@ const sidebar = {
       text: 'TODO',
       collapsible: true,
       children: [
-        '/math/集合.md',
         '/math/不等式.md',
         '/math/指数函数与对数函数.md',
         '/math/三角函数.md',
