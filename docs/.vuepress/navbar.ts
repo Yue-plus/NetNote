@@ -15,19 +15,20 @@ const navbar = [
     ]
   },{
     text: '数学',
-    children: [
-      {text: 'GeoGebra - 数学教学软件', link: 'https://www.geogebra.org/'},
-      {text: '集合', link: '/math/301_集合/1.1_集合及其运算.md'},
-      '/math/不等式.md',
-      {text: '函数', link: '/math/303_函数/3.1_函数.md'},
-      '/math/指数函数与对数函数.md',
-      '/math/三角函数.md',
-      '/math/数列.md',
-      '/math/平面向量.md',
-      '/math/直线和圆的方程.md',
-      '/math/立体几何.md',
-      '/math/概率与统计初步.md'
-    ]
+    link: 'https://math.note.yue.zone/'
+    // children: [
+    //   {text: 'GeoGebra - 数学教学软件', link: 'https://www.geogebra.org/'},
+    //   {text: '集合', link: '/math/301_集合/1.1_集合及其运算.md'},
+    //   '/math/不等式.md',
+    //   {text: '函数', link: '/math/303_函数/3.1_函数.md'},
+    //   '/math/指数函数与对数函数.md',
+    //   '/math/三角函数.md',
+    //   '/math/数列.md',
+    //   '/math/平面向量.md',
+    //   '/math/直线和圆的方程.md',
+    //   '/math/立体几何.md',
+    //   '/math/概率与统计初步.md'
+    // ]
   },{
     text: '游戏',
     children: [
