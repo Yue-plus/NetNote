@@ -101,7 +101,7 @@ The key's randomart image is:
 由于国内众所周知的网络原因，推荐安装 `cnpm`，在安装依赖时代替 `npm` 命令：
 
 ```shell
-npm install -g cnpm --registry=https://registry.npm.taobao.org
+ npm install -g cnpm --registry=https://registry.npmmirror.com
 ```
 
 安装后可使用 `cnpm -v` 验证：
