@@ -196,7 +196,7 @@ yarn docs:dev
 
 ![添加网络位置向导](./img/03.png)
 
-用户名：`wds`
+用户名：`Administrator`
 
 密码：<span style="color: black; background-color: black;">Abcd1234</span>
 ## 部署项目
@@ -214,99 +214,80 @@ yarn docs:dev
 每个文档都可以放在独立的文件夹下，维护自己的 `img` 文件夹。
 
 ::: details 目录结构
-```text
-文件夹 PATH 列表
-卷序列号为 92AD-3B9E
-C:.
-├─docs
-│  ├─.vuepress
-│  │  ├─.cache/
-│  │  ├─.temp/
-│  │  └─public
-│  │      └─img
-│  │          ├─book
-│  │          ├─other
-│  │          └─portrait
-│  ├─coding
-│  │  ├─Docker
-│  │  │  └─img
-│  │  ├─Java
-│  │  │  └─img
-│  │  │      └─01-Path
-│  │  ├─MariaDB
-│  │  │  └─img
-│  │  ├─Python
-│  │  │  └─img
-│  │  ├─RabbitMQ
-│  │  │  └─img
-│  │  ├─Redis
-│  │  ├─Spring
-│  │  │  └─Framework
-│  │  │      └─WebServlet
-│  │  │          └─img
-│  │  └─Web
-│  ├─net
-│  │  ├─01-base
-│  │  │  └─img
-│  │  ├─acap
-│  │  │  └─img
-│  │  ├─manual
-│  │  │  ├─command
-│  │  │  │  └─img
-│  │  │  │      └─07
-│  │  │  └─operate
-│  │  ├─router
-│  │  ├─security
-│  │  │  └─img
-│  │  ├─switch
-│  │  └─wan
-│  ├─serve
-│  │  ├─base
-│  │  │  └─sys_install
-│  │  │      └─img
-│  │  ├─Linux
-│  │  │  ├─01-Base
-│  │  │  │  └─img
-│  │  │  ├─02-Chrony
-│  │  │  ├─03-NFS
-│  │  │  ├─04-MariaDB
-│  │  │  ├─05-Apache
-│  │  │  │  └─img
-│  │  │  ├─06-Tomcat
-│  │  │  ├─07-Samba
-│  │  │  ├─08-NIS
-│  │  │  ├─09-Postfix
-│  │  │  └─10-Pacemaker
-│  │  ├─VM
-│  │  │  ├─DCC-CRL1000
-│  │  │  │  └─img
-│  │  │  ├─Hyper-V
-│  │  │  └─VMware
-│  │  │      └─img
-│  │  └─WS
-│  │      ├─AD
-│  │      │  └─img
-│  │      │      ├─E001
-│  │      │      ├─E002
-│  │      │      ├─E003
-│  │      │      └─E004
-│  │      ├─FS
-│  │      │  └─img
-│  │      ├─IIS
-│  │      ├─NLB
-│  │      │  └─img
-│  │      ├─PS
-│  │      └─WDS
-│  │          └─img
-│  └─start
-│      ├─img
-│      ├─use_GitHub
-│      │  └─img
-│      ├─use_IDEA
-│      │  └─img
-│      └─use_VScode
-│          └─img
-└─node_modules/
+```text文件夹 PATH 列表
+卷序列号为 6010-F505
+D:.
+├─.vuepress/
+├─coding
+│  ├─Docker/
+│  ├─Java
+│  │  ├─Gradle/
+│  ├─MariaDB/
+│  ├─PostgreSQL/
+│  ├─Python/
+│  ├─RabbitMQ/
+│  ├─Redis/
+│  ├─Spring
+│  │  └─Framework
+│  │      └─WebServlet/
+│  └─Web/
+├─game/
+├─hack
+│  └─base/
+├─net
+│  ├─00-Abbreviation/
+│  ├─01-base/
+│  ├─acap/
+│  ├─manual
+│  │  ├─command/
+│  │  └─operate/
+│  ├─router/
+│  ├─security/
+│  ├─switch/
+│  └─wan/
+├─serve
+│  ├─base
+│  │  ├─sys_config/
+│  │  └─sys_install/
+│  ├─CentOS
+│  │  ├─Apache/
+│  │  ├─Base/
+│  │  ├─CA/
+│  │  ├─Chrony/
+│  │  ├─E-Mail/
+│  │  ├─firewalld/
+│  │  ├─MariaDB/
+│  │  ├─NFS/
+│  │  ├─NIS/
+│  │  ├─Pacemaker/
+│  │  ├─Samba/
+│  │  ├─Tomcat/
+│  │  └─Unbound/
+│  ├─VM
+│  │  ├─DCC-CRL1000/
+│  │  ├─Hyper-V/
+│  │  ├─VirtualBox/
+│  │  └─VMware/
+│  └─WS
+│      ├─AD-CS/
+│      ├─AD-DS/
+│      ├─AD-RMS/
+│      ├─CommonRequirements/
+│      ├─DFS/
+│      ├─DNS/
+│      ├─FailoverCluster/
+│      ├─FS/
+│      ├─IIS/
+│      ├─iSCSI/
+│      ├─MPIO/
+│      ├─NLB/
+│      ├─PS/
+│      └─WDS/
+└─start
+    ├─img
+    ├─use_GitHub/
+    ├─use_IDEA/
+    └─use_VScode/
 ```
 :::
 
