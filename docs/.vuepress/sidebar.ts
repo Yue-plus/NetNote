@@ -20,35 +20,6 @@ const sidebar = {
       '/game/GodotEngine.md'
     ]
   }],
-  '/math/': [
-    {
-      text: '集合',
-      collapsible: true,
-      children: [
-        '/math/301_集合/1.1_集合及其运算.md'
-      ]
-    },{
-      text: '函数',
-      collapsible: true,
-      children: [
-        '/math/303_函数/3.1_函数.md',
-        '/math/303_函数/3.2_一次函数与二次函数.md',
-      ]
-    },{
-      text: 'TODO',
-      collapsible: true,
-      children: [
-        '/math/不等式.md',
-        '/math/指数函数与对数函数.md',
-        '/math/三角函数.md',
-        '/math/数列.md',
-        '/math/平面向量.md',
-        '/math/直线和圆的方程.md',
-        '/math/立体几何.md',
-        '/math/概率与统计初步.md'
-      ]
-    }
-  ],
   '/coding/Spring/Framework/WebServlet/': [{
     text: 'Spring Projects',
     children: [
