@@ -14,6 +14,21 @@
 >
 > - [DCN 产品中心 - DCC-CRL1000 云服务实训平台](http://www.dcnetworks.com.cn/goods/55.html)
 
+## 配套视频
+
+- [DCC-CRL1000 云服务实训平台配套视频 01 BIOS](https://www.bilibili.com/video/BV1444y1g7Sv/)
+- [DCC-CRL1000 云服务实训平台配套视频 02 RAID](https://www.bilibili.com/video/BV1gB4y1m75C/)
+- [DCC-CRL1000 云服务实训平台配套视频 03 安装系统-1](https://www.bilibili.com/video/BV1444y1g7Sv/)
+- [DCC-CRL1000 云服务实训平台配套视频 04 安装系统-2](https://www.bilibili.com/video/BV1s44y1g7T8/)
+- [DCC-CRL1000 云服务实训平台配套视频 05 脚本安装 openstack 及上传镜像](https://www.bilibili.com/video/BV1t34y1e7qG/)
+- [DCC-CRL1000 云服务实训平台配套视频 06 完成安装重启](https://www.bilibili.com/video/BV17541117EB/)
+- [DCC-CRL1000 云服务实训平台配套视频 07 用户安装手册视频操作](https://www.bilibili.com/video/BV1xA4y1X7V3/)
+
+## 配套文档
+
+- [`云服务实训平台安装手册v1.2.pdf`](./云服务实训平台安装手册v1.2.pdf)
+- [`云服务实训平台用户操作手册v1.2.pdf`](./云服务实训平台用户操作手册v1.2.pdf)
+
 ## 安装系统
 
 开机，看见 DCN Logo 后，按 <kbd>Ctrl</kbd> + <kbd>I</kbd>，进入 RAID 配置。
