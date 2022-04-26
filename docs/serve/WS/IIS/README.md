@@ -93,6 +93,24 @@ IIS 意味着能发布网页，并且有 ASP（Active Server Pages）、JAVA、V
 
 ![](./img/FTP-config-03.png)
 
+### 设置域用户隔离
+
+1. 在域中建立 FTP 用户组
+2. 在域中建立 FTP 用户并隶属于 FTP 用户组
+3. 在 FTP 根目录下建立对应用户的文件夹
+4. 开启 **FTP 用户隔离**，并选择 *用户名目录*
+   ![](./img/FTP-config-04.png)
+5. 配置对应用户主页的授权规则
+   ![](./img/FTP-config-05.png)
+
+### 配置 FTP 请求筛选
+
+![](./img/FTP-config-06.png)
+
+#### 限制上传文件拓展名
+
+![](./img/FTP-config-07.png)
+
 ### 使用 IE 浏览器访问
 
 使用 **IE 浏览器** 访问 <ftp://127.0.0.1/> 或内网 IP 或域名
