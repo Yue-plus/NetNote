@@ -1,4 +1,4 @@
-# Linux 基础
+# CentOS 基础
 
 本章教程使用 CentOS 6.5/7 系统。
 

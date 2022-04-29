@@ -164,6 +164,12 @@ const sidebar = {
       '/serve/CentOS/Pacemaker/README.md'
     ]
   }],
+  '/serve/Ubuntu/': [{
+    text: 'Ubuntu',
+    children: [
+      '/serve/Ubuntu/README.md'
+    ]
+  }],
   '/': [{
     text: '致下一届',
     children: [
