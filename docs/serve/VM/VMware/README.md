@@ -76,7 +76,12 @@ VMware Workstation 虚拟机平台安装完成：
  ![05](./img/05.png)
  放入自己需要安装系统的镜像文件
 
- 
+ ## VMware Tools
+
+ ### Ubuntu
+
+ 建议使用 `open-vm-tools-desktop` 替代 VMware Tools，参考：
+ [Ubuntu 安装 open-vm-tools-desktop](/serve/Ubuntu/#安装-open-vm-tools-desktop)
 
 
 
