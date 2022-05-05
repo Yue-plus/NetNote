@@ -108,3 +108,27 @@ deb https://mirrors.cloud.tencent.com/ubuntu/ jammy-security multiverse
 sudo apt update
 sudo apt install open-vm-tools
 ```
+
+## 安装 vim
+
+```bash
+sudo apt install vim
+```
+
+## 安装 git
+
+```bash
+sudo apt install git
+```
+## 安装 `screenfetch`
+
+可以字符画展示系统信息。
+
+```bash
+sudo apt install screenfetch
+```
+
+## 安装搜狗拼音输入法
+
+  [搜狗拼音输入法 Linux 版](https://pinyin.sogou.com/linux)
+| [Ubuntu 搜狗输入法安装指南](https://pinyin.sogou.com/linux/guide)
