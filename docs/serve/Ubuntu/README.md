@@ -1,7 +1,7 @@
 # Ubuntu
 
 ::: tip
-Ubuntu 是适用于企业服务器、桌面电脑、云、IoT 物联网的现代化开源 Linux 操作系统。
+Ubuntu 是适用于企业服务器、桌面电脑、云、IoT 物联网的现代化开源Linux操作系统。
 
 [官网](https://ubuntu.com/)
 [中文官网](https://cn.ubuntu.com/)
@@ -120,6 +120,7 @@ sudo apt install vim
 ```bash
 sudo apt install git
 ```
+
 ## 安装 `screenfetch`
 
 可以字符画展示系统信息。
