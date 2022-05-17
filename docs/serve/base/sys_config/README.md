@@ -36,11 +36,6 @@
 - [bandizip ——压缩软件](http://www.bandisoft.com/bandizip/)
 - [7-zip](https://www.7-zip.org/)
 
-### 下载工具
-
-- [Motrix ——一款开源的全能下载工具](https://motrix.app/zh-CN/)
-- [WinSCP ——开源图形化 SFTP 客户端](https://winscp.net/eng/download.php)
-
 ### 音乐影视
 
 - [PotPlayer ——本地视频播放器](https://potplayer.daum.net/)
@@ -49,3 +44,10 @@
 
 - [有道翻译官](http://fanyiguan.youdao.com/)
 - [有道词典](http://cidian.youdao.com/)
+
+### 实用工具
+
+- [Motrix ——一款开源的全能下载工具](https://motrix.app/zh-CN/)
+- [WinSCP ——开源图形化 SFTP 客户端](https://winscp.net/eng/download.php)
+- [Snipaste ——截图工具](https://www.snipaste.com/)
+- [Everthing ——快速文件搜索](https://www.voidtools.com/)
