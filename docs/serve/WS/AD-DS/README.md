@@ -203,6 +203,33 @@ SID是用来识别账户的惟一标志，而不是通常以为的机器名\用�
 
 ![](./img/E004/02.jpg)
 
+### Error 005：无法新建域，因为本地 Administrator 账户密码不符合要求。
+
+#### 错误详情
+
+新建域时，本地 administrator 帐户将成为域 administrator 账户。
+无法新建域，因为本地 administrator 账户密码不符合要求。
+
+目前，本地 administrator 账户不需要密码。
+我们建议您使用网络用户命令行工具的 `/passwordreq:yes` 选项获得该账户密码，然后再新建设域：
+否则，域 administator 帐户将不需要密码。 
+
+![](./img/E005/01.png)
+
+#### 解决方法
+
+在管理员 PowerShell 中执行：
+
+```ps
+net user administrator /passwordreq:yes
+```
+
+然后再域服务配置向导中点 **重新运行先决条件检查**。
+
+另见 [密码必须符合复杂性要求](../CommonRequirements/#密码必须符合复杂性要求)
+
+
+
 
 <!--
 为什么要使用域？假设你是公司的系统管理员，你们公司有一千台电脑。
