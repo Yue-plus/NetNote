@@ -189,6 +189,8 @@ yarn docs:dev
 
 ## 获取资源
 
+### 共享文件夹
+
 在培训室内网环境，计算机右键，**添加网络位置**：
 
 - `\\ws22\Yue_plus 的共享`
@@ -199,6 +201,20 @@ yarn docs:dev
 用户名：`Administrator`
 
 密码：<span style="color: black; background-color: black;">Abcd1234</span>
+
+### GitLab
+
+访问：<https://gitlab.ws22/>
+
+![](./img/gitlab-login.jpg)
+![](./img/gitlab-signup.jpg)
+
+通知 @Yue_plus 批准申请后即可登入。
+
+点击右上角头像，修改 **偏好设置**，设置本地化语言，选择完毕后刷新浏览器生效：
+
+![](./img/gitlab-config.jpg)
+
 ## 部署项目
 
 复制 `deploy.sh.examples` 文件，并重命名为 `deploy.sh` 并适当修改 `<USERNAME>/<REPO>`。

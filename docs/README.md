@@ -11,9 +11,9 @@ actions:
 ---
 
 ::: tip
-培训室局域网内可以访问 <http://note.ws22> 速度更快嗷~ `┗|｀O′|┛`
-
-可以按 <kbd>Ctrl</kbd> + <kbd>F5</kbd> 获取页面更新。
+- 培训室局域网 Git 仓库托管上线！[立即加入!](https://gitlab.ws22/)
+- 培训室局域网内可以访问 <http://note.ws22/> 速度更快嗷~ `┗|｀O′|┛`
+- 可以按 <kbd>Ctrl</kbd> + <kbd>F5</kbd> 获取页面更新。
 :::
 
 # 贡献者
