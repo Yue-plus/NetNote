@@ -77,6 +77,11 @@ actions:
     <br />
     LX-plus
 </a>
+<a class="head-link" target="_blank" href="https://github.com/Eternal-Lord">
+    <img class="head-img" src="/img/portrait/Eternal-Lord.png" alt="Eternal-Lord" />
+    <br />
+    Eternal-Lord
+</a>
 
 # 许可证
 
