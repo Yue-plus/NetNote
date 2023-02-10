@@ -1,4 +1,6 @@
-const navbar = [
+import { NavbarGroup, NavbarItem } from "vuepress"
+
+const navbar: false | (NavbarItem | NavbarGroup | string)[] = [
   {
     text: '致下一届',
     link: '/ToNext.html'
