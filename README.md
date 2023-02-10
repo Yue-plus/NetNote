@@ -1,6 +1,6 @@
 # NetNote
 
-# <https://Note.YuePlus.ink/>
+# <https://Net.Note.Yue.Zone/>
 
 ## Repository
 

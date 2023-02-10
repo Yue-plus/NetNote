@@ -39,30 +39,30 @@ export default defineUserConfig({
     lastUpdatedText: '上次更新'
   }),
 
-  // plugins: [
-  //   pwaPlugin(),
-  //   pwaPopupPlugin({
-  //     locales: {
-  //       '/': {
-  //         message: '发现新内容可用',
-  //         buttonText: '刷新',
-  //       }
-  //     }
-  //   }),
-  //   // ['@vuepress/docsearch', {
-  //   //   appId: '0YWM7BGDQI',
-  //   //   apiKey: '9dc6fe12516690be51dea370e78001f6',
-  //   //   indexName: 'note.yueplus.ink',
-  //   //   locales: {
-  //   //     '/': {
-  //   //       placeholder: '在此搜索文档'
-  //   //     }
-  //   //   }
-  //   // }],
-  //   searchPlugin({
-  //     locales: {
-  //       '/': { placeholder: '搜索' }
-  //     }
-  //   }),
-  // ],
+  plugins: [
+    pwaPlugin(),
+    pwaPopupPlugin({
+      locales: {
+        '/': {
+          message: '发现新内容可用',
+          buttonText: '刷新',
+        }
+      }
+    }),
+    // ['@vuepress/docsearch', {
+    //   appId: '0YWM7BGDQI',
+    //   apiKey: '9dc6fe12516690be51dea370e78001f6',
+    //   indexName: 'note.yueplus.ink',
+    //   locales: {
+    //     '/': {
+    //       placeholder: '在此搜索文档'
+    //     }
+    //   }
+    // }],
+    searchPlugin({
+      locales: {
+        '/': { placeholder: '搜索' }
+      }
+    }),
+  ],
 })

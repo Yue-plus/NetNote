@@ -187,6 +187,8 @@ yarn docs:dev
   + [Windows Server](/serve/WS/)
   + [Linux](/serve/Linux/)
 
+<!--
+
 ## 获取资源
 
 ### 共享文件夹
@@ -214,6 +216,8 @@ yarn docs:dev
 点击右上角头像，修改 **偏好设置**，设置本地化语言，选择完毕后刷新浏览器生效：
 
 ![](./img/gitlab-config.jpg)
+
+-->
 
 ## 部署项目
 
