@@ -59,7 +59,7 @@ const navbar: false | (NavbarItem | NavbarGroup | string)[] = [
       },{
         text: '思科模拟器',
         children: [
-          {text: 'Cisco Packet Tracer Help', link: 'https://help.cisco.yueplus.ink/Simplified%20Chinese/'},
+          {text: 'Cisco Packet Tracer Help', link: 'https://cisco-packet-tracer-help.yue.zone/Simplified%20Chinese/'},
           {text: 'GitHub', link: 'https://github.com/Yue-plus/cisco_packet_tracer_help'}
         ]
       }
