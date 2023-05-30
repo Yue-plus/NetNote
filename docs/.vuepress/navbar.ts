@@ -22,7 +22,7 @@ const navbar: false | (NavbarItem | NavbarGroup | string)[] = [
     text: '游戏',
     children: [
       '/game/minecraft.md',
-      '/game/unity.md',
+      { text: 'Unity', link: 'https://jvtc.yue.zone/docs/编程/Unity/'},
       '/game/UnrealEngine.md',
       '/game/GodotEngine.md'
     ]
