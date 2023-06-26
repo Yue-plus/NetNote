@@ -109,6 +109,22 @@ sudo apt update
 sudo apt install open-vm-tools
 ```
 
+## 安装中文语言包
+
+```sh
+sudo apt install language-pack-zh-hans manpages-zh -y
+localectl set-locale LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8
+```
+
+## 安装 oh my zsh
+
+参考：[Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/)
+
+```sh
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
 ## 安装 vim
 
 ```bash
