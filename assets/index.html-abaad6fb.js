@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-2c5b5539","path":"/serve/VM/Hyper-V/","title":"Hyper-V","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1689658961000,"contributors":[{"name":"Yue_plus","email":"Yue_plus@foxmail.com","commits":1}]},"filePathRelative":"serve/VM/Hyper-V/README.md"}');export{e as data};

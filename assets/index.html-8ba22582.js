@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-7b847b9e","path":"/serve/CentOS/NFS/","title":"NFS（网络文件系统）","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1689658961000,"contributors":[{"name":"Yue_plus","email":"Yue_plus@foxmail.com","commits":1}]},"filePathRelative":"serve/CentOS/NFS/README.md"}');export{e as data};

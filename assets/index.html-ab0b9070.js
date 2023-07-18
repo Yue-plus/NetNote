@@ -1,0 +1,1 @@
+import{_ as t,o as a,c as n,a as e,b as s}from"./app-ab31641a.js";const c={},o=e("h1",{id:"nfs-网络文件系统",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#nfs-网络文件系统","aria-hidden":"true"},"#"),s(" NFS（网络文件系统）")],-1),r=[o];function _(d,i){return a(),n("div",null,r)}const h=t(c,[["render",_],["__file","index.html.vue"]]);export{h as default};

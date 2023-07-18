@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-01e7faf0","path":"/serve/CentOS/Pacemaker/","title":"Pacemaker 集群管理","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1689658961000,"contributors":[{"name":"Yue_plus","email":"Yue_plus@foxmail.com","commits":1}]},"filePathRelative":"serve/CentOS/Pacemaker/README.md"}');export{e as data};

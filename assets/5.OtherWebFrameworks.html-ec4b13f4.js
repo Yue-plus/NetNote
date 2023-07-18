@@ -1,0 +1,1 @@
+import{_ as r,o as t,c as a,a as e,b as o}from"./app-ab31641a.js";const s={},_=e("h1",{id:"_5-其他-web-框架",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#_5-其他-web-框架","aria-hidden":"true"},"#"),o(" 5. 其他 Web 框架")],-1),c=[_];function n(d,h){return t(),a("div",null,c)}const l=r(s,[["render",n],["__file","5.OtherWebFrameworks.html.vue"]]);export{l as default};

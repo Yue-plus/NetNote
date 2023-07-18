@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-3d00b1ce","path":"/serve/WS/DHCP.html","title":"DHCP","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1689658961000,"contributors":[{"name":"Yue_plus","email":"Yue_plus@foxmail.com","commits":1}]},"filePathRelative":"serve/WS/DHCP.md"}');export{e as data};

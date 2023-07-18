@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.64">
+    <style>
+      :root {
+        --c-bg: #fff;
+      }
+      html.dark {
+        --c-bg: #22272e;
+      }
+      html, body {
+        background-color: var(--c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme');
+			const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
+				document.documentElement.classList.toggle('dark', true);
+			}
+    </script>
+    <link rel="icon" href="/img/logo.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#3eaf7c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="apple-touch-icon" href="/img/logo_192.png"><meta name="msapplication-TileImage" content="/img/logo_192.png"><meta name="msapplication-TileColor" content="#000000"><title>CentOS 基础 | NetNote</title><meta name="description" content="只要学不死，就往死里学！">
+    <link rel="preload" href="/assets/style-33589286.css" as="style"><link rel="stylesheet" href="/assets/style-33589286.css">
+    <link rel="modulepreload" href="/assets/app-ab31641a.js"><link rel="modulepreload" href="/assets/index.html-1e3b7458.js"><link rel="modulepreload" href="/assets/index.html-ef3bc624.js"><link rel="prefetch" href="/assets/index.html-9b196b7b.js" as="script"><link rel="prefetch" href="/assets/ToNext.html-b8df6659.js" as="script"><link rel="prefetch" href="/assets/GodotEngine.html-9a894f6e.js" as="script"><link rel="prefetch" href="/assets/UnrealEngine.html-34e9f548.js" as="script"><link rel="prefetch" href="/assets/minecraft.html-6f621e42.js" as="script"><link rel="prefetch" href="/assets/markdown.html-9df98d93.js" as="script"><link rel="prefetch" href="/assets/mermaid.html-f2cc98d5.js" as="script"><link rel="prefetch" href="/assets/start.html-252ab548.js" as="script"><link rel="prefetch" href="/assets/yaml.html-9b966aa3.js" as="script"><link rel="prefetch" href="/assets/index.html-88e25894.js" as="script"><link rel="prefetch" href="/assets/index.html-fa7a5261.js" as="script"><link rel="prefetch" href="/assets/index.html-7953a804.js" as="script"><link rel="prefetch" href="/assets/index.html-29a763e7.js" as="script"><link rel="prefetch" href="/assets/index.html-5384c5e9.js" as="script"><link rel="prefetch" href="/assets/index.html-e4a24752.js" as="script"><link rel="prefetch" href="/assets/index.html-9e28793a.js" as="script"><link rel="prefetch" href="/assets/index.html-bb382dd5.js" as="script"><link rel="prefetch" href="/assets/index.html-efe3d39c.js" as="script"><link rel="prefetch" href="/assets/index.html-cd72778f.js" as="script"><link rel="prefetch" href="/assets/index.html-2e6efdaa.js" as="script"><link rel="prefetch" href="/assets/index.html-ec933589.js" as="script"><link rel="prefetch" href="/assets/index.html-71bb90c5.js" as="script"><link rel="prefetch" href="/assets/index.html-af9b5639.js" as="script"><link rel="prefetch" href="/assets/index.html-d9931e6a.js" as="script"><link rel="prefetch" href="/assets/index.html-a9dc8130.js" as="script"><link rel="prefetch" href="/assets/index.html-ba72e264.js" as="script"><link rel="prefetch" href="/assets/index.html-3976644d.js" as="script"><link rel="prefetch" href="/assets/index.html-0751b9b1.js" as="script"><link rel="prefetch" href="/assets/DHCP.html-3b253a6e.js" as="script"><link rel="prefetch" href="/assets/index.html-e3a83e22.js" as="script"><link rel="prefetch" href="/assets/index.html-01d859e4.js" as="script"><link rel="prefetch" href="/assets/index.html-37dcac2c.js" as="script"><link rel="prefetch" href="/assets/index.html-7c0e919d.js" as="script"><link rel="prefetch" href="/assets/index.html-da423a61.js" as="script"><link rel="prefetch" href="/assets/index.html-93b1ce12.js" as="script"><link rel="prefetch" href="/assets/01-1_base.html-4fddfafb.js" as="script"><link rel="prefetch" href="/assets/01-2_FS.html-34cff972.js" as="script"><link rel="prefetch" href="/assets/01-3_cluster.html-68f9e443.js" as="script"><link rel="prefetch" href="/assets/02_interface.html-d0ca08d6.js" as="script"><link rel="prefetch" href="/assets/03-1_Vlan.html-27dfa178.js" as="script"><link rel="prefetch" href="/assets/03-2_MAC.html-e0e4f1f1.js" as="script"><link rel="prefetch" href="/assets/04_MSTP.html-be9945b2.js" as="script"><link rel="prefetch" href="/assets/07_DHCP.html-4d192631.js" as="script"><link rel="prefetch" href="/assets/08-1_routing-strategy.html-fef6d998.js" as="script"><link rel="prefetch" href="/assets/08-2_static-routing.html-cf904434.js" as="script"><link rel="prefetch" href="/assets/08-3_RIP.html-9f760711.js" as="script"><link rel="prefetch" href="/assets/08-4_RIPng.html-db6e8868.js" as="script"><link rel="prefetch" href="/assets/14-1.html-15013d1a.js" as="script"><link rel="prefetch" href="/assets/14-2.html-10ab31d5.js" as="script"><link rel="prefetch" href="/assets/14-3.html-bc89e8f0.js" as="script"><link rel="prefetch" href="/assets/14-4.html-f167677e.js" as="script"><link rel="prefetch" href="/assets/15-1command.html-d95be811.js" as="script"><link rel="prefetch" href="/assets/15-2monitor.html-fbca2954.js" as="script"><link rel="prefetch" href="/assets/16-1_VSF-base.html-9167d7f0.js" as="script"><link rel="prefetch" href="/assets/16-2_VSF-MAD.html-f88ffa0c.js" as="script"><link rel="prefetch" href="/assets/16-3_VSF-debug.html-93a7505e.js" as="script"><link rel="prefetch" href="/assets/17_info-center.html-0dcad6c9.js" as="script"><link rel="prefetch" href="/assets/index.html-9fc9ecd9.js" as="script"><link rel="prefetch" href="/assets/07_DHCP.html-31ce1b98.js" as="script"><link rel="prefetch" href="/assets/index.html-a168ed26.js" as="script"><link rel="prefetch" href="/assets/index.html-a424c46a.js" as="script"><link rel="prefetch" href="/assets/index.html-0c111240.js" as="script"><link rel="prefetch" href="/assets/index.html-8df37153.js" as="script"><link rel="prefetch" href="/assets/Dovecot.html-623c4166.js" as="script"><link rel="prefetch" href="/assets/Postfix.html-30e3d942.js" as="script"><link rel="prefetch" href="/assets/index.html-b533a9ae.js" as="script"><link rel="prefetch" href="/assets/index.html-9db9823f.js" as="script"><link rel="prefetch" href="/assets/index.html-8ba22582.js" as="script"><link rel="prefetch" href="/assets/index.html-563f2e24.js" as="script"><link rel="prefetch" href="/assets/index.html-1c0f44d3.js" as="script"><link rel="prefetch" href="/assets/index.html-6522f8eb.js" as="script"><link rel="prefetch" href="/assets/index.html-3afef32c.js" as="script"><link rel="prefetch" href="/assets/index.html-05fe0b72.js" as="script"><link rel="prefetch" href="/assets/index.html-8a56bd6d.js" as="script"><link rel="prefetch" href="/assets/index.html-88f977db.js" as="script"><link rel="prefetch" href="/assets/index.html-abaad6fb.js" as="script"><link rel="prefetch" href="/assets/index.html-31a1ce51.js" as="script"><link rel="prefetch" href="/assets/index.html-e6b304b5.js" as="script"><link rel="prefetch" href="/assets/index.html-ba08a94b.js" as="script"><link rel="prefetch" href="/assets/index.html-11d8d541.js" as="script"><link rel="prefetch" href="/assets/index.html-274aa4b8.js" as="script"><link rel="prefetch" href="/assets/index.html-eed71f56.js" as="script"><link rel="prefetch" href="/assets/index.html-0ae961a0.js" as="script"><link rel="prefetch" href="/assets/index.html-ca8c481f.js" as="script"><link rel="prefetch" href="/assets/index.html-38fb9575.js" as="script"><link rel="prefetch" href="/assets/index.html-93bd11c8.js" as="script"><link rel="prefetch" href="/assets/index.html-3e6a9a1c.js" as="script"><link rel="prefetch" href="/assets/index.html-6d3cd544.js" as="script"><link rel="prefetch" href="/assets/index.html-72b25d91.js" as="script"><link rel="prefetch" href="/assets/index.html-f73ae8e7.js" as="script"><link rel="prefetch" href="/assets/index.html-af9fc765.js" as="script"><link rel="prefetch" href="/assets/index.html-70fc1d1f.js" as="script"><link rel="prefetch" href="/assets/index.html-24783205.js" as="script"><link rel="prefetch" href="/assets/index.html-66d01f16.js" as="script"><link rel="prefetch" href="/assets/1.SpringWebMVC.html-6f52fd0a.js" as="script"><link rel="prefetch" href="/assets/2.REST_Clients.html-b0f1e74d.js" as="script"><link rel="prefetch" href="/assets/3.Testing.html-8e0b39ec.js" as="script"><link rel="prefetch" href="/assets/4.WebSockets.html-05afc867.js" as="script"><link rel="prefetch" href="/assets/5.OtherWebFrameworks.html-e9b8e5b8.js" as="script"><link rel="prefetch" href="/assets/404.html-f9875e7b.js" as="script"><link rel="prefetch" href="/assets/index.html-48b184cd.js" as="script"><link rel="prefetch" href="/assets/ToNext.html-269ca1ec.js" as="script"><link rel="prefetch" href="/assets/GodotEngine.html-fa2f261a.js" as="script"><link rel="prefetch" href="/assets/UnrealEngine.html-7d56e1ba.js" as="script"><link rel="prefetch" href="/assets/minecraft.html-621ccf6b.js" as="script"><link rel="prefetch" href="/assets/markdown.html-7e4dc03c.js" as="script"><link rel="prefetch" href="/assets/mermaid.html-74f12d1d.js" as="script"><link rel="prefetch" href="/assets/start.html-fe73bc31.js" as="script"><link rel="prefetch" href="/assets/yaml.html-5293f1dd.js" as="script"><link rel="prefetch" href="/assets/index.html-eec927f9.js" as="script"><link rel="prefetch" href="/assets/index.html-21039be0.js" as="script"><link rel="prefetch" href="/assets/index.html-6401ae47.js" as="script"><link rel="prefetch" href="/assets/index.html-dd37d8ea.js" as="script"><link rel="prefetch" href="/assets/index.html-de288b28.js" as="script"><link rel="prefetch" href="/assets/index.html-9b682313.js" as="script"><link rel="prefetch" href="/assets/index.html-d3825a1f.js" as="script"><link rel="prefetch" href="/assets/index.html-5833b1b9.js" as="script"><link rel="prefetch" href="/assets/index.html-9910f653.js" as="script"><link rel="prefetch" href="/assets/index.html-0b5e1185.js" as="script"><link rel="prefetch" href="/assets/index.html-b6f111c5.js" as="script"><link rel="prefetch" href="/assets/index.html-ec2d6e8c.js" as="script"><link rel="prefetch" href="/assets/index.html-4e5f493d.js" as="script"><link rel="prefetch" href="/assets/index.html-5c53bf59.js" as="script"><link rel="prefetch" href="/assets/index.html-f4933629.js" as="script"><link rel="prefetch" href="/assets/index.html-92bb06ac.js" as="script"><link rel="prefetch" href="/assets/index.html-82ab8e3b.js" as="script"><link rel="prefetch" href="/assets/index.html-ff4923d6.js" as="script"><link rel="prefetch" href="/assets/index.html-d14bbeea.js" as="script"><link rel="prefetch" href="/assets/DHCP.html-8f1442cb.js" as="script"><link rel="prefetch" href="/assets/index.html-3ac38b12.js" as="script"><link rel="prefetch" href="/assets/index.html-4e5a9cb9.js" as="script"><link rel="prefetch" href="/assets/index.html-4d3ecc2d.js" as="script"><link rel="prefetch" href="/assets/index.html-28ba42f8.js" as="script"><link rel="prefetch" href="/assets/index.html-b6b9a00e.js" as="script"><link rel="prefetch" href="/assets/index.html-d92adf89.js" as="script"><link rel="prefetch" href="/assets/01-1_base.html-d6235140.js" as="script"><link rel="prefetch" href="/assets/01-2_FS.html-241d6e2a.js" as="script"><link rel="prefetch" href="/assets/01-3_cluster.html-7f2cc86e.js" as="script"><link rel="prefetch" href="/assets/02_interface.html-b2925e40.js" as="script"><link rel="prefetch" href="/assets/03-1_Vlan.html-af7ad2ce.js" as="script"><link rel="prefetch" href="/assets/03-2_MAC.html-6a01f5e6.js" as="script"><link rel="prefetch" href="/assets/04_MSTP.html-c47f84a1.js" as="script"><link rel="prefetch" href="/assets/07_DHCP.html-7db1b8f1.js" as="script"><link rel="prefetch" href="/assets/08-1_routing-strategy.html-1124f2dd.js" as="script"><link rel="prefetch" href="/assets/08-2_static-routing.html-d0f1e98d.js" as="script"><link rel="prefetch" href="/assets/08-3_RIP.html-12acc2ae.js" as="script"><link rel="prefetch" href="/assets/08-4_RIPng.html-90704126.js" as="script"><link rel="prefetch" href="/assets/14-1.html-1fd32136.js" as="script"><link rel="prefetch" href="/assets/14-2.html-e22020de.js" as="script"><link rel="prefetch" href="/assets/14-3.html-1cc92be4.js" as="script"><link rel="prefetch" href="/assets/14-4.html-08fc71f3.js" as="script"><link rel="prefetch" href="/assets/15-1command.html-2d944ca6.js" as="script"><link rel="prefetch" href="/assets/15-2monitor.html-1711693c.js" as="script"><link rel="prefetch" href="/assets/16-1_VSF-base.html-dd905168.js" as="script"><link rel="prefetch" href="/assets/16-2_VSF-MAD.html-e7da960d.js" as="script"><link rel="prefetch" href="/assets/16-3_VSF-debug.html-584d3e5f.js" as="script"><link rel="prefetch" href="/assets/17_info-center.html-6620e982.js" as="script"><link rel="prefetch" href="/assets/index.html-daf102d1.js" as="script"><link rel="prefetch" href="/assets/07_DHCP.html-40e0791b.js" as="script"><link rel="prefetch" href="/assets/index.html-06dbecae.js" as="script"><link rel="prefetch" href="/assets/index.html-2f7a1586.js" as="script"><link rel="prefetch" href="/assets/index.html-8c05dee2.js" as="script"><link rel="prefetch" href="/assets/index.html-f9c9b2dd.js" as="script"><link rel="prefetch" href="/assets/Dovecot.html-9a1161c7.js" as="script"><link rel="prefetch" href="/assets/Postfix.html-2f80dcd2.js" as="script"><link rel="prefetch" href="/assets/index.html-3c06c89e.js" as="script"><link rel="prefetch" href="/assets/index.html-f08bb892.js" as="script"><link rel="prefetch" href="/assets/index.html-ab0b9070.js" as="script"><link rel="prefetch" href="/assets/index.html-791d0442.js" as="script"><link rel="prefetch" href="/assets/index.html-aa32ed78.js" as="script"><link rel="prefetch" href="/assets/index.html-3a7db2cb.js" as="script"><link rel="prefetch" href="/assets/index.html-525f4b49.js" as="script"><link rel="prefetch" href="/assets/index.html-70af7ba6.js" as="script"><link rel="prefetch" href="/assets/index.html-392c71bd.js" as="script"><link rel="prefetch" href="/assets/index.html-89563614.js" as="script"><link rel="prefetch" href="/assets/index.html-1e8060ad.js" as="script"><link rel="prefetch" href="/assets/index.html-85e59cf2.js" as="script"><link rel="prefetch" href="/assets/index.html-0da5f7c8.js" as="script"><link rel="prefetch" href="/assets/index.html-90fc5ca1.js" as="script"><link rel="prefetch" href="/assets/index.html-0189d8c7.js" as="script"><link rel="prefetch" href="/assets/index.html-581d498a.js" as="script"><link rel="prefetch" href="/assets/index.html-d8b64403.js" as="script"><link rel="prefetch" href="/assets/index.html-e86caf3e.js" as="script"><link rel="prefetch" href="/assets/index.html-cb8e0b5e.js" as="script"><link rel="prefetch" href="/assets/index.html-8b8f88ec.js" as="script"><link rel="prefetch" href="/assets/index.html-9e021684.js" as="script"><link rel="prefetch" href="/assets/index.html-b8230c9f.js" as="script"><link rel="prefetch" href="/assets/index.html-bc9ce7ba.js" as="script"><link rel="prefetch" href="/assets/index.html-f552d008.js" as="script"><link rel="prefetch" href="/assets/index.html-c3927a5b.js" as="script"><link rel="prefetch" href="/assets/index.html-5dfde15e.js" as="script"><link rel="prefetch" href="/assets/index.html-fb365cd2.js" as="script"><link rel="prefetch" href="/assets/index.html-1fe37de8.js" as="script"><link rel="prefetch" href="/assets/index.html-01560ea1.js" as="script"><link rel="prefetch" href="/assets/1.SpringWebMVC.html-dfdcc26b.js" as="script"><link rel="prefetch" href="/assets/2.REST_Clients.html-e60cfbee.js" as="script"><link rel="prefetch" href="/assets/3.Testing.html-4c06b832.js" as="script"><link rel="prefetch" href="/assets/4.WebSockets.html-942cfe5d.js" as="script"><link rel="prefetch" href="/assets/5.OtherWebFrameworks.html-ec4b13f4.js" as="script"><link rel="prefetch" href="/assets/404.html-a69de4ed.js" as="script"><link rel="prefetch" href="/assets/index-e32a7948.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><span class="site-name">NetNote</span></a></span><div class="navbar-items-wrapper" style=""><!--[--><!--]--><nav class="navbar-items can-hide"><!--[--><div class="navbar-item"><a href="/ToNext.html" class="" aria-label="致下一届"><!--[--><!--]--> 致下一届 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="起步"><span class="title">起步</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="起步"><span class="title">起步</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/start/start.html" class="" aria-label="开始项目"><!--[--><!--]--> 开始项目 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/use_GitHub/" class="" aria-label="GitHub 使用方法"><!--[--><!--]--> GitHub 使用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/use_VScode/" class="" aria-label="VScode 使用方法"><!--[--><!--]--> VScode 使用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/use_IDEA/" class="" aria-label="IDEA 使用方法"><!--[--><!--]--> IDEA 使用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/markdown.html" class="" aria-label="Markdown 语法"><!--[--><!--]--> Markdown 语法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/mermaid.html" class="" aria-label="mermaid 语法"><!--[--><!--]--> mermaid 语法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/yaml.html" class="" aria-label="YAML 语法"><!--[--><!--]--> YAML 语法 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://math.note.yue.zone/" rel="noopener noreferrer" target="_blank" aria-label="数学"><!--[--><!--]--> 数学 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="游戏"><span class="title">游戏</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="游戏"><span class="title">游戏</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/game/minecraft.html" class="" aria-label="Minecraft"><!--[--><!--]--> Minecraft <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://jvtc.yue.zone/docs/开发/游戏/Unity/" rel="noopener noreferrer" target="_blank" aria-label="Unity"><!--[--><!--]--> Unity <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/game/UnrealEngine.html" class="" aria-label="UnrealEngine 虚幻引擎"><!--[--><!--]--> UnrealEngine 虚幻引擎 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/game/GodotEngine.html" class="" aria-label="GodotEngine"><!--[--><!--]--> GodotEngine <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="编程"><span class="title">编程</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="编程"><span class="title">编程</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/coding/Web/" class="" aria-label="Web 前端"><!--[--><!--]--> Web 前端 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/WS/PS/" class="" aria-label="Power Shell"><!--[--><!--]--> Power Shell <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Python/" class="" aria-label="Python"><!--[--><!--]--> Python <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Java/" class="" aria-label="Java"><!--[--><!--]--> Java <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Spring/" class="" aria-label="Spring Projects"><!--[--><!--]--> Spring Projects <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/MariaDB/" class="" aria-label="MariaDB"><!--[--><!--]--> MariaDB <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://jvtc.yue.zone/docs/开发/环境/PostgreSQL/" rel="noopener noreferrer" target="_blank" aria-label="PostgreSQL"><!--[--><!--]--> PostgreSQL <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Redis/" class="" aria-label="Redis"><!--[--><!--]--> Redis <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/RabbitMQ/" class="" aria-label="RabbitMQ"><!--[--><!--]--> RabbitMQ <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Docker/" class="" aria-label="Docker"><!--[--><!--]--> Docker <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="网络搭建"><span class="title">网络搭建</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="网络搭建"><span class="title">网络搭建</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/net/00-Abbreviation/" class="" aria-label="缩略语速查"><!--[--><!--]--> 缩略语速查 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/01-base/" class="" aria-label="网络基础"><!--[--><!--]--> 网络基础 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/switch/" class="" aria-label="交换机配置"><!--[--><!--]--> 交换机配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/router/" class="" aria-label="路由器配置"><!--[--><!--]--> 路由器配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/acap/" class="" aria-label="AC/AP 配置"><!--[--><!--]--> AC/AP 配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/security/" class="" aria-label="网络安全策略"><!--[--><!--]--> 网络安全策略 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/wan/" class="" aria-label="广域网基础"><!--[--><!--]--> 广域网基础 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>参考手册</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/net/manual/operate/" class="" aria-label="操作手册"><!--[--><!--]--> 操作手册 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/net/manual/command/" class="" aria-label="命令手册"><!--[--><!--]--> 命令手册 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>思科模拟器</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a class="external-link" href="https://cisco-packet-tracer-help.yue.zone/Simplified%20Chinese/" rel="noopener noreferrer" target="_blank" aria-label="Cisco Packet Tracer Help"><!--[--><!--]--> Cisco Packet Tracer Help <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a class="external-link" href="https://github.com/Yue-plus/cisco_packet_tracer_help" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="网络安全"><span class="title">网络安全</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="网络安全"><span class="title">网络安全</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="http://www.cac.gov.cn/2016-11/07/c_1119867116.htm" rel="noopener noreferrer" target="_blank" aria-label="中华人民共和国网络安全法"><!--[--><!--]--> 中华人民共和国网络安全法 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/hack/base/" class="" aria-label="获取工具"><!--[--><!--]--> 获取工具 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="系统服务"><span class="title">系统服务</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="系统服务"><span class="title">系统服务</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/serve/base/" class="" aria-label="基本操作"><!--[--><!--]--> 基本操作 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/VM/" class="" aria-label="云平台与虚拟机"><!--[--><!--]--> 云平台与虚拟机 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/WS/" class="" aria-label="Windows Server"><!--[--><!--]--> Windows Server <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/CentOS/" class="router-link-active" aria-label="CentOS"><!--[--><!--]--> CentOS <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/Ubuntu/" class="" aria-label="Ubuntu"><!--[--><!--]--> Ubuntu <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://gitee.com/yue_plus/NetNote" rel="noopener noreferrer" target="_blank" aria-label="Gitee"><!--[--><!--]--> Gitee <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/Yue-plus/NetNote" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-color-mode-button" title="toggle color mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="搜索" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-items"><!--[--><div class="navbar-item"><a href="/ToNext.html" class="" aria-label="致下一届"><!--[--><!--]--> 致下一届 <!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="起步"><span class="title">起步</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="起步"><span class="title">起步</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/start/start.html" class="" aria-label="开始项目"><!--[--><!--]--> 开始项目 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/use_GitHub/" class="" aria-label="GitHub 使用方法"><!--[--><!--]--> GitHub 使用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/use_VScode/" class="" aria-label="VScode 使用方法"><!--[--><!--]--> VScode 使用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/use_IDEA/" class="" aria-label="IDEA 使用方法"><!--[--><!--]--> IDEA 使用方法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/markdown.html" class="" aria-label="Markdown 语法"><!--[--><!--]--> Markdown 语法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/mermaid.html" class="" aria-label="mermaid 语法"><!--[--><!--]--> mermaid 语法 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/start/yaml.html" class="" aria-label="YAML 语法"><!--[--><!--]--> YAML 语法 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://math.note.yue.zone/" rel="noopener noreferrer" target="_blank" aria-label="数学"><!--[--><!--]--> 数学 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="游戏"><span class="title">游戏</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="游戏"><span class="title">游戏</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/game/minecraft.html" class="" aria-label="Minecraft"><!--[--><!--]--> Minecraft <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://jvtc.yue.zone/docs/开发/游戏/Unity/" rel="noopener noreferrer" target="_blank" aria-label="Unity"><!--[--><!--]--> Unity <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/game/UnrealEngine.html" class="" aria-label="UnrealEngine 虚幻引擎"><!--[--><!--]--> UnrealEngine 虚幻引擎 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/game/GodotEngine.html" class="" aria-label="GodotEngine"><!--[--><!--]--> GodotEngine <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="编程"><span class="title">编程</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="编程"><span class="title">编程</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/coding/Web/" class="" aria-label="Web 前端"><!--[--><!--]--> Web 前端 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/WS/PS/" class="" aria-label="Power Shell"><!--[--><!--]--> Power Shell <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Python/" class="" aria-label="Python"><!--[--><!--]--> Python <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Java/" class="" aria-label="Java"><!--[--><!--]--> Java <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Spring/" class="" aria-label="Spring Projects"><!--[--><!--]--> Spring Projects <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/MariaDB/" class="" aria-label="MariaDB"><!--[--><!--]--> MariaDB <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a class="external-link" href="https://jvtc.yue.zone/docs/开发/环境/PostgreSQL/" rel="noopener noreferrer" target="_blank" aria-label="PostgreSQL"><!--[--><!--]--> PostgreSQL <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Redis/" class="" aria-label="Redis"><!--[--><!--]--> Redis <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/RabbitMQ/" class="" aria-label="RabbitMQ"><!--[--><!--]--> RabbitMQ <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/coding/Docker/" class="" aria-label="Docker"><!--[--><!--]--> Docker <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="网络搭建"><span class="title">网络搭建</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="网络搭建"><span class="title">网络搭建</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/net/00-Abbreviation/" class="" aria-label="缩略语速查"><!--[--><!--]--> 缩略语速查 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/01-base/" class="" aria-label="网络基础"><!--[--><!--]--> 网络基础 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/switch/" class="" aria-label="交换机配置"><!--[--><!--]--> 交换机配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/router/" class="" aria-label="路由器配置"><!--[--><!--]--> 路由器配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/acap/" class="" aria-label="AC/AP 配置"><!--[--><!--]--> AC/AP 配置 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/security/" class="" aria-label="网络安全策略"><!--[--><!--]--> 网络安全策略 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/net/wan/" class="" aria-label="广域网基础"><!--[--><!--]--> 广域网基础 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>参考手册</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a href="/net/manual/operate/" class="" aria-label="操作手册"><!--[--><!--]--> 操作手册 <!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a href="/net/manual/command/" class="" aria-label="命令手册"><!--[--><!--]--> 命令手册 <!--[--><!--]--></a></li><!--]--></ul><!--]--></li><li class="navbar-dropdown-item"><!--[--><h4 class="navbar-dropdown-subtitle"><span>思科模拟器</span></h4><ul class="navbar-dropdown-subitem-wrapper"><!--[--><li class="navbar-dropdown-subitem"><a class="external-link" href="https://cisco-packet-tracer-help.yue.zone/Simplified%20Chinese/" rel="noopener noreferrer" target="_blank" aria-label="Cisco Packet Tracer Help"><!--[--><!--]--> Cisco Packet Tracer Help <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-subitem"><a class="external-link" href="https://github.com/Yue-plus/cisco_packet_tracer_help" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><!--]--></ul><!--]--></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="网络安全"><span class="title">网络安全</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="网络安全"><span class="title">网络安全</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a class="external-link" href="http://www.cac.gov.cn/2016-11/07/c_1119867116.htm" rel="noopener noreferrer" target="_blank" aria-label="中华人民共和国网络安全法"><!--[--><!--]--> 中华人民共和国网络安全法 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/hack/base/" class="" aria-label="获取工具"><!--[--><!--]--> 获取工具 <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><div class="navbar-dropdown-wrapper"><button class="navbar-dropdown-title" type="button" aria-label="系统服务"><span class="title">系统服务</span><span class="arrow down"></span></button><button class="navbar-dropdown-title-mobile" type="button" aria-label="系统服务"><span class="title">系统服务</span><span class="right arrow"></span></button><ul style="display:none;" class="navbar-dropdown"><!--[--><li class="navbar-dropdown-item"><a href="/serve/base/" class="" aria-label="基本操作"><!--[--><!--]--> 基本操作 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/VM/" class="" aria-label="云平台与虚拟机"><!--[--><!--]--> 云平台与虚拟机 <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/WS/" class="" aria-label="Windows Server"><!--[--><!--]--> Windows Server <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/CentOS/" class="router-link-active" aria-label="CentOS"><!--[--><!--]--> CentOS <!--[--><!--]--></a></li><li class="navbar-dropdown-item"><a href="/serve/Ubuntu/" class="" aria-label="Ubuntu"><!--[--><!--]--> Ubuntu <!--[--><!--]--></a></li><!--]--></ul></div></div><div class="navbar-item"><a class="external-link" href="https://gitee.com/yue_plus/NetNote" rel="noopener noreferrer" target="_blank" aria-label="Gitee"><!--[--><!--]--> Gitee <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="navbar-item"><a class="external-link" href="https://github.com/Yue-plus/NetNote" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-items"><!--[--><li><p tabindex="0" class="sidebar-item sidebar-heading active">CentOS <!----></p><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/serve/CentOS/Base/" class="router-link-active router-link-exact-active router-link-active sidebar-item active" aria-label="CentOS 基础"><!--[--><!--]--> CentOS 基础 <!--[--><!--]--></a><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/serve/CentOS/Base/#挂载软件源镜像" class="router-link-active router-link-exact-active sidebar-item" aria-label="挂载软件源镜像"><!--[--><!--]--> 挂载软件源镜像 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#selinux" class="router-link-active router-link-exact-active sidebar-item" aria-label="SELinux"><!--[--><!--]--> SELinux <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#设置时区" class="router-link-active router-link-exact-active sidebar-item" aria-label="设置时区"><!--[--><!--]--> 设置时区 <!--[--><!--]--></a><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/serve/CentOS/Base/#示例" class="router-link-active router-link-exact-active sidebar-item" aria-label="示例"><!--[--><!--]--> 示例 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#所有时区" class="router-link-active router-link-exact-active sidebar-item" aria-label="所有时区"><!--[--><!--]--> 所有时区 <!--[--><!--]--></a><!----></li><!--]--></ul></li><li><a aria-current="page" href="/serve/CentOS/Base/#联网" class="router-link-active router-link-exact-active sidebar-item" aria-label="联网"><!--[--><!--]--> 联网 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#手动配置-ip-地址" class="router-link-active router-link-exact-active sidebar-item" aria-label="手动配置 IP 地址"><!--[--><!--]--> 手动配置 IP 地址 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#添加中文输入法" class="router-link-active router-link-exact-active sidebar-item" aria-label="添加中文输入法"><!--[--><!--]--> 添加中文输入法 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#centos-软件包安装流程示例" class="router-link-active router-link-exact-active sidebar-item" aria-label="CentOS 软件包安装流程示例"><!--[--><!--]--> CentOS 软件包安装流程示例 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#systemctl-命令" class="router-link-active router-link-exact-active sidebar-item" aria-label="systemctl 命令"><!--[--><!--]--> systemctl 命令 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#解决-selinux-报警" class="router-link-active router-link-exact-active sidebar-item" aria-label="解决 SELinux 报警"><!--[--><!--]--> 解决 SELinux 报警 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#smbclient-命令详解" class="router-link-active router-link-exact-active sidebar-item" aria-label="smbclient 命令详解"><!--[--><!--]--> smbclient 命令详解 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#计划任务" class="router-link-active router-link-exact-active sidebar-item" aria-label="计划任务"><!--[--><!--]--> 计划任务 <!--[--><!--]--></a><ul style="" class="sidebar-item-children"><!--[--><li><a aria-current="page" href="/serve/CentOS/Base/#使用-at-设置定时任务" class="router-link-active router-link-exact-active sidebar-item" aria-label="使用 at 设置定时任务"><!--[--><!--]--> 使用 at 设置定时任务 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#使用-crontab-计划任务" class="router-link-active router-link-exact-active sidebar-item" aria-label="使用 crontab 计划任务"><!--[--><!--]--> 使用 crontab 计划任务 <!--[--><!--]--></a><!----></li><!--]--></ul></li><li><a aria-current="page" href="/serve/CentOS/Base/#linux-安装" class="router-link-active router-link-exact-active sidebar-item" aria-label="Linux 安装"><!--[--><!--]--> Linux 安装 <!--[--><!--]--></a><!----></li><li><a aria-current="page" href="/serve/CentOS/Base/#vmware-虚拟机以及镜像安装" class="router-link-active router-link-exact-active sidebar-item" aria-label="VMware 虚拟机以及镜像安装"><!--[--><!--]--> VMware 虚拟机以及镜像安装 <!--[--><!--]--></a><!----></li><!--]--></ul></li><li><a href="/serve/CentOS/firewalld/" class="sidebar-item" aria-label="firewall（防火墙）"><!--[--><!--]--> firewall（防火墙） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/Unbound/" class="sidebar-item" aria-label="Unbound（DNS）"><!--[--><!--]--> Unbound（DNS） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/CA/" class="sidebar-item" aria-label="CA（证书颁发机构）"><!--[--><!--]--> CA（证书颁发机构） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/Chrony/" class="sidebar-item" aria-label="Chrony（时间同步）"><!--[--><!--]--> Chrony（时间同步） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/NFS/" class="sidebar-item" aria-label="NFS（网络文件系统）"><!--[--><!--]--> NFS（网络文件系统） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/MariaDB/" class="sidebar-item" aria-label="MariaDB（MySQL 数据库）"><!--[--><!--]--> MariaDB（MySQL 数据库） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/Apache/" class="sidebar-item" aria-label="Apache（Web 网站服务）"><!--[--><!--]--> Apache（Web 网站服务） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/Tomcat/" class="sidebar-item" aria-label="Tomcat（Java Web 服务）"><!--[--><!--]--> Tomcat（Java Web 服务） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/Samba/" class="sidebar-item" aria-label="Samba 服务"><!--[--><!--]--> Samba 服务 <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/NIS/" class="sidebar-item" aria-label="NIS（网络信息服务）"><!--[--><!--]--> NIS（网络信息服务） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/E-Mail/" class="sidebar-item" aria-label="E-Mail（电子邮件）"><!--[--><!--]--> E-Mail（电子邮件） <!--[--><!--]--></a><!----></li><li><a href="/serve/CentOS/Pacemaker/" class="sidebar-item" aria-label="Pacemaker 集群管理"><!--[--><!--]--> Pacemaker 集群管理 <!--[--><!--]--></a><!----></li><!--]--></ul></li><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><!--]--><div><h1 id="centos-基础" tabindex="-1"><a class="header-anchor" href="#centos-基础" aria-hidden="true">#</a> CentOS 基础</h1><p>本章教程使用 CentOS 6.5/7 系统。</p><p>相关链接：</p><ul><li><a href="https://www.centos.org/download/" target="_blank" rel="noopener noreferrer">CentOS 官网<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://www.runoob.com/linux/linux-tutorial.html" target="_blank" rel="noopener noreferrer">Linux 教程 | 菜鸟教程<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="http://linux.vbird.org/" target="_blank" rel="noopener noreferrer">鳥哥的 Linux 私房菜<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a><ul><li>至少看看到 <a href="http://linux.vbird.org/linux_basic/0320bash.php" target="_blank" rel="noopener noreferrer">第十章、認識與學習BASH<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li></ul></li><li><a href="https://www.w3cschool.cn/linuxprobe/" target="_blank" rel="noopener noreferrer">Linux 就该这么学_w3cschool<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li><li><a href="https://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener noreferrer">vi/vim 文本编辑器<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></li></ul><h2 id="挂载软件源镜像" tabindex="-1"><a class="header-anchor" href="#挂载软件源镜像" aria-hidden="true">#</a> 挂载软件源镜像</h2><p>创建挂载目录：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">mkdir</span> /mnt/iso
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>挂载 ISO 镜像：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">mount</span> <span class="token parameter variable">-t</span> iso9660 <span class="token parameter variable">-o</span> loop /opt/CentOS-7-x86_64-Everything-1503-01.iso /mnt/iso
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>配置软件源</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /etc/yum.repos.d
+<span class="token function">mv</span> CentOS-Base.repo CentOS-Base.repo.bak
+<span class="token function">vi</span> CentOS-Media.repo
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>编辑 <code>CentOS-Media.repo</code> 文件：</p><div class="language-diff line-numbers-mode" data-ext="diff"><pre class="language-diff"><code><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"># CentOS-Media.repo
+</span><span class="token prefix unchanged"> </span><span class="token line">#
+</span><span class="token prefix unchanged"> </span><span class="token line"># This repo is used to mount the default locations for a CDROM / DVD on
+</span><span class="token prefix unchanged"> </span><span class="token line">#  CentOS-6.  You can use this repo and yum to install items directly off the
+</span><span class="token prefix unchanged"> </span><span class="token line">#  DVD ISO that we release.
+</span><span class="token prefix unchanged"> </span><span class="token line">#
+</span><span class="token prefix unchanged"> </span><span class="token line"># To use this repo, put in your DVD and use it with the other repos too:
+</span><span class="token prefix unchanged"> </span><span class="token line">#  yum --enablerepo=c6-media [command]
+</span><span class="token prefix unchanged"> </span><span class="token line">#
+</span><span class="token prefix unchanged"> </span><span class="token line"># or for ONLY the media repo, do this:
+</span><span class="token prefix unchanged"> </span><span class="token line">#
+</span><span class="token prefix unchanged"> </span><span class="token line">#  yum --disablerepo=\* --enablerepo=c6-media [command]
+</span><span class="token prefix unchanged"> </span><span class="token line">
+</span><span class="token prefix unchanged"> </span><span class="token line">[c6-media]
+</span><span class="token prefix unchanged"> </span><span class="token line">name=CentOS-$releasever - Media
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">baseurl=file:///mnt/iso/
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">baseurl=file:///media/CentOS/
+</span><span class="token prefix deleted">-</span><span class="token line">        file:///media/cdrom/
+</span><span class="token prefix deleted">-</span><span class="token line">        file:///media/cdrecorder/
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">gpgcheck=0
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">gpgcheck=1
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">enabled=1
+</span></span><span class="token deleted-sign deleted"><span class="token prefix deleted">-</span><span class="token line">enabled=0
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+</span></span></code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>更新软件源：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>yum update
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h2 id="selinux" tabindex="-1"><a class="header-anchor" href="#selinux" aria-hidden="true">#</a> SELinux</h2><p>CentOS 中 SELinux 默认开启，可以使用以下指令查看状态：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@host-10-20-70-107 ~<span class="token punctuation">]</span><span class="token comment"># sestatus -v</span>
+SELinux status:                 enabled
+SELinuxfs mount:                /sys/fs/selinux
+SELinux root directory:         /etc/selinux
+Loaded policy name:             targeted
+Current mode:                   enforcing
+Mode from config file:          enforcing
+Policy MLS status:              enabled
+Policy deny_unknown status:     allowed
+Max kernel policy version:      <span class="token number">28</span>
+
+Process contexts:
+Current context:                unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+Init context:                   system_u:system_r:init_t:s0
+/usr/sbin/sshd                  system_u:system_r:sshd_t:s0-s0:c0.c1023
+
+File contexts:
+Controlling terminal:           unconfined_u:object_r:user_devpts_t:s0
+/etc/passwd                     system_u:object_r:passwd_file_t:s0
+/etc/shadow                     system_u:object_r:shadow_t:s0
+/bin/bash                       system_u:object_r:shell_exec_t:s0
+/bin/login                      system_u:object_r:login_exec_t:s0
+/bin/sh                         system_u:object_r:bin_t:s0 -<span class="token operator">&gt;</span> system_u:object_r:shell_exec_t:s0
+/sbin/agetty                    system_u:object_r:getty_exec_t:s0
+/sbin/init                      system_u:object_r:bin_t:s0 -<span class="token operator">&gt;</span> system_u:object_r:init_exec_t:s0
+/usr/sbin/sshd                  system_u:object_r:sshd_exec_t:s0
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="设置时区" tabindex="-1"><a class="header-anchor" href="#设置时区" aria-hidden="true">#</a> 设置时区</h2><p>CentOS 可以使用 <code>timedatectl</code> 指令设置时区。</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@host-10-20-70-107 ~<span class="token punctuation">]</span><span class="token comment"># timedatectl -h</span>
+timedatectl <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">..</span>.<span class="token punctuation">]</span> COMMAND <span class="token punctuation">..</span>.
+
+查询或更改系统时间和日期设置。
+
+  <span class="token parameter variable">-h</span> <span class="token parameter variable">--help</span>                显示当前帮助信息
+     <span class="token parameter variable">--version</span>             显示软件包版本
+     --no-pager            不要将输出通过管道传给寻呼机
+     --no-ask-password     不提示输入密码
+  <span class="token parameter variable">-H</span> <span class="token parameter variable">--host</span><span class="token operator">=</span><span class="token punctuation">[</span><span class="token environment constant">USER</span>@<span class="token punctuation">]</span>HOST    在远程主机上操作
+  <span class="token parameter variable">-M</span> <span class="token parameter variable">--machine</span><span class="token operator">=</span>CONTAINER   在本地容器上操作
+     --adjust-system-clock 更改本地 RTC 模式时调整系统时钟
+
+Commands:
+  status                   显示当前时间设置
+  set-time TIME            设置系统时间
+  set-timezone ZONE        设置系统时区
+  list-timezones           显示已知时区
+  set-local-rtc BOOL       控制 RTC 是否在当地时间
+  set-ntp BOOL             控制是否启用 NTP
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="示例" tabindex="-1"><a class="header-anchor" href="#示例" aria-hidden="true">#</a> 示例</h3><p>将时区设置为亚洲上海：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>timedatectl set-timezone Asia/Shanghai
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3 id="所有时区" tabindex="-1"><a class="header-anchor" href="#所有时区" aria-hidden="true">#</a> 所有时区</h3><details class="custom-container details"><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>Africa/Abidjan
+Africa/Accra
+Africa/Addis_Ababa
+Africa/Algiers
+Africa/Asmara
+Africa/Bamako
+Africa/Bangui
+Africa/Banjul
+Africa/Bissau
+Africa/Blantyre
+Africa/Brazzaville
+Africa/Bujumbura
+Africa/Cairo
+Africa/Casablanca
+Africa/Ceuta
+Africa/Conakry
+Africa/Dakar
+Africa/Dar_es_Salaam
+Africa/Djibouti
+Africa/Douala
+Africa/El_Aaiun
+Africa/Freetown
+Africa/Gaborone
+Africa/Harare
+Africa/Johannesburg
+Africa/Juba
+Africa/Kampala
+Africa/Khartoum
+Africa/Kigali
+Africa/Kinshasa
+Africa/Lagos
+Africa/Libreville
+Africa/Lome
+Africa/Luanda
+Africa/Lubumbashi
+Africa/Lusaka
+Africa/Malabo
+Africa/Maputo
+Africa/Maseru
+Africa/Mbabane
+Africa/Mogadishu
+Africa/Monrovia
+Africa/Nairobi
+Africa/Ndjamena
+Africa/Niamey
+Africa/Nouakchott
+Africa/Ouagadougou
+Africa/Porto-Novo
+Africa/Sao_Tome
+Africa/Tripoli
+Africa/Tunis
+Africa/Windhoek
+America/Adak
+America/Anchorage
+America/Anguilla
+America/Antigua
+America/Araguaina
+America/Argentina/Buenos_Aires
+America/Argentina/Catamarca
+America/Argentina/Cordoba
+America/Argentina/Jujuy
+America/Argentina/La_Rioja
+America/Argentina/Mendoza
+America/Argentina/Rio_Gallegos
+America/Argentina/Salta
+America/Argentina/San_Juan
+America/Argentina/San_Luis
+America/Argentina/Tucuman
+America/Argentina/Ushuaia
+America/Aruba
+America/Asuncion
+America/Atikokan
+America/Bahia
+America/Bahia_Banderas
+America/Barbados
+America/Belem
+America/Belize
+America/Blanc-Sablon
+America/Boa_Vista
+America/Bogota
+America/Boise
+America/Cambridge_Bay
+America/Campo_Grande
+America/Cancun
+America/Caracas
+America/Cayenne
+America/Cayman
+America/Chicago
+America/Chihuahua
+America/Costa_Rica
+America/Creston
+America/Cuiaba
+America/Curacao
+America/Danmarkshavn
+America/Dawson
+America/Dawson_Creek
+America/Denver
+America/Detroit
+America/Dominica
+America/Edmonton
+America/Eirunepe
+America/El_Salvador
+America/Fort_Nelson
+America/Fortaleza
+America/Glace_Bay
+America/Godthab
+America/Goose_Bay
+America/Grand_Turk
+America/Grenada
+America/Guadeloupe
+America/Guatemala
+America/Guayaquil
+America/Guyana
+America/Halifax
+America/Havana
+America/Hermosillo
+America/Indiana/Indianapolis
+America/Indiana/Knox
+America/Indiana/Marengo
+America/Indiana/Petersburg
+America/Indiana/Tell_City
+America/Indiana/Vevay
+America/Indiana/Vincennes
+America/Indiana/Winamac
+America/Inuvik
+America/Iqaluit
+America/Jamaica
+America/Juneau
+America/Kentucky/Louisville
+America/Kentucky/Monticello
+America/Kralendijk
+America/La_Paz
+America/Lima
+America/Los_Angeles
+America/Lower_Princes
+America/Maceio
+America/Managua
+America/Manaus
+America/Marigot
+America/Martinique
+America/Matamoros
+America/Mazatlan
+America/Menominee
+America/Merida
+America/Metlakatla
+America/Mexico_City
+America/Miquelon
+America/Moncton
+America/Monterrey
+America/Montevideo
+America/Montserrat
+America/Nassau
+America/New_York
+America/Nipigon
+America/Nome
+America/Noronha
+America/North_Dakota/Beulah
+America/North_Dakota/Center
+America/North_Dakota/New_Salem
+America/Ojinaga
+America/Panama
+America/Pangnirtung
+America/Paramaribo
+America/Phoenix
+America/Port-au-Prince
+America/Port_of_Spain
+America/Porto_Velho
+America/Puerto_Rico
+America/Punta_Arenas
+America/Rainy_River
+America/Rankin_Inlet
+America/Recife
+America/Regina
+America/Resolute
+America/Rio_Branco
+America/Santarem
+America/Santiago
+America/Santo_Domingo
+America/Sao_Paulo
+America/Scoresbysund
+America/Sitka
+America/St_Barthelemy
+America/St_Johns
+America/St_Kitts
+America/St_Lucia
+America/St_Thomas
+America/St_Vincent
+America/Swift_Current
+America/Tegucigalpa
+America/Thule
+America/Thunder_Bay
+America/Tijuana
+America/Toronto
+America/Tortola
+America/Vancouver
+America/Whitehorse
+America/Winnipeg
+America/Yakutat
+America/Yellowknife
+Antarctica/Casey
+Antarctica/Davis
+Antarctica/DumontDUrville
+Antarctica/Macquarie
+Antarctica/Mawson
+Antarctica/McMurdo
+Antarctica/Palmer
+Antarctica/Rothera
+Antarctica/Syowa
+Antarctica/Troll
+Antarctica/Vostok
+Arctic/Longyearbyen
+Asia/Aden
+Asia/Almaty
+Asia/Amman
+Asia/Anadyr
+Asia/Aqtau
+Asia/Aqtobe
+Asia/Ashgabat
+Asia/Atyrau
+Asia/Baghdad
+Asia/Bahrain
+Asia/Baku
+Asia/Bangkok
+Asia/Barnaul
+Asia/Beirut
+Asia/Bishkek
+Asia/Brunei
+Asia/Chita
+Asia/Choibalsan
+Asia/Colombo
+Asia/Damascus
+Asia/Dhaka
+Asia/Dili
+Asia/Dubai
+Asia/Dushanbe
+Asia/Famagusta
+Asia/Gaza
+Asia/Hebron
+Asia/Ho_Chi_Minh
+Asia/Hong_Kong
+Asia/Hovd
+Asia/Irkutsk
+Asia/Jakarta
+Asia/Jayapura
+Asia/Jerusalem
+Asia/Kabul
+Asia/Kamchatka
+Asia/Karachi
+Asia/Kathmandu
+Asia/Khandyga
+Asia/Kolkata
+Asia/Krasnoyarsk
+Asia/Kuala_Lumpur
+Asia/Kuching
+Asia/Kuwait
+Asia/Macau
+Asia/Magadan
+Asia/Makassar
+Asia/Manila
+Asia/Muscat
+Asia/Nicosia
+Asia/Novokuznetsk
+Asia/Novosibirsk
+Asia/Omsk
+Asia/Oral
+Asia/Phnom_Penh
+Asia/Pontianak
+Asia/Pyongyang
+Asia/Qatar
+Asia/Qyzylorda
+Asia/Riyadh
+Asia/Sakhalin
+Asia/Samarkand
+Asia/Seoul
+Asia/Shanghai
+Asia/Singapore
+Asia/Srednekolymsk
+Asia/Taipei
+Asia/Tashkent
+Asia/Tbilisi
+Asia/Tehran
+Asia/Thimphu
+Asia/Tokyo
+Asia/Tomsk
+Asia/Ulaanbaatar
+Asia/Urumqi
+Asia/Ust-Nera
+Asia/Vientiane
+Asia/Vladivostok
+Asia/Yakutsk
+Asia/Yangon
+Asia/Yekaterinburg
+Asia/Yerevan
+Atlantic/Azores
+Atlantic/Bermuda
+Atlantic/Canary
+Atlantic/Cape_Verde
+Atlantic/Faroe
+Atlantic/Madeira
+Atlantic/Reykjavik
+Atlantic/South_Georgia
+Atlantic/St_Helena
+Atlantic/Stanley
+Australia/Adelaide
+Australia/Brisbane
+Australia/Broken_Hill
+Australia/Currie
+Australia/Darwin
+Australia/Eucla
+Australia/Hobart
+Australia/Lindeman
+Australia/Lord_Howe
+Australia/Melbourne
+Australia/Perth
+Australia/Sydney
+Europe/Amsterdam
+Europe/Andorra
+Europe/Astrakhan
+Europe/Athens
+Europe/Belgrade
+Europe/Berlin
+Europe/Bratislava
+Europe/Brussels
+Europe/Bucharest
+Europe/Budapest
+Europe/Busingen
+Europe/Chisinau
+Europe/Copenhagen
+Europe/Dublin
+Europe/Gibraltar
+Europe/Guernsey
+Europe/Helsinki
+Europe/Isle_of_Man
+Europe/Istanbul
+Europe/Jersey
+Europe/Kaliningrad
+Europe/Kiev
+Europe/Kirov
+Europe/Lisbon
+Europe/Ljubljana
+Europe/London
+Europe/Luxembourg
+Europe/Madrid
+Europe/Malta
+Europe/Mariehamn
+Europe/Minsk
+Europe/Monaco
+Europe/Moscow
+Europe/Oslo
+Europe/Paris
+Europe/Podgorica
+Europe/Prague
+Europe/Riga
+Europe/Rome
+Europe/Samara
+Europe/San_Marino
+Europe/Sarajevo
+Europe/Saratov
+Europe/Simferopol
+Europe/Skopje
+Europe/Sofia
+Europe/Stockholm
+Europe/Tallinn
+Europe/Tirane
+Europe/Ulyanovsk
+Europe/Uzhgorod
+Europe/Vaduz
+Europe/Vatican
+Europe/Vienna
+Europe/Vilnius
+Europe/Volgograd
+Europe/Warsaw
+Europe/Zagreb
+Europe/Zaporozhye
+Europe/Zurich
+Indian/Antananarivo
+Indian/Chagos
+Indian/Christmas
+Indian/Cocos
+Indian/Comoro
+Indian/Kerguelen
+Indian/Mahe
+Indian/Maldives
+Indian/Mauritius
+Indian/Mayotte
+Indian/Reunion
+Pacific/Apia
+Pacific/Auckland
+Pacific/Bougainville
+Pacific/Chatham
+Pacific/Chuuk
+Pacific/Easter
+Pacific/Efate
+Pacific/Enderbury
+Pacific/Fakaofo
+Pacific/Fiji
+Pacific/Funafuti
+Pacific/Galapagos
+Pacific/Gambier
+Pacific/Guadalcanal
+Pacific/Guam
+Pacific/Honolulu
+Pacific/Kiritimati
+Pacific/Kosrae
+Pacific/Kwajalein
+Pacific/Majuro
+Pacific/Marquesas
+Pacific/Midway
+Pacific/Nauru
+Pacific/Niue
+Pacific/Norfolk
+Pacific/Noumea
+Pacific/Pago_Pago
+Pacific/Palau
+Pacific/Pitcairn
+Pacific/Pohnpei
+Pacific/Port_Moresby
+Pacific/Rarotonga
+Pacific/Saipan
+Pacific/Tahiti
+Pacific/Tarawa
+Pacific/Tongatapu
+Pacific/Wake
+Pacific/Wallis
+UTC
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details><!--
+## 常用指令
+
+### cd
+
+```bash
+cd <目标目录>
+```
+
+目标目录可以是 绝对路径 或 相对路径 
+
+### mv
+
+```bash
+mv <原始目录> <目标目录>
+```
+--><h2 id="联网" tabindex="-1"><a class="header-anchor" href="#联网" aria-hidden="true">#</a> 联网</h2><p>点击右上角电源键处打开网络连接：</p><p><img src="/assets/image-20200829152047933-cac443be.png" alt="image-20200829152047933"></p><h2 id="手动配置-ip-地址" tabindex="-1"><a class="header-anchor" href="#手动配置-ip-地址" aria-hidden="true">#</a> 手动配置 IP 地址</h2><p><img src="/assets/image-20200831151237356-026a1271.png" alt="image-20200831151237356"></p><p><img src="/assets/image-20200831151510910-aa8b183e.png" alt="image-20200831151510910"></p><h2 id="添加中文输入法" tabindex="-1"><a class="header-anchor" href="#添加中文输入法" aria-hidden="true">#</a> 添加中文输入法</h2><p><img src="/assets/image-20200905151633382-74baf9d2.png" alt="image-20200905151633382"></p><p><img src="/assets/image-20200905151712408-e3dd5ef8.png" alt="image-20200905151712408"></p><p><img src="/assets/image-20200905151751996-2ef4c40b.png" alt="image-20200905151751996"></p><p><img src="/assets/image-20200905151824378-3b832e56.png" alt="image-20200905151824378"></p><p><img src="/assets/image-20200905151839976-62505f2c.png" alt="image-20200905151839976"></p><h2 id="centos-软件包安装流程示例" tabindex="-1"><a class="header-anchor" href="#centos-软件包安装流程示例" aria-hidden="true">#</a> CentOS 软件包安装流程示例</h2><p>输入：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">sudo</span> yum update <span class="token comment"># 更新软件源</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> httpd <span class="token comment"># 安装 Apache</span>
+<span class="token punctuation">[</span>sudo<span class="token punctuation">]</span> yueplus 的密码： <span class="token comment"># 输入管理员密码</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote><p><code>sudo</code> - 以管理员身份运行（可以使用 <code>su root</code> 切换到 root 用户，就不用一直输 <code>sudo</code> 了）；</p></blockquote><p>输出：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>已加载插件：fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirrors.aliyun.com
+ * extras: ftp.sjtu.edu.cn
+ * updates: ftp.sjtu.edu.cn
+正在解决依赖关系
+--<span class="token operator">&gt;</span> 正在检查事务
+---<span class="token operator">&gt;</span> 软件包 httpd.x86_64.0.2.4.6-93.el7.centos 将被 安装
+--<span class="token operator">&gt;</span> 正在处理依赖关系 httpd-tools <span class="token operator">=</span> <span class="token number">2.4</span>.6-93.el7.centos，它被软件包 httpd-2.4.6-93.el7.centos.x86_64 需要
+--<span class="token operator">&gt;</span> 正在处理依赖关系 /etc/mime.types，它被软件包 httpd-2.4.6-93.el7.centos.x86_64 需要
+--<span class="token operator">&gt;</span> 正在处理依赖关系 libaprutil-1.so.0<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>64bit<span class="token punctuation">)</span>，它被软件包 httpd-2.4.6-93.el7.centos.x86_64 需要
+--<span class="token operator">&gt;</span> 正在处理依赖关系 libapr-1.so.0<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span>64bit<span class="token punctuation">)</span>，它被软件包 httpd-2.4.6-93.el7.centos.x86_64 需要
+--<span class="token operator">&gt;</span> 正在检查事务
+---<span class="token operator">&gt;</span> 软件包 apr.x86_64.0.1.4.8-5.el7 将被 安装
+---<span class="token operator">&gt;</span> 软件包 apr-util.x86_64.0.1.5.2-6.el7 将被 安装
+---<span class="token operator">&gt;</span> 软件包 httpd-tools.x86_64.0.2.4.6-93.el7.centos 将被 安装
+---<span class="token operator">&gt;</span> 软件包 mailcap.noarch.0.2.1.41-2.el7 将被 安装
+--<span class="token operator">&gt;</span> 解决依赖关系完成
+
+依赖关系解决
+
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+ Package                                             架构                                           版本                                                        源                                            大小
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+正在安装:
+ httpd                                               x86_64                                         <span class="token number">2.4</span>.6-93.el7.centos                                         base                                         <span class="token number">2.7</span> M
+为依赖而安装:
+ apr                                                 x86_64                                         <span class="token number">1.4</span>.8-5.el7                                                 base                                         <span class="token number">103</span> k
+ apr-util                                            x86_64                                         <span class="token number">1.5</span>.2-6.el7                                                 base                                          <span class="token number">92</span> k
+ httpd-tools                                         x86_64                                         <span class="token number">2.4</span>.6-93.el7.centos                                         base                                          <span class="token number">92</span> k
+ mailcap                                             noarch                                         <span class="token number">2.1</span>.41-2.el7                                                base                                          <span class="token number">31</span> k
+
+事务概要
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
+安装  <span class="token number">1</span> 软件包 <span class="token punctuation">(</span>+4 依赖软件包<span class="token punctuation">)</span>
+
+总下载量：3.0 M
+安装大小：10 M
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>输入：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>Is this ok <span class="token punctuation">[</span>y/d/N<span class="token punctuation">]</span>: Y
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><blockquote><ul><li>Y - Yes 下载并安装</li><li>D - Dowonload 仅下载</li><li>N - No 不做任何事</li></ul></blockquote><p>输出：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>Downloading packages:
+<span class="token punctuation">(</span><span class="token number">1</span>/5<span class="token punctuation">)</span>: apr-1.4.8-5.el7.x86_64.rpm                                                                                                                                                           <span class="token operator">|</span> <span class="token number">103</span> kB  00:00:00     
+<span class="token punctuation">(</span><span class="token number">2</span>/5<span class="token punctuation">)</span>: apr-util-1.5.2-6.el7.x86_64.rpm                                                                                                                                                      <span class="token operator">|</span>  <span class="token number">92</span> kB  00:00:00     
+<span class="token punctuation">(</span><span class="token number">3</span>/5<span class="token punctuation">)</span>: mailcap-2.1.41-2.el7.noarch.rpm                                                                                                                                                      <span class="token operator">|</span>  <span class="token number">31</span> kB  00:00:00     
+<span class="token punctuation">(</span><span class="token number">4</span>/5<span class="token punctuation">)</span>: httpd-tools-2.4.6-93.el7.centos.x86_64.rpm                                                                                                                                           <span class="token operator">|</span>  <span class="token number">92</span> kB  00:00:00     
+<span class="token punctuation">(</span><span class="token number">5</span>/5<span class="token punctuation">)</span>: httpd-2.4.6-93.el7.centos.x86_64.rpm                                                                                                                                                 <span class="token operator">|</span> <span class="token number">2.7</span> MB  00:00:02     
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+总计                                                                                                                                                                               <span class="token number">1.3</span> MB/s <span class="token operator">|</span> <span class="token number">3.0</span> MB  00:00:02     
+Running transaction check
+Running transaction <span class="token builtin class-name">test</span>
+Transaction <span class="token builtin class-name">test</span> succeeded
+Running transaction
+  正在安装    <span class="token builtin class-name">:</span> apr-1.4.8-5.el7.x86_64                                                                                                                                                                         <span class="token number">1</span>/5 
+  正在安装    <span class="token builtin class-name">:</span> apr-util-1.5.2-6.el7.x86_64                                                                                                                                                                    <span class="token number">2</span>/5 
+  正在安装    <span class="token builtin class-name">:</span> httpd-tools-2.4.6-93.el7.centos.x86_64                                                                                                                                                         <span class="token number">3</span>/5 
+  正在安装    <span class="token builtin class-name">:</span> mailcap-2.1.41-2.el7.noarch                                                                                                                                                                    <span class="token number">4</span>/5 
+  正在安装    <span class="token builtin class-name">:</span> httpd-2.4.6-93.el7.centos.x86_64                                                                                                                                                               <span class="token number">5</span>/5 
+  验证中      <span class="token builtin class-name">:</span> apr-1.4.8-5.el7.x86_64                                                                                                                                                                         <span class="token number">1</span>/5 
+  验证中      <span class="token builtin class-name">:</span> httpd-tools-2.4.6-93.el7.centos.x86_64                                                                                                                                                         <span class="token number">2</span>/5 
+  验证中      <span class="token builtin class-name">:</span> mailcap-2.1.41-2.el7.noarch                                                                                                                                                                    <span class="token number">3</span>/5 
+  验证中      <span class="token builtin class-name">:</span> httpd-2.4.6-93.el7.centos.x86_64                                                                                                                                                               <span class="token number">4</span>/5 
+  验证中      <span class="token builtin class-name">:</span> apr-util-1.5.2-6.el7.x86_64                                                                                                                                                                    <span class="token number">5</span>/5 
+
+已安装:
+  httpd.x86_64 <span class="token number">0</span>:2.4.6-93.el7.centos                                                                                                                                                                               
+
+作为依赖被安装:
+  apr.x86_64 <span class="token number">0</span>:1.4.8-5.el7                      apr-util.x86_64 <span class="token number">0</span>:1.5.2-6.el7                      httpd-tools.x86_64 <span class="token number">0</span>:2.4.6-93.el7.centos                      mailcap.noarch <span class="token number">0</span>:2.1.41-2.el7                     
+
+完毕！
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="systemctl-命令" tabindex="-1"><a class="header-anchor" href="#systemctl-命令" aria-hidden="true">#</a> <code>systemctl</code> 命令</h2><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token comment"># 立即启动一个服务</span>
+$ <span class="token function">sudo</span> systemctl start apache.service
+
+<span class="token comment"># 立即停止一个服务</span>
+$ <span class="token function">sudo</span> systemctl stop apache.service
+
+<span class="token comment"># 重启一个服务</span>
+$ <span class="token function">sudo</span> systemctl restart apache.service
+
+<span class="token comment"># 杀死一个服务的所有子进程</span>
+$ <span class="token function">sudo</span> systemctl <span class="token function">kill</span> apache.service
+
+<span class="token comment"># 重新加载一个服务的配置文件</span>
+$ <span class="token function">sudo</span> systemctl reload apache.service
+
+<span class="token comment"># 重载所有修改过的配置文件</span>
+$ <span class="token function">sudo</span> systemctl daemon-reload
+
+<span class="token comment"># 显示某个 Unit 的所有底层参数</span>
+$ systemctl show httpd.service
+
+<span class="token comment"># 显示某个 Unit 的指定属性的值</span>
+$ systemctl show <span class="token parameter variable">-p</span> CPUShares httpd.service
+
+<span class="token comment"># 设置某个 Unit 的指定属性</span>
+$ <span class="token function">sudo</span> systemctl set-property httpd.service <span class="token assign-left variable">CPUShares</span><span class="token operator">=</span><span class="token number">500</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote><p><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener noreferrer">Systemd 入门教程：命令篇<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p></blockquote><h2 id="解决-selinux-报警" tabindex="-1"><a class="header-anchor" href="#解决-selinux-报警" aria-hidden="true">#</a> 解决 SELinux 报警</h2><p><img src="/assets/image-20200827201728771-acd5ee02.png" alt="SELinux 报警"></p><ul><li><p>直接关闭 SELinux：</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>setenforce <span class="token number">0</span> <span class="token comment"># 关闭 SELinux（立即生效，重启失效）；0-关；1-开</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>将 <code>/etc/selinux/config</code> 文件的第7行：<code>SELINUX=enforcing</code> 修改成：<code>SELINUX=disabled</code>（重启生效，重启有效）</p></li><li><p>添加正确的文件类型</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>semanage fcontext <span class="token parameter variable">-a</span> <span class="token parameter variable">-t</span> httpd_sys_content_t <span class="token string">&#39;/skillschina/market/index.html&#39;</span>
+restorecon <span class="token parameter variable">-v</span> <span class="token string">&#39;/skillschina/market/index.html&#39;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></li></ul><blockquote><p><a href="http://linux.vbird.org/linux_basic/0440processcontrol.php#selinux" target="_blank" rel="noopener noreferrer">鸟哥的 Linux 私房菜 - 16.5 SELinux 初探<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p></blockquote><h2 id="smbclient-命令详解" tabindex="-1"><a class="header-anchor" href="#smbclient-命令详解" aria-hidden="true">#</a> <code>smbclient</code> 命令详解</h2><p>语法：<code>smbclient [网络资源][密码][-EhLN][-B&lt;IP地址&gt;][-d&lt;排错层级&gt;][-i&lt;范围&gt;][-I&lt;IP地址&gt;][-l&lt;记录文件&gt;][-M&lt;NetBIOS名称&gt;][-n&lt;NetBIOS名称&gt;][-O&lt;连接槽选项&gt;][-p&lt;TCP连接端口&gt;][-R&lt;名称解析顺序&gt;][-s&lt;目录&gt;][-t&lt;服务器字码&gt;][-T&lt;tar选项&gt;][-U&lt;用户名称&gt;][-W&lt;工作群组&gt;]</code></p><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>[网络资源] [网络资源]的格式为//服务器名称/资源分享名称。
+[密码] 输入存取网络资源所需的密码。
+-B&lt;IP地址&gt; 传送广播数据包时所用的IP地址。
+-d&lt;排错层级&gt; 指定记录文件所记载事件的详细程度。
+-E 将信息送到标准错误输出设备。
+-h 显示帮助。
+-i&lt;范围&gt; 设置NetBIOS名称范围。
+-I&lt;IP地址&gt; 指定服务器的IP地址。
+-l&lt;记录文件&gt; 指定记录文件的名称。
+-L 显示服务器端所分享出来的所有资源。
+-M&lt;NetBIOS名称&gt; 可利用WinPopup协议，将信息送给选项中所指定的主机。
+-n&lt;NetBIOS名称&gt; 指定用户端所要使用的NetBIOS名称。
+-N 不用询问密码。
+-O&lt;连接槽选项&gt; 设置用户端TCP连接槽的选项。
+-p&lt;TCP连接端口&gt; 指定服务器端TCP连接端口编号。
+-R&lt;名称解析顺序&gt; 设置NetBIOS名称解析的顺序。
+-s&lt;目录&gt; 指定smb.conf所在的目录。
+-t&lt;服务器字码&gt; 设置用何种字符码来解析服务器端的文件名称。
+-T&lt;tar选项&gt; 备份服务器端分享的全部文件，并打包成tar格式的文件。
+-U&lt;用户名称&gt; 指定用户名称。
+-W&lt;工作群组&gt; 指定工作群组名称。
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="计划任务" tabindex="-1"><a class="header-anchor" href="#计划任务" aria-hidden="true">#</a> 计划任务</h2><h3 id="使用-at-设置定时任务" tabindex="-1"><a class="header-anchor" href="#使用-at-设置定时任务" aria-hidden="true">#</a> 使用 <code>at</code> 设置定时任务</h3><blockquote><p>参考 <a href="http://linux.vbird.org/linux_basic/0430cron.php#atjob" target="_blank" rel="noopener noreferrer">鳥哥的 Linux 私房菜 -- 第十五章、例行性工作排程(crontab)<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p></blockquote><h4 id="安装" tabindex="-1"><a class="header-anchor" href="#安装" aria-hidden="true">#</a> 安装</h4><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token function">sudo</span> yum <span class="token function">install</span> atd      <span class="token comment"># 安装 at</span>
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> atd <span class="token comment"># 设置开机启动</span>
+<span class="token function">sudo</span> systemctl start atd  <span class="token comment"># 立即启动</span>
+<span class="token function">sudo</span> systemctl status atd <span class="token comment"># 查看状态</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="manpages" tabindex="-1"><a class="header-anchor" href="#manpages" aria-hidden="true">#</a> manpages</h4><div class="language-text line-numbers-mode" data-ext="text"><pre class="language-text"><code>AT(1)                      Linux Programmer&#39;s Manual                     AT(1)
+
+NAME
+       at, batch, atq, atrm - 排队、检查或删除以后要执行的作业。
+
+总览
+       at  [-V]  [-q  队列]  [-f 文件] [-mldbv] 时间 at -c 作业 [作业...]  atq
+       [-V] [-q 队列] [-v]
+       atrm [-V] 作业 [作业...]
+       batch [-V] [-q 队列] [-f 文件] [-mv] [时间]
+描述
+       at 和 batch  从标准输入或一个指定的文件读取命令，这些命令在以后某个时间
+       用 /bin/sh 执行。
+
+       at      在指定的时间执行命令。
+
+       atq     列出用户的等待执行的作业；在用户是超级用户的情况下，列出所有人
+               的作业。
+
+       atrm    删除作业。
+
+       batch   在系统负载水平允许的时候执行命令；换句话说，当平均负   载降到低
+               于0.8，或降到了在  atrun 文件中指定的期望值时运行。 译注：atrun
+               文件参见 atd 手册页。
+
+       At 允许相当复杂的时间指定，它扩展了 POSIX.2 标准。它接受 HH:MM 的时间式
+       样，用来指定在一天的某个时间运行一个作业。  (如果时间已经过了则假定为第
+       二天。)你可以指定  midnight  (午夜)、  noon  (中午)  或   teatime   (下
+       午4点)，你可以用  AM  或 PM 后缀指定一天的上午或下午。你可以给出 month-
+       name day 加上可选 的年份的式样用来指定运行 at  的日期，或者给出  MMDDYY
+       、 MM/DD/YY 或 DD.MM.YY 式样用来指定运行 at 的日期。日期的指定 必须跟在
+       时间指定的后面。你也可以给出象 now + 计数 时间单位 的式样，这里的时间单
+       位可以是  minutes  、 hours 、 days 或 weeks， 你可以给时间加一个 today
+       后缀来指定 at 今天运行作业，可以 给时间加一个 tomorrow 后缀来指定 at 明
+       天运行作业。
+
+       例如，要在三天以后的下午 4 点运行一个作业，at 时间参数可以 指定为 4pm +
+       3 days。 要在7月31日上午10:00运行一个作业， at 时间参数可以指定为  10am
+       Jul   31，   要在明天上午1点运行一个  作业，at  时间参数可以指定为  1am
+       tomorrow。
+
+       时间指定的精确的定义可以在 /usr/share/doc/at/timespec 找到。
+
+       对于 at 和 batch 两者，从标准输入或以 -f 选项指定的文件中  读取命令并执
+       行之。工作路径、环境变量(除了 TERM、 DISPLAY 和 _)、 umask 从所期望的时
+       间起保持不变。从一个从执行 su(1) 命令得到的 shell  中调用的  at   -  或
+       batch  - 命令将保持当前的 userid。 用户的命令的标准错误输出和标准输出将
+       用邮件发给用户。发送邮件  使用命令  /usr/sbin/sendmail。   从一个从执行
+       su(1)命令得到的  shell 中执行了 at ，登录 shell 的所有者将接到邮件。 译
+       注：userid 是用户标识的意思。umask 是与每个进程相关联的文件  方式创建屏
+       蔽字。
+
+       超级用户可以在任何情况下使用这些命令。对于其他用户，使用  at 的权限由文
+       件 /etc/at.allow 和 /etc/at.deny 确定。
+
+       如果文件 /etc/at.allow 存在，在其中提及的用户名被允许使用 at 命令。
+
+       如果 /etc/at.allow 不存在，而 /etc/at.deny 存在，所有在 /etc/at.deny 中
+       未提及的用户被允许使用 at 命令。
+
+       如果两者均不存在，只用超级用户可以使用 at 命令。
+
+       一个空的 /etc/at.deny 意味着所有用户均被允许使用这些命令， 这是缺省的配
+       置。
+选项
+       -V      在标准错误上输出版本号。
+
+       -q queue
+               使用指定的队列。一个队列用一个字母标定，有效的的队列标定的 范围
+               是从a到z和从A到Z。at  的缺省队列是 a,batch 的缺省队列是 b。队列
+               的字母顺序越高，则队列运行时越谦让(运行级别越低)。   指定的队列
+               &quot;=&quot; 保留给当前运行的作业所在的队列。
+
+       如果一个作业被提交到一个以大写字母标定的队列，则与提交到  batch  同样对
+       待。如果给 atq 指定一个队列，则只显示在此指定 队列中的作业。
+
+       -m      当作业完成时即使没有输出也给用户发邮件。
+
+       -f file 从文件而不是标准输入中读取作业信息。
+
+       -l      是 atq 的别名。
+
+       -d      是 atrm 的别名。
+
+       -v      对于 atq， 显示完整的在队列中未被删除的作业，对于其他  命令，显
+               示作业将要执行的时间。
+
+       显示的时间的格式类似于&quot;1997-02-20  14:50&quot;，但如果设置了 POSIXLY_CORRECT
+       环境变量之后，格式类似于&quot;Thu Feb 20 14:50:00 1996&quot;。
+
+       -c      连接命令行中列出的作业并输出到标准输出。
+
+相关文件
+       /var/spool/at
+       /var/spool/at/spool
+       /proc/loadavg
+       /var/run/utmp
+       /etc/at.allow
+       /etc/at.deny
+
+参见
+       cron(1), nice(1), sh(1), umask(2), atd(8)
+
+缺陷
+       在 Linux 下正确的批处理操作依赖于挂装在/proc 上的一个 proc-  类型的目录
+       的存在。
+
+       如果文件  /var/run/utmp 不可获得或已经损坏，或者在 at 所期 待的时间用户
+       没有登录，向在环境变量 LOGNAME 中找到的 userid 发送邮件。如果 LOGNAME未
+       定义或是空的，假定为当前的userid。
+
+       当前实现的  at 和 batch 在用户竞争资源的时候是不适合的。 如果你的站点是
+       这种情况，你可以考虑其他的批处理系统， 例如 nqs。
+
+著作者
+       AT 大部分是由Thomas Koenig写的。ig25@rz.uni-karlsruhe.de.
+
+[中文版维护人]
+       mhss &lt;jijingzhisheng@up369.com&gt;
+       主要参照了：  Linux实用大全  /  陈向阳，方汉  编著.  -北京：   科学出版
+       社，1998.8
+
+[中文版最新更新]
+       2000/10/27
+
+《中国linux论坛man手册页翻译计划》:
+       http://cmpp.linuxforum.net
+
+跋
+       本页面中文版由中文 man 手册页计划提供。
+       中文 man 手册页计划：https://github.com/man-pages-zh/manpages-zh
+
+local                              Nov 1996                              AT(1)
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="示例-两分钟后向全体已登入用户发送消息" tabindex="-1"><a class="header-anchor" href="#示例-两分钟后向全体已登入用户发送消息" aria-hidden="true">#</a> 示例：两分钟后向全体已登入用户发送消息</h4><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>at now + 2minutes
+wall hello
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><kbd>Ctrl</kbd> + <kbd>D</kbd> 完成输入。</p><h4 id="示例-20-分钟后重启系统" tabindex="-1"><a class="header-anchor" href="#示例-20-分钟后重启系统" aria-hidden="true">#</a> 示例：20 分钟后重启系统</h4><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>at now + 20minutes
+<span class="token function">reboot</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><kbd>Ctrl</kbd> + <kbd>D</kbd> 完成输入。</p><h3 id="使用-crontab-计划任务" tabindex="-1"><a class="header-anchor" href="#使用-crontab-计划任务" aria-hidden="true">#</a> 使用 <code>crontab</code> 计划任务</h3><p>使用 <code>crontab -e</code> 指令编辑计划任务</p><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code>ubuntu@VM-12-14-ubuntu:~$ <span class="token function">crontab</span> <span class="token parameter variable">-e</span>
+no <span class="token function">crontab</span> <span class="token keyword">for</span> ubuntu - using an empty one
+
+Select an editor.  To change later, run <span class="token string">&#39;select-editor&#39;</span><span class="token builtin class-name">.</span>
+<span class="token number">1</span>. /bin/nano        <span class="token operator">&lt;</span>---- easiest
+<span class="token number">2</span>. /usr/bin/vim.basic
+<span class="token number">3</span>. /usr/bin/vim.tiny
+<span class="token number">4</span>. /bin/ed
+
+Choose <span class="token number">1</span>-4 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>: <span class="token number">2</span>
+No modification made
+</code></pre><div class="highlight-lines"><div class="highlight-line"> </div><br><br><br><br><br><br><br><br><div class="highlight-line"> </div><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h4 id="语法" tabindex="-1"><a class="header-anchor" href="#语法" aria-hidden="true">#</a> 语法</h4><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token punctuation">[</span>root@study ~<span class="token punctuation">]</span><span class="token comment"># crontab [-u username] [-l|-e|-r]</span>
+選項與參數：
+<span class="token parameter variable">-u</span>  ：只有 root 才能進行這個任務，亦即幫其他使用者建立/移除 <span class="token function">crontab</span> 工作排程；
+<span class="token parameter variable">-e</span>  ：編輯 <span class="token function">crontab</span> 的工作內容
+<span class="token parameter variable">-l</span>  ：查閱 <span class="token function">crontab</span> 的工作內容
+<span class="token parameter variable">-r</span>  ：移除所有的 <span class="token function">crontab</span> 的工作內容，若僅要移除一項，請用 <span class="token parameter variable">-e</span> 去編輯。
+
+範例一：用 dmtsai 的身份在每天的 <span class="token number">12</span>:00 發信給自己
+<span class="token punctuation">[</span>dmtsai@study ~<span class="token punctuation">]</span>$ <span class="token function">crontab</span> <span class="token parameter variable">-e</span>
+<span class="token comment"># 此時會進入 vi 的編輯畫面讓您編輯工作！注意到，每項工作都是一行。</span>
+<span class="token number">0</span>   <span class="token number">12</span>  *  *  * mail <span class="token parameter variable">-s</span> <span class="token string">&quot;at 12:00&quot;</span> dmtsai <span class="token operator">&lt;</span> /home/dmtsai/.bashrc
+<span class="token comment">#分 時  日 月 週 |&lt;==============指令串========================&gt;|</span>
+</code></pre><div class="highlight-lines"><div class="highlight-line"> </div><br><br><br><br><br><br><br><br><br><br><br></div><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote><p>参考 <a href="http://linux.vbird.org/linux_basic/0430cron.php#etc_crontab" target="_blank" rel="noopener noreferrer">鳥哥的 Linux 私房菜 -- 第十五章、例行性工作排程(crontab)<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p></blockquote><h4 id="示例-每天每小时的-30-分-将-home-目录实施压缩打包" tabindex="-1"><a class="header-anchor" href="#示例-每天每小时的-30-分-将-home-目录实施压缩打包" aria-hidden="true">#</a> 示例，每天每小时的 30 分，将 <code>/home</code> 目录实施压缩打包</h4><div class="language-bash line-numbers-mode" data-ext="sh"><pre class="language-bash"><code><span class="token number">30</span> * * * * <span class="token function">tar</span> <span class="token parameter variable">-cvf</span> /home.tar.xz /home
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><blockquote><p><a href="https://www.runoob.com/linux/linux-comm-tar.html" target="_blank" rel="noopener noreferrer">Linux tar 命令 | 菜鸟教程<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a></p></blockquote><h2 id="linux-安装" tabindex="-1"><a class="header-anchor" href="#linux-安装" aria-hidden="true">#</a> Linux 安装</h2><ol><li>参考 <a href="/serve/VM/VMware/#%E5%AE%89%E8%A3%85-vmware" class="">安装 VMware Workstation</a></li><li>前往 <a href="https://www.centos.org/download/" target="_blank" rel="noopener noreferrer">CentOS 官网<span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span></a> 下载系统镜像 <blockquote><p>培训室内网共享文件夹：<code>\\WS22\Yue_plus 的共享\LinuxOS</code></p></blockquote></li></ol><p>可前往bilbil网站观看第三章</p><iframe src="//player.bilibili.com/player.html?aid=99111795&amp;bvid=BV187411y7hF&amp;cid=169181090&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:100%;height:380px;"> </iframe><h2 id="vmware-虚拟机以及镜像安装" tabindex="-1"><a class="header-anchor" href="#vmware-虚拟机以及镜像安装" aria-hidden="true">#</a> VMware 虚拟机以及镜像安装</h2><p>1.新建一个虚拟机</p><p><img src="/assets/01-9b0821f5.png" alt="image-20200829152047933"></p><p>2.选择典型点击下一步</p><p><img src="/assets/02-259d24c9.jpg" alt="image-20200829152047933"></p><p>3.选择自己要安装的镜像，选择完毕直接点击下一步</p><p><img src="/assets/03-82136066.png" alt="image-20200829152047933"></p><p>4.此步骤是没有镜像的操作。建议使用镜像安装，有镜像可省略此步骤然后点击下一步</p><p><img src="/assets/04-9f6dce9d.png" alt="image-20200829152047933"></p><p>5.虚拟机命名以及选择他所需要储存的的位置，设置完后点击下一步</p><p><img src="/assets/05-4f4cfe56.png" alt="image-20200829152047933"></p><p>6.指定磁盘容量的大小，可默认，也可以自己设置</p><p><img src="/assets/06-6b3b0cff.png" alt="image-20200829152047933"></p><p>7.做完以上步骤之后，就可以开始安装虚拟机了，点击完成开始安装</p></div><!--[--><!--]--></div><footer class="page-meta"><div class="meta-item edit-link"><a class="external-link meta-item-label" href="https://github.com/Yue-plus/NetNote/edit/main/docs/serve/CentOS/Base/README.md" rel="noopener noreferrer" target="_blank" aria-label="在 GitHub 上编辑此页"><!--[--><!--]--> 在 GitHub 上编辑此页 <span><svg class="external-link-icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><span class="external-link-icon-sr-only">open in new window</span></span><!--[--><!--]--></a></div><div class="meta-item last-updated"><span class="meta-item-label">上次更新: </span><!----></div><div class="meta-item contributors"><span class="meta-item-label">此页贡献者: </span><span class="meta-item-info"><!--[--><!--[--><span class="contributor" title="email: Yue_plus@foxmail.com">Yue_plus</span><!----><!--]--><!--]--></span></div></footer><nav class="page-nav"><p class="inner"><!----><span class="next"><a href="/serve/CentOS/firewalld/" class="" aria-label="firewall（防火墙）"><!--[--><!--]--> firewall（防火墙） <!--[--><!--]--></a></span></p></nav><!--[--><!--]--></main><!--]--></div><!----><!----><!--]--></div>
+    <script type="module" src="/assets/app-ab31641a.js" defer></script>
+  </body>
+</html>

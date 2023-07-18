@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-6566be62","path":"/net/manual/command/","title":"命令手册","lang":"zh-CN","frontmatter":{},"headers":[{"level":2,"title":"目录","slug":"目录","link":"#目录","children":[]}],"git":{"updatedTime":1689658961000,"contributors":[{"name":"Yue_plus","email":"Yue_plus@foxmail.com","commits":1}]},"filePathRelative":"net/manual/command/README.md"}');export{e as data};

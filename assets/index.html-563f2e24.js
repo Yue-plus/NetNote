@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-7b8486e1","path":"/serve/CentOS/NIS/","title":"NIS（网络信息服务）","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1689658961000,"contributors":[{"name":"Yue_plus","email":"Yue_plus@foxmail.com","commits":1}]},"filePathRelative":"serve/CentOS/NIS/README.md"}');export{e as data};
