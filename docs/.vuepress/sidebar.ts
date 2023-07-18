@@ -18,7 +18,6 @@ const sidebar = {
       text: "游戏",
       children: [
         "/game/minecraft.md",
-        "/game/unity.md",
         "/game/UnrealEngine.md",
         "/game/GodotEngine.md",
       ],
